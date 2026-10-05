@@ -1,0 +1,23 @@
+# Tomcat runtime and work folders
+tomcat/
+target/
+bin/
+*.class
+
+# IDE and OS
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+scratch/
+*.mv.db
+*.trace.db
+*.db
+
