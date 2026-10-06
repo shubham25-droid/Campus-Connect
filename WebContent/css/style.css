@@ -60,7 +60,7 @@
     --shadow-hover: 0 12px 24px -4px rgba(13, 67, 121, 0.12), 0 4px 6px -2px rgba(13, 67, 121, 0.04);
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --container-max: 1300px;
+    --container-max: 1440px;
 }
 
 /* ==========================================================================
@@ -124,23 +124,15 @@ button {
     background: none;
 }
 
-/* Container Utility */
+/* Container Utility (Full-Width Fluid on Laptops & Desktops) */
 .section-container,
 .container {
-    width: 100%;
+    width: 92%;
     max-width: var(--container-max);
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-}
-
-@media (min-width: 768px) {
-    .section-container,
-    .container {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* ==========================================================================
@@ -155,6 +147,7 @@ button {
 }
 
 .inst-bar-inner {
+    width: 92%;
     max-width: var(--container-max);
     margin: 0 auto;
     display: flex;
@@ -245,9 +238,10 @@ button {
 }
 
 .header-inner {
+    width: 92%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0;
     height: 72px;
     display: flex;
     justify-content: space-between;
@@ -257,7 +251,6 @@ button {
 
 @media (min-width: 768px) {
     .header-inner {
-        padding: 0 2rem;
         height: 78px;
     }
 }
@@ -737,27 +730,19 @@ button {
     text-align: center;
 }
 
-@media (min-width: 768px) {
-.collegiate-hero {
-    background: linear-gradient(135deg, #061c33 0%, #0d4379 65%, #155e9c 100%);
-    color: #ffffff;
-    padding: 3rem 1.25rem 3.5rem;
-    position: relative;
-    overflow: hidden;
-}
-
 @media (min-width: 992px) {
     .collegiate-hero {
-        padding: 4rem 2rem 4.5rem;
+        padding: 3.5rem 0 4rem;
+        text-align: left;
     }
 }
 
 .hero-container {
-    max-width: 1240px;
+    width: 92%;
+    max-width: var(--container-max);
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    width: 100%;
 }
 
 /* Split Hero Grid Layout */
@@ -1959,9 +1944,10 @@ button {
 }
 
 .footer-container {
+    width: 92%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 3.5rem 1.25rem 2.5rem;
+    padding: 3.5rem 0 2.5rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -2030,10 +2016,11 @@ button {
 .footer-bottom-bar {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     background-color: #041424;
-    padding: 1.25rem;
+    padding: 1.25rem 0;
 }
 
 .bottom-bar-container {
+    width: 92%;
     max-width: var(--container-max);
     margin: 0 auto;
     display: flex;
