@@ -12,6 +12,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+
     <!-- Session Configuration: 60 minutes -->
     <session-config>
         <session-timeout>60</session-timeout>

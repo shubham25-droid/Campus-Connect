@@ -149,40 +149,57 @@
 
     <!-- Quick Filter by Student Club / Organizing Body -->
     <div id="clubs-strip" style="margin-bottom: 1.5rem;">
-        <div style="font-size:0.8125rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;">
-            Filter by Campus Club &amp; Organizing Body:
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <div style="font-size:0.8125rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">
+                Filter by Campus Club &amp; Organizing Body:
+            </div>
+            <a href="<%= request.getContextPath() %>/clubs.jsp" style="font-size:0.8rem; font-weight:700; color:var(--ltce-blue-mid); text-decoration:underline;">
+                &#127891; Which Club Should I Join? (Clubs Guide &rarr;)
+            </a>
         </div>
         <div class="club-badge-strip">
             <button type="button" class="club-badge-pill" onclick="filterByClub('')">
                 <span>All Organizers</span>
             </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('AIMSA')">
+                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.png" alt="AIMSA">
+                <span>AIMSA (AI &amp; ML)</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('CESA')">
+                <img src="<%= request.getContextPath() %>/images/clubs/cesa.png" alt="CESA">
+                <span>CESA (Computer)</span>
+            </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('GDG')">
                 <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
                 <span>GDG on Campus</span>
             </button>
-            <button type="button" class="club-badge-pill" onclick="filterByClub('AIMSA')">
-                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.svg" alt="AIMSA">
-                <span>AIMSA</span>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('GFG')">
+                <img src="<%= request.getContextPath() %>/images/clubs/gfg.svg" alt="GFG">
+                <span>GFG Student Chapter</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('E-CELL')">
+                <img src="<%= request.getContextPath() %>/images/clubs/ecell.png" alt="E-CELL">
+                <span>E-CELL LTCE</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('Technical Vidya')">
+                <img src="<%= request.getContextPath() %>/images/clubs/technical_vidya.png" alt="Technical Vidya">
+                <span>Technical Vidya</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('English')">
+                <img src="<%= request.getContextPath() %>/images/clubs/english_club.png" alt="English Club">
+                <span>The English Club</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('Data Science')">
+                <img src="<%= request.getContextPath() %>/images/clubs/dssa.svg" alt="DSSA">
+                <span>DSSA (Data Science)</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('IIC')">
                 <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
                 <span>IIC LTCE</span>
             </button>
-            <button type="button" class="club-badge-pill" onclick="filterByClub('CSI')">
-                <img src="<%= request.getContextPath() %>/images/clubs/csi.svg" alt="CSI">
-                <span>CSI Chapter</span>
-            </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('Placement')">
                 <img src="<%= request.getContextPath() %>/images/clubs/tnp.svg" alt="T&P">
                 <span>T&amp;P Cell</span>
-            </button>
-            <button type="button" class="club-badge-pill" onclick="filterByClub('Hackathon')">
-                <img src="<%= request.getContextPath() %>/images/clubs/sih.svg" alt="SIH">
-                <span>Innovation / SIH</span>
-            </button>
-            <button type="button" class="club-badge-pill" onclick="filterByClub('IEEE')">
-                <img src="<%= request.getContextPath() %>/images/clubs/ieee.svg" alt="IEEE">
-                <span>IEEE Branch</span>
             </button>
         </div>
     </div>

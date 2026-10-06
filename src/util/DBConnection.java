@@ -182,7 +182,32 @@ public class DBConnection {
                     + "(5, 'Seminar: Cracking Product-Based Company Placements & Resume Clinic', "
                     + "'Get your resume reviewed by alumni working at Microsoft, Google, and Amazon. Learn DSA strategy, system design basics, and interview etiquette.', "
                     + "'Organized by the Training & Placement Cell (T&P). Features LTCE alumni panel discussion, live mock interviews, and personalized 1-on-1 resume reviews.', "
-                    + "'Seminar', 'All Departments', 'TE, BE', '2026-10-30', '3:00 PM', '5:30 PM', 'Seminar Hall 1, Admin Block', 'Training & Placement Cell', 'tnp@ltce.in | +91 98222 33445', '2026-10-29', 200, 'Open to 3rd & Final year students preparing for campus placements', 'resume_seminar.png', 'Published', 1);");
+                    + "'Seminar', 'All Departments', 'TE, BE', '2026-10-30', '3:00 PM', '5:30 PM', 'Seminar Hall 1, Admin Block', 'Training & Placement Cell', 'tnp@ltce.in | +91 98222 33445', '2026-10-29', 200, 'Open to 3rd & Final year students preparing for campus placements', 'resume_seminar.png', 'Published', 1), "
+
+                    + "(6, 'CESA CodeSprint 2026: Algorithmic Battle & Full-Stack Challenge', "
+                    + "'Computer Engineering Students Association (CESA) presents the departmental flagship coding battle. Solve DSA problems, build web prototypes, win exciting prizes.', "
+                    + "'Exclusively organized by CESA (Computer Engineering Students Association). Features 2 rounds: Round 1 Competitive Coding on custom problem sets, Round 2 6-hour Rapid App Prototype Sprint. Certificates and trophies for Top 3 performers.', "
+                    + "'Competition', 'Computer Engineering', 'SE, TE, BE', '2026-11-04', '10:00 AM', '5:00 PM', 'Computer Center Labs 1 & 2', 'CESA LTCE', 'cesa@ltce.in | +91 98333 44556', '2026-11-02', 150, 'Computer Engineering department students only', 'default_event.jpg', 'Published', 1), "
+
+                    + "(7, 'E-Summit 2026 Ideation Pitch: Turning Engineering Projects into Startups', "
+                    + "'Organized by E-CELL LTCE in association with E-Cell IIT Bombay. Learn venture creation, business model canvas, and pitch to angel investors.', "
+                    + "'E-Cell LTCE presents Ideate, Innovate, Impact! Transform your academic major project into a venture-backed startup. Guest workshop by founders and access to preliminary rounds of the National Entrepreneurship Challenge (NEC) affiliated with IIT Bombay.', "
+                    + "'Workshop', 'All Departments', 'FE, SE, TE, BE', '2026-11-12', '1:30 PM', '4:30 PM', 'A510 Auditorium', 'E-CELL LTCE', 'ecell@ltce.in | +91 98777 88990', '2026-11-10', 180, 'Open to all branches and years of LTCE', 'default_event.jpg', 'Published', 1), "
+
+                    + "(8, 'Founder Talk & Startup Incubation Masterclass', "
+                    + "'Technical Vidya hosts a startup mentorship session with engineering alumni founders. Learn funding, legal compliance, and prototype testing.', "
+                    + "'Technical Vidya brings you a power-packed entrepreneurial mentoring conclave. Connect with founders, discover seed capital grants, and get 1-on-1 feedback on your tech product idea.', "
+                    + "'Seminar', 'All Departments', 'SE, TE, BE', '2026-11-18', '2:00 PM', '4:30 PM', 'Seminar Hall 2', 'Technical Vidya', 'techvidya@ltce.in | +91 98444 55667', '2026-11-16', 120, 'Open to all innovators and aspiring founders', 'default_event.jpg', 'Published', 1), "
+
+                    + "(9, 'Crystal Eloquence: British Parliamentary Debate & Group Discussion Clinic', "
+                    + "'The English Club brings you the annual inter-department public speaking tournament and placement GD prep bootcamp.', "
+                    + "'Master the art of articulate communication, persuasive arguments, and stage confidence. Features live British Parliamentary debates, elocution rounds, and mock corporate group discussions judged by industry HR professionals.', "
+                    + "'Cultural', 'All Departments', 'FE, SE, TE, BE', '2026-11-22', '11:00 AM', '3:00 PM', 'Reading Hall / Conference Room', 'The English Club', 'englishclub@ltce.in | +91 98666 77889', '2026-11-20', 100, 'Open to all students across all branches', 'default_event.jpg', 'Published', 1), "
+
+                    + "(10, 'Geeks 30 Days of Code: DSA & Competitive Programming Sprint', "
+                    + "'GFG Student Chapter LTCE kicks off the placement coding marathon. Daily curated problem sets, live doubt solving, and mock technical interviews.', "
+                    + "'Level up your problem solving skills on GeeksforGeeks! Learn Stacks, Queues, Trees, Graphs, and Dynamic Programming with peer mentors. Top scorers receive GFG Course Vouchers and interview prep packages.', "
+                    + "'Technical', 'All Departments', 'SE, TE, BE', '2026-11-28', '4:00 PM', '6:00 PM', 'Online & Central Computing Facility', 'GFG Student Chapter', 'gfg@ltce.in | +91 98555 66778', '2026-11-26', 300, 'Open to all students preparing for technical placements', 'default_event.jpg', 'Published', 1);");
 
             // Seed sample registrations
             stmt.executeUpdate("MERGE INTO registrations (id, user_id, event_id, status) KEY(id) VALUES (1, 2, 1, 'CONFIRMED'), (2, 2, 2, 'CONFIRMED');");

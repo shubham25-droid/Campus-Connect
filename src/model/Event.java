@@ -156,17 +156,23 @@ public class Event {
     }
 
     public String getClubLogo() {
-        if (organizerName == null) return "ltce.svg";
+        if (organizerName == null) return "ltce_official_logo.png";
         String org = organizerName.toUpperCase();
+        if (org.contains("AIMSA")) return "aimsa.png";
+        if (org.contains("CESA")) return "cesa.png";
+        if (org.contains("E-CELL") || org.contains("ECELL") || org.contains("ENTREPRENEUR")) return "ecell.png";
+        if (org.contains("ENGLISH") || org.contains("CRYSTAL") || org.contains("SPEAKING")) return "english_club.png";
+        if (org.contains("TECHNICAL VIDYA") || org.contains("TECH VIDYA") || org.contains("VIDYA")) return "technical_vidya.png";
         if (org.contains("GDG")) return "gdg.svg";
-        if (org.contains("AIMSA")) return "aimsa.svg";
+        if (org.contains("GFG") || org.contains("GEEKS")) return "gfg.svg";
         if (org.contains("IIC")) return "iic.svg";
+        if (org.contains("DSS") || org.contains("DATA SCIENCE")) return "dssa.svg";
         if (org.contains("CSI")) return "csi.svg";
         if (org.contains("IEEE")) return "ieee.svg";
         if (org.contains("ROTARACT")) return "rotaract.svg";
         if (org.contains("PLACEMENT") || org.contains("T&P")) return "tnp.svg";
         if (org.contains("INNOVATION") || org.contains("SIH")) return "sih.svg";
         if (org.contains("ACM")) return "acm.svg";
-        return "ltce.svg";
+        return "ltce_official_logo.png";
     }
 }

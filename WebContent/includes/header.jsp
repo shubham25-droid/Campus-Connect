@@ -50,13 +50,25 @@
          ============================================== -->
     <header class="ltce-middle-header">
         <div class="middle-header-container">
-            <!-- Brand Logo & Institutional Emblem -->
-            <a href="<%= cp %>/" class="middle-brand-group" title="CampusConnect Home">
-                <img src="<%= cp %>/images/campusconnect-logo.svg" alt="CampusConnect - Lokmanya Tilak College of Engineering" class="main-portal-logo">
-            </a>
+            <!-- Left: Official LTCE College Logo & CampusConnect Master Brand -->
+            <div style="display:flex; align-items:center; gap:18px;">
+                <a href="https://ltce.in/" target="_blank" title="Lokmanya Tilak College of Engineering Official Site">
+                    <img src="<%= cp %>/images/ltce_official_logo.png" alt="LTCE Official Logo" style="height:62px; width:auto; display:block;" onerror="this.style.display='none'">
+                </a>
+
+                <div style="height: 48px; width: 1.5px; background: #e2e8f0;"></div>
+
+                <a href="<%= cp %>/" class="middle-brand-group" title="CampusConnect Home">
+                    <img src="<%= cp %>/images/campusconnect-logo.svg" alt="CampusConnect - Lokmanya Tilak College of Engineering" class="main-portal-logo">
+                </a>
+            </div>
 
             <!-- Institutional Highlights / Academic Verification Badge -->
             <div class="middle-trust-badges">
+                <div class="trust-badge-item" style="border:none; background:transparent; padding:0;">
+                    <img src="<%= cp %>/images/ltce_trust_logo.jpg" alt="LTJSS Sanstha" style="height:56px; width:auto; border-radius:4px;" onerror="this.style.display='none'">
+                </div>
+
                 <div class="trust-badge-item">
                     <div class="trust-badge-icon">&#128737;</div>
                     <div class="trust-badge-content">
@@ -84,7 +96,7 @@
             <ul class="nav-menu">
                 <li><a href="<%= cp %>/" class="nav-link">Home</a></li>
                 <li><a href="<%= cp %>/dashboard" class="nav-link">Explore Events</a></li>
-                <li><a href="<%= cp %>/dashboard#clubs-strip" class="nav-link">Clubs &amp; Bodies</a></li>
+                <li><a href="<%= cp %>/clubs.jsp" class="nav-link" style="color:#fef08a; font-weight:700;">&#127891; Clubs Directory</a></li>
                 <li><a href="<%= cp %>/#how-it-works" class="nav-link">How It Works</a></li>
                 <% if (authUser != null) { %>
                     <% if (authUser.isAdmin()) { %>

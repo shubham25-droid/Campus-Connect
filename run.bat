@@ -17,6 +17,7 @@ if "%JAVA_HOME%"=="" (
 )
 set "JRE_HOME=%JAVA_HOME%"
 set "CATALINA_HOME=%~dp0tomcat"
+set "CATALINA_BASE=%~dp0tomcat"
 
 echo Starting Apache Tomcat at http://localhost:8080/CampusConnect/
 echo Demo Student Login: student@campusconnect.com / student123

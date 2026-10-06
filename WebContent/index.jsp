@@ -34,39 +34,52 @@
 </section>
 
 <!-- Participating Student Bodies & Chapters Strip -->
-<section id="clubs" style="background:var(--bg-surface); border-bottom:1px solid var(--border-color); padding: 1.5rem 1.5rem;">
+<section id="clubs" style="background:var(--bg-surface); border-bottom:1px solid var(--border-color); padding: 1.75rem 1.5rem;">
     <div class="container" style="padding-top:0; padding-bottom:0; max-width:var(--container-max);">
-        <div style="text-align:center; font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.85rem;">
-            Powering Opportunities from Official Campus Chapters &amp; Student Bodies
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+            <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+                Official LTCE Student Bodies &amp; Technical Chapters
+            </div>
+            <a href="<%= request.getContextPath() %>/clubs.jsp" style="font-size:0.825rem; font-weight:700; color:var(--ltce-blue-mid); text-decoration:underline;">
+                &#127891; View All Clubs &amp; Student Guidance Guide &rarr;
+            </a>
         </div>
         <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+            <a href="<%= request.getContextPath() %>/dashboard?search=AIMSA" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.png" alt="AIMSA">
+                <span>AIMSA (AI &amp; ML)</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=CESA" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/cesa.png" alt="CESA">
+                <span>CESA (Computer)</span>
+            </a>
             <a href="<%= request.getContextPath() %>/dashboard?search=GDG" class="club-badge-pill">
                 <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
-                <span>GDG on Campus LTCE</span>
+                <span>GDG on Campus</span>
             </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=AIMSA" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.svg" alt="AIMSA">
-                <span>AIMSA</span>
+            <a href="<%= request.getContextPath() %>/dashboard?search=GFG" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/gfg.svg" alt="GFG">
+                <span>GFG Student Chapter</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=E-CELL" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/ecell.png" alt="E-CELL">
+                <span>E-CELL LTCE (IITB)</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=Technical+Vidya" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/technical_vidya.png" alt="Technical Vidya">
+                <span>Technical Vidya</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=English" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/english_club.png" alt="The English Club">
+                <span>The English Club</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=Data+Science" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/dssa.svg" alt="DSSA">
+                <span>DSSA (Data Science)</span>
             </a>
             <a href="<%= request.getContextPath() %>/dashboard?search=IIC" class="club-badge-pill">
                 <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
-                <span>IIC (MoE Initiative)</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=CSI" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/csi.svg" alt="CSI">
-                <span>CSI LTCE Chapter</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=Hackathon" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/sih.svg" alt="SIH">
-                <span>LTCE Innovation Cell</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=Placement" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/tnp.svg" alt="T&P">
-                <span>T&amp;P Placement Cell</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=IEEE" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/ieee.svg" alt="IEEE">
-                <span>IEEE Student Branch</span>
+                <span>IIC LTCE</span>
             </a>
         </div>
     </div>

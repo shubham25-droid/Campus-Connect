@@ -22,6 +22,7 @@ if (-not $env:JAVA_HOME -or -not (Test-Path $env:JAVA_HOME)) {
 }
 $env:JRE_HOME = $env:JAVA_HOME
 $env:CATALINA_HOME = "$PSScriptRoot\tomcat"
+$env:CATALINA_BASE = "$PSScriptRoot\tomcat"
 
 Write-Host "Starting Apache Tomcat at http://localhost:8080/CampusConnect/" -ForegroundColor Green
 Write-Host "Demo Student Login: student@campusconnect.com / student123" -ForegroundColor Cyan
