@@ -11,78 +11,176 @@
     
     // Fetch upcoming published events for the live preview
     List<Event> upcomingEvents = eventDAO.getDiscoveredEvents("", "All", "All", "All", "upcoming", authId);
+    Event featuredLead = (upcomingEvents != null && !upcomingEvents.isEmpty()) ? upcomingEvents.get(0) : null;
     String cp = request.getContextPath();
 %>
 <jsp:include page="includes/header.jsp" />
 
 <!-- ==============================================
-     1. Modern Collegiate Hero Section
+     1. Modern Collegiate Split Hero Section
      ============================================== -->
 <section class="collegiate-hero">
     <div class="hero-container">
-        
-        <!-- Live Academic Announcement Pill -->
-        <div class="hero-live-pill">
-            <span class="pulse-indicator"></span>
-            <span class="live-pill-text">Spring 2026 Academic Season &bull; <strong>12+ Events Live</strong></span>
+        <div class="hero-split-grid">
+            
+            <!-- Left Column: Primary Pitch, Search & CTAs -->
+            <div class="hero-left-content">
+                <!-- Live Academic Announcement Pill -->
+                <div class="hero-live-pill">
+                    <span class="pulse-indicator"></span>
+                    <span class="live-pill-text">Spring 2026 Academic Season &bull; <strong>12+ Events Live</strong></span>
+                </div>
+
+                <!-- High-Impact Bold Typography -->
+                <h1 class="hero-heading">
+                    Connecting Students with <br>
+                    <span class="hero-gradient-text">Every Campus Opportunity.</span>
+                </h1>
+
+                <!-- Clear, Realistic Value Proposition -->
+                <p class="hero-lead">
+                    The official central opportunity board for <strong>Lokmanya Tilak College of Engineering</strong>. 
+                    Discover hackathons, technical bootcamps, and cultural fests from AIMSA, CESA, GDG, E-Cell &amp; more&mdash;without digging through endless noisy WhatsApp groups.
+                </p>
+
+                <!-- Instant In-Hero Search Form (Maximum Utility for Students) -->
+                <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box">
+                    <div class="hero-search-inner">
+                        <span class="hero-search-icon">&#128269;</span>
+                        <input type="text" name="search" class="hero-search-input" 
+                               placeholder="Search hackathons, bootcamps, CESA, GDG, DSA..." 
+                               autocomplete="off">
+                        <button type="submit" class="hero-search-submit">Search Events</button>
+                    </div>
+                </form>
+
+                <!-- Action CTAs -->
+                <div class="hero-action-buttons">
+                    <a href="<%= cp %>/dashboard" class="btn-hero-primary">
+                        Explore All Events <span>&rarr;</span>
+                    </a>
+                    <a href="<%= cp %>/clubs.jsp" class="btn-hero-secondary">
+                        <span>&#127891;</span> Campus Clubs Guide (10)
+                    </a>
+                </div>
+
+                <!-- Trust & Social Proof Metrics Strip -->
+                <div class="hero-metrics-strip">
+                    <div class="metric-block">
+                        <div class="metric-number">10+</div>
+                        <div class="metric-label">Active Campus Clubs</div>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-block">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-label">Free For Students</div>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-block">
+                        <div class="metric-number">1-Click</div>
+                        <div class="metric-label">Instant Pass Roster</div>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-block">
+                        <div class="metric-number">Official</div>
+                        <div class="metric-label">Autonomous Board</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Featured Pass / Opportunity Showcase -->
+            <div class="hero-right-visual">
+                <% if (featuredLead != null) { %>
+                    <div class="hero-ticket-card">
+                        <div class="ticket-top-tag">
+                            <span class="ticket-live-dot"></span>
+                            <span>FEATURED CAMPUS EVENT &bull; REGISTRATION OPEN</span>
+                        </div>
+
+                        <div class="ticket-banner-wrap">
+                            <img src="<%= cp %>/images/<%= featuredLead.getImage() %>" alt="<%= featuredLead.getTitle() %>" 
+                                 class="ticket-banner-img" onerror="this.src='<%= cp %>/images/gdg_hacktoberfest.jpg'">
+                            <span class="ticket-badge-cat"><%= featuredLead.getCategory() %></span>
+                        </div>
+
+                        <div class="ticket-body">
+                            <div class="ticket-club-row">
+                                <img src="<%= cp %>/images/clubs/<%= featuredLead.getClubLogo() %>" alt="<%= featuredLead.getOrganizerName() %>" 
+                                     class="ticket-club-mini-logo" onerror="this.src='<%= cp %>/images/campusconnect-mark.svg'">
+                                <span class="ticket-club-name"><%= featuredLead.getOrganizerName() %></span>
+                            </div>
+
+                            <h3 class="ticket-title"><%= featuredLead.getTitle() %></h3>
+
+                            <div class="ticket-meta-grid">
+                                <div class="ticket-meta-cell">
+                                    <span class="ticket-meta-label">Date &amp; Time</span>
+                                    <span class="ticket-meta-val">&#128197; <%= featuredLead.getFormattedDate() %></span>
+                                </div>
+                                <div class="ticket-meta-cell">
+                                    <span class="ticket-meta-label">Campus Venue</span>
+                                    <span class="ticket-meta-val">&#128205; <%= featuredLead.getVenue() %></span>
+                                </div>
+                            </div>
+
+                            <div class="ticket-seats-bar">
+                                <div class="seats-label-row">
+                                    <span>Seat Availability</span>
+                                    <strong><%= featuredLead.getRemainingSeats() %> / <%= featuredLead.getMaxParticipants() %> Left</strong>
+                                </div>
+                                <div class="seats-progress-track">
+                                    <div class="seats-progress-fill" style="width: <%= Math.min(100, (featuredLead.getRemainingSeats() * 100) / Math.max(1, featuredLead.getMaxParticipants())) %>%;"></div>
+                                </div>
+                            </div>
+
+                            <a href="<%= cp %>/event-details?id=<%= featuredLead.getId() %>" class="btn-ticket-action">
+                                View Event Details &amp; Register &rarr;
+                            </a>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="hero-ticket-card">
+                        <div class="ticket-top-tag">
+                            <span>CAMPUS OPPORTUNITY HUB</span>
+                        </div>
+                        <div class="ticket-body" style="padding:2.5rem 2rem; text-align:center;">
+                            <div style="font-size:3rem; margin-bottom:1rem;">&#127891;</div>
+                            <h3 class="ticket-title">Explore 10+ Student Chapters</h3>
+                            <p style="color:#cbd5e1; font-size:0.9rem; margin-bottom:1.5rem;">Discover CESA, AIMSA, GDG, E-Cell &amp; GFG opportunities directly.</p>
+                            <a href="<%= cp %>/dashboard" class="btn-ticket-action">Browse Events Directory &rarr;</a>
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Floating Quick Chapter Chips -->
+                <div class="hero-quick-chapters">
+                    <span class="quick-chapters-label">Quick Filter by Club:</span>
+                    <div class="quick-chips-wrap">
+                        <a href="<%= cp %>/dashboard?search=AIMSA" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/aimsa.png" alt="AIMSA">
+                            <span>AIMSA</span>
+                        </a>
+                        <a href="<%= cp %>/dashboard?search=CESA" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA">
+                            <span>CESA</span>
+                        </a>
+                        <a href="<%= cp %>/dashboard?search=GDG" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG">
+                            <span>GDG</span>
+                        </a>
+                        <a href="<%= cp %>/dashboard?search=GFG" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/gfg.svg" alt="GFG">
+                            <span>GFG</span>
+                        </a>
+                        <a href="<%= cp %>/dashboard?search=E-CELL" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/ecell.png" alt="E-CELL">
+                            <span>E-CELL</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-        <!-- High-Impact Bold Typography -->
-        <h1 class="hero-heading">
-            Never Miss a College <br class="hide-on-mobile">
-            <span class="hero-gradient-text">Event or Opportunity.</span>
-        </h1>
-
-        <!-- Clear, Realistic Value Proposition -->
-        <p class="hero-lead">
-            The official central notice board for <strong>Lokmanya Tilak College of Engineering</strong>. 
-            Discover hackathons, technical bootcamps, and cultural fests from AIMSA, CESA, GDG, E-Cell &amp; more&mdash;without digging through endless noisy WhatsApp groups.
-        </p>
-
-        <!-- Instant In-Hero Search Form (Maximum Utility for Students) -->
-        <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box">
-            <div class="hero-search-inner">
-                <span class="hero-search-icon">&#128269;</span>
-                <input type="text" name="search" class="hero-search-input" 
-                       placeholder="Search hackathons, bootcamps, CESA, GDG, DSA..." 
-                       autocomplete="off">
-                <button type="submit" class="hero-search-submit">Search Events</button>
-            </div>
-        </form>
-
-        <!-- Action CTAs -->
-        <div class="hero-action-buttons">
-            <a href="<%= cp %>/dashboard" class="btn-hero-primary">
-                Explore All Events <span>&rarr;</span>
-            </a>
-            <a href="<%= cp %>/clubs.jsp" class="btn-hero-secondary">
-                <span>&#127891;</span> Campus Clubs Guide (10)
-            </a>
-        </div>
-
-        <!-- Trust & Social Proof Metrics Strip -->
-        <div class="hero-metrics-strip">
-            <div class="metric-block">
-                <div class="metric-number">10+</div>
-                <div class="metric-label">Active Campus Clubs</div>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-block">
-                <div class="metric-number">100%</div>
-                <div class="metric-label">Free For Students</div>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-block">
-                <div class="metric-number">1-Click</div>
-                <div class="metric-label">Instant Pass Roster</div>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-block">
-                <div class="metric-number">Official</div>
-                <div class="metric-label">Autonomous Board</div>
-            </div>
-        </div>
-
     </div>
 </section>
 
