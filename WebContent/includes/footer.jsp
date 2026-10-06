@@ -68,6 +68,6 @@
         </div>
     </footer>
 
-    <script src="<%= request.getContextPath() %>/js/main.js"></script>
+    <script src="<%= request.getContextPath() %>/js/main.js?v=2.2"></script>
 </body>
 </html>

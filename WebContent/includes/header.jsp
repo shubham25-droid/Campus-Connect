@@ -21,8 +21,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Primary Stylesheet -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css">
+    <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=2.2">
     
     <script>
         var contextPath = "<%= cp %>";
