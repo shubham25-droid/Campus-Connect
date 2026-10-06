@@ -11,9 +11,9 @@
 <div class="container" style="max-width: 460px; padding-top: 3.5rem;">
     <div class="card" style="padding: 2.25rem;">
         <div style="text-align: center; margin-bottom: 1.75rem;">
-            <div class="brand-logo-icon" style="margin: 0 auto 12px; width:44px; height:44px;">CC</div>
-            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);">Welcome Back</h2>
-            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">Log in to your CampusConnect account</p>
+            <img src="<%= request.getContextPath() %>/images/campusconnect-mark.svg" alt="CampusConnect" style="width:60px; height:60px; margin:0 auto 12px; display:block;">
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-blue-dark);">Welcome Back</h2>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">Log in to your CampusConnect LTCE account</p>
         </div>
 
         <% if (error != null) { %>

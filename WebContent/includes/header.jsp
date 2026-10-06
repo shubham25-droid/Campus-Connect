@@ -9,69 +9,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= (request.getAttribute("pageTitle") != null) ? request.getAttribute("pageTitle") + " | " : "" %>CampusConnect - Connecting Students with Campus Opportunities</title>
+    <title><%= (request.getAttribute("pageTitle") != null) ? request.getAttribute("pageTitle") + " | " : "" %>CampusConnect &bull; Lokmanya Tilak College of Engineering</title>
+    
+    <!-- Favicon using new CampusConnect Logo Mark -->
+    <link rel="icon" type="image/svg+xml" href="<%= cp %>/images/campusconnect-mark.svg">
+    <link rel="shortcut icon" href="<%= cp %>/images/campusconnect-mark.svg">
+    
+    <!-- Stylesheets & Fonts -->
     <link rel="stylesheet" href="<%= cp %>/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <script>
         var contextPath = "<%= cp %>";
     </script>
 </head>
 <body>
 
-    <!-- Institutional Header Strip -->
-    <div class="college-bar">
-        <div class="college-name">
-            <span class="college-badge">LTCE</span>
-            <span>Lokmanya Tilak College of Engineering &bull; Navi Mumbai</span>
-        </div>
-        <div class="portal-mode">
-            <span>Centralized Campus Event Portal</span>
+    <!-- ==============================================
+         1. Institutional Top Bar (Official LTCE Style)
+         ============================================== -->
+    <div class="ltce-top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="sanstha-name">Lokmanya Tilak Jankalyan Shikshan Sanstha's</span>
+                <span class="top-divider">|</span>
+                <span class="autonomous-tag">Autonomous Institute Affiliated to University of Mumbai</span>
+            </div>
+            <div class="top-bar-right">
+                <span class="accred-pill naac">NAAC 'A' Grade</span>
+                <span class="accred-pill nba">NBA Accredited</span>
+                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="top-portal-link">Official LTCE Website &rarr;</a>
+            </div>
         </div>
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="<%= cp %>/" class="brand-wrapper">
-                <div class="brand-logo-icon">CC</div>
-                <div class="brand-text">
-                    <h1>CampusConnect</h1>
-                    <span>Single Source of Truth for Campus Events</span>
-                </div>
+    <!-- ==============================================
+         2. Institutional Header (CampusConnect & LTCE Branding)
+         ============================================== -->
+    <header class="ltce-middle-header">
+        <div class="middle-header-container">
+            <!-- Brand Logo & Institutional Emblem -->
+            <a href="<%= cp %>/" class="middle-brand-group" title="CampusConnect Home">
+                <img src="<%= cp %>/images/campusconnect-logo.svg" alt="CampusConnect - Lokmanya Tilak College of Engineering" class="main-portal-logo">
             </a>
 
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="<%= cp %>/dashboard">Explore Events</a></li>
-                    <li><a href="<%= cp %>/#how-it-works">How It Works</a></li>
-                    <% if (authUser != null) { %>
-                        <% if (authUser.isAdmin()) { %>
-                            <li><a href="<%= cp %>/admin/dashboard" class="btn-sm btn-outline">Admin Console</a></li>
-                            <li><a href="<%= cp %>/admin/create-event" class="btn-sm btn-primary">+ Post Event</a></li>
-                        <% } else { %>
-                            <li><a href="<%= cp %>/my-registrations">My Registrations</a></li>
-                            <li><a href="<%= cp %>/saved-events">Saved</a></li>
-                        <% } %>
-                    <% } %>
-                </ul>
-            </nav>
+            <!-- Institutional Highlights / Academic Verification Badge -->
+            <div class="middle-trust-badges">
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128737;</div>
+                    <div class="trust-badge-content">
+                        <div class="trust-badge-title">Single Source of Truth</div>
+                        <div class="trust-badge-sub">Official LTCE Campus Portal</div>
+                    </div>
+                </div>
 
-            <div class="nav-actions">
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#127891;</div>
+                    <div class="trust-badge-content">
+                        <div class="trust-badge-title">Zero WhatsApp Chaos</div>
+                        <div class="trust-badge-sub">Structured Opportunity Hub</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==============================================
+         3. LTCE Sapphire Navbar with Golden Underline
+         ============================================== -->
+    <nav class="ltce-navbar">
+        <div class="navbar-container">
+            <ul class="nav-menu">
+                <li><a href="<%= cp %>/" class="nav-link">Home</a></li>
+                <li><a href="<%= cp %>/dashboard" class="nav-link">Explore Events</a></li>
+                <li><a href="<%= cp %>/dashboard#clubs-strip" class="nav-link">Clubs &amp; Bodies</a></li>
+                <li><a href="<%= cp %>/#how-it-works" class="nav-link">How It Works</a></li>
+                <% if (authUser != null) { %>
+                    <% if (authUser.isAdmin()) { %>
+                        <li><a href="<%= cp %>/admin/dashboard" class="nav-link nav-admin-link">&#9881; Admin Console</a></li>
+                        <li><a href="<%= cp %>/admin/create-event" class="nav-link nav-post-link">+ Post Event</a></li>
+                    <% } else { %>
+                        <li><a href="<%= cp %>/my-registrations" class="nav-link">My Registrations</a></li>
+                        <li><a href="<%= cp %>/saved-events" class="nav-link">&#9829; Saved</a></li>
+                    <% } %>
+                <% } %>
+            </ul>
+
+            <div class="nav-auth-actions">
                 <% if (authUser == null) { %>
-                    <a href="<%= cp %>/login" class="btn btn-secondary btn-sm">Log In</a>
-                    <a href="<%= cp %>/register" class="btn btn-primary btn-sm">Sign Up</a>
+                    <a href="<%= cp %>/login" class="btn-nav-login">Sign In</a>
+                    <a href="<%= cp %>/register" class="btn-nav-register">Student Sign Up</a>
                 <% } else { %>
-                    <div class="user-menu-pill">
-                        <div class="user-avatar"><%= authUser.getName().substring(0, 1).toUpperCase() %></div>
-                        <span style="font-weight:600;"><%= authUser.getName().split(" ")[0] %></span>
-                        <span class="role-tag <%= authUser.isAdmin() ? "admin" : "student" %>"><%= authUser.getRole() %></span>
-                        <a href="<%= cp %>/logout" style="margin-left:6px; color:#ef4444; font-size:0.75rem; font-weight:600;">Logout</a>
+                    <div class="nav-user-chip">
+                        <div class="user-avatar-circle"><%= authUser.getName().substring(0, 1).toUpperCase() %></div>
+                        <div class="user-info-text">
+                            <span class="user-name"><%= authUser.getName().split(" ")[0] %></span>
+                            <span class="role-badge <%= authUser.isAdmin() ? "admin" : "student" %>"><%= authUser.getRole() %></span>
+                        </div>
+                        <a href="<%= cp %>/logout" class="btn-logout" title="Sign Out &bull; <%= authUser.getEmail() %>">&#x21AA;</a>
                     </div>
                 <% } %>
             </div>
         </div>
-    </header>
+    </nav>
 
     <main>

@@ -1,39 +1,57 @@
 /* ==========================================================================
-   CampusConnect - Institutional Design System
-   Visual Language: Deep Navy, Crisp White, Controlled Accents, Academic Trust
+   CampusConnect - Institutional Design System for LTCE
+   Theme: Official Lokmanya Tilak College of Engineering (https://ltce.in/)
+   Palette: LTCE Royal Sapphire Blue (#0d4379), Deep Navy (#082c50),
+            Golden Amber (#ff9600), NAAC Red (#ff3300), Off-White (#f8fafc)
    ========================================================================== */
 
 :root {
-    /* Color Palette */
-    --primary: #1e3a8a;          /* Deep Navy */
-    --primary-hover: #172554;    /* Darker Navy */
-    --primary-light: #eff6ff;    /* Soft Navy Tint */
-    --primary-border: #bfdbfe;
+    /* Official LTCE Color Palette */
+    --ltce-blue-dark: #082c50;       /* Dark institutional navy (top bar & footer) */
+    --ltce-blue: #0d4379;            /* Signature LTCE Royal Blue (nav & primary) */
+    --ltce-blue-hover: #072e59;      /* Deep hover shade */
+    --ltce-blue-mid: #175da2;        /* Mid-ocean blue (headings & banners) */
+    --ltce-blue-light: #2c97ea;      /* Bright blue accent */
+    --ltce-blue-tint: #eff6ff;       /* Very soft blue container background */
+    --ltce-blue-border: #bfdbfe;     /* Light blue boundary */
 
-    --accent: #2563eb;           /* High-contrast Accent Blue */
-    --accent-hover: #1d4ed8;
+    --ltce-gold: #ff9600;            /* Signature LTCE Golden Amber / Saffron */
+    --ltce-gold-hover: #e68500;      /* Darker saffron */
+    --ltce-gold-tint: #fffbeb;       /* Soft gold tint */
+    --ltce-gold-border: #fde68a;
 
-    --secondary: #0f172a;        /* Slate 900 for dark text */
-    --text-muted: #64748b;       /* Slate 500 for secondary text */
-    --text-subtle: #94a3b8;      /* Slate 400 */
+    --ltce-red: #ff3300;             /* Accreditation NAAC 'A' highlight red */
 
-    --bg-page: #f8fafc;          /* Off-white canvas */
-    --bg-surface: #ffffff;       /* Pure white card surface */
-    --bg-alt: #f1f5f9;          /* Light slate container */
+    /* Generic semantic aliases */
+    --primary: var(--ltce-blue);
+    --primary-hover: var(--ltce-blue-hover);
+    --primary-light: var(--ltce-blue-tint);
+    --primary-border: var(--ltce-blue-border);
 
-    --border-color: #e2e8f0;     /* Crisp minimal borders */
-    --border-focus: #3b82f6;
+    --accent: var(--ltce-gold);
+    --accent-hover: var(--ltce-gold-hover);
+
+    --secondary: #0f172a;            /* Slate 900 for dark text */
+    --text-muted: #64748b;           /* Slate 500 for secondary text */
+    --text-subtle: #94a3b8;          /* Slate 400 */
+
+    --bg-page: #f8fafc;              /* Off-white canvas */
+    --bg-surface: #ffffff;           /* Pure white card surface */
+    --bg-alt: #f1f5f9;               /* Light slate container */
+
+    --border-color: #e2e8f0;         /* Crisp minimal borders */
+    --border-focus: #2c97ea;
 
     /* Semantic Feedback */
-    --success: #059669;          /* Emerald 600 */
+    --success: #059669;              /* Emerald 600 */
     --success-bg: #ecfdf5;
     --success-border: #a7f3d0;
 
-    --warning: #d97706;          /* Amber 600 */
+    --warning: #d97706;              /* Amber 600 */
     --warning-bg: #fffbeb;
     --warning-border: #fde68a;
 
-    --danger: #dc2626;           /* Red 600 */
+    --danger: #dc2626;               /* Red 600 */
     --danger-bg: #fef2f2;
     --danger-border: #fecaca;
 
@@ -43,11 +61,11 @@
     --radius-lg: 14px;
     --radius-full: 9999px;
 
-    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 1px 2px 0 rgba(8, 44, 80, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(8, 44, 80, 0.08), 0 2px 4px -2px rgba(8, 44, 80, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(8, 44, 80, 0.1), 0 4px 6px -4px rgba(8, 44, 80, 0.05);
 
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --font-sans: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --container-max: 1200px;
 }
 
@@ -74,13 +92,13 @@ main {
 }
 
 a {
-    color: var(--accent);
+    color: var(--ltce-blue-mid);
     text-decoration: none;
     transition: color 0.15s ease;
 }
 
 a:hover {
-    color: var(--accent-hover);
+    color: var(--ltce-gold-hover);
 }
 
 img {
@@ -89,168 +107,332 @@ img {
     display: block;
 }
 
-/* Institutional Top Notification Bar */
-.college-bar {
-    background-color: #0f172a;
-    color: #e2e8f0;
+/* ==========================================================================
+   1. LTCE Institutional Top Bar (Matching https://ltce.in/ header-top)
+   ========================================================================== */
+.ltce-top-bar {
+    background-color: var(--ltce-blue-dark);
+    color: #cbd5e1;
     font-size: 0.8125rem;
-    padding: 6px 1.5rem;
+    padding: 7px 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-bar-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.college-bar .college-name {
+.top-bar-left {
     display: flex;
     align-items: center;
     gap: 8px;
     font-weight: 500;
 }
 
-.college-bar .college-badge {
-    background: #1e3a8a;
-    color: #93c5fd;
-    padding: 2px 8px;
-    border-radius: var(--radius-sm);
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.college-bar .portal-mode {
+.sanstha-name {
     color: #94a3b8;
 }
 
-/* Main Navigation */
-.navbar {
-    background-color: var(--bg-surface);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--shadow-sm);
+.top-divider {
+    color: #475569;
 }
 
-.nav-container {
+.autonomous-tag {
+    color: #f1f5f9;
+    font-weight: 600;
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.accred-pill {
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.accred-pill.naac {
+    background: rgba(255, 51, 0, 0.18);
+    color: #ff9478;
+    border: 1px solid rgba(255, 51, 0, 0.3);
+}
+
+.accred-pill.nba {
+    background: rgba(16, 185, 129, 0.18);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.top-portal-link {
+    color: #facc15;
+    font-weight: 600;
+    font-size: 0.775rem;
+    margin-left: 6px;
+    transition: color 0.15s ease;
+}
+
+.top-portal-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   2. LTCE Middle Header (Logo & Trust Badges)
+   ========================================================================== */
+.ltce-middle-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.85rem 1.5rem;
+}
+
+.middle-header-container {
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0.85rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
 }
 
-.brand-wrapper {
+.middle-brand-group {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
-    color: var(--secondary);
 }
 
-.brand-logo-icon {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, #1e3a8a, #2563eb);
-    color: #ffffff;
-    border-radius: 8px;
+.main-portal-logo {
+    height: 58px;
+    width: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.main-portal-logo:hover {
+    transform: scale(1.01);
+}
+
+.middle-trust-badges {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: 700;
-    box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+    gap: 1.5rem;
 }
 
-.brand-text h1 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--primary);
-    line-height: 1.1;
-    letter-spacing: -0.5px;
+.trust-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
 }
 
-.brand-text span {
+.trust-badge-icon {
+    font-size: 1.4rem;
+    color: var(--ltce-blue);
+}
+
+.trust-badge-title {
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--ltce-blue-dark);
+    line-height: 1.2;
+}
+
+.trust-badge-sub {
     font-size: 0.725rem;
     color: var(--text-muted);
-    font-weight: 500;
-    display: block;
 }
 
-.nav-links {
+/* ==========================================================================
+   3. LTCE Sapphire Navbar (Signature #0d4379 + Gold Line)
+   ========================================================================== */
+.ltce-navbar {
+    background-color: var(--ltce-blue);
+    border-bottom: 3.5px solid var(--ltce-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(8, 44, 80, 0.15);
+}
+
+.navbar-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+}
+
+.nav-menu {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 0.25rem;
     list-style: none;
+    height: 100%;
 }
 
-.nav-links a {
-    color: var(--secondary);
-    font-size: 0.925rem;
-    font-weight: 500;
-    padding: 6px 10px;
-    border-radius: var(--radius-sm);
+.nav-link {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0 1rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
     transition: all 0.15s ease;
+    border-top: 3px solid transparent;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--primary);
-    background-color: var(--primary-light);
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-top-color: var(--ltce-gold);
 }
 
-.nav-actions {
+.nav-admin-link {
+    color: #fde68a !important;
+}
+
+.nav-post-link {
+    background-color: rgba(255, 150, 0, 0.25);
+    color: #ffffff !important;
+    border-radius: var(--radius-sm);
+    height: 34px !important;
+    margin-left: 6px;
+    border: 1px solid rgba(255, 150, 0, 0.5);
+}
+
+.nav-post-link:hover {
+    background-color: var(--ltce-gold) !important;
+    color: var(--ltce-blue-dark) !important;
+    border-top-color: transparent !important;
+}
+
+.nav-auth-actions {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-/* User Profile & Badge */
-.user-menu-pill {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 4px 12px 4px 6px;
-    background: var(--bg-alt);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-full);
+.btn-nav-login {
+    color: #ffffff;
     font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.15s ease;
 }
 
-.user-avatar {
+.btn-nav-login:hover {
+    background: #ffffff;
+    color: var(--ltce-blue);
+    border-color: #ffffff;
+}
+
+.btn-nav-register {
+    color: #082c50;
+    background-color: var(--ltce-gold);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--ltce-gold-hover);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: all 0.15s ease;
+}
+
+.btn-nav-register:hover {
+    background-color: #ffffff;
+    color: var(--ltce-blue);
+    border-color: #ffffff;
+}
+
+/* User Account Pill */
+.nav-user-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-full);
+    padding: 3px 10px 3px 4px;
+    color: #ffffff;
+}
+
+.user-avatar-circle {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--primary);
-    color: #fff;
+    background: var(--ltce-gold);
+    color: var(--ltce-blue-dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 0.8rem;
 }
 
-.role-tag {
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
+.user-info-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.user-name {
+    font-size: 0.825rem;
     font-weight: 600;
+}
+
+.role-badge {
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
-.role-tag.admin {
+.role-badge.admin {
     background: #fee2e2;
     color: #991b1b;
 }
 
-.role-tag.student {
+.role-badge.student {
     background: #dbeafe;
     color: #1e40af;
 }
 
-/* Buttons */
+.btn-logout {
+    color: #fca5a5;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-left: 4px;
+    transition: color 0.15s ease;
+}
+
+.btn-logout:hover {
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   4. Buttons & Interactive Controls
+   ========================================================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -268,14 +450,28 @@ img {
 }
 
 .btn-primary {
-    background-color: var(--primary);
+    background-color: var(--ltce-blue);
     color: #ffffff;
+    border-color: var(--ltce-blue-hover);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--ltce-blue-hover);
     color: #ffffff;
     box-shadow: var(--shadow-sm);
+}
+
+.btn-cta-gold {
+    background-color: var(--ltce-gold);
+    color: var(--ltce-blue-dark);
+    border-color: var(--ltce-gold-hover);
+    font-weight: 700;
+}
+
+.btn-cta-gold:hover {
+    background-color: #ffffff;
+    color: var(--ltce-blue);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -291,12 +487,13 @@ img {
 
 .btn-outline {
     background-color: transparent;
-    color: var(--primary);
-    border-color: var(--primary-border);
+    color: var(--ltce-blue);
+    border-color: var(--ltce-blue-border);
 }
 
 .btn-outline:hover {
-    background-color: var(--primary-light);
+    background-color: var(--ltce-blue-tint);
+    border-color: var(--ltce-blue);
 }
 
 .btn-danger {
@@ -334,9 +531,9 @@ img {
 }
 
 .page-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--secondary);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--ltce-blue-dark);
     letter-spacing: -0.5px;
 }
 
@@ -424,7 +621,7 @@ img {
 .form-control:focus, .form-select:focus {
     outline: none;
     border-color: var(--border-focus);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(44, 151, 234, 0.15);
 }
 
 .form-row {
@@ -433,46 +630,63 @@ img {
     gap: 1.25rem;
 }
 
-/* Landing Page Hero */
+/* ==========================================================================
+   5. Landing Page Hero (LTCE Institutional Gradient & Branding)
+   ========================================================================== */
 .hero-section {
-    background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
-    border-bottom: 1px solid var(--border-color);
-    padding: 4rem 1.5rem 3.5rem;
+    background: linear-gradient(135deg, #061c33 0%, #082c50 35%, #0d4379 80%, #175da2 100%);
+    color: #ffffff;
+    border-bottom: 3px solid var(--ltce-gold);
+    padding: 4.5rem 1.5rem 4rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
 }
 
 .hero-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--primary-light);
-    color: var(--primary);
-    border: 1px solid var(--primary-border);
+    background-color: rgba(255, 150, 0, 0.15);
+    color: #ffb84d;
+    border: 1px solid rgba(255, 150, 0, 0.35);
     padding: 5px 14px;
     border-radius: var(--radius-full);
-    font-size: 0.8125rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin-bottom: 1.5rem;
 }
 
 .hero-title {
-    font-size: 2.75rem;
-    font-weight: 800;
-    color: var(--secondary);
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.75px;
     line-height: 1.15;
-    letter-spacing: -1px;
-    max-width: 800px;
+    max-width: 820px;
     margin: 0 auto 1.25rem;
+    color: #ffffff;
 }
 
 .hero-title span {
-    color: var(--primary);
+    color: var(--ltce-gold);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .hero-subtitle {
     font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 680px;
+    color: #e2e8f0;
+    max-width: 660px;
     margin: 0 auto 2.25rem;
     line-height: 1.6;
 }
@@ -480,33 +694,37 @@ img {
 .hero-cta {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
-/* Solution Steps Section */
+/* ==========================================================================
+   6. Workflows & Problem Comparison
+   ========================================================================== */
 .workflow-section {
-    padding: 4rem 1.5rem;
+    padding: 4.5rem 1.5rem 4rem;
     background-color: var(--bg-surface);
     border-bottom: 1px solid var(--border-color);
 }
 
 .section-head {
     text-align: center;
-    max-width: 650px;
+    max-width: 680px;
     margin: 0 auto 3rem;
 }
 
 .section-head h2 {
     font-size: 2rem;
-    font-weight: 700;
-    color: var(--secondary);
+    font-weight: 800;
+    color: var(--ltce-blue-dark);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
 }
 
 .section-head p {
-    color: var(--text-muted);
     font-size: 1rem;
-    margin-top: 0.5rem;
+    color: var(--text-muted);
 }
 
 .workflow-grid {
@@ -521,38 +739,46 @@ img {
     background: var(--bg-page);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 2rem 1.5rem;
+    padding: 2rem;
     position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--ltce-blue-mid);
+    box-shadow: var(--shadow-md);
 }
 
 .step-number {
-    width: 36px;
-    height: 36px;
-    background: var(--primary);
+    width: 42px;
+    height: 42px;
+    background: var(--ltce-blue);
     color: #ffffff;
-    font-weight: 700;
-    border-radius: 50%;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
 }
 
 .step-card h3 {
     font-size: 1.2rem;
     font-weight: 700;
+    color: var(--ltce-blue-dark);
     margin-bottom: 0.5rem;
 }
 
 .step-card p {
-    font-size: 0.925rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.5;
 }
 
-/* Comparison / Why CampusConnect */
 .comparison-section {
-    padding: 4rem 1.5rem;
+    padding: 4.5rem 1.5rem;
     background-color: var(--bg-page);
 }
 
@@ -567,7 +793,7 @@ img {
 .comparison-card {
     background: var(--bg-surface);
     border-radius: var(--radius-md);
-    padding: 2rem;
+    padding: 2.25rem;
     border: 1px solid var(--border-color);
 }
 
@@ -602,12 +828,14 @@ img {
     line-height: 1.4;
 }
 
-/* Event Discovery & Filter Bar */
+/* ==========================================================================
+   7. Event Discovery & Filter Controls
+   ========================================================================== */
 .filter-panel {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 1.25rem;
+    padding: 1.35rem;
     margin-bottom: 2rem;
     box-shadow: var(--shadow-sm);
 }
@@ -647,16 +875,16 @@ img {
     display: flex;
     gap: 0.5rem;
     overflow-x: auto;
-    padding-top: 0.75rem;
+    padding-top: 0.85rem;
     border-top: 1px solid var(--border-color);
-    margin-top: 0.75rem;
+    margin-top: 0.85rem;
 }
 
 .cat-pill {
-    padding: 4px 12px;
+    padding: 0.35rem 0.95rem;
     border-radius: var(--radius-full);
     font-size: 0.8125rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--secondary);
     background: var(--bg-alt);
     border: 1px solid var(--border-color);
@@ -667,22 +895,22 @@ img {
 
 .cat-pill:hover,
 .cat-pill.active {
-    background: var(--primary);
+    background: var(--ltce-blue);
     color: #ffffff;
-    border-color: var(--primary);
+    border-color: var(--ltce-blue);
 }
 
 /* Featured Event Banner */
 .featured-card {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #082c50 0%, #0d4379 60%, #175da2 100%);
     color: #ffffff;
     border-radius: var(--radius-lg);
     overflow: hidden;
     margin-bottom: 2.5rem;
     box-shadow: var(--shadow-lg);
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    position: relative;
+    grid-template-columns: 1.15fr 0.85fr;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .featured-content {
@@ -696,9 +924,9 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(4px);
-    color: #ffffff;
+    background: rgba(255, 150, 0, 0.2);
+    color: #fde68a;
+    border: 1px solid rgba(255, 150, 0, 0.4);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -714,6 +942,7 @@ img {
     font-weight: 800;
     line-height: 1.25;
     margin-bottom: 1rem;
+    color: #ffffff;
 }
 
 .featured-meta {
@@ -759,14 +988,15 @@ img {
     object-fit: cover;
 }
 
-/* Event Grid */
+/* ==========================================================================
+   8. Event Cards & Campus Chapters Strip
+   ========================================================================== */
 .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
 }
 
-/* Event Card */
 .event-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -775,18 +1005,19 @@ img {
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     position: relative;
 }
 
 .event-card:hover {
     transform: translateY(-3px);
+    border-color: var(--ltce-blue-mid);
     box-shadow: var(--shadow-md);
 }
 
 .event-card-media {
     position: relative;
-    height: 180px;
+    height: 185px;
     background: #e2e8f0;
     overflow: hidden;
 }
@@ -806,7 +1037,7 @@ img {
     position: absolute;
     top: 12px;
     left: 12px;
-    background: rgba(15, 23, 42, 0.85);
+    background: rgba(8, 44, 80, 0.9);
     backdrop-filter: blur(4px);
     color: #ffffff;
     font-size: 0.72rem;
@@ -814,6 +1045,7 @@ img {
     padding: 3px 8px;
     border-radius: var(--radius-sm);
     text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .save-btn-floating {
@@ -823,7 +1055,7 @@ img {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border: none;
     cursor: pointer;
     display: flex;
@@ -853,8 +1085,8 @@ img {
 
 .event-dept-tag {
     font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--primary);
+    font-weight: 700;
+    color: var(--ltce-blue);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 0.35rem;
@@ -863,7 +1095,7 @@ img {
 .event-card-title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--ltce-blue-dark);
     line-height: 1.3;
     margin-bottom: 0.5rem;
 }
@@ -932,7 +1164,7 @@ img {
     border-radius: var(--radius-full);
     font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--secondary);
+    color: var(--ltce-blue-dark);
     white-space: nowrap;
     text-decoration: none;
     transition: all 0.15s ease;
@@ -940,9 +1172,9 @@ img {
 }
 
 .club-badge-pill:hover {
-    border-color: var(--primary);
-    background: var(--primary-light);
-    color: var(--primary);
+    border-color: var(--ltce-blue);
+    background: var(--ltce-blue-tint);
+    color: var(--ltce-blue);
     transform: translateY(-1px);
 }
 
@@ -962,7 +1194,7 @@ img {
 
 .seat-status-pill {
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     padding: 3px 8px;
     border-radius: var(--radius-sm);
 }
@@ -970,19 +1202,24 @@ img {
 .seat-status-pill.open {
     background: var(--success-bg);
     color: var(--success);
+    border: 1px solid var(--success-border);
 }
 
 .seat-status-pill.full {
     background: var(--danger-bg);
     color: var(--danger);
+    border: 1px solid var(--danger-border);
 }
 
 .seat-status-pill.registered {
-    background: var(--primary-light);
-    color: var(--primary);
+    background: var(--ltce-blue-tint);
+    color: var(--ltce-blue);
+    border: 1px solid var(--ltce-blue-border);
 }
 
-/* Event Details Dedicated Page */
+/* ==========================================================================
+   9. Event Details Page
+   ========================================================================== */
 .details-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -995,13 +1232,14 @@ img {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     padding: 2rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .details-banner {
     width: 100%;
-    max-height: 440px;
+    max-height: 420px;
     object-fit: cover;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
 }
@@ -1009,14 +1247,14 @@ img {
 .details-title {
     font-size: 2rem;
     font-weight: 800;
-    color: var(--secondary);
-    line-height: 1.2;
+    color: var(--ltce-blue-dark);
+    line-height: 1.25;
     margin-bottom: 1rem;
 }
 
 .details-quick-strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 1rem;
     background: var(--bg-alt);
     border: 1px solid var(--border-color);
@@ -1026,16 +1264,16 @@ img {
 }
 
 .strip-item .strip-label {
-    font-size: 0.725rem;
-    text-transform: uppercase;
-    font-weight: 600;
+    font-size: 0.75rem;
     color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .strip-item .strip-val {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--ltce-blue-dark);
     margin-top: 2px;
 }
 
@@ -1044,61 +1282,44 @@ img {
 }
 
 .details-section h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
+    color: var(--ltce-blue-dark);
     margin-bottom: 0.75rem;
-    color: var(--secondary);
-    border-bottom: 2px solid var(--primary-light);
-    padding-bottom: 6px;
+    border-left: 3.5px solid var(--ltce-gold);
+    padding-left: 10px;
 }
 
 .details-section p {
-    font-size: 0.95rem;
-    line-height: 1.6;
     color: #334155;
+    line-height: 1.6;
+    font-size: 0.95rem;
     white-space: pre-line;
 }
 
-/* Sidebar Box for Registration */
 .registration-sidebar-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
+    border-top: 4px solid var(--ltce-gold);
     border-radius: var(--radius-md);
-    padding: 1.5rem;
+    padding: 1.75rem;
     box-shadow: var(--shadow-sm);
     position: sticky;
-    top: 5rem;
+    top: 70px;
 }
 
 .sidebar-organizer-box {
     margin-top: 1.5rem;
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
     border-top: 1px solid var(--border-color);
 }
 
-.organizer-avatar-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 0.5rem;
-}
-
-.organizer-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--primary-light);
-    color: var(--primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-}
-
-/* Admin Dashboard Specific */
+/* ==========================================================================
+   10. Admin Console Tables & Metrics
+   ========================================================================== */
 .admin-metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1.25rem;
     margin-bottom: 2rem;
 }
@@ -1107,163 +1328,197 @@ img {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border-top: 3.5px solid var(--ltce-blue);
 }
 
-.metric-icon-box {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
+.metric-card.gold-border {
+    border-top-color: var(--ltce-gold);
 }
 
-.metric-icon-box.blue { background: #dbeafe; color: #1e40af; }
-.metric-icon-box.green { background: #d1fae5; color: #065f46; }
-.metric-icon-box.amber { background: #fef3c7; color: #92400e; }
-.metric-icon-box.purple { background: #ede9fe; color: #5b21b6; }
-
-.metric-label {
+.metric-title {
     font-size: 0.8125rem;
+    font-weight: 600;
     color: var(--text-muted);
-    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.metric-number {
-    font-size: 1.75rem;
+.metric-val {
+    font-size: 2.25rem;
     font-weight: 800;
-    color: var(--secondary);
-    line-height: 1.1;
-    margin-top: 2px;
-}
-
-/* Tables */
-.table-responsive {
-    overflow-x: auto;
+    color: var(--ltce-blue-dark);
+    margin-top: 4px;
 }
 
 .admin-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.875rem;
-    text-align: left;
 }
 
 .admin-table th {
-    background: var(--bg-alt);
-    padding: 0.75rem 1rem;
-    font-weight: 600;
-    color: var(--secondary);
-    border-bottom: 1px solid var(--border-color);
-    white-space: nowrap;
+    background: var(--ltce-blue-dark);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.3px;
 }
 
 .admin-table td {
     padding: 0.85rem 1rem;
     border-bottom: 1px solid var(--border-color);
-    vertical-align: middle;
+    color: var(--secondary);
 }
 
-.admin-table tr:hover {
-    background-color: var(--bg-page);
+.admin-table tr:hover td {
+    background: var(--ltce-blue-tint);
 }
 
-.action-btn-group {
-    display: flex;
-    gap: 6px;
-}
-
-/* Footer */
-footer {
-    background: #0f172a;
-    color: #94a3b8;
-    padding: 3rem 1.5rem 1.5rem;
-    margin-top: 4rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.875rem;
+/* ==========================================================================
+   11. LTCE Institutional Footer
+   ========================================================================== */
+.ltce-footer {
+    background-color: var(--ltce-blue-dark);
+    color: #cbd5e1;
+    border-top: 4px solid var(--ltce-gold);
+    margin-top: auto;
 }
 
 .footer-container {
     max-width: var(--container-max);
     margin: 0 auto;
+    padding: 3.5rem 1.5rem 2.5rem;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 2fr 1fr 1.2fr 1fr;
+    gap: 2.5rem;
 }
 
-.footer-brand h4 {
-    color: #ffffff;
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
+.footer-brand-logo {
+    height: 48px;
+    width: auto;
+    margin-bottom: 1rem;
 }
 
-.footer-links h5 {
-    color: #e2e8f0;
+.footer-desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+}
+
+.footer-address {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.75rem;
+}
+
+.footer-col-links h4 {
     font-size: 0.925rem;
-    margin-bottom: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.25rem;
+    border-left: 3px solid var(--ltce-gold);
+    padding-left: 8px;
 }
 
-.footer-links ul {
+.footer-col-links ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
-.footer-links a {
-    color: #94a3b8;
+.footer-col-links a {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    transition: color 0.15s ease;
 }
 
-.footer-links a:hover {
-    color: #ffffff;
+.footer-col-links a:hover {
+    color: var(--ltce-gold);
 }
 
-.footer-bottom {
+.footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #061c33;
+    padding: 1.25rem 1.5rem;
+}
+
+.bottom-bar-container {
     max-width: var(--container-max);
-    margin: 2rem auto 0;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8125rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #64748b;
 }
 
-/* Responsive Breakpoints */
+.bottom-tech-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   12. Responsive Adjustments
+   ========================================================================== */
 @media (max-width: 900px) {
+    .details-layout,
+    .comparison-grid,
     .featured-card {
         grid-template-columns: 1fr;
     }
-    .details-layout {
-        grid-template-columns: 1fr;
-    }
-    .comparison-grid {
-        grid-template-columns: 1fr;
-    }
+
     .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .middle-trust-badges {
+        display: none;
     }
 }
 
-@media (max-width: 680px) {
-    .nav-container {
+@media (max-width: 640px) {
+    .top-bar-container {
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: flex-start;
     }
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .hero-title {
-        font-size: 2rem;
-    }
-    .filter-controls-row {
+
+    .footer-container {
         grid-template-columns: 1fr;
+    }
+
+    .navbar-container {
+        height: auto;
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
     }
 }

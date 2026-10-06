@@ -12,9 +12,9 @@
 <div class="container" style="max-width: 520px; padding-top: 2.5rem;">
     <div class="card" style="padding: 2.25rem;">
         <div style="text-align: center; margin-bottom: 1.75rem;">
-            <div class="brand-logo-icon" style="margin: 0 auto 12px; width:44px; height:44px;">CC</div>
-            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);">Student Registration</h2>
-            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">Join CampusConnect to discover and register for campus events</p>
+            <img src="<%= request.getContextPath() %>/images/campusconnect-mark.svg" alt="CampusConnect" style="width:60px; height:60px; margin:0 auto 12px; display:block;">
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-blue-dark);">Student Registration</h2>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">Join CampusConnect LTCE to discover and register for campus opportunities</p>
         </div>
 
         <% if (error != null) { %>

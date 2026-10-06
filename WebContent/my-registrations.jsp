@@ -96,31 +96,31 @@ function printPass(title, date, time, venue, student, email) {
         <head>
             <title>CampusConnect Official Event Pass</title>
             <style>
-                body { font-family: 'Segoe UI', Tahoma, sans-serif; padding: 30px; background: #f8fafc; color: #0f172a; }
-                .ticket { border: 2px dashed #1e3a8a; background: #fff; padding: 25px; border-radius: 8px; max-width: 580px; margin: 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+                body { font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif; padding: 30px; background: #f8fafc; color: #0f172a; }
+                .ticket { border: 2.5px dashed #0d4379; background: #fff; padding: 25px; border-radius: 10px; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 12px rgba(8,44,80,0.1); border-top: 6px solid #ff9600; }
                 .header { border-bottom: 2px solid #eff6ff; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
-                .title { font-size: 18px; font-weight: bold; color: #1e3a8a; margin-top: 10px; }
-                .meta { font-size: 14px; margin: 6px 0; color: #475569; }
-                .badge { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+                .title { font-size: 20px; font-weight: 800; color: #0d4379; margin-top: 10px; }
+                .meta { font-size: 14px; margin: 6px 0; color: #334155; }
+                .badge { background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; border: 1px solid #bbf7d0; }
             </style>
         </head>
         <body>
             <div class="ticket">
                 <div class="header">
                     <div>
-                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold;">Lokmanya Tilak College of Engineering</div>
-                        <div style="font-size: 18px; font-weight: bold; color: #1e3a8a;">CampusConnect Entry Pass</div>
+                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing:0.5px;">Lokmanya Tilak College of Engineering &bull; Autonomous</div>
+                        <div style="font-size: 20px; font-weight: 900; color: #0d4379;">CAMPUS<span style="color:#ff9600;">CONNECT</span> ENTRY PASS</div>
                     </div>
-                    <span class="badge">CONFIRMED ATTENDEE</span>
+                    <span class="badge">&#10003; VERIFIED PASS</span>
                 </div>
                 <div class="title">\${title}</div>
                 <div class="meta"><strong>Date & Time:</strong> \${date} at \${time}</div>
                 <div class="meta"><strong>Venue:</strong> \${venue}</div>
                 <hr style="border:none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
-                <div class="meta"><strong>Attendee Name:</strong> \${student}</div>
-                <div class="meta"><strong>Registered Email:</strong> \${email}</div>
-                <div style="font-size: 11px; color: #94a3b8; margin-top: 20px; text-align: center;">
-                    Please present this digital pass or your college ID card at the entry gate.
+                <div class="meta"><strong>Student Name:</strong> \${student}</div>
+                <div class="meta"><strong>Email ID:</strong> \${email}</div>
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 20px; text-align: center; border-top: 1px dashed #e2e8f0; padding-top: 12px;">
+                    Present this verified pass along with your LTCE College ID card at the entry gate.
                 </div>
             </div>
             <script>window.onload = function() { window.print(); };<\/script>

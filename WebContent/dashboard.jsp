@@ -148,9 +148,9 @@
     </div>
 
     <!-- Quick Filter by Student Club / Organizing Body -->
-    <div style="margin-bottom: 1.5rem;">
+    <div id="clubs-strip" style="margin-bottom: 1.5rem;">
         <div style="font-size:0.8125rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;">
-            Filter by Campus Club & Organizing Body:
+            Filter by Campus Club &amp; Organizing Body:
         </div>
         <div class="club-badge-strip">
             <button type="button" class="club-badge-pill" onclick="filterByClub('')">

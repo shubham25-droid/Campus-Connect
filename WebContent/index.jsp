@@ -15,26 +15,26 @@
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="hero-pill">
-        <span>Official College Opportunity Hub</span>
+        <span>&#9733; Official LTCE Opportunity Hub &bull; Autonomous Institute</span>
     </div>
     <h1 class="hero-title">
         One place for <span>every campus event</span>.
     </h1>
     <p class="hero-subtitle">
-        Discover, manage, and participate in college events, workshops, hackathons, and technical sessions without searching through dozens of chaotic WhatsApp groups.
+        Discover, manage, and participate in official college events, hackathons, and technical bootcamps without searching through endless chaotic WhatsApp groups.
     </p>
     <div class="hero-cta">
-        <a href="<%= request.getContextPath() %>/dashboard" class="btn btn-primary btn-lg">Explore Events</a>
+        <a href="<%= request.getContextPath() %>/dashboard" class="btn btn-cta-gold btn-lg">Explore Events &rarr;</a>
         <% if (auth != null && auth.isAdmin()) { %>
-            <a href="<%= request.getContextPath() %>/admin/create-event" class="btn btn-secondary btn-lg">Create an Event</a>
+            <a href="<%= request.getContextPath() %>/admin/create-event" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.35);">+ Post an Event</a>
         <% } else { %>
-            <a href="<%= request.getContextPath() %>/login" class="btn btn-secondary btn-lg">Organizer Login</a>
+            <a href="<%= request.getContextPath() %>/login" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.35);">Organizer Sign In</a>
         <% } %>
     </div>
 </section>
 
 <!-- Participating Student Bodies & Chapters Strip -->
-<section style="background:var(--bg-surface); border-bottom:1px solid var(--border-color); padding: 1.5rem 1.5rem;">
+<section id="clubs" style="background:var(--bg-surface); border-bottom:1px solid var(--border-color); padding: 1.5rem 1.5rem;">
     <div class="container" style="padding-top:0; padding-bottom:0; max-width:var(--container-max);">
         <div style="text-align:center; font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.85rem;">
             Powering Opportunities from Official Campus Chapters &amp; Student Bodies
