@@ -148,9 +148,9 @@ button {
    ========================================================================== */
 .inst-micro-bar {
     background-color: var(--ltce-navy);
-    color: #94a3b8;
-    font-size: 0.775rem;
-    padding: 6px 1.25rem;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    padding: 7px 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -160,34 +160,34 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .inst-info-left {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .inst-trust-title {
-    color: #cbd5e1;
+    color: #e2e8f0;
     font-weight: 500;
 }
 
 .inst-sep {
-    color: #475569;
+    color: #64748b;
 }
 
 .inst-clg-name {
-    color: #f1f5f9;
+    color: #ffffff;
     font-weight: 600;
 }
 
 .inst-badge {
-    font-size: 0.675rem;
+    font-size: 0.725rem;
     font-weight: 800;
-    padding: 1px 6px;
+    padding: 2px 8px;
     border-radius: var(--radius-sm);
     letter-spacing: 0.5px;
 }
@@ -203,9 +203,9 @@ button {
 }
 
 .inst-link {
-    color: #cbd5e1;
-    font-weight: 600;
-    font-size: 0.775rem;
+    color: #f1f5f9;
+    font-weight: 700;
+    font-size: 0.85rem;
     white-space: nowrap;
 }
 
@@ -215,8 +215,8 @@ button {
 
 @media (max-width: 768px) {
     .inst-micro-bar {
-        padding: 4px 1rem;
-        font-size: 0.7rem;
+        padding: 5px 1rem;
+        font-size: 0.75rem;
         text-align: center;
     }
     .inst-bar-inner {
@@ -237,18 +237,18 @@ button {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 1px 3px rgba(8, 44, 80, 0.04);
+    box-shadow: 0 2px 6px rgba(8, 44, 80, 0.04);
 }
 
 .header-inner {
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 1.25rem;
-    height: 64px;
+    padding: 0 1.5rem;
+    height: 72px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -258,7 +258,7 @@ button {
 @media (min-width: 768px) {
     .header-inner {
         padding: 0 2rem;
-        height: 70px;
+        height: 78px;
     }
 }
 
@@ -344,9 +344,9 @@ button {
     .nav-item {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 8px 14px;
-        font-size: 0.9rem;
+        gap: 8px;
+        padding: 10px 16px;
+        font-size: 0.975rem;
         font-weight: 600;
         color: var(--text-secondary);
         border-radius: var(--radius-sm);
@@ -366,14 +366,15 @@ button {
 
     .nav-clubs-item {
         color: var(--ltce-blue);
+        font-weight: 700;
     }
 
     .nav-counter {
         background: #fef08a;
         color: #854d0e;
-        font-size: 0.725rem;
+        font-size: 0.8rem;
         font-weight: 800;
-        padding: 1px 6px;
+        padding: 2px 8px;
         border-radius: var(--radius-full);
     }
 
@@ -393,14 +394,14 @@ button {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .btn-clean-ghost {
     display: none;
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: var(--text-secondary);
     border-radius: var(--radius-sm);
     transition: all 0.15s ease;
@@ -419,13 +420,13 @@ button {
 
 .btn-clean-primary {
     display: none;
-    padding: 8px 18px;
-    font-size: 0.9rem;
-    font-weight: 700;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    font-weight: 800;
     color: #ffffff;
     background: var(--ltce-blue);
     border-radius: var(--radius-sm);
-    box-shadow: 0 1px 3px rgba(13, 67, 121, 0.25);
+    box-shadow: 0 2px 4px rgba(13, 67, 121, 0.25);
     transition: all 0.15s ease;
 }
 
@@ -827,16 +828,16 @@ button {
 }
 
 .hero-lead {
-    font-size: clamp(0.95rem, 1.8vw, 1.12rem);
-    line-height: 1.6;
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.65;
     color: #e2e8f0;
-    max-width: 640px;
-    margin: 0 auto 1.75rem;
+    max-width: 660px;
+    margin: 0 auto 1.85rem;
 }
 
 @media (min-width: 992px) {
     .hero-lead {
-        margin: 0 0 1.75rem 0;
+        margin: 0 0 1.85rem 0;
     }
 }
 
@@ -846,13 +847,13 @@ button {
 
 /* In-Hero Live Search Box */
 .hero-search-box {
-    max-width: 580px;
-    margin: 0 auto 1.5rem;
+    max-width: 620px;
+    margin: 0 auto 1.75rem;
 }
 
 @media (min-width: 992px) {
     .hero-search-box {
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.75rem 0;
     }
 }
 
@@ -861,21 +862,22 @@ button {
     align-items: center;
     background: #ffffff;
     border-radius: var(--radius-full);
-    padding: 6px 8px 6px 18px;
-    box-shadow: 0 8px 24px rgba(6, 28, 51, 0.3);
+    padding: 7px 10px 7px 22px;
+    box-shadow: 0 10px 28px rgba(6, 28, 51, 0.35);
+    height: 58px;
 }
 
 .hero-search-icon {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     color: var(--text-muted);
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
 .hero-search-input {
     flex: 1;
     border: none;
     outline: none;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--text-primary);
     background: transparent;
 }
@@ -887,9 +889,9 @@ button {
 .hero-search-submit {
     background: var(--ltce-blue);
     color: #ffffff;
-    font-weight: 700;
-    font-size: 0.875rem;
-    padding: 10px 20px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 12px 24px;
     border-radius: var(--radius-full);
     transition: background-color 0.15s ease;
     white-space: nowrap;
@@ -902,14 +904,15 @@ button {
 @media (max-width: 480px) {
     .hero-search-inner {
         border-radius: var(--radius-md);
-        padding: 8px 12px;
+        padding: 10px 14px;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
         align-items: stretch;
+        height: auto;
     }
     .hero-search-submit {
         border-radius: var(--radius-sm);
-        padding: 10px;
+        padding: 12px;
         text-align: center;
     }
 }
@@ -919,9 +922,9 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
 }
 
 @media (min-width: 992px) {
@@ -938,17 +941,17 @@ button {
     background: linear-gradient(135deg, var(--ltce-gold) 0%, #f59e0b 100%);
     color: #0f172a;
     font-weight: 800;
-    font-size: 0.95rem;
-    padding: 12px 24px;
+    font-size: 1.05rem;
+    padding: 14px 30px;
     border-radius: var(--radius-full);
     box-shadow: 0 4px 14px rgba(255, 150, 0, 0.35);
-    min-height: 46px;
+    min-height: 52px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-hero-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(255, 150, 0, 0.45);
+    box-shadow: 0 6px 20px rgba(255, 150, 0, 0.45);
     color: #000000;
 }
 
@@ -962,10 +965,10 @@ button {
     backdrop-filter: blur(8px);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 12px 22px;
+    font-size: 1.05rem;
+    padding: 14px 26px;
     border-radius: var(--radius-full);
-    min-height: 46px;
+    min-height: 52px;
     transition: all 0.15s ease;
 }
 
@@ -990,12 +993,12 @@ button {
 .hero-metrics-strip {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    background: rgba(6, 28, 51, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    gap: 1.25rem;
+    background: rgba(6, 28, 51, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(8px);
     border-radius: var(--radius-lg);
-    padding: 1rem 1.25rem;
+    padding: 1.25rem 1.5rem;
 }
 
 @media (min-width: 640px) {
@@ -1012,24 +1015,24 @@ button {
 }
 
 .metric-number {
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     font-weight: 900;
     color: var(--ltce-gold);
     line-height: 1.2;
 }
 
 .metric-label {
-    font-size: 0.75rem;
-    color: #cbd5e1;
-    font-weight: 500;
-    margin-top: 2px;
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    font-weight: 600;
+    margin-top: 3px;
 }
 
 .metric-divider {
     display: none;
     width: 1px;
-    height: 32px;
-    background: rgba(255, 255, 255, 0.12);
+    height: 36px;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 @media (min-width: 640px) {
@@ -1044,8 +1047,8 @@ button {
 .hero-right-visual {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    max-width: 460px;
+    gap: 1.5rem;
+    max-width: 500px;
     margin: 0 auto;
     width: 100%;
 }
@@ -1055,7 +1058,7 @@ button {
     color: var(--text-primary);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(6, 28, 51, 0.35);
+    box-shadow: 0 24px 48px rgba(6, 28, 51, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.25);
     text-align: left;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -1063,24 +1066,24 @@ button {
 
 .hero-ticket-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 48px rgba(6, 28, 51, 0.45);
+    box-shadow: 0 28px 56px rgba(6, 28, 51, 0.45);
 }
 
 .ticket-top-tag {
     background: var(--ltce-navy);
     color: #ffffff;
-    font-size: 0.7rem;
+    font-size: 0.775rem;
     font-weight: 800;
     letter-spacing: 0.75px;
-    padding: 8px 16px;
+    padding: 10px 18px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .ticket-live-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: var(--ltce-gold);
     display: inline-block;
@@ -1089,7 +1092,7 @@ button {
 .ticket-banner-wrap {
     position: relative;
     width: 100%;
-    height: 160px;
+    height: 190px;
     overflow: hidden;
     background: #0f172a;
 }
@@ -1102,32 +1105,32 @@ button {
 
 .ticket-badge-cat {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(15, 23, 42, 0.85);
+    top: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.9);
     color: #ffffff;
-    font-size: 0.675rem;
+    font-size: 0.725rem;
     font-weight: 800;
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: var(--radius-sm);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .ticket-body {
-    padding: 1.35rem 1.5rem;
+    padding: 1.5rem 1.75rem;
 }
 
 .ticket-club-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 0.5rem;
+    gap: 10px;
+    margin-bottom: 0.65rem;
 }
 
 .ticket-club-mini-logo {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     object-fit: cover;
     background: #000;
@@ -1135,27 +1138,27 @@ button {
 }
 
 .ticket-club-name {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-weight: 700;
     color: var(--text-secondary);
 }
 
 .ticket-title {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: var(--ltce-navy);
     line-height: 1.3;
-    margin-bottom: 0.85rem;
+    margin-bottom: 1rem;
 }
 
 .ticket-meta-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 10px;
     background: var(--bg-alt);
     border-radius: var(--radius-sm);
-    padding: 8px 12px;
-    margin-bottom: 1rem;
+    padding: 10px 14px;
+    margin-bottom: 1.25rem;
 }
 
 .ticket-meta-cell {
@@ -1164,14 +1167,14 @@ button {
 }
 
 .ticket-meta-label {
-    font-size: 0.675rem;
+    font-size: 0.725rem;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
 .ticket-meta-val {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-weight: 700;
     color: var(--text-primary);
     white-space: nowrap;
@@ -1180,15 +1183,15 @@ button {
 }
 
 .ticket-seats-bar {
-    margin-bottom: 1.15rem;
+    margin-bottom: 1.35rem;
 }
 
 .seats-label-row {
     display: flex;
     justify-content: space-between;
-    font-size: 0.775rem;
+    font-size: 0.825rem;
     color: var(--text-muted);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .seats-label-row strong {
@@ -1197,7 +1200,7 @@ button {
 
 .seats-progress-track {
     width: 100%;
-    height: 6px;
+    height: 7px;
     background: #e2e8f0;
     border-radius: var(--radius-full);
     overflow: hidden;
@@ -1215,9 +1218,9 @@ button {
     text-align: center;
     background: var(--ltce-blue);
     color: #ffffff;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 10px;
+    font-weight: 800;
+    font-size: 0.975rem;
+    padding: 12px;
     border-radius: var(--radius-sm);
     transition: background-color 0.15s ease;
 }
@@ -1231,13 +1234,13 @@ button {
 .hero-quick-chapters {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .quick-chapters-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #cbd5e1;
+    color: #e2e8f0;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -1251,27 +1254,27 @@ button {
 .hero-quick-chip {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(6px);
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: var(--radius-full);
-    font-size: 0.775rem;
+    font-size: 0.825rem;
     font-weight: 700;
     color: #ffffff;
     transition: all 0.15s ease;
 }
 
 .hero-quick-chip:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.3);
     color: #ffffff;
     transform: translateY(-1px);
 }
 
 .hero-quick-chip img {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -1484,12 +1487,12 @@ button {
 }
 
 .club-reel-img {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
     background: #000;
-    border: 1.5px solid var(--border-color);
+    border: 2px solid var(--border-color);
     flex-shrink: 0;
 }
 
@@ -1500,7 +1503,7 @@ button {
 }
 
 .club-reel-name {
-    font-size: 0.925rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: var(--ltce-navy);
     white-space: nowrap;
@@ -1509,12 +1512,12 @@ button {
 }
 
 .club-reel-tag {
-    font-size: 0.675rem;
+    font-size: 0.75rem;
     font-weight: 700;
     border-radius: 4px;
-    padding: 1px 6px;
+    padding: 2px 8px;
     width: fit-content;
-    margin: 2px 0;
+    margin: 3px 0;
 }
 
 .club-reel-tag.dept {
@@ -1528,7 +1531,7 @@ button {
 }
 
 .club-reel-desc {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     white-space: nowrap;
     overflow: hidden;
@@ -1539,7 +1542,7 @@ button {
    5. Live Events Section & Cards Grid
    ========================================================================== */
 .live-events-section {
-    padding: 3.5rem 0;
+    padding: 4rem 0;
     background: var(--bg-page);
 }
 
@@ -1555,9 +1558,10 @@ button {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
     .events-cards-grid {
         grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
     }
 }
 
@@ -1570,7 +1574,7 @@ button {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 6px rgba(8, 44, 80, 0.04);
 }
 
 .event-modern-card:hover {
@@ -1582,7 +1586,7 @@ button {
 .card-media-wrap {
     position: relative;
     width: 100%;
-    height: 180px;
+    height: 200px;
     overflow: hidden;
     background: #0f172a;
 }
@@ -1600,13 +1604,13 @@ button {
 
 .card-category-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(15, 23, 42, 0.85);
+    top: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.9);
     color: #ffffff;
-    font-size: 0.7rem;
+    font-size: 0.725rem;
     font-weight: 800;
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: var(--radius-sm);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1615,19 +1619,19 @@ button {
 
 .card-date-stamp {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 12px;
+    left: 12px;
     background: #ffffff;
     border-radius: var(--radius-sm);
-    padding: 4px 8px;
+    padding: 5px 10px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    min-width: 44px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    min-width: 48px;
 }
 
 .date-month {
     display: block;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
     color: var(--ltce-blue);
@@ -1635,14 +1639,14 @@ button {
 
 .date-day {
     display: block;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 900;
     color: var(--text-primary);
     line-height: 1;
 }
 
 .card-details-wrap {
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -1656,24 +1660,24 @@ button {
 }
 
 .card-club-mini-logo {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
     background: #000;
 }
 
 .card-club-name {
-    font-size: 0.775rem;
+    font-size: 0.825rem;
     font-weight: 700;
     color: var(--text-secondary);
 }
 
 .card-event-title {
-    font-size: 1.05rem;
+    font-size: 1.18rem;
     font-weight: 800;
     line-height: 1.35;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .card-event-title a {
@@ -1685,9 +1689,9 @@ button {
 }
 
 .card-event-snippet {
-    font-size: 0.825rem;
+    font-size: 0.875rem;
     color: var(--text-muted);
-    line-height: 1.45;
+    line-height: 1.5;
     margin-bottom: 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -1698,25 +1702,25 @@ button {
 .card-meta-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 1.25rem;
     margin-top: auto;
 }
 
 .card-meta-pill {
-    font-size: 0.725rem;
+    font-size: 0.775rem;
     color: var(--text-secondary);
     background: var(--bg-alt);
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .card-footer-actions {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding-top: 0.75rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--border-color);
 }
 
@@ -1728,11 +1732,11 @@ button {
     gap: 4px;
     background: var(--ltce-blue);
     color: #ffffff;
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 8px 12px;
+    font-weight: 800;
+    font-size: 0.925rem;
+    padding: 10px 14px;
     border-radius: var(--radius-sm);
-    min-height: 38px;
+    min-height: 42px;
     transition: background-color 0.15s ease;
 }
 
