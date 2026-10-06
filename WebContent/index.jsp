@@ -39,7 +39,7 @@
                 <!-- Live Academic Announcement Pill -->
                 <div class="hero-live-pill">
                     <span class="pulse-indicator"></span>
-                    <span class="live-pill-text">Spring 2026 Academic Season &bull; <strong>12+ Events Live</strong></span>
+                    <span class="live-pill-text">Official Campus Board &bull; <strong>LTCE Navi Mumbai</strong></span>
                 </div>
 
                 <!-- High-Impact Bold Typography -->
@@ -71,15 +71,15 @@
                         Explore All Events <span>&rarr;</span>
                     </a>
                     <a href="<%= cp %>/clubs.jsp" class="btn-hero-secondary">
-                        <span>&#127891;</span> Campus Clubs Guide (10)
+                        <span>&#127891;</span> Campus Clubs Guide
                     </a>
                 </div>
 
                 <!-- Trust & Social Proof Metrics Strip -->
                 <div class="hero-metrics-strip">
                     <div class="metric-block">
-                        <div class="metric-number">10+</div>
-                        <div class="metric-label">Active Campus Clubs</div>
+                        <div class="metric-number">Clubs</div>
+                        <div class="metric-label">CESA, AIMSA &amp; GDG</div>
                     </div>
                     <div class="metric-divider"></div>
                     <div class="metric-block">
@@ -105,12 +105,12 @@
                     <div class="hero-ticket-card">
                         <div class="ticket-top-tag">
                             <span class="ticket-live-dot <%= featuredLead.isPastEvent() ? "concluded" : "" %>"></span>
-                            <span><%= featuredLead.isPastEvent() ? "EVENT CONCLUDED" : "FEATURED CAMPUS EVENT &bull; REGISTRATION OPEN" %></span>
+                            <span><%= featuredLead.isPastEvent() ? "PAST EVENT" : "FEATURED CAMPUS EVENT &bull; REGISTRATION OPEN" %></span>
                         </div>
 
                         <div class="ticket-banner-wrap">
                             <img src="<%= cp %>/images/<%= featuredLead.getImage() %>" alt="<%= featuredLead.getTitle() %>" 
-                                 class="ticket-banner-img" onerror="this.src='<%= cp %>/images/gdg_hacktoberfest.jpg'">
+                                 class="ticket-banner-img" onerror="this.src='<%= cp %>/images/default_event.jpg'">
                             <span class="ticket-badge-cat"><%= featuredLead.getCategory() %></span>
                         </div>
 
@@ -329,18 +329,15 @@
                                 <%= ev.getCategory() %>
                             </span>
                             <% if (ev.isDemoEvent()) { %>
-                                <span class="card-demo-badge">SAMPLE / DEMO</span>
-                                <div class="demo-watermark-overlay">
-                                    <span class="demo-watermark-text">SAMPLE / DEMO</span>
-                                </div>
+                                <span class="card-demo-badge">Sample Event</span>
                             <% } else if (ev.isPastEvent()) { %>
-                                <span class="card-concluded-badge">CONCLUDED</span>
+                                <span class="card-concluded-badge">Past Event</span>
                             <% } %>
                             <div class="card-date-stamp <%= ev.isPastEvent() ? "is-concluded" : (ev.isToday() ? "is-today" : "") %>">
                                 <span class="date-month"><%= ev.getShortMonth() %></span>
                                 <span class="date-day"><%= ev.getDayString() %></span>
                                 <% if (ev.isPastEvent()) { %>
-                                    <span class="date-tag-status ended">ENDED</span>
+                                    <span class="date-tag-status ended">PAST</span>
                                 <% } else if (ev.isToday()) { %>
                                     <span class="date-tag-status today">TODAY</span>
                                 <% } %>
@@ -372,7 +369,7 @@
                             <div class="card-footer-actions">
                                 <% if (ev.isPastEvent()) { %>
                                     <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-card-register concluded">
-                                        Event Concluded &bull; Details &rarr;
+                                        Event Ended &bull; Details &rarr;
                                     </a>
                                 <% } else { %>
                                     <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-card-register">

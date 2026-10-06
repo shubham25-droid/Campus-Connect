@@ -174,10 +174,10 @@ public class DBConnection {
                     + "'Compete with the sharpest minds at LTCE to represent the college at the national Smart India Hackathon 2026. Teams will be evaluated on problem statement alignment, technical viability, architectural elegance, and feasibility.', "
                     + "'Hackathon', 'All Departments', 'SE, TE, BE', '2026-10-18', '9:00 AM', '6:00 PM', 'Central Computing Facility (CCF)', 'LTCE Innovation Cell', 'innovation@ltce.in | +91 97654 32109', '2026-10-16', 60, 'Team of 6 members with mandatory 1 female participant', 'sih_hackathon.png', 'Published', 1), "
 
-                    + "(4, '[DEMO / SAMPLE EVENT] CESA CodeSprint 2026: Algorithmic Battle', "
-                    + "'[DEMO / SAMPLE EVENT] Computer Engineering Students Association (CESA) presents the departmental flagship coding battle. Solve DSA problems, build web prototypes.', "
-                    + "'[DEMO / SAMPLE EVENT - FOR TESTING & PREVIEW ONLY]\\n\\nExclusively organized by CESA (Computer Engineering Students Association). Features 2 rounds: Round 1 Competitive Coding on custom problem sets, Round 2 6-hour Rapid App Prototype Sprint. Certificates and trophies for Top 3 performers.', "
-                    + "'Competition', 'Computer Engineering', 'SE, TE, BE', '2026-11-04', '10:00 AM', '5:00 PM', 'Computer Center Labs 1 & 2', 'CESA LTCE', 'cesa@ltce.in | +91 98333 44556', '2026-11-02', 150, 'Computer Engineering department students only', 'cesa_codesprint.png', 'Published', 1);");
+                    + "(4, 'CESA CodeSprint 2026: Algorithmic Battle', "
+                    + "'Computer Engineering Students Association (CESA) presents the departmental flagship coding battle. Solve DSA problems, build web prototypes.', "
+                    + "'[Sample Preview Event]\\n\\nExclusively organized by CESA (Computer Engineering Students Association). Features 2 rounds: Round 1 Competitive Coding on custom problem sets, Round 2 6-hour Rapid App Prototype Sprint. Certificates and trophies for Top 3 performers.', "
+                    + "'Competition', 'Computer Engineering', 'SE, TE, BE', '2026-11-04', '10:00 AM', '5:00 PM', 'Computer Center Labs 1 & 2', 'CESA LTCE', 'cesa@ltce.in | +91 98333 44556', '2026-11-02', 150, 'Computer Engineering department students only', 'cesa_codesprint.png', 'Demo', 1);");
 
             // Seed sample registrations
             stmt.executeUpdate("MERGE INTO registrations (id, user_id, event_id, status) KEY(id) VALUES (1, 2, 1, 'CONFIRMED'), (2, 2, 2, 'CONFIRMED');");

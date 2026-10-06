@@ -43,7 +43,7 @@
                     <li><a href="<%= request.getContextPath() %>/dashboard?search=E-CELL">E-CELL LTCE</a></li>
                     <li><a href="<%= request.getContextPath() %>/dashboard?search=Technical+Vidya">Technical Vidya</a></li>
                     <li><a href="<%= request.getContextPath() %>/dashboard?search=English">The English Club</a></li>
-                    <li><a href="<%= request.getContextPath() %>/clubs.jsp" style="color:var(--ltce-gold); font-weight:700;">Explore All 10+ Clubs &rarr;</a></li>
+                    <li><a href="<%= request.getContextPath() %>/clubs.jsp" style="color:var(--ltce-gold); font-weight:700;">Explore All Campus Clubs &rarr;</a></li>
                 </ul>
             </div>
 

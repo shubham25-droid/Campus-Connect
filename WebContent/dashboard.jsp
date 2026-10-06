@@ -222,19 +222,16 @@
                     <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                     <span class="event-type-badge"><%= e.getCategory() %></span>
                     <% if (e.isDemoEvent()) { %>
-                        <span class="card-demo-badge">SAMPLE / DEMO</span>
-                        <div class="demo-watermark-overlay">
-                            <span class="demo-watermark-text">SAMPLE / DEMO</span>
-                        </div>
+                        <span class="card-demo-badge">Sample Event</span>
                     <% } else if (e.isPastEvent()) { %>
-                        <span class="card-concluded-badge">CONCLUDED</span>
+                        <span class="card-concluded-badge">Past Event</span>
                     <% } %>
 
                     <div class="card-date-stamp <%= e.isPastEvent() ? "is-concluded" : (e.isToday() ? "is-today" : "") %>">
                         <span class="date-month"><%= e.getShortMonth() %></span>
                         <span class="date-day"><%= e.getDayString() %></span>
                         <% if (e.isPastEvent()) { %>
-                            <span class="date-tag-status ended">ENDED</span>
+                            <span class="date-tag-status ended">PAST</span>
                         <% } else if (e.isToday()) { %>
                             <span class="date-tag-status today">TODAY</span>
                         <% } %>
@@ -272,7 +269,7 @@
                         <% if (e.isUserRegistered()) { %>
                             <span class="seat-status-pill registered">&#10003; Registered</span>
                         <% } else if (e.isPastEvent()) { %>
-                            <span class="seat-status-pill concluded">&#9679; Concluded</span>
+                            <span class="seat-status-pill concluded">Event Ended</span>
                         <% } else if (e.isRegistrationOpen()) { %>
                             <span class="seat-status-pill open"><%= e.getRemainingSeats() %> seats left</span>
                         <% } else { %>
@@ -280,7 +277,7 @@
                         <% } %>
 
                         <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" class="btn <%= e.isPastEvent() ? "btn-secondary" : "btn-primary" %> btn-sm">
-                            <%= e.isPastEvent() ? "View Details (Ended)" : "View Details" %>
+                            <%= e.isPastEvent() ? "Event Details &bull; Ended" : "View Details" %>
                         </a>
                     </div>
                 </div>

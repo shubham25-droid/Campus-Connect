@@ -31,20 +31,16 @@
 <body>
 
     <!-- ==============================================
-         1. Ultra-clean Institutional Micro Bar
+         1. Clean Institutional Top Bar (Minimal & Uncluttered)
          ============================================== -->
     <div class="inst-micro-bar">
         <div class="inst-bar-inner">
             <div class="inst-info-left">
-                <span class="inst-trust-title">Lokmanya Tilak Jankalyan Shikshan Sanstha's</span>
-                <span class="inst-sep">&bull;</span>
-                <span class="inst-clg-name">Autonomous Institute &bull; Affiliated to University of Mumbai</span>
-                <span class="inst-badge naac">NAAC 'A' GRADE</span>
-                <span class="inst-badge nba">NBA ACCREDITED</span>
+                <span class="inst-clg-name">Lokmanya Tilak College of Engineering</span>
             </div>
             <div class="inst-info-right">
                 <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="inst-link">
-                    Official LTCE Portal <span>&rarr;</span>
+                    Official College Website <span>&rarr;</span>
                 </a>
             </div>
         </div>
@@ -76,7 +72,7 @@
                     <li><a href="<%= cp %>/" class="nav-item <%= curUri.endsWith("/") || curUri.endsWith("index.jsp") ? "active" : "" %>">Home</a></li>
                     <li><a href="<%= cp %>/dashboard" class="nav-item <%= curUri.contains("dashboard") || curUri.contains("events") ? "active" : "" %>">Explore Events</a></li>
                     <li><a href="<%= cp %>/clubs.jsp" class="nav-item nav-clubs-item <%= curUri.contains("clubs") ? "active" : "" %>">
-                        <span class="nav-icon">&#127891;</span> Clubs &amp; Chapters <span class="nav-counter">10</span>
+                        <span class="nav-icon">&#127891;</span> Clubs &amp; Chapters
                     </a></li>
                     <li><a href="<%= cp %>/#how-it-works" class="nav-item">How It Works</a></li>
                     
@@ -139,7 +135,7 @@
             <ul class="mobile-nav-list">
                 <li><a href="<%= cp %>/" class="mobile-nav-link">&#127968; Home</a></li>
                 <li><a href="<%= cp %>/dashboard" class="mobile-nav-link">&#128197; Explore Events</a></li>
-                <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight">&#127891; Campus Clubs Directory (10)</a></li>
+                <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight">&#127891; Campus Clubs Directory</a></li>
                 <li><a href="<%= cp %>/#how-it-works" class="mobile-nav-link">&#9889; How It Works</a></li>
                 
                 <% if (authUser != null) { %>

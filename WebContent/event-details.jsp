@@ -56,13 +56,15 @@
             <div style="position:relative; margin-bottom:1.5rem;">
                 <img class="details-banner" src="<%= request.getContextPath() %>/images/<%= event.getImage() %>" alt="<%= event.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                 <% if (event.isDemoEvent()) { %>
-                    <span class="card-demo-badge" style="font-size:0.8rem; padding:5px 12px; top:16px; left:16px;">SAMPLE / DEMO EVENT</span>
+                    <span class="card-demo-badge" style="font-size:0.75rem; padding:4px 10px; top:14px; left:14px;">Sample Event</span>
+                <% } else if (event.isPastEvent()) { %>
+                    <span class="card-concluded-badge" style="font-size:0.75rem; padding:4px 10px; top:14px; left:14px;">Past Event</span>
                 <% } %>
             </div>
 
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem;">
                 <% if (event.isDemoEvent()) { %>
-                    <span class="demo-pill-tag">&#9888; PREVIEW SAMPLE</span>
+                    <span class="demo-pill-tag">Sample Event</span>
                 <% } %>
                 <span class="cat-pill active"><%= event.getCategory() %></span>
                 <span class="cat-pill" style="cursor:default;"><%= event.getDepartment() %></span>
@@ -70,21 +72,21 @@
             </div>
 
             <% if (event.isDemoEvent()) { %>
-                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:var(--radius-sm); padding:1rem 1.25rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">
-                    <span style="font-size:1.5rem;">&#128736;</span>
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:var(--radius-sm); padding:0.85rem 1.15rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:1.35rem;">&#128161;</span>
                     <div>
-                        <strong style="color:#b45309; font-size:0.95rem;">[DEMO / SAMPLE EVENT]</strong>
-                        <p style="margin:2px 0 0; font-size:0.85rem; color:#92400e;">This is a mock sample event created to showcase departmental competitions. Not a live registration.</p>
+                        <strong style="color:#b45309; font-size:0.9rem;">Sample Event Preview</strong>
+                        <p style="margin:2px 0 0; font-size:0.825rem; color:#92400e;">This is a demonstration entry showcasing departmental event formats. Not open for live registrations.</p>
                     </div>
                 </div>
             <% } %>
 
             <% if (event.isPastEvent()) { %>
-                <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius-sm); padding:1rem 1.25rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">
-                    <span style="font-size:1.5rem;">&#9888;</span>
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:var(--radius-sm); padding:0.85rem 1.15rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:1.35rem;">&#128197;</span>
                     <div>
-                        <strong style="color:#b91c1c; font-size:0.95rem;">This event has concluded.</strong>
-                        <p style="margin:2px 0 0; font-size:0.85rem; color:#7f1d1d;">Concluded on <%= event.getFormattedDate() %>. New registrations are closed.</p>
+                        <strong style="color:#334155; font-size:0.9rem;">This event has ended.</strong>
+                        <p style="margin:2px 0 0; font-size:0.825rem; color:#64748b;">Event was completed on <%= event.getFormattedDate() %>. Registrations are closed.</p>
                     </div>
                 </div>
             <% } %>

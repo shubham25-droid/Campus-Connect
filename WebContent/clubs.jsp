@@ -22,7 +22,7 @@
 
     <!-- Quick Navigation / Filter Tabs -->
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
-        <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs &amp; Chapters (10)</button>
+        <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs &amp; Chapters</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('dept', this)">Department-Specific (AIMSA, CESA, DSSA)</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('tech', this)">Coding &amp; Open Source (GDG, GFG)</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('startup', this)">Startups &amp; E-Cell (Technical Vidya, E-Cell IITB)</button>
