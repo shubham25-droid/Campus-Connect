@@ -33,6 +33,45 @@
     </div>
 </section>
 
+<!-- Participating Student Bodies & Chapters Strip -->
+<section style="background:var(--bg-surface); border-bottom:1px solid var(--border-color); padding: 1.5rem 1.5rem;">
+    <div class="container" style="padding-top:0; padding-bottom:0; max-width:var(--container-max);">
+        <div style="text-align:center; font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.85rem;">
+            Powering Opportunities from Official Campus Chapters &amp; Student Bodies
+        </div>
+        <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+            <a href="<%= request.getContextPath() %>/dashboard?search=GDG" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
+                <span>GDG on Campus LTCE</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=AIMSA" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.svg" alt="AIMSA">
+                <span>AIMSA</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=IIC" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
+                <span>IIC (MoE Initiative)</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=CSI" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/csi.svg" alt="CSI">
+                <span>CSI LTCE Chapter</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=Hackathon" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/sih.svg" alt="SIH">
+                <span>LTCE Innovation Cell</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=Placement" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/tnp.svg" alt="T&P">
+                <span>T&amp;P Placement Cell</span>
+            </a>
+            <a href="<%= request.getContextPath() %>/dashboard?search=IEEE" class="club-badge-pill">
+                <img src="<%= request.getContextPath() %>/images/clubs/ieee.svg" alt="IEEE">
+                <span>IEEE Student Branch</span>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- Core Workflow: How CampusConnect Works -->
 <section class="workflow-section" id="how-it-works">
     <div class="section-head">
@@ -132,8 +171,8 @@
                             <span>&#128205;</span>
                             <span><%= e.getVenue() %></span>
                         </div>
-                        <div class="event-meta-item">
-                            <span>&#127891;</span>
+                        <div class="event-meta-item event-organizer-row">
+                            <img src="<%= request.getContextPath() %>/images/clubs/<%= e.getClubLogo() %>" alt="<%= e.getOrganizerName() %>" class="club-logo-mini" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
                             <span><%= e.getOrganizerName() %></span>
                         </div>
                     </div>

@@ -147,6 +147,46 @@
         </form>
     </div>
 
+    <!-- Quick Filter by Student Club / Organizing Body -->
+    <div style="margin-bottom: 1.5rem;">
+        <div style="font-size:0.8125rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;">
+            Filter by Campus Club & Organizing Body:
+        </div>
+        <div class="club-badge-strip">
+            <button type="button" class="club-badge-pill" onclick="filterByClub('')">
+                <span>All Organizers</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('GDG')">
+                <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
+                <span>GDG on Campus</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('AIMSA')">
+                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.svg" alt="AIMSA">
+                <span>AIMSA</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('IIC')">
+                <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
+                <span>IIC LTCE</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('CSI')">
+                <img src="<%= request.getContextPath() %>/images/clubs/csi.svg" alt="CSI">
+                <span>CSI Chapter</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('Placement')">
+                <img src="<%= request.getContextPath() %>/images/clubs/tnp.svg" alt="T&P">
+                <span>T&amp;P Cell</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('Hackathon')">
+                <img src="<%= request.getContextPath() %>/images/clubs/sih.svg" alt="SIH">
+                <span>Innovation / SIH</span>
+            </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('IEEE')">
+                <img src="<%= request.getContextPath() %>/images/clubs/ieee.svg" alt="IEEE">
+                <span>IEEE Branch</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Event Cards Grid -->
     <div class="events-grid">
         <% if (events != null && !events.isEmpty()) { 
@@ -185,8 +225,8 @@
                             <span>&#128205;</span>
                             <span><%= e.getVenue() %></span>
                         </div>
-                        <div class="event-meta-item">
-                            <span>&#127891;</span>
+                        <div class="event-meta-item event-organizer-row">
+                            <img src="<%= request.getContextPath() %>/images/clubs/<%= e.getClubLogo() %>" alt="<%= e.getOrganizerName() %>" class="club-logo-mini" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
                             <span><%= e.getOrganizerName() %></span>
                         </div>
                     </div>

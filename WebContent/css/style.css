@@ -897,6 +897,62 @@ img {
     gap: 8px;
 }
 
+.event-organizer-row {
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.club-logo-mini {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+    vertical-align: middle;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.club-badge-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 0.75rem 0 1.25rem;
+    scrollbar-width: thin;
+}
+
+.club-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--secondary);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.club-badge-pill:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.club-badge-pill img {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    object-fit: contain;
+}
+
 .event-card-footer {
     display: flex;
     justify-content: space-between;

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="20" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <!-- Briefcase & Graduation Cap -->
+  <rect x="30" y="36" width="40" height="26" rx="4" fill="#3b82f6"/>
+  <path d="M42 36 L42 30 C42 28 44 26 46 26 L54 26 C56 26 58 28 58 30 L58 36" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+  <circle cx="50" cy="49" r="4" fill="#facc15"/>
+  <text x="50" y="86" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#60a5fa">T&amp;P CELL</text>
+</svg>

@@ -154,4 +154,19 @@ public class Event {
             return registrationDeadline.toString();
         }
     }
+
+    public String getClubLogo() {
+        if (organizerName == null) return "ltce.svg";
+        String org = organizerName.toUpperCase();
+        if (org.contains("GDG")) return "gdg.svg";
+        if (org.contains("AIMSA")) return "aimsa.svg";
+        if (org.contains("IIC")) return "iic.svg";
+        if (org.contains("CSI")) return "csi.svg";
+        if (org.contains("IEEE")) return "ieee.svg";
+        if (org.contains("ROTARACT")) return "rotaract.svg";
+        if (org.contains("PLACEMENT") || org.contains("T&P")) return "tnp.svg";
+        if (org.contains("INNOVATION") || org.contains("SIH")) return "sih.svg";
+        if (org.contains("ACM")) return "acm.svg";
+        return "ltce.svg";
+    }
 }

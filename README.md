@@ -175,7 +175,34 @@ The database schema is normalized to 3NF and includes constraints to guarantee r
    * *UNIQUE constraint on `(user_id, event_id)` prevents duplicate bookmarks.*
 
 The complete SQL setup script is located at:
-[database/schema.sql](file:///d:/Antigravity%20Workspace/CampusConnect/database/schema.sql)
+[database/schema.sql](file:///D:/Antigravity%20Workspace/JAVA%20project/database/schema.sql)
+
+---
+
+## 7. Adding Club Logos & Branding
+
+CampusConnect includes built-in visual branding for campus student bodies and technical chapters.
+
+### Pre-configured Club Logos:
+The folder `WebContent/images/clubs/` includes high-fidelity SVG logos for:
+* **GDG on Campus LTCE** (`gdg.svg`)
+* **AIMSA (Artificial Intelligence & ML Student Association)** (`aimsa.svg`)
+* **Institution Innovation Council (IIC - MoE Initiative)** (`iic.svg`)
+* **Computer Society of India (CSI)** (`csi.svg`)
+* **IEEE Student Branch** (`ieee.svg`)
+* **Rotaract Club of LTCE** (`rotaract.svg`)
+* **Training & Placement Cell** (`tnp.svg`)
+* **SIH Innovation Cell** (`sih.svg`)
+* **ACM LTCE Chapter** (`acm.svg`)
+* **Lokmanya Tilak College of Engineering (LTCE)** (`ltce.svg`)
+
+### How to Add More Club Logos:
+1. Save your club's logo file (SVG or PNG format) into:
+   ```
+   WebContent/images/clubs/<club_name>.svg
+   ```
+2. When creating an event in the Admin Console, enter or select the club name.
+3. The platform automatically displays the official club badge on the Landing Page, Event Discovery cards, Filter strip, and Dedicated Event Details page.
 
 ---
 

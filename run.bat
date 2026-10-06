@@ -10,7 +10,11 @@ if not exist "tomcat\webapps\CampusConnect\WEB-INF\classes\controller\LoginServl
     call build.bat
 )
 
-set "JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot"
+if "%JAVA_HOME%"=="" (
+    if exist "C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot" (
+        set "JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot"
+    )
+)
 set "JRE_HOME=%JAVA_HOME%"
 set "CATALINA_HOME=%~dp0tomcat"
 

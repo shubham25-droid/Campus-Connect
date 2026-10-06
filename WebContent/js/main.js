@@ -193,3 +193,19 @@ function initShareButtons() {
         });
     }
 }
+
+/**
+ * Filter events by selected campus club or organizing body
+ */
+function filterByClub(clubName) {
+    const searchInput = document.getElementById('clientSearchInput');
+    if (searchInput) {
+        searchInput.value = clubName;
+        // Trigger input event to invoke real-time client filter
+        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+        window.location.href = contextPath + '/dashboard?search=' + encodeURIComponent(clubName);
+    }
+}
+
