@@ -30,7 +30,7 @@
     </div>
 
     <!-- Clubs Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.75rem;" id="clubsGrid">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;" id="clubsGrid">
 
         <!-- 1. AIMSA -->
         <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #38bdf8; display:flex; flex-direction:column;">

@@ -4,11 +4,62 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+    initMobileMenu();
     initClientFilter();
     initSaveButtons();
     initFormValidation();
     initShareButtons();
 });
+
+/**
+ * Mobile Navigation Drawer Toggle
+ */
+function initMobileMenu() {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const drawer = document.getElementById('mobileNavDrawer');
+    const overlay = document.getElementById('mobileDrawerOverlay');
+    const closeBtn = document.getElementById('mobileDrawerClose');
+
+    if (!toggleBtn || !drawer || !overlay) return;
+
+    function openMenu() {
+        toggleBtn.classList.add('active');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeMenu() {
+        toggleBtn.classList.remove('active');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    toggleBtn.addEventListener('click', function () {
+        if (drawer.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Close when clicking any nav link inside drawer
+    drawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+}
 
 /**
  * Real-time filter & search on event cards

@@ -4,214 +4,362 @@
 <%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
 <%
-    request.setAttribute("pageTitle", "Home");
+    request.setAttribute("pageTitle", "Official Campus Events Hub");
     EventDAO eventDAO = new EventDAO();
     User auth = (session != null) ? (User) session.getAttribute("currentUser") : null;
     Integer authId = (auth != null) ? auth.getId() : null;
+    
+    // Fetch upcoming published events for the live preview
     List<Event> upcomingEvents = eventDAO.getDiscoveredEvents("", "All", "All", "All", "upcoming", authId);
+    String cp = request.getContextPath();
 %>
 <jsp:include page="includes/header.jsp" />
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="hero-pill">
-        <span>&#9733; Official LTCE Opportunity Hub &bull; Autonomous Institute</span>
-    </div>
-    <h1 class="hero-title">
-        One place for <span>every campus event</span>.
-    </h1>
-    <p class="hero-subtitle">
-        Discover, manage, and participate in official college events, hackathons, and technical bootcamps without searching through endless chaotic WhatsApp groups.
-    </p>
-    <div class="hero-cta">
-        <a href="<%= request.getContextPath() %>/dashboard" class="btn btn-cta-gold btn-lg">Explore Events &rarr;</a>
-        <% if (auth != null && auth.isAdmin()) { %>
-            <a href="<%= request.getContextPath() %>/admin/create-event" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.35);">+ Post an Event</a>
-        <% } else { %>
-            <a href="<%= request.getContextPath() %>/login" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.35);">Organizer Sign In</a>
-        <% } %>
-    </div>
-</section>
-
-<!-- Participating Student Bodies & Chapters Strip -->
-<section id="clubs" style="background:var(--bg-surface); border-bottom:1px solid var(--border-color); padding: 1.75rem 1.5rem;">
-    <div class="container" style="padding-top:0; padding-bottom:0; max-width:var(--container-max);">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
-            <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
-                Official LTCE Student Bodies &amp; Technical Chapters
-            </div>
-            <a href="<%= request.getContextPath() %>/clubs.jsp" style="font-size:0.825rem; font-weight:700; color:var(--ltce-blue-mid); text-decoration:underline;">
-                &#127891; View All Clubs &amp; Student Guidance Guide &rarr;
-            </a>
-        </div>
-        <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:0.75rem;">
-            <a href="<%= request.getContextPath() %>/dashboard?search=AIMSA" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/aimsa.png" alt="AIMSA">
-                <span>AIMSA (AI &amp; ML)</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=CESA" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/cesa.png" alt="CESA">
-                <span>CESA (Computer)</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=GDG" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
-                <span>GDG on Campus</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=GFG" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/gfg.svg" alt="GFG">
-                <span>GFG Student Chapter</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=E-CELL" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/ecell.png" alt="E-CELL">
-                <span>E-CELL LTCE (IITB)</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=Technical+Vidya" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/technical_vidya.png" alt="Technical Vidya">
-                <span>Technical Vidya</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=English" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/english_club.png" alt="The English Club">
-                <span>The English Club</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=Data+Science" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/dssa.svg" alt="DSSA">
-                <span>DSSA (Data Science)</span>
-            </a>
-            <a href="<%= request.getContextPath() %>/dashboard?search=IIC" class="club-badge-pill">
-                <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
-                <span>IIC LTCE</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Core Workflow: How CampusConnect Works -->
-<section class="workflow-section" id="how-it-works">
-    <div class="section-head">
-        <h2>How CampusConnect Works</h2>
-        <p>A streamlined workflow designed to eliminate WhatsApp announcement fatigue for both organizers and students.</p>
-    </div>
-
-    <div class="workflow-grid">
-        <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Organizers Post Once</h3>
-            <p>Clubs, faculty, and departments publish event details, rules, deadlines, and seat limits in a single structured form.</p>
+<!-- ==============================================
+     1. Modern Collegiate Hero Section
+     ============================================== -->
+<section class="collegiate-hero">
+    <div class="hero-container">
+        
+        <!-- Live Academic Announcement Pill -->
+        <div class="hero-live-pill">
+            <span class="pulse-indicator"></span>
+            <span class="live-pill-text">Spring 2026 Academic Season &bull; <strong>12+ Events Live</strong></span>
         </div>
 
-        <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Central Discovery</h3>
-            <p>Students browse upcoming events filtered by branch, academic year, and category without missing buried chat announcements.</p>
-        </div>
+        <!-- High-Impact Bold Typography -->
+        <h1 class="hero-heading">
+            Never Miss a College <br class="hide-on-mobile">
+            <span class="hero-gradient-text">Event or Opportunity.</span>
+        </h1>
 
-        <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Direct Registration</h3>
-            <p>Students register with a single click. Duplicate registrations are prevented, and organizers receive verified attendee rosters instantly.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Problem vs Solution: Why CampusConnect? -->
-<section class="comparison-section">
-    <div class="section-head">
-        <h2>Why CampusConnect?</h2>
-        <p>Solving the real fragmentation issue on college campuses.</p>
-    </div>
-
-    <div class="comparison-grid">
-        <div class="comparison-card old-way">
-            <h3 style="color:#b91c1c;">
-                <span style="font-size:1.4rem;">&times;</span> The WhatsApp Group Problem
-            </h3>
-            <ul>
-                <li><strong>Scattered Across 10+ Groups:</strong> Class groups, branch groups, unofficial club groups, council chats.</li>
-                <li><strong>Buried Messages:</strong> Important registration links and rules get lost in casual chat chatter.</li>
-                <li><strong>No Searchability:</strong> Inability to filter by eligible academic year or technical category.</li>
-                <li><strong>Duplicate Effort for Organizers:</strong> Organizers paste identical messages across 15 different groups repeatedly.</li>
-                <li><strong>Registration Chaos:</strong> Disconnected Google Forms with duplicate entries and manual tracking.</li>
-            </ul>
-        </div>
-
-        <div class="comparison-card new-way">
-            <h3 style="color:#059669;">
-                <span style="font-size:1.4rem;">&#10003;</span> The CampusConnect Solution
-            </h3>
-            <ul>
-                <li><strong>Single Source of Truth:</strong> One centralized URL containing complete, verified event parameters.</li>
-                <li><strong>Structured Information:</strong> Timings, speakers, venues, eligibility, and perks clearly formatted.</li>
-                <li><strong>Instant Discovery:</strong> Fast search by branch (CSE, AI/ML, IT), eligibility, or event type.</li>
-                <li><strong>WhatsApp Friendly:</strong> Organizers share a single clean CampusConnect event link with preview.</li>
-                <li><strong>Built-in Attendance Roster:</strong> Auto-managed registration caps and instant attendee reports for HODs.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- Upcoming Highlights Preview -->
-<section class="container" style="padding-top: 3.5rem;">
-    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 2rem;">
-        <div>
-            <h2 style="font-size:1.85rem; font-weight:800; color:var(--secondary);">Upcoming Campus Highlights</h2>
-            <p style="color:var(--text-muted); font-size:0.95rem; margin-top:4px;">Real upcoming opportunities at Lokmanya Tilak College of Engineering</p>
-        </div>
-        <a href="<%= request.getContextPath() %>/dashboard" class="btn btn-outline btn-sm">View All Events &rarr;</a>
-    </div>
-
-    <div class="events-grid">
-        <% 
-            int count = 0;
-            for (Event e : upcomingEvents) { 
-                if (count++ >= 3) break;
-        %>
-            <div class="event-card">
-                <div class="event-card-media">
-                    <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/gdg_hacktoberfest.jpg'">
-                    <span class="event-type-badge"><%= e.getCategory() %></span>
-                </div>
-                <div class="event-card-body">
-                    <div class="event-dept-tag"><%= e.getDepartment() %> &bull; <%= e.getEligibleYear() %></div>
-                    <h3 class="event-card-title"><%= e.getTitle() %></h3>
-                    <p class="event-card-desc"><%= e.getShortDescription() %></p>
-
-                    <div class="event-meta-list">
-                        <div class="event-meta-item">
-                            <span>&#128197;</span>
-                            <span><%= e.getFormattedDate() %> &bull; <%= e.getStartTime() %></span>
-                        </div>
-                        <div class="event-meta-item">
-                            <span>&#128205;</span>
-                            <span><%= e.getVenue() %></span>
-                        </div>
-                        <div class="event-meta-item event-organizer-row">
-                            <img src="<%= request.getContextPath() %>/images/clubs/<%= e.getClubLogo() %>" alt="<%= e.getOrganizerName() %>" class="club-logo-mini" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
-                            <span><%= e.getOrganizerName() %></span>
-                        </div>
-                    </div>
-
-                    <div class="event-card-footer">
-                        <span class="seat-status-pill <%= e.isRegistrationOpen() ? "open" : "full" %>">
-                            <%= e.isRegistrationOpen() ? e.getRemainingSeats() + " seats left" : "Registration Closed" %>
-                        </span>
-                        <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" class="btn btn-primary btn-sm">View Details</a>
-                    </div>
-                </div>
-            </div>
-        <% } %>
-    </div>
-</section>
-
-<!-- College Institutional Adoption Callout -->
-<section style="background:var(--bg-surface); border-top:1px solid var(--border-color); padding: 4rem 1.5rem; text-align:center; margin-top: 3rem;">
-    <div style="max-width: 650px; margin: 0 auto;">
-        <h3 style="font-size:1.75rem; font-weight:800; color:var(--secondary); margin-bottom:0.75rem;">Ready to streamline campus events?</h3>
-        <p style="color:var(--text-muted); font-size:1rem; margin-bottom:1.75rem;">
-            Experience how easy it is for student bodies, faculty coordinators, and HODs to publish once and engage the entire student body seamlessly.
+        <!-- Clear, Realistic Value Proposition -->
+        <p class="hero-lead">
+            The official central notice board for <strong>Lokmanya Tilak College of Engineering</strong>. 
+            Discover hackathons, technical bootcamps, and cultural fests from AIMSA, CESA, GDG, E-Cell &amp; more&mdash;without digging through endless noisy WhatsApp groups.
         </p>
-        <div style="display:flex; justify-content:center; gap:1rem;">
-            <a href="<%= request.getContextPath() %>/dashboard" class="btn btn-primary btn-lg">Browse All Events</a>
-            <a href="<%= request.getContextPath() %>/register" class="btn btn-secondary btn-lg">Create Student Account</a>
+
+        <!-- Instant In-Hero Search Form (Maximum Utility for Students) -->
+        <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box">
+            <div class="hero-search-inner">
+                <span class="hero-search-icon">&#128269;</span>
+                <input type="text" name="search" class="hero-search-input" 
+                       placeholder="Search hackathons, bootcamps, CESA, GDG, DSA..." 
+                       autocomplete="off">
+                <button type="submit" class="hero-search-submit">Search Events</button>
+            </div>
+        </form>
+
+        <!-- Action CTAs -->
+        <div class="hero-action-buttons">
+            <a href="<%= cp %>/dashboard" class="btn-hero-primary">
+                Explore All Events <span>&rarr;</span>
+            </a>
+            <a href="<%= cp %>/clubs.jsp" class="btn-hero-secondary">
+                <span>&#127891;</span> Campus Clubs Guide (10)
+            </a>
+        </div>
+
+        <!-- Trust & Social Proof Metrics Strip -->
+        <div class="hero-metrics-strip">
+            <div class="metric-block">
+                <div class="metric-number">10+</div>
+                <div class="metric-label">Active Campus Clubs</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-block">
+                <div class="metric-number">100%</div>
+                <div class="metric-label">Free For Students</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-block">
+                <div class="metric-number">1-Click</div>
+                <div class="metric-label">Instant Pass Roster</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-block">
+                <div class="metric-number">Official</div>
+                <div class="metric-label">Autonomous Board</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==============================================
+     2. Campus Clubs & Student Bodies Strip (High Touch)
+     ============================================== -->
+<section class="clubs-strip-section">
+    <div class="section-container">
+        <div class="section-title-bar">
+            <div>
+                <span class="sub-header-pill">CAMPUS BODIES</span>
+                <h2 class="sub-header-title">Official LTCE Student Chapters &amp; Clubs</h2>
+            </div>
+            <a href="<%= cp %>/clubs.jsp" class="view-all-link">
+                Compare All Clubs &amp; "Kisme Jaana Chahiye" Guide &rarr;
+            </a>
+        </div>
+
+        <!-- Touch-Friendly Club Cards Grid / Reel -->
+        <div class="clubs-reel">
+            <!-- 1. AIMSA -->
+            <a href="<%= cp %>/dashboard?search=AIMSA" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/aimsa.png" alt="AIMSA" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">AIMSA</span>
+                    <span class="club-reel-tag dept">CSE (AI &amp; ML)</span>
+                    <span class="club-reel-desc">AI Hackathons &amp; Models</span>
+                </div>
+            </a>
+
+            <!-- 2. CESA -->
+            <a href="<%= cp %>/dashboard?search=CESA" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">CESA</span>
+                    <span class="club-reel-tag dept">Computer Engg</span>
+                    <span class="club-reel-desc">CodeSprint &amp; Dev</span>
+                </div>
+            </a>
+
+            <!-- 3. GDG -->
+            <a href="<%= cp %>/dashboard?search=GDG" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">GDG on Campus</span>
+                    <span class="club-reel-tag open">Open For All</span>
+                    <span class="club-reel-desc">Google Tech &amp; GSoC</span>
+                </div>
+            </a>
+
+            <!-- 4. GFG -->
+            <a href="<%= cp %>/dashboard?search=GFG" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/gfg.svg" alt="GFG" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">GFG Chapter</span>
+                    <span class="club-reel-tag open">Open For All</span>
+                    <span class="club-reel-desc">DSA &amp; Placement Prep</span>
+                </div>
+            </a>
+
+            <!-- 5. E-CELL -->
+            <a href="<%= cp %>/dashboard?search=E-CELL" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/ecell.png" alt="E-CELL" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">E-CELL LTCE</span>
+                    <span class="club-reel-tag open">Open For All</span>
+                    <span class="club-reel-desc">IIT Bombay E-Summit</span>
+                </div>
+            </a>
+
+            <!-- 6. Technical Vidya -->
+            <a href="<%= cp %>/dashboard?search=Technical+Vidya" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/technical_vidya.png" alt="Technical Vidya" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">Technical Vidya</span>
+                    <span class="club-reel-tag open">Open For All</span>
+                    <span class="club-reel-desc">Startup Incubator &amp; Talks</span>
+                </div>
+            </a>
+
+            <!-- 7. The English Club -->
+            <a href="<%= cp %>/dashboard?search=English" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/english_club.png" alt="The English Club" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">The English Club</span>
+                    <span class="club-reel-tag open">Open For All</span>
+                    <span class="club-reel-desc">Debates &amp; Public Speaking</span>
+                </div>
+            </a>
+
+            <!-- 8. DSSA -->
+            <a href="<%= cp %>/dashboard?search=Data+Science" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/dssa.svg" alt="DSSA" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">DSSA</span>
+                    <span class="club-reel-tag dept">Data Science Dept</span>
+                    <span class="club-reel-desc">Analytics &amp; Big Data</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     3. Happening Soon: Live Events Grid
+     ============================================== -->
+<section class="live-events-section">
+    <div class="section-container">
+        <div class="section-title-bar">
+            <div>
+                <span class="sub-header-pill">HAPPENING SOON</span>
+                <h2 class="sub-header-title">Upcoming Campus Opportunities</h2>
+            </div>
+            <a href="<%= cp %>/dashboard" class="btn btn-clean-ghost btn-sm">
+                View All Events Directory &rarr;
+            </a>
+        </div>
+
+        <div class="events-cards-grid">
+            <% if (upcomingEvents != null && !upcomingEvents.isEmpty()) { %>
+                <% int count = 0;
+                   for (Event ev : upcomingEvents) { 
+                       if (count++ >= 4) break; // Display top 4 on landing
+                %>
+                    <div class="event-modern-card">
+                        <!-- Card Banner / Image -->
+                        <div class="card-media-wrap">
+                            <img src="<%= cp %>/images/<%= ev.getImage() %>" alt="<%= ev.getTitle() %>" 
+                                 class="card-event-img" onerror="this.src='<%= cp %>/images/gdg_hacktoberfest.jpg'">
+                            <span class="card-category-badge <%= ev.getCategory().toLowerCase() %>">
+                                <%= ev.getCategory() %>
+                            </span>
+                            <div class="card-date-stamp">
+                                <span class="date-month"><%= ev.getEventDate() != null ? ev.getEventDate().toString().substring(5, 7) : "UP" %></span>
+                                <span class="date-day"><%= ev.getEventDate() != null ? ev.getEventDate().toString().substring(8) : "--" %></span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="card-details-wrap">
+                            <!-- Organizer Pill with Club Logo -->
+                            <div class="card-club-author">
+                                <img src="<%= cp %>/images/clubs/<%= ev.getClubLogo() %>" alt="<%= ev.getOrganizerName() %>" 
+                                     class="card-club-mini-logo" onerror="this.src='<%= cp %>/images/campusconnect-mark.svg'">
+                                <span class="card-club-name"><%= ev.getOrganizerName() %></span>
+                            </div>
+
+                            <h3 class="card-event-title">
+                                <a href="<%= cp %>/event-details?id=<%= ev.getId() %>"><%= ev.getTitle() %></a>
+                            </h3>
+
+                            <p class="card-event-snippet"><%= ev.getShortDescription() %></p>
+
+                            <!-- Meta Details (Venue & Time) -->
+                            <div class="card-meta-list">
+                                <span class="card-meta-pill">&#128205; <%= ev.getVenue() %></span>
+                                <span class="card-meta-pill">&#128337; <%= ev.getStartTime() %></span>
+                            </div>
+
+                            <!-- Footer Actions -->
+                            <div class="card-footer-actions">
+                                <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-card-register">
+                                    View &amp; Register &rarr;
+                                </a>
+                                <% if (auth != null) { %>
+                                    <button type="button" class="btn-card-save btn-save-toggle <%= ev.isUserSaved() ? "saved" : "" %>" 
+                                            data-event-id="<%= ev.getId() %>" title="Save Event">
+                                        <span class="save-icon"><%= ev.isUserSaved() ? "&#9829;" : "&#9825;" %></span>
+                                    </button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <div class="empty-state-box">
+                    <p>No upcoming events currently scheduled. Check back soon!</p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     4. The WhatsApp Problem vs CampusConnect Solution
+     ============================================== -->
+<section class="reality-comparison-section">
+    <div class="section-container">
+        <div class="text-center" style="max-width: 680px; margin: 0 auto 2.5rem;">
+            <span class="sub-header-pill">WHY WE BUILT THIS</span>
+            <h2 class="sub-header-title">The College Event Problem We Solved</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; margin-top: 0.5rem;">
+                WhatsApp is built for personal messaging&mdash;not managing 4,000 engineering students across 6 departments.
+            </p>
+        </div>
+
+        <div class="comparison-dual-cards">
+            <!-- Left: The Chaotic Reality -->
+            <div class="comparison-card reality-card">
+                <div class="comparison-head">
+                    <span class="status-indicator bad">&#10006;</span>
+                    <div>
+                        <h3 class="comparison-title">The WhatsApp Chaos</h3>
+                        <span class="comparison-sub">How college announcements were managed</span>
+                    </div>
+                </div>
+                <ul class="comparison-points">
+                    <li><span>&#10060;</span> 15+ WhatsApp groups (class, dept, club, batch, electives)</li>
+                    <li><span>&#10060;</span> Crucial event posters get buried inside 200 daily chatter messages</li>
+                    <li><span>&#10060;</span> Organizers waste hours repeatedly forwarding identical texts</li>
+                    <li><span>&#10060;</span> Duplicate Google Form registrations, expired links, and zero attendance tracking</li>
+                    <li><span>&#10060;</span> Cross-department students miss out entirely because they aren't in the group</li>
+                </ul>
+            </div>
+
+            <!-- Right: CampusConnect Solution -->
+            <div class="comparison-card solution-card">
+                <div class="comparison-head">
+                    <span class="status-indicator good">&#10004;</span>
+                    <div>
+                        <h3 class="comparison-title">The CampusConnect Way</h3>
+                        <span class="comparison-sub">A verified, centralized institution portal</span>
+                    </div>
+                </div>
+                <ul class="comparison-points">
+                    <li><span>&#9989;</span> <strong>Post Once, Reach Everyone:</strong> Clubs publish once and reach the whole college</li>
+                    <li><span>&#9989;</span> <strong>1-Click Student Registration:</strong> Zero duplicate entries, instant digital passes</li>
+                    <li><span>&#9989;</span> <strong>Filter by Branch &amp; Year:</strong> Find relevant hackathons without chat clutter</li>
+                    <li><span>&#9989;</span> <strong>Single Source of Truth:</strong> Always see confirmed venue, time, rules &amp; deadlines</li>
+                    <li><span>&#9989;</span> <strong>Seamless Sharing:</strong> Generate clean WhatsApp links that lead right to the event pass</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     5. How It Works Workflow (Simple 3 Steps)
+     ============================================== -->
+<section class="how-it-works-section" id="how-it-works">
+    <div class="section-container">
+        <div class="text-center" style="max-width: 600px; margin: 0 auto 2.5rem;">
+            <span class="sub-header-pill">SIMPLE WORKFLOW</span>
+            <h2 class="sub-header-title">How CampusConnect Works</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem;">Designed for minimal friction for both organizers and students.</p>
+        </div>
+
+        <div class="workflow-three-grid">
+            <div class="workflow-card">
+                <div class="workflow-num">01</div>
+                <h3>Organizer Posts Once</h3>
+                <p>Clubs or faculty fill a clean form with dates, venue, eligibility rules, and registration deadlines. No spamming chat groups.</p>
+            </div>
+            <div class="workflow-card">
+                <div class="workflow-num">02</div>
+                <h3>Students Discover Centrally</h3>
+                <p>Browse events filtered by department (AI/ML, Computer, Data Science) or open-for-all clubs (GDG, GFG, E-Cell).</p>
+            </div>
+            <div class="workflow-card">
+                <div class="workflow-num">03</div>
+                <h3>Instant Registration &amp; Pass</h3>
+                <p>One click to register. Students get confirmed access under "My Registrations", and organizers download clean participant rosters.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================
+     6. Institutional Call to Action
+     ============================================== -->
+<section class="banner-cta-section">
+    <div class="banner-cta-inner">
+        <h2>Ready to Experience Seamless Campus Life?</h2>
+        <p>Join fellow students and organizers at Lokmanya Tilak College of Engineering.</p>
+        <div class="banner-cta-actions">
+            <a href="<%= cp %>/dashboard" class="btn-hero-primary">Explore All Events</a>
+            <a href="<%= cp %>/register" class="btn-hero-secondary">Create Student Account</a>
         </div>
     </div>
 </section>
