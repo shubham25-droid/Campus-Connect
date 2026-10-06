@@ -20,6 +20,16 @@
         </p>
     </div>
 
+    <!-- Visual Clubs Constellation Showcase -->
+    <div style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2rem 1.5rem; margin-bottom: 2.5rem; text-align: center; box-shadow: 0 4px 16px rgba(8, 44, 80, 0.04);">
+        <div style="max-width: 620px; margin: 0 auto 1.5rem;">
+            <span class="role-tag" style="background:#dbeafe; color:#1e40af; font-size:0.75rem; font-weight:800;">LTCE CENTRALIZED ECOSYSTEM</span>
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-navy); margin-top: 8px;">One College &bull; All Student Chapters Connected</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Every departmental student body and open technical chapter operates under the autonomous governance of Lokmanya Tilak College of Engineering.</p>
+        </div>
+        <img src="<%= cp %>/images/campusconnect_hub_web.png" alt="LTCE Campus Connect Clubs Network Hub" style="max-width: 520px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 8px 24px rgba(8, 44, 80, 0.08));">
+    </div>
+
     <!-- Quick Navigation / Filter Tabs -->
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
         <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs &amp; Chapters</button>

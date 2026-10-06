@@ -58,7 +58,7 @@
                 </a>
                 <div class="brand-divider"></div>
                 <a href="<%= cp %>/" class="brand-logo-link" title="CampusConnect Home">
-                    <img src="<%= cp %>/images/campusconnect-mark.svg" alt="CampusConnect Logo" class="brand-mark-img">
+                    <img src="<%= cp %>/images/campusconnect_hub_mark.png" alt="CampusConnect Logo" class="brand-mark-img">
                     <div class="brand-text-group">
                         <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
                         <span class="brand-tagline">LTCE OPPORTUNITY BOARD</span>
@@ -120,7 +120,7 @@
         <div class="mobile-drawer" id="mobileNavDrawer">
             <div class="mobile-drawer-header">
                 <div class="mobile-drawer-brand">
-                    <img src="<%= cp %>/images/campusconnect-mark.svg" alt="CampusConnect" style="height:28px; width:28px;">
+                    <img src="<%= cp %>/images/campusconnect_hub_mark.png" alt="CampusConnect" style="height:28px; width:28px; border-radius:50%;">
                     <span style="font-weight:800; font-size:1.15rem; color:var(--ltce-blue-dark);">Campus<span style="color:var(--ltce-gold);">Connect</span></span>
                 </div>
                 <button type="button" class="btn-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
