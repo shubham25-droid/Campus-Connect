@@ -190,7 +190,7 @@
                 <span>The English Club</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('Data Science')">
-                <img src="<%= request.getContextPath() %>/images/clubs/dssa.svg" alt="DSSA">
+                <img src="<%= request.getContextPath() %>/images/clubs/dssa.png" alt="DSSA">
                 <span>DSSA (Data Science)</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('IIC')">

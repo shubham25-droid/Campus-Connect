@@ -1,61 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
-    <!-- LTCE Royal Blue Gradient -->
-    <linearGradient id="ltceBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a2d52" />
-      <stop offset="50%" stop-color="#0d4379" />
-      <stop offset="100%" stop-color="#1b659f" />
+    <!-- Royal Sapphire Gradient (Campus / Academics / Trust) -->
+    <linearGradient id="ccSapphire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082c50" />
+      <stop offset="60%" stop-color="#0d4379" />
+      <stop offset="100%" stop-color="#1e6bb8" />
     </linearGradient>
 
-    <!-- LTCE Gold / Saffron Gradient -->
-    <linearGradient id="ltceGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff9600" />
+    <!-- Golden Amber Gradient (Connect / Energy / Opportunity) -->
+    <linearGradient id="ccAmber" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="50%" stop-color="#ff9600" />
       <stop offset="100%" stop-color="#fbbf24" />
     </linearGradient>
 
-    <!-- Cyan Pulse Gradient -->
-    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#0284c7" />
-    </linearGradient>
-
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.25" />
+    <!-- Ambient Shadow for Modern Depth -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#082c50" flood-opacity="0.18" />
     </filter>
   </defs>
 
-  <!-- Background Squircle / Shield -->
-  <rect x="4" y="4" width="112" height="112" rx="26" fill="url(#ltceBlueGrad)" stroke="#3c7cae" stroke-width="2.5" filter="url(#glow)"/>
+  <!-- Background App Squircle (Clean Minimal Canvas) -->
+  <rect x="2" y="2" width="96" height="96" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#softGlow)"/>
 
-  <!-- Subtle Institutional Geo Grid Pattern -->
-  <circle cx="60" cy="60" r="44" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.5" stroke-dasharray="4 4" />
-  <circle cx="60" cy="60" r="32" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.5" />
+  <!-- Geometric Infinity Connection Motif:
+       Loop 1 (Campus - Left Loop in Royal Sapphire) -->
+  <path d="M 50 32
+           C 36 32, 22 40, 22 52
+           C 22 64, 34 70, 48 64
+           C 54 61, 58 56, 62 50
+           C 58 44, 54 39, 50 32 Z"
+        fill="url(#ccSapphire)" />
 
-  <!-- Outer Interlocking 'C' (Campus) in Cyan/White -->
-  <path d="M 78 34 C 44 26 24 45 26 68 C 28 85 45 96 74 92" 
-        fill="none" 
-        stroke="#ffffff" 
-        stroke-width="7" 
-        stroke-linecap="round" />
+  <!-- Loop 2 (Connect - Right Loop in Golden Amber) -->
+  <path d="M 50 68
+           C 64 68, 78 60, 78 48
+           C 78 36, 66 30, 52 36
+           C 46 39, 42 44, 38 50
+           C 42 56, 46 61, 50 68 Z"
+        fill="url(#ccAmber)" />
 
-  <!-- Inner Interlocking 'C' (Connect) in LTCE Amber/Gold -->
-  <path d="M 86 46 C 62 38 42 50 44 67 C 46 80 62 86 86 78" 
-        fill="none" 
-        stroke="url(#ltceGoldGrad)" 
-        stroke-width="6" 
-        stroke-linecap="round" />
+  <!-- Dynamic Center Overlap / Intersection Node -->
+  <path d="M 50 38
+           C 56 43, 56 57, 50 62
+           C 44 57, 44 43, 50 38 Z"
+        fill="#ffffff"
+        opacity="0.95" />
 
-  <!-- Academic Graduation Cap Emblem in Center -->
-  <polygon points="60,42 78,49 60,56 42,49" fill="url(#ltceGoldGrad)" />
-  <path d="M 48 53 L 48 61 C 48 65 72 65 72 61 L 72 53" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
-  <path d="M 76 50 L 82 56 L 82 64" fill="none" stroke="url(#ltceGoldGrad)" stroke-width="2" stroke-linecap="round" />
-
-  <!-- Digital Network Orbit Nodes (Opportunity Hub) -->
-  <circle cx="78" cy="34" r="5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" />
-  <circle cx="74" cy="92" r="5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" />
-  <circle cx="86" cy="46" r="4.5" fill="#ff9600" stroke="#ffffff" stroke-width="1.5" />
-  <circle cx="86" cy="78" r="4.5" fill="#ff9600" stroke="#ffffff" stroke-width="1.5" />
-
-  <!-- Center Opportunity Core Spark -->
-  <circle cx="60" cy="60" r="3.5" fill="#ffffff" />
+  <!-- Core Opportunity Spark (The Beacon at the Center of Connection) -->
+  <path d="M 50 43
+           Q 50 50, 57 50
+           Q 50 50, 50 57
+           Q 50 50, 43 50
+           Q 50 50, 50 43 Z"
+        fill="url(#ccAmber)" />
 </svg>

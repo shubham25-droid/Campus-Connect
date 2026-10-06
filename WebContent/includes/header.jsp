@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=2.4">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=2.5">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -62,6 +62,7 @@
                 </a>
                 <div class="brand-divider"></div>
                 <a href="<%= cp %>/" class="brand-logo-link" title="CampusConnect Home">
+                    <img src="<%= cp %>/images/campusconnect-mark.svg" alt="CampusConnect Logo" class="brand-mark-img">
                     <div class="brand-text-group">
                         <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
                         <span class="brand-tagline">LTCE OPPORTUNITY BOARD</span>

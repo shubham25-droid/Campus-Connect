@@ -1,64 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90" width="380" height="90">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64">
   <defs>
-    <linearGradient id="markGradW" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e40af" />
-      <stop offset="60%" stop-color="#0284c7" />
-      <stop offset="100%" stop-color="#38bdf8" />
-    </linearGradient>
-
-    <linearGradient id="goldGradW" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff9600" />
-      <stop offset="100%" stop-color="#f59e0b" />
+    <!-- Golden Amber Gradient -->
+    <linearGradient id="whiteLogoAmber" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="50%" stop-color="#ff9600" />
+      <stop offset="100%" stop-color="#fbbf24" />
     </linearGradient>
   </defs>
 
-  <!-- Left Icon Mark -->
-  <g transform="translate(8, 8)">
-    <rect x="0" y="0" width="74" height="74" rx="18" fill="url(#markGradW)" stroke="#60a5fa" stroke-width="1.8"/>
-
-    <circle cx="37" cy="37" r="28" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="3 3"/>
+  <!-- Modern Startup Icon Mark (Left 48x48) -->
+  <g transform="translate(6, 8)">
+    <rect x="0" y="0" width="48" height="48" rx="14" fill="rgba(255, 255, 255, 0.12)" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.2" />
     
-    <path d="M 48 20 C 26 15 14 27 16 42 C 17 53 28 60 46 58" 
-          fill="none" 
-          stroke="#ffffff" 
-          stroke-width="4.5" 
-          stroke-linecap="round" />
+    <!-- Outer Loop (White) -->
+    <path d="M 24 14
+             C 16 14, 9 19, 9 26
+             C 9 33, 16 36, 23 33
+             C 26 31, 28 28, 30 25
+             C 28 22, 26 19, 24 14 Z"
+          fill="#ffffff" />
 
-    <path d="M 53 28 C 38 23 25 31 27 41 C 28 49 39 53 54 48" 
-          fill="none" 
-          stroke="url(#goldGradW)" 
-          stroke-width="3.8" 
-          stroke-linecap="round" />
+    <!-- Intersecting Loop (Golden Amber) -->
+    <path d="M 24 34
+             C 32 34, 39 29, 39 22
+             C 39 15, 32 12, 25 15
+             C 22 17, 20 20, 18 23
+             C 20 26, 22 29, 24 34 Z"
+          fill="url(#whiteLogoAmber)" />
 
-    <polygon points="37,25 48,30 37,35 26,30" fill="url(#goldGradW)" />
-    <path d="M 30 33 L 30 38 C 30 41 44 41 44 38 L 44 33" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Center Overlap Aperture -->
+    <path d="M 24 18
+             C 27 21, 27 27, 24 30
+             C 21 27, 21 21, 24 18 Z"
+          fill="#061c33"
+          opacity="0.9" />
 
-    <circle cx="48" cy="20" r="3.2" fill="#ffffff" />
-    <circle cx="46" cy="58" r="3.2" fill="#ffffff" />
-    <circle cx="53" cy="28" r="2.8" fill="#ff9600" />
-    <circle cx="54" cy="48" r="2.8" fill="#ff9600" />
-    <circle cx="37" cy="37" r="2.2" fill="#ffffff" />
+    <!-- Opportunity Spark Beacon -->
+    <path d="M 24 21
+             Q 24 24, 27 24
+             Q 24 24, 24 27
+             Q 24 24, 21 24
+             Q 24 24, 24 21 Z"
+          fill="url(#whiteLogoAmber)" />
   </g>
 
-  <!-- Typography Brand Block -->
-  <g transform="translate(96, 14)">
-    <text x="0" y="32" font-family="'Inter', 'Roboto', 'Arial', sans-serif" font-size="28" font-weight="900" letter-spacing="-0.5" fill="#ffffff">
-      CAMPUS<tspan fill="#ff9600">CONNECT</tspan>
+  <!-- Typography Wordmark (Right) -->
+  <g transform="translate(66, 12)">
+    <!-- Main Brand Title -->
+    <text x="0" y="26" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="900" letter-spacing="-0.8" fill="#ffffff">
+      Campus<tspan fill="#ff9600">Connect</tspan>
     </text>
 
-    <text x="0" y="52" font-family="'Inter', 'Roboto', 'Arial', sans-serif" font-size="10.5" font-weight="700" letter-spacing="1" fill="#cbd5e1" text-transform="uppercase">
-      LOKMANYA TILAK COLLEGE OF ENGINEERING
+    <!-- Opportunity Spark on 't' -->
+    <circle cx="169" cy="11" r="2.5" fill="#ff9600" />
+
+    <!-- Institutional Subtitle -->
+    <text x="1" y="40" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" font-weight="800" letter-spacing="1.5" fill="#94a3b8">
+      LTCE CAMPUS OPPORTUNITY HUB
     </text>
-
-    <g transform="translate(0, 58)">
-      <rect x="0" y="4" width="76" height="15" rx="3" fill="rgba(255,255,255,0.15)" />
-      <text x="6" y="15" font-family="'Inter', 'Roboto', sans-serif" font-size="8.5" font-weight="700" fill="#e0f2fe">AUTONOMOUS</text>
-
-      <rect x="82" y="4" width="84" height="15" rx="3" fill="rgba(251,191,36,0.2)" />
-      <text x="88" y="15" font-family="'Inter', 'Roboto', sans-serif" font-size="8.5" font-weight="700" fill="#fde68a">NAAC 'A' GRADE</text>
-
-      <rect x="172" y="4" width="82" height="15" rx="3" fill="rgba(52,211,153,0.2)" />
-      <text x="178" y="15" font-family="'Inter', 'Roboto', sans-serif" font-size="8.5" font-weight="700" fill="#a7f3d0">NBA ACCREDITED</text>
-    </g>
   </g>
 </svg>

@@ -273,7 +273,7 @@
 
             <!-- 8. DSSA -->
             <a href="<%= cp %>/dashboard?search=Data+Science" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/dssa.svg" alt="DSSA" class="club-reel-img">
+                <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA" class="club-reel-img">
                 <div class="club-reel-info">
                     <span class="club-reel-name">DSSA</span>
                     <span class="club-reel-tag dept">Data Science Dept</span>

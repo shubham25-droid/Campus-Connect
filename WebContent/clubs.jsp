@@ -238,7 +238,7 @@
         <!-- 8. DSSA -->
         <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #0ea5e9; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
-                <img src="<%= cp %>/images/clubs/dssa.svg" alt="DSSA Logo" style="width: 72px; height: 72px; border-radius: 16px; object-fit: contain; border: 1px solid #e2e8f0; background: #0f172a; padding: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                 <div>
                     <span class="role-tag" style="background:#e0f2fe; color:#0369a1; border:1px solid #bae6fd; font-size:0.7rem;">CSE (Data Science) Department Only</span>
                     <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--ltce-blue-dark); margin-top: 4px;">DSSA LTCE</h3>

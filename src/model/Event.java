@@ -166,7 +166,7 @@ public class Event {
         if (org.contains("GDG")) return "gdg.svg";
         if (org.contains("GFG") || org.contains("GEEKS")) return "gfg.svg";
         if (org.contains("IIC")) return "iic.svg";
-        if (org.contains("DSS") || org.contains("DATA SCIENCE")) return "dssa.svg";
+        if (org.contains("DSS") || org.contains("DATA SCIENCE")) return "dssa.png";
         if (org.contains("CSI")) return "csi.svg";
         if (org.contains("IEEE")) return "ieee.svg";
         if (org.contains("ROTARACT")) return "rotaract.svg";
