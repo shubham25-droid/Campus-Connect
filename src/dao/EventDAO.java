@@ -118,8 +118,8 @@ public class EventDAO {
         } else if ("deadline".equalsIgnoreCase(sort)) {
             sql.append("ORDER BY e.registration_deadline ASC, e.event_date ASC");
         } else {
-            // Default: Upcoming first
-            sql.append("ORDER BY e.event_date ASC, e.start_time ASC");
+            // Default: Upcoming first (Today and future events first, past events at the end)
+            sql.append("ORDER BY CASE WHEN e.event_date >= CURRENT_DATE THEN 0 ELSE 1 END ASC, e.event_date ASC, e.start_time ASC");
         }
 
         try (Connection conn = DBConnection.getConnection();

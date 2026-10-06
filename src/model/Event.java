@@ -3,6 +3,8 @@ package model;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Event Model representing a campus event, workshop, seminar, or competition.
@@ -120,15 +122,81 @@ public class Event {
         return Math.max(remaining, 0);
     }
 
+    public boolean isPastEvent() {
+        if ("Completed".equalsIgnoreCase(status)) {
+            return true;
+        }
+        if (eventDate == null) {
+            return false;
+        }
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
+        Calendar evt = Calendar.getInstance();
+        evt.setTime(eventDate);
+        evt.set(Calendar.HOUR_OF_DAY, 0);
+        evt.set(Calendar.MINUTE, 0);
+        evt.set(Calendar.SECOND, 0);
+        evt.set(Calendar.MILLISECOND, 0);
+
+        return evt.before(today);
+    }
+
+    public boolean isToday() {
+        if (eventDate == null) return false;
+        Calendar today = Calendar.getInstance();
+        Calendar evt = Calendar.getInstance();
+        evt.setTime(eventDate);
+        return today.get(Calendar.YEAR) == evt.get(Calendar.YEAR) &&
+               today.get(Calendar.DAY_OF_YEAR) == evt.get(Calendar.DAY_OF_YEAR);
+    }
+
+    public String getShortMonth() {
+        if (eventDate == null) return "OCT";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM", Locale.ENGLISH);
+            return sdf.format(eventDate).toUpperCase();
+        } catch (Exception e) {
+            return "OCT";
+        }
+    }
+
+    public String getDayString() {
+        if (eventDate == null) return "--";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd");
+            return sdf.format(eventDate);
+        } catch (Exception e) {
+            String s = eventDate.toString();
+            return s.length() >= 10 ? s.substring(8) : "--";
+        }
+    }
+
     public boolean isRegistrationOpen() {
         if ("Cancelled".equalsIgnoreCase(status) || "Completed".equalsIgnoreCase(status)) {
             return false;
         }
+        if (isPastEvent()) {
+            return false;
+        }
         if (registrationDeadline != null) {
-            long now = System.currentTimeMillis();
-            // Deadline end of day
-            long deadlineMillis = registrationDeadline.getTime() + (24 * 60 * 60 * 1000);
-            if (now > deadlineMillis) {
+            Calendar today = Calendar.getInstance();
+            today.set(Calendar.HOUR_OF_DAY, 0);
+            today.set(Calendar.MINUTE, 0);
+            today.set(Calendar.SECOND, 0);
+            today.set(Calendar.MILLISECOND, 0);
+
+            Calendar dl = Calendar.getInstance();
+            dl.setTime(registrationDeadline);
+            dl.set(Calendar.HOUR_OF_DAY, 0);
+            dl.set(Calendar.MINUTE, 0);
+            dl.set(Calendar.SECOND, 0);
+            dl.set(Calendar.MILLISECOND, 0);
+
+            if (dl.before(today)) {
                 return false;
             }
         }

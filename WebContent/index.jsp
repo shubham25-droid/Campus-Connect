@@ -11,7 +11,18 @@
     
     // Fetch upcoming published events for the live preview
     List<Event> upcomingEvents = eventDAO.getDiscoveredEvents("", "All", "All", "All", "upcoming", authId);
-    Event featuredLead = (upcomingEvents != null && !upcomingEvents.isEmpty()) ? upcomingEvents.get(0) : null;
+    Event featuredLead = null;
+    if (upcomingEvents != null && !upcomingEvents.isEmpty()) {
+        for (Event e : upcomingEvents) {
+            if (!e.isPastEvent()) {
+                featuredLead = e;
+                break;
+            }
+        }
+        if (featuredLead == null) {
+            featuredLead = upcomingEvents.get(0);
+        }
+    }
     String cp = request.getContextPath();
 %>
 <jsp:include page="includes/header.jsp" />
@@ -93,8 +104,8 @@
                 <% if (featuredLead != null) { %>
                     <div class="hero-ticket-card">
                         <div class="ticket-top-tag">
-                            <span class="ticket-live-dot"></span>
-                            <span>FEATURED CAMPUS EVENT &bull; REGISTRATION OPEN</span>
+                            <span class="ticket-live-dot <%= featuredLead.isPastEvent() ? "concluded" : "" %>"></span>
+                            <span><%= featuredLead.isPastEvent() ? "EVENT CONCLUDED" : "FEATURED CAMPUS EVENT &bull; REGISTRATION OPEN" %></span>
                         </div>
 
                         <div class="ticket-banner-wrap">
@@ -313,9 +324,17 @@
                             <span class="card-category-badge <%= ev.getCategory().toLowerCase() %>">
                                 <%= ev.getCategory() %>
                             </span>
-                            <div class="card-date-stamp">
-                                <span class="date-month"><%= ev.getEventDate() != null ? ev.getEventDate().toString().substring(5, 7) : "UP" %></span>
-                                <span class="date-day"><%= ev.getEventDate() != null ? ev.getEventDate().toString().substring(8) : "--" %></span>
+                            <% if (ev.isPastEvent()) { %>
+                                <span class="card-concluded-badge">CONCLUDED</span>
+                            <% } %>
+                            <div class="card-date-stamp <%= ev.isPastEvent() ? "is-concluded" : (ev.isToday() ? "is-today" : "") %>">
+                                <span class="date-month"><%= ev.getShortMonth() %></span>
+                                <span class="date-day"><%= ev.getDayString() %></span>
+                                <% if (ev.isPastEvent()) { %>
+                                    <span class="date-tag-status ended">ENDED</span>
+                                <% } else if (ev.isToday()) { %>
+                                    <span class="date-tag-status today">TODAY</span>
+                                <% } %>
                             </div>
                         </div>
 
@@ -342,9 +361,15 @@
 
                             <!-- Footer Actions -->
                             <div class="card-footer-actions">
-                                <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-card-register">
-                                    View &amp; Register &rarr;
-                                </a>
+                                <% if (ev.isPastEvent()) { %>
+                                    <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-card-register concluded">
+                                        Event Concluded &bull; Details &rarr;
+                                    </a>
+                                <% } else { %>
+                                    <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-card-register">
+                                        View &amp; Register &rarr;
+                                    </a>
+                                <% } %>
                                 <% if (auth != null) { %>
                                     <button type="button" class="btn-card-save btn-save-toggle <%= ev.isUserSaved() ? "saved" : "" %>" 
                                             data-event-id="<%= ev.getId() %>" title="Save Event">

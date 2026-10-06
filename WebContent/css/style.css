@@ -1654,18 +1654,22 @@ button {
     left: 12px;
     background: #ffffff;
     border-radius: var(--radius-sm);
-    padding: 5px 10px;
+    padding: 6px 10px;
     text-align: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-    min-width: 48px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 52px;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .date-month {
     display: block;
-    font-size: 0.7rem;
+    font-size: 0.725rem;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.8px;
     color: var(--ltce-blue);
+    line-height: 1.1;
 }
 
 .date-day {
@@ -1673,7 +1677,91 @@ button {
     font-size: 1.25rem;
     font-weight: 900;
     color: var(--text-primary);
-    line-height: 1;
+    line-height: 1.1;
+    margin-top: 1px;
+}
+
+.date-tag-status {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+    line-height: 1.2;
+}
+
+.date-tag-status.today {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.date-tag-status.ended {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.card-date-stamp.is-concluded {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    opacity: 0.9;
+}
+
+.card-date-stamp.is-concluded .date-month {
+    color: #64748b;
+}
+
+.card-date-stamp.is-concluded .date-day {
+    color: #334155;
+}
+
+.card-date-stamp.is-today {
+    border: 2px solid #10b981;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.card-date-stamp.is-today .date-month {
+    color: #059669;
+}
+
+.card-concluded-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #334155;
+    color: #ffffff;
+    font-size: 0.685rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.6px;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.btn-card-register.concluded {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.btn-card-register.concluded:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.seat-status-pill.concluded {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.featured-badge.concluded {
+    background: #f1f5f9;
+    color: #475569;
+    border-color: #cbd5e1;
 }
 
 .card-details-wrap {
@@ -2131,19 +2219,27 @@ button {
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
+    font-size: 1.1rem;
+    pointer-events: none;
+    z-index: 3;
 }
 
-.search-input {
+.search-input-wrapper .search-input,
+.search-box-row .search-input,
+input.search-input,
+.form-control.search-input {
     width: 100%;
-    padding: 10px 14px 10px 40px;
-    border: 1px solid var(--border-color);
+    padding: 11px 16px 11px 44px !important;
+    border: 1.5px solid var(--border-color);
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
     outline: none;
     background: #ffffff;
 }
 
-.search-input:focus {
+.search-input-wrapper .search-input:focus,
+.search-box-row .search-input:focus,
+.form-control.search-input:focus {
     border-color: var(--ltce-blue);
     box-shadow: 0 0 0 3px rgba(13, 67, 121, 0.1);
 }

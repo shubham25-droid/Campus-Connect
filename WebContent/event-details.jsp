@@ -61,6 +61,16 @@
                 <span class="cat-pill" style="cursor:default;">Eligible: <%= event.getEligibleYear() %></span>
             </div>
 
+            <% if (event.isPastEvent()) { %>
+                <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius-sm); padding:1rem 1.25rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:1.5rem;">&#9888;</span>
+                    <div>
+                        <strong style="color:#b91c1c; font-size:0.95rem;">This event has concluded.</strong>
+                        <p style="margin:2px 0 0; font-size:0.85rem; color:#7f1d1d;">Concluded on <%= event.getFormattedDate() %>. New registrations are closed.</p>
+                    </div>
+                </div>
+            <% } %>
+
             <h1 class="details-title"><%= event.getTitle() %></h1>
 
             <!-- Quick Info Strip -->
@@ -133,6 +143,10 @@
                         <span class="seat-status-pill registered" style="font-size:0.9rem; padding:6px 12px; display:inline-block;">
                             &#10003; You Are Registered
                         </span>
+                    <% } else if (event.isPastEvent()) { %>
+                        <span class="seat-status-pill concluded" style="font-size:0.9rem; padding:6px 12px; display:inline-block; background:#f1f5f9; color:#64748b; border:1px solid #cbd5e1;">
+                            &#9679; Event Concluded
+                        </span>
                     <% } else if (event.isRegistrationOpen()) { %>
                         <span class="seat-status-pill open" style="font-size:0.9rem; padding:6px 12px; display:inline-block;">
                             &#10004; Open for Registration
@@ -153,24 +167,36 @@
 
             <!-- Action Buttons -->
             <% if (authUser == null) { %>
-                <a href="<%= request.getContextPath() %>/login?redirect=<%= request.getContextPath() %>/event-details?id=<%= event.getId() %>" class="btn btn-primary btn-full">
-                    Login to Register
-                </a>
-                <div style="font-size:0.775rem; color:var(--text-muted); text-align:center; margin-top:8px;">
-                    Student account required to secure a seat.
-                </div>
+                <% if (event.isPastEvent()) { %>
+                    <button type="button" class="btn btn-secondary btn-full btn-lg" disabled style="opacity:0.65; cursor:not-allowed;">
+                        Registration Closed (Event Ended)
+                    </button>
+                <% } else { %>
+                    <a href="<%= request.getContextPath() %>/login?redirect=<%= request.getContextPath() %>/event-details?id=<%= event.getId() %>" class="btn btn-primary btn-full">
+                        Login to Register
+                    </a>
+                    <div style="font-size:0.775rem; color:var(--text-muted); text-align:center; margin-top:8px;">
+                        Student account required to secure a seat.
+                    </div>
+                <% } %>
             <% } else if (event.isUserRegistered()) { %>
                 <div style="background:var(--success-bg); border:1px solid var(--success-border); border-radius:var(--radius-sm); padding:1rem; text-align:center; margin-bottom:1rem;">
                     <div style="color:var(--success); font-weight:700; font-size:0.95rem;">Seat Confirmed!</div>
                     <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Your pass is ready in My Registrations.</div>
                 </div>
 
-                <form action="<%= request.getContextPath() %>/cancel-registration" method="POST" onsubmit="return confirm('Are you sure you want to cancel your registration?');">
-                    <input type="hidden" name="eventId" value="<%= event.getId() %>">
-                    <button type="submit" class="btn btn-outline btn-full btn-sm" style="color:var(--danger); border-color:var(--danger-border);">
-                        Cancel Registration
-                    </button>
-                </form>
+                <% if (!event.isPastEvent()) { %>
+                    <form action="<%= request.getContextPath() %>/cancel-registration" method="POST" onsubmit="return confirm('Are you sure you want to cancel your registration?');">
+                        <input type="hidden" name="eventId" value="<%= event.getId() %>">
+                        <button type="submit" class="btn btn-outline btn-full btn-sm" style="color:var(--danger); border-color:var(--danger-border);">
+                            Cancel Registration
+                        </button>
+                    </form>
+                <% } %>
+            <% } else if (event.isPastEvent()) { %>
+                <button type="button" class="btn btn-secondary btn-full btn-lg" disabled style="opacity:0.65; cursor:not-allowed;">
+                    Registration Closed (Event Concluded)
+                </button>
             <% } else if (event.isRegistrationOpen()) { %>
                 <form action="<%= request.getContextPath() %>/register-event" method="POST">
                     <input type="hidden" name="eventId" value="<%= event.getId() %>">

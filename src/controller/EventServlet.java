@@ -43,13 +43,21 @@ public class EventServlet extends HttpServlet {
         // Retrieve filtered events
         List<Event> events = eventDAO.getDiscoveredEvents(search, category, department, year, sort, currentUserId);
 
-        // Featured event: pick the first one or specifically the GDG Hacktoberfest event
+        // Featured event: prioritize active upcoming events
         Event featuredEvent = null;
         if (!events.isEmpty()) {
             for (Event e : events) {
-                if (e.getTitle().contains("GDG") || e.getTitle().contains("Hacktoberfest")) {
+                if ((e.getTitle().contains("GDG") || e.getTitle().contains("Hacktoberfest")) && !e.isPastEvent()) {
                     featuredEvent = e;
                     break;
+                }
+            }
+            if (featuredEvent == null) {
+                for (Event e : events) {
+                    if (!e.isPastEvent()) {
+                        featuredEvent = e;
+                        break;
+                    }
                 }
             }
             if (featuredEvent == null) {

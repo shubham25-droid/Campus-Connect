@@ -48,7 +48,9 @@
     <% if (featured != null && (curSearch == null || curSearch.isEmpty())) { %>
         <div class="featured-card">
             <div class="featured-content">
-                <div class="featured-badge">&#9733; Featured Campus Opportunity</div>
+                <div class="featured-badge <%= featured.isPastEvent() ? "concluded" : "" %>">
+                    <%= featured.isPastEvent() ? "&#9679; Concluded Campus Event" : "&#9733; Featured Campus Opportunity" %>
+                </div>
                 <h2 class="featured-title"><%= featured.getTitle() %></h2>
                 
                 <div class="featured-meta">
@@ -62,8 +64,8 @@
                 </p>
 
                 <div class="featured-actions">
-                    <a href="<%= request.getContextPath() %>/event-details?id=<%= featured.getId() %>" class="btn btn-primary">
-                        View Event & Register &rarr;
+                    <a href="<%= request.getContextPath() %>/event-details?id=<%= featured.getId() %>" class="btn <%= featured.isPastEvent() ? "btn-secondary" : "btn-primary" %>">
+                        <%= featured.isPastEvent() ? "View Event Details (Ended) &rarr;" : "View Event & Register &rarr;" %>
                     </a>
                     <% if (authUser != null) { %>
                         <button type="button" class="btn btn-secondary btn-save-toggle <%= featured.isUserSaved() ? "saved" : "" %>" data-event-id="<%= featured.getId() %>">
@@ -219,6 +221,19 @@
                 <div class="event-card-media">
                     <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/gdg_hacktoberfest.jpg'">
                     <span class="event-type-badge"><%= e.getCategory() %></span>
+                    <% if (e.isPastEvent()) { %>
+                        <span class="card-concluded-badge">CONCLUDED</span>
+                    <% } %>
+
+                    <div class="card-date-stamp <%= e.isPastEvent() ? "is-concluded" : (e.isToday() ? "is-today" : "") %>">
+                        <span class="date-month"><%= e.getShortMonth() %></span>
+                        <span class="date-day"><%= e.getDayString() %></span>
+                        <% if (e.isPastEvent()) { %>
+                            <span class="date-tag-status ended">ENDED</span>
+                        <% } else if (e.isToday()) { %>
+                            <span class="date-tag-status today">TODAY</span>
+                        <% } %>
+                    </div>
 
                     <% if (authUser != null) { %>
                         <button type="button" class="save-btn-floating btn-save-toggle <%= e.isUserSaved() ? "saved" : "" %>" 
@@ -251,14 +266,16 @@
                     <div class="event-card-footer">
                         <% if (e.isUserRegistered()) { %>
                             <span class="seat-status-pill registered">&#10003; Registered</span>
+                        <% } else if (e.isPastEvent()) { %>
+                            <span class="seat-status-pill concluded">&#9679; Concluded</span>
                         <% } else if (e.isRegistrationOpen()) { %>
                             <span class="seat-status-pill open"><%= e.getRemainingSeats() %> seats left</span>
                         <% } else { %>
                             <span class="seat-status-pill full">Closed</span>
                         <% } %>
 
-                        <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" class="btn btn-primary btn-sm">
-                            View Details
+                        <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" class="btn <%= e.isPastEvent() ? "btn-secondary" : "btn-primary" %> btn-sm">
+                            <%= e.isPastEvent() ? "View Details (Ended)" : "View Details" %>
                         </a>
                     </div>
                 </div>
