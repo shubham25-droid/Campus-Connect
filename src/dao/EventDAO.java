@@ -80,7 +80,7 @@ public class EventDAO {
             sql.append(", (SELECT COUNT(*) FROM registrations r WHERE r.event_id = e.id AND r.user_id = ? AND r.status != 'CANCELLED') AS is_registered ");
             sql.append(", (SELECT COUNT(*) FROM saved_events s WHERE s.event_id = e.id AND s.user_id = ?) AS is_saved ");
         }
-        sql.append("FROM events e WHERE e.status = 'Published' ");
+        sql.append("FROM events e WHERE e.status IN ('Published', 'Completed') ");
 
         List<Object> params = new ArrayList<>();
         if (currentUserId != null) {

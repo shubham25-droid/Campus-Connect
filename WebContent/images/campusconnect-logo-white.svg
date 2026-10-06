@@ -1,61 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64">
   <defs>
-    <!-- Golden Amber Gradient -->
-    <linearGradient id="whiteLogoAmber" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ea580c" />
-      <stop offset="50%" stop-color="#ff9600" />
-      <stop offset="100%" stop-color="#fbbf24" />
+    <linearGradient id="whiteBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="whiteAmber" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="50%" stop-color="#ff9600"/>
+      <stop offset="100%" stop-color="#fde047"/>
     </linearGradient>
   </defs>
 
-  <!-- Modern Startup Icon Mark (Left 48x48) -->
+  <!-- Left Icon Mark (48x48) -->
   <g transform="translate(6, 8)">
-    <rect x="0" y="0" width="48" height="48" rx="14" fill="rgba(255, 255, 255, 0.12)" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.2" />
-    
-    <!-- Outer Loop (White) -->
-    <path d="M 24 14
-             C 16 14, 9 19, 9 26
-             C 9 33, 16 36, 23 33
-             C 26 31, 28 28, 30 25
-             C 28 22, 26 19, 24 14 Z"
-          fill="#ffffff" />
+    <rect x="0" y="0" width="48" height="48" rx="12" fill="#051c33" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1.2"/>
 
-    <!-- Intersecting Loop (Golden Amber) -->
-    <path d="M 24 34
-             C 32 34, 39 29, 39 22
-             C 39 15, 32 12, 25 15
-             C 22 17, 20 20, 18 23
-             C 20 26, 22 29, 24 34 Z"
-          fill="url(#whiteLogoAmber)" />
+    <!-- Left C -->
+    <path d="M 25 13
+             C 17 13 11 18 11 25
+             C 11 32 17 37 25 37"
+          fill="none"
+          stroke="url(#whiteBlue)"
+          stroke-width="5"
+          stroke-linecap="round"/>
 
-    <!-- Center Overlap Aperture -->
-    <path d="M 24 18
-             C 27 21, 27 27, 24 30
-             C 21 27, 21 21, 24 18 Z"
-          fill="#061c33"
-          opacity="0.9" />
+    <!-- Right C -->
+    <path d="M 23 37
+             C 31 37 37 32 37 25
+             C 37 18 31 13 23 13"
+          fill="none"
+          stroke="url(#whiteAmber)"
+          stroke-width="5"
+          stroke-linecap="round"/>
 
-    <!-- Opportunity Spark Beacon -->
-    <path d="M 24 21
-             Q 24 24, 27 24
-             Q 24 24, 24 27
-             Q 24 24, 21 24
-             Q 24 24, 24 21 Z"
-          fill="url(#whiteLogoAmber)" />
+    <!-- Spark -->
+    <path d="M 24 20 C 24 22.5 22.5 24 20 24 C 22.5 24 24 25.5 24 28 C 24 25.5 25.5 24 28 24 C 25.5 24 24 22.5 24 20 Z" fill="#ffffff"/>
+    <circle cx="24" cy="24" r="1.1" fill="#ff9600"/>
   </g>
 
-  <!-- Typography Wordmark (Right) -->
+  <!-- Typography Wordmark Right (White & Amber) -->
   <g transform="translate(66, 12)">
-    <!-- Main Brand Title -->
-    <text x="0" y="26" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="900" letter-spacing="-0.8" fill="#ffffff">
+    <text x="0" y="27" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="900" letter-spacing="-0.6" fill="#ffffff">
       Campus<tspan fill="#ff9600">Connect</tspan>
     </text>
-
-    <!-- Opportunity Spark on 't' -->
-    <circle cx="169" cy="11" r="2.5" fill="#ff9600" />
-
-    <!-- Institutional Subtitle -->
-    <text x="1" y="40" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" font-weight="800" letter-spacing="1.5" fill="#94a3b8">
+    <text x="1" y="42" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="800" letter-spacing="1.2" fill="#94a3b8">
       LTCE CAMPUS OPPORTUNITY HUB
     </text>
   </g>

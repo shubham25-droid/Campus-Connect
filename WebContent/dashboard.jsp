@@ -163,13 +163,17 @@
             <button type="button" class="club-badge-pill" onclick="filterByClub('')">
                 <span>All Organizers</span>
             </button>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('CESA')">
+                <img src="<%= request.getContextPath() %>/images/clubs/cesa.png" alt="CESA">
+                <span>CESA (Computer)</span>
+            </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('AIMSA')">
                 <img src="<%= request.getContextPath() %>/images/clubs/aimsa.png" alt="AIMSA">
                 <span>AIMSA (AI &amp; ML)</span>
             </button>
-            <button type="button" class="club-badge-pill" onclick="filterByClub('CESA')">
-                <img src="<%= request.getContextPath() %>/images/clubs/cesa.png" alt="CESA">
-                <span>CESA (Computer)</span>
+            <button type="button" class="club-badge-pill" onclick="filterByClub('Data Science')">
+                <img src="<%= request.getContextPath() %>/images/clubs/dssa.png" alt="DSSA">
+                <span>DSSA (Data Science)</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('GDG')">
                 <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
@@ -190,10 +194,6 @@
             <button type="button" class="club-badge-pill" onclick="filterByClub('English')">
                 <img src="<%= request.getContextPath() %>/images/clubs/english_club.png" alt="English Club">
                 <span>The English Club</span>
-            </button>
-            <button type="button" class="club-badge-pill" onclick="filterByClub('Data Science')">
-                <img src="<%= request.getContextPath() %>/images/clubs/dssa.png" alt="DSSA">
-                <span>DSSA (Data Science)</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('IIC')">
                 <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
@@ -219,9 +219,14 @@
                  data-year="<%= e.getEligibleYear().toLowerCase() %>">
 
                 <div class="event-card-media">
-                    <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/gdg_hacktoberfest.jpg'">
+                    <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                     <span class="event-type-badge"><%= e.getCategory() %></span>
-                    <% if (e.isPastEvent()) { %>
+                    <% if (e.isDemoEvent()) { %>
+                        <span class="card-demo-badge">SAMPLE / DEMO</span>
+                        <div class="demo-watermark-overlay">
+                            <span class="demo-watermark-text">SAMPLE / DEMO</span>
+                        </div>
+                    <% } else if (e.isPastEvent()) { %>
                         <span class="card-concluded-badge">CONCLUDED</span>
                     <% } %>
 

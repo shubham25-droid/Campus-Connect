@@ -35,12 +35,15 @@
             <div class="footer-col-links">
                 <h4>Clubs &amp; Student Bodies</h4>
                 <ul>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GDG">Google Developer Groups (GDG)</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=CESA">CESA (Computer Engg)</a></li>
                     <li><a href="<%= request.getContextPath() %>/dashboard?search=AIMSA">AIMSA (CSE AI &amp; ML)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=IIC">Institution Innovation Council (IIC)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=CSI">CSI &amp; IEEE Student Chapters</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=Placement">Training &amp; Placement Cell (T&amp;P)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=Hackathon">LTCE Innovation &amp; SIH Cell</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=Data+Science">DSSA (Data Science)</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GDG">GDG on Campus LTCE</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GFG">GFG Student Chapter</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=E-CELL">E-CELL LTCE</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=Technical+Vidya">Technical Vidya</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=English">The English Club</a></li>
+                    <li><a href="<%= request.getContextPath() %>/clubs.jsp" style="color:var(--ltce-gold); font-weight:700;">Explore All 10+ Clubs &rarr;</a></li>
                 </ul>
             </div>
 

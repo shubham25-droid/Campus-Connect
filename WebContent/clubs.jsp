@@ -32,7 +32,36 @@
     <!-- Clubs Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;" id="clubsGrid">
 
-        <!-- 1. AIMSA -->
+        <!-- 1. CESA (Computer Engineering) -->
+        <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #16a34a; display:flex; flex-direction:column;">
+            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
+                <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #16a34a; background: #000; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                <div>
+                    <span class="role-tag" style="background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; font-size:0.7rem;">Computer Engg Department Only</span>
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--ltce-blue-dark); margin-top: 4px;">CESA LTCE</h3>
+                    <div style="font-size: 0.8rem; color: #16a34a; font-weight: 600;">Computer Engineering Students Association</div>
+                </div>
+            </div>
+
+            <p style="font-size: 0.875rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                The official departmental association uniting all Computer Engineering undergraduates at LTCE with a focus on core software engineering and technical excellence.
+            </p>
+
+            <div style="background: var(--bg-alt); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.825rem; line-height: 1.45;">
+                <div style="color: var(--ltce-blue); font-weight: 700; margin-bottom: 2px;">&#127919; Kisme Jaana Chahiye? (Who Should Join):</div>
+                <div style="color: #334155;">Computer Engineering branch students passionate about system software, Web &amp; App development, departmental representation, and coding battles.</div>
+            </div>
+
+            <div style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                <strong>&#9733; Core Activities:</strong> CodeSprint Hackathons, Technical Paper Presentations, Linux &amp; Git Bootcamps, Departmental Sports Meet.
+            </div>
+
+            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                <a href="<%= cp %>/dashboard?search=CESA" class="btn btn-outline btn-sm" style="flex:1;">View CESA Events &rarr;</a>
+            </div>
+        </div>
+
+        <!-- 2. AIMSA (CSE AI & ML) -->
         <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #38bdf8; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
                 <img src="<%= cp %>/images/clubs/aimsa.png" alt="AIMSA Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #38bdf8; background: #000; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
@@ -61,36 +90,36 @@
             </div>
         </div>
 
-        <!-- 2. CESA -->
-        <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #16a34a; display:flex; flex-direction:column;">
+        <!-- 3. DSSA (CSE Data Science) -->
+        <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #f59e0b; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
-                <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #16a34a; background: #000; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                 <div>
-                    <span class="role-tag" style="background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; font-size:0.7rem;">Computer Engg Department Only</span>
-                    <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--ltce-blue-dark); margin-top: 4px;">CESA LTCE</h3>
-                    <div style="font-size: 0.8rem; color: #16a34a; font-weight: 600;">Computer Engineering Students Association</div>
+                    <span class="role-tag" style="background:#fef3c7; color:#92400e; border:1px solid #fde68a; font-size:0.7rem;">CSE (Data Science) Department Only</span>
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--ltce-blue-dark); margin-top: 4px;">DSSA LTCE</h3>
+                    <div style="font-size: 0.8rem; color: #d97706; font-weight: 600;">Data Science Students Association</div>
                 </div>
             </div>
 
             <p style="font-size: 0.875rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
-                The official departmental association uniting all Computer Engineering undergraduates at LTCE with a focus on core software engineering and technical excellence.
+                Departmental student chapter catering to big data pipelines, statistical modeling, data visualization, and Kaggle competition mentorship.
             </p>
 
             <div style="background: var(--bg-alt); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.825rem; line-height: 1.45;">
                 <div style="color: var(--ltce-blue); font-weight: 700; margin-bottom: 2px;">&#127919; Kisme Jaana Chahiye? (Who Should Join):</div>
-                <div style="color: #334155;">Computer Engineering branch students passionate about system software, Web &amp; App development, departmental sports/cultural representation, and coding battles.</div>
+                <div style="color: #334155;">CSE (Data Science) students aiming for careers as Data Engineers, Business Intelligence Analysts, or Big Data architects.</div>
             </div>
 
             <div style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                <strong>&#9733; Core Activities:</strong> CodeSprint Hackathons, Technical Paper Presentations, Linux &amp; Git Bootcamps, Departmental Sports Meet.
+                <strong>&#9733; Core Activities:</strong> Kaggle Datathons, Tableau &amp; PowerBI workshops, Data visualization sprints, Python Pandas masterclasses.
             </div>
 
             <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
-                <a href="<%= cp %>/dashboard?search=CESA" class="btn btn-outline btn-sm" style="flex:1;">View CESA Events &rarr;</a>
+                <a href="<%= cp %>/dashboard?search=Data+Science" class="btn btn-outline btn-sm" style="flex:1;">View DSSA Events &rarr;</a>
             </div>
         </div>
 
-        <!-- 3. GDG on Campus LTCE -->
+        <!-- 4. GDG on Campus LTCE -->
         <div class="card club-card" data-category="tech" style="padding: 1.75rem; border-top: 4px solid #4285F4; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
                 <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG Logo" style="width: 72px; height: 72px; border-radius: 16px; object-fit: contain; border: 1px solid #e2e8f0; background: #fff; padding: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
@@ -119,7 +148,7 @@
             </div>
         </div>
 
-        <!-- 4. GFG Student Chapter -->
+        <!-- 5. GFG Student Chapter -->
         <div class="card club-card" data-category="tech" style="padding: 1.75rem; border-top: 4px solid #2f8d46; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
                 <img src="<%= cp %>/images/clubs/gfg.svg" alt="GFG Logo" style="width: 72px; height: 72px; border-radius: 16px; object-fit: contain; border: 1px solid #e2e8f0; background: #fff; padding: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
@@ -148,7 +177,7 @@
             </div>
         </div>
 
-        <!-- 5. E-CELL LTCE -->
+        <!-- 6. E-CELL LTCE -->
         <div class="card club-card" data-category="startup" style="padding: 1.75rem; border-top: 4px solid #0284c7; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
                 <img src="<%= cp %>/images/clubs/ecell.png" alt="E-Cell LTCE Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: contain; border: 2px solid #0284c7; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
@@ -177,7 +206,7 @@
             </div>
         </div>
 
-        <!-- 6. Technical Vidya -->
+        <!-- 7. Technical Vidya -->
         <div class="card club-card" data-category="startup" style="padding: 1.75rem; border-top: 4px solid #475569; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
                 <img src="<%= cp %>/images/clubs/technical_vidya.png" alt="Technical Vidya Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: contain; border: 2px solid #475569; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
@@ -206,7 +235,7 @@
             </div>
         </div>
 
-        <!-- 7. The English Club (Crystal / Literature) -->
+        <!-- 8. The English Club (Crystal / Literature) -->
         <div class="card club-card" data-category="softskills" style="padding: 1.75rem; border-top: 4px solid #9333ea; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
                 <img src="<%= cp %>/images/clubs/english_club.png" alt="The English Club Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: contain; border: 2px solid #9333ea; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
@@ -235,34 +264,6 @@
             </div>
         </div>
 
-        <!-- 8. DSSA -->
-        <div class="card club-card" data-category="dept" style="padding: 1.75rem; border-top: 4px solid #0ea5e9; display:flex; flex-direction:column;">
-            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem;">
-                <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA Logo" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-                <div>
-                    <span class="role-tag" style="background:#e0f2fe; color:#0369a1; border:1px solid #bae6fd; font-size:0.7rem;">CSE (Data Science) Department Only</span>
-                    <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--ltce-blue-dark); margin-top: 4px;">DSSA LTCE</h3>
-                    <div style="font-size: 0.8rem; color: #0284c7; font-weight: 600;">Data Science Students Association</div>
-                </div>
-            </div>
-
-            <p style="font-size: 0.875rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
-                Departmental student chapter catering to big data pipelines, statistical modeling, data visualization, and Kaggle competition mentorship.
-            </p>
-
-            <div style="background: var(--bg-alt); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.825rem; line-height: 1.45;">
-                <div style="color: var(--ltce-blue); font-weight: 700; margin-bottom: 2px;">&#127919; Kisme Jaana Chahiye? (Who Should Join):</div>
-                <div style="color: #334155;">CSE (Data Science) students aiming for careers as Data Engineers, Business Intelligence Analysts, or Big Data architects.</div>
-            </div>
-
-            <div style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                <strong>&#9733; Core Activities:</strong> Kaggle Datathons, Tableau &amp; PowerBI workshops, Data visualization sprints, Python Pandas masterclasses.
-            </div>
-
-            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
-                <a href="<%= cp %>/dashboard?search=Data+Science" class="btn btn-outline btn-sm" style="flex:1;">View Events &rarr;</a>
-            </div>
-        </div>
 
         <!-- 9. IIC LTCE -->
         <div class="card club-card" data-category="startup" style="padding: 1.75rem; border-top: 4px solid #f97316; display:flex; flex-direction:column;">

@@ -157,7 +157,7 @@ public class DBConnection {
                     + "(2, 'Shubham Sharma', 'student@campusconnect.com', 'student123', 'STUDENT', 'Computer Engineering', 'TE - 3rd Year'), "
                     + "(3, 'Aarav Patel', 'aarav@campusconnect.com', 'student123', 'STUDENT', 'CSE (AI & ML)', 'SE - 2nd Year');");
 
-            // Seed Events
+            // Seed 4 Curated, Authentic Events (No duplicates, 1 clearly marked Demo)
             stmt.executeUpdate("MERGE INTO events (id, title, short_description, description, category, department, eligible_year, event_date, start_time, end_time, venue, organizer_name, organizer_contact, registration_deadline, max_participants, eligibility, image, status, created_by) KEY(id) VALUES "
                     + "(1, 'Orientation + GDG x Hacktoberfest HF 2026', "
                     + "'Kickstart your Open Source journey with GDG on Campus LTCE! Featuring expert guest speakers, Devcon passes worth $99, and exclusive MLH swag.', "
@@ -167,52 +167,22 @@ public class DBConnection {
                     + "(2, 'Poster Making & Presentation Competition: Emerging Tech for Sustainability', "
                     + "'Organized by Institution Innovation Council (IIC) × AIMSA. Present your ideas on AI, IoT, Robotics, and Renewable Energy for a greener future.', "
                     + "'Lokmanya Tilak College of Engineering (An Autonomous Institute Affiliated to University of Mumbai) - Institution Innovation Council (IIC) in collaboration with AIMSA presents the Annual Poster Making and Presentation Competition.\\n\\nTheme: \"Emerging Technology Integration for Environment and Sustainability\"\\n\\nExplore how AI, IoT, Robotics, Drones, Renewable Energy, Smart Systems & Data Analytics can drive a sustainable future.\\n\\nCoordinators:\\n• Student Coordinators: Bhavishya Chauhan, Haresh Chavan (AIMSA), Vishal Gupta, Mitali Joshi (IIC)\\n• Faculty Coordinators: Prof. Arti Ochani, Prof. Megha Khadke, Prof. Ujjwala Pandharkar\\n• Leadership: Dr. Snehal Junnarkar (IIC Convener), Dr. Sheeba P.S (IIC VP), Dr. Chaitrali Chaudhari (HOD CSE AI&ML), Dr. Subhash Shinde (Principal & IIC President).\\n\\nPrizes and Certificates of Merit for Top 3 Presenters!', "
-                    + "'Competition', 'CSE (AI & ML)', 'SE, TE, BE', '2026-10-05', '1:00 PM', '2:00 PM', 'C Building, 4th Floor Quadrangle', 'IIC × AIMSA', 'aimsa@ltce.in | +91 98200 11223', '2026-10-05', 120, 'Teams of 1-3 students from any engineering department', 'iic_aimsa_poster.jpg', 'Published', 1), "
+                    + "'Competition', 'CSE (AI & ML)', 'SE, TE, BE', '2026-10-05', '1:00 PM', '2:00 PM', 'C Building, 4th Floor Quadrangle', 'IIC × AIMSA', 'aimsa@ltce.in | +91 98200 11223', '2026-10-05', 120, 'Teams of 1-3 students from any engineering department', 'iic_aimsa_poster.jpg', 'Completed', 1), "
 
                     + "(3, 'Smart India Hackathon (SIH) 2026 Internal College Round', "
                     + "'The preliminary qualifying hackathon for Smart India Hackathon. Pitch your hardware & software solutions to internal evaluators.', "
                     + "'Compete with the sharpest minds at LTCE to represent the college at the national Smart India Hackathon 2026. Teams will be evaluated on problem statement alignment, technical viability, architectural elegance, and feasibility.', "
                     + "'Hackathon', 'All Departments', 'SE, TE, BE', '2026-10-18', '9:00 AM', '6:00 PM', 'Central Computing Facility (CCF)', 'LTCE Innovation Cell', 'innovation@ltce.in | +91 97654 32109', '2026-10-16', 60, 'Team of 6 members with mandatory 1 female participant', 'sih_hackathon.png', 'Published', 1), "
 
-                    + "(4, 'Hands-on Masterclass: Full-Stack Web Development with Spring & React', "
-                    + "'A deep dive technical workshop covering RESTful API architecture, state management, and modern cloud deployment patterns.', "
-                    + "'Master the art of building scalable enterprise web applications. We will cover clean MVC architecture, RESTful API contract design, JDBC/ORM best practices, and responsive interfaces.', "
-                    + "'Workshop', 'Information Technology', 'TE, BE', '2026-10-24', '10:30 AM', '4:00 PM', 'Lab 302, IT Department', 'CSI Student Chapter', 'csi@ltce.in | +91 98111 22334', '2026-10-23', 80, 'Basic understanding of Java and JavaScript recommended', 'web_bootcamp.png', 'Published', 1), "
-
-                    + "(5, 'Seminar: Cracking Product-Based Company Placements & Resume Clinic', "
-                    + "'Get your resume reviewed by alumni working at Microsoft, Google, and Amazon. Learn DSA strategy, system design basics, and interview etiquette.', "
-                    + "'Organized by the Training & Placement Cell (T&P). Features LTCE alumni panel discussion, live mock interviews, and personalized 1-on-1 resume reviews.', "
-                    + "'Seminar', 'All Departments', 'TE, BE', '2026-10-30', '3:00 PM', '5:30 PM', 'Seminar Hall 1, Admin Block', 'Training & Placement Cell', 'tnp@ltce.in | +91 98222 33445', '2026-10-29', 200, 'Open to 3rd & Final year students preparing for campus placements', 'resume_seminar.png', 'Published', 1), "
-
-                    + "(6, 'CESA CodeSprint 2026: Algorithmic Battle & Full-Stack Challenge', "
-                    + "'Computer Engineering Students Association (CESA) presents the departmental flagship coding battle. Solve DSA problems, build web prototypes, win exciting prizes.', "
-                    + "'Exclusively organized by CESA (Computer Engineering Students Association). Features 2 rounds: Round 1 Competitive Coding on custom problem sets, Round 2 6-hour Rapid App Prototype Sprint. Certificates and trophies for Top 3 performers.', "
-                    + "'Competition', 'Computer Engineering', 'SE, TE, BE', '2026-11-04', '10:00 AM', '5:00 PM', 'Computer Center Labs 1 & 2', 'CESA LTCE', 'cesa@ltce.in | +91 98333 44556', '2026-11-02', 150, 'Computer Engineering department students only', 'default_event.jpg', 'Published', 1), "
-
-                    + "(7, 'E-Summit 2026 Ideation Pitch: Turning Engineering Projects into Startups', "
-                    + "'Organized by E-CELL LTCE in association with E-Cell IIT Bombay. Learn venture creation, business model canvas, and pitch to angel investors.', "
-                    + "'E-Cell LTCE presents Ideate, Innovate, Impact! Transform your academic major project into a venture-backed startup. Guest workshop by founders and access to preliminary rounds of the National Entrepreneurship Challenge (NEC) affiliated with IIT Bombay.', "
-                    + "'Workshop', 'All Departments', 'FE, SE, TE, BE', '2026-11-12', '1:30 PM', '4:30 PM', 'A510 Auditorium', 'E-CELL LTCE', 'ecell@ltce.in | +91 98777 88990', '2026-11-10', 180, 'Open to all branches and years of LTCE', 'default_event.jpg', 'Published', 1), "
-
-                    + "(8, 'Founder Talk & Startup Incubation Masterclass', "
-                    + "'Technical Vidya hosts a startup mentorship session with engineering alumni founders. Learn funding, legal compliance, and prototype testing.', "
-                    + "'Technical Vidya brings you a power-packed entrepreneurial mentoring conclave. Connect with founders, discover seed capital grants, and get 1-on-1 feedback on your tech product idea.', "
-                    + "'Seminar', 'All Departments', 'SE, TE, BE', '2026-11-18', '2:00 PM', '4:30 PM', 'Seminar Hall 2', 'Technical Vidya', 'techvidya@ltce.in | +91 98444 55667', '2026-11-16', 120, 'Open to all innovators and aspiring founders', 'default_event.jpg', 'Published', 1), "
-
-                    + "(9, 'Crystal Eloquence: British Parliamentary Debate & Group Discussion Clinic', "
-                    + "'The English Club brings you the annual inter-department public speaking tournament and placement GD prep bootcamp.', "
-                    + "'Master the art of articulate communication, persuasive arguments, and stage confidence. Features live British Parliamentary debates, elocution rounds, and mock corporate group discussions judged by industry HR professionals.', "
-                    + "'Cultural', 'All Departments', 'FE, SE, TE, BE', '2026-11-22', '11:00 AM', '3:00 PM', 'Reading Hall / Conference Room', 'The English Club', 'englishclub@ltce.in | +91 98666 77889', '2026-11-20', 100, 'Open to all students across all branches', 'default_event.jpg', 'Published', 1), "
-
-                    + "(10, 'Geeks 30 Days of Code: DSA & Competitive Programming Sprint', "
-                    + "'GFG Student Chapter LTCE kicks off the placement coding marathon. Daily curated problem sets, live doubt solving, and mock technical interviews.', "
-                    + "'Level up your problem solving skills on GeeksforGeeks! Learn Stacks, Queues, Trees, Graphs, and Dynamic Programming with peer mentors. Top scorers receive GFG Course Vouchers and interview prep packages.', "
-                    + "'Technical', 'All Departments', 'SE, TE, BE', '2026-11-28', '4:00 PM', '6:00 PM', 'Online & Central Computing Facility', 'GFG Student Chapter', 'gfg@ltce.in | +91 98555 66778', '2026-11-26', 300, 'Open to all students preparing for technical placements', 'default_event.jpg', 'Published', 1);");
+                    + "(4, '[DEMO / SAMPLE EVENT] CESA CodeSprint 2026: Algorithmic Battle', "
+                    + "'[DEMO / SAMPLE EVENT] Computer Engineering Students Association (CESA) presents the departmental flagship coding battle. Solve DSA problems, build web prototypes.', "
+                    + "'[DEMO / SAMPLE EVENT - FOR TESTING & PREVIEW ONLY]\\n\\nExclusively organized by CESA (Computer Engineering Students Association). Features 2 rounds: Round 1 Competitive Coding on custom problem sets, Round 2 6-hour Rapid App Prototype Sprint. Certificates and trophies for Top 3 performers.', "
+                    + "'Competition', 'Computer Engineering', 'SE, TE, BE', '2026-11-04', '10:00 AM', '5:00 PM', 'Computer Center Labs 1 & 2', 'CESA LTCE', 'cesa@ltce.in | +91 98333 44556', '2026-11-02', 150, 'Computer Engineering department students only', 'cesa_codesprint.png', 'Published', 1);");
 
             // Seed sample registrations
             stmt.executeUpdate("MERGE INTO registrations (id, user_id, event_id, status) KEY(id) VALUES (1, 2, 1, 'CONFIRMED'), (2, 2, 2, 'CONFIRMED');");
             // Seed sample saved events
-            stmt.executeUpdate("MERGE INTO saved_events (id, user_id, event_id) KEY(id) VALUES (1, 2, 3), (2, 2, 4);");
+            stmt.executeUpdate("MERGE INTO saved_events (id, user_id, event_id) KEY(id) VALUES (1, 2, 3);");
 
             System.out.println("[CampusConnect] Seed data successfully verified.");
         } catch (SQLException e) {

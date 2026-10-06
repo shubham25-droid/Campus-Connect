@@ -243,4 +243,23 @@ public class Event {
         if (org.contains("ACM")) return "acm.svg";
         return "ltce_official_logo.png";
     }
+
+    public boolean isDemoEvent() {
+        if (title != null) {
+            String upper = title.toUpperCase();
+            if (upper.contains("DEMO") || upper.contains("SAMPLE")) {
+                return true;
+            }
+        }
+        if (shortDescription != null) {
+            String upper = shortDescription.toUpperCase();
+            if (upper.contains("DEMO") || upper.contains("SAMPLE")) {
+                return true;
+            }
+        }
+        if (status != null && (status.equalsIgnoreCase("Demo") || status.equalsIgnoreCase("Sample"))) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -53,13 +53,31 @@
         <!-- Left Column: Content, Banner, Agenda -->
         <div class="details-main">
             <!-- Event Banner -->
-            <img class="details-banner" src="<%= request.getContextPath() %>/images/<%= event.getImage() %>" alt="<%= event.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/gdg_hacktoberfest.jpg'">
+            <div style="position:relative; margin-bottom:1.5rem;">
+                <img class="details-banner" src="<%= request.getContextPath() %>/images/<%= event.getImage() %>" alt="<%= event.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
+                <% if (event.isDemoEvent()) { %>
+                    <span class="card-demo-badge" style="font-size:0.8rem; padding:5px 12px; top:16px; left:16px;">SAMPLE / DEMO EVENT</span>
+                <% } %>
+            </div>
 
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem;">
+                <% if (event.isDemoEvent()) { %>
+                    <span class="demo-pill-tag">&#9888; PREVIEW SAMPLE</span>
+                <% } %>
                 <span class="cat-pill active"><%= event.getCategory() %></span>
                 <span class="cat-pill" style="cursor:default;"><%= event.getDepartment() %></span>
                 <span class="cat-pill" style="cursor:default;">Eligible: <%= event.getEligibleYear() %></span>
             </div>
+
+            <% if (event.isDemoEvent()) { %>
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:var(--radius-sm); padding:1rem 1.25rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:1.5rem;">&#128736;</span>
+                    <div>
+                        <strong style="color:#b45309; font-size:0.95rem;">[DEMO / SAMPLE EVENT]</strong>
+                        <p style="margin:2px 0 0; font-size:0.85rem; color:#92400e;">This is a mock sample event created to showcase departmental competitions. Not a live registration.</p>
+                    </div>
+                </div>
+            <% } %>
 
             <% if (event.isPastEvent()) { %>
                 <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius-sm); padding:1rem 1.25rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:12px;">

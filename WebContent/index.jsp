@@ -167,13 +167,17 @@
                 <div class="hero-quick-chapters">
                     <span class="quick-chapters-label">Quick Filter by Club:</span>
                     <div class="quick-chips-wrap">
+                        <a href="<%= cp %>/dashboard?search=CESA" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA">
+                            <span>CESA</span>
+                        </a>
                         <a href="<%= cp %>/dashboard?search=AIMSA" class="hero-quick-chip">
                             <img src="<%= cp %>/images/clubs/aimsa.png" alt="AIMSA">
                             <span>AIMSA</span>
                         </a>
-                        <a href="<%= cp %>/dashboard?search=CESA" class="hero-quick-chip">
-                            <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA">
-                            <span>CESA</span>
+                        <a href="<%= cp %>/dashboard?search=Data+Science" class="hero-quick-chip">
+                            <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA">
+                            <span>DSSA</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=GDG" class="hero-quick-chip">
                             <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG">
@@ -210,19 +214,9 @@
             </a>
         </div>
 
-        <!-- Touch-Friendly Club Cards Grid / Reel -->
+        <!-- Touch-Friendly Club Cards Grid / Reel (Sequence: CESA, AIMSA, DSSA, GDG, GFG, E-CELL, Technical Vidya, English Club) -->
         <div class="clubs-reel">
-            <!-- 1. AIMSA -->
-            <a href="<%= cp %>/dashboard?search=AIMSA" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/aimsa.png" alt="AIMSA" class="club-reel-img">
-                <div class="club-reel-info">
-                    <span class="club-reel-name">AIMSA</span>
-                    <span class="club-reel-tag dept">CSE (AI &amp; ML)</span>
-                    <span class="club-reel-desc">AI Hackathons &amp; Models</span>
-                </div>
-            </a>
-
-            <!-- 2. CESA -->
+            <!-- 1. CESA -->
             <a href="<%= cp %>/dashboard?search=CESA" class="club-reel-card">
                 <img src="<%= cp %>/images/clubs/cesa.png" alt="CESA" class="club-reel-img">
                 <div class="club-reel-info">
@@ -232,7 +226,27 @@
                 </div>
             </a>
 
-            <!-- 3. GDG -->
+            <!-- 2. AIMSA -->
+            <a href="<%= cp %>/dashboard?search=AIMSA" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/aimsa.png" alt="AIMSA" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">AIMSA</span>
+                    <span class="club-reel-tag dept">CSE (AI &amp; ML)</span>
+                    <span class="club-reel-desc">AI Hackathons &amp; Models</span>
+                </div>
+            </a>
+
+            <!-- 3. DSSA -->
+            <a href="<%= cp %>/dashboard?search=Data+Science" class="club-reel-card">
+                <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA" class="club-reel-img">
+                <div class="club-reel-info">
+                    <span class="club-reel-name">DSSA</span>
+                    <span class="club-reel-tag dept">Data Science Dept</span>
+                    <span class="club-reel-desc">Analytics &amp; Big Data</span>
+                </div>
+            </a>
+
+            <!-- 4. GDG -->
             <a href="<%= cp %>/dashboard?search=GDG" class="club-reel-card">
                 <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG" class="club-reel-img">
                 <div class="club-reel-info">
@@ -242,7 +256,7 @@
                 </div>
             </a>
 
-            <!-- 4. GFG -->
+            <!-- 5. GFG -->
             <a href="<%= cp %>/dashboard?search=GFG" class="club-reel-card">
                 <img src="<%= cp %>/images/clubs/gfg.svg" alt="GFG" class="club-reel-img">
                 <div class="club-reel-info">
@@ -252,7 +266,7 @@
                 </div>
             </a>
 
-            <!-- 5. E-CELL -->
+            <!-- 6. E-CELL -->
             <a href="<%= cp %>/dashboard?search=E-CELL" class="club-reel-card">
                 <img src="<%= cp %>/images/clubs/ecell.png" alt="E-CELL" class="club-reel-img">
                 <div class="club-reel-info">
@@ -262,7 +276,7 @@
                 </div>
             </a>
 
-            <!-- 6. Technical Vidya -->
+            <!-- 7. Technical Vidya -->
             <a href="<%= cp %>/dashboard?search=Technical+Vidya" class="club-reel-card">
                 <img src="<%= cp %>/images/clubs/technical_vidya.png" alt="Technical Vidya" class="club-reel-img">
                 <div class="club-reel-info">
@@ -272,23 +286,13 @@
                 </div>
             </a>
 
-            <!-- 7. The English Club -->
+            <!-- 8. The English Club -->
             <a href="<%= cp %>/dashboard?search=English" class="club-reel-card">
                 <img src="<%= cp %>/images/clubs/english_club.png" alt="The English Club" class="club-reel-img">
                 <div class="club-reel-info">
                     <span class="club-reel-name">The English Club</span>
                     <span class="club-reel-tag open">Open For All</span>
                     <span class="club-reel-desc">Debates &amp; Public Speaking</span>
-                </div>
-            </a>
-
-            <!-- 8. DSSA -->
-            <a href="<%= cp %>/dashboard?search=Data+Science" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA" class="club-reel-img">
-                <div class="club-reel-info">
-                    <span class="club-reel-name">DSSA</span>
-                    <span class="club-reel-tag dept">Data Science Dept</span>
-                    <span class="club-reel-desc">Analytics &amp; Big Data</span>
                 </div>
             </a>
         </div>
@@ -320,11 +324,16 @@
                         <!-- Card Banner / Image -->
                         <div class="card-media-wrap">
                             <img src="<%= cp %>/images/<%= ev.getImage() %>" alt="<%= ev.getTitle() %>" 
-                                 class="card-event-img" onerror="this.src='<%= cp %>/images/gdg_hacktoberfest.jpg'">
+                                 class="card-event-img" onerror="this.src='<%= cp %>/images/default_event.jpg'">
                             <span class="card-category-badge <%= ev.getCategory().toLowerCase() %>">
                                 <%= ev.getCategory() %>
                             </span>
-                            <% if (ev.isPastEvent()) { %>
+                            <% if (ev.isDemoEvent()) { %>
+                                <span class="card-demo-badge">SAMPLE / DEMO</span>
+                                <div class="demo-watermark-overlay">
+                                    <span class="demo-watermark-text">SAMPLE / DEMO</span>
+                                </div>
+                            <% } else if (ev.isPastEvent()) { %>
                                 <span class="card-concluded-badge">CONCLUDED</span>
                             <% } %>
                             <div class="card-date-stamp <%= ev.isPastEvent() ? "is-concluded" : (ev.isToday() ? "is-today" : "") %>">
