@@ -2122,7 +2122,7 @@ button {
     width: 92%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 2.5rem 0 1.5rem;
+    padding: 2rem 0 1.25rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -2136,7 +2136,7 @@ button {
 
 @media (min-width: 1024px) {
     .footer-container {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-columns: 2fr 1fr 1fr;
     }
 }
 

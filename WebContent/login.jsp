@@ -11,7 +11,7 @@
 <div class="container" style="max-width: 460px; padding-top: 3.5rem;">
     <div class="card" style="padding: 2.25rem;">
         <div style="text-align: center; margin-bottom: 1.75rem;">
-            <img src="<%= request.getContextPath() %>/images/campusconnect-mark.svg" alt="CampusConnect" style="width:60px; height:60px; margin:0 auto 12px; display:block;">
+            <img src="<%= request.getContextPath() %>/images/campusconnect-final-logo-trans.png?v=3.0" alt="CampusConnect" style="width:68px; height:68px; margin:0 auto 12px; display:block; object-fit:contain;">
             <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-blue-dark);">Welcome Back</h2>
             <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">Log in to your CampusConnect LTCE account</p>
         </div>
@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label class="form-label" for="loginEmail">College Email</label>
-                <input type="email" id="loginEmail" name="email" class="form-control" placeholder="e.g. student@campusconnect.com" required value="<%= enteredEmail != null ? enteredEmail : "" %>">
+                <input type="email" id="loginEmail" name="email" class="form-control" placeholder="Enter your college email" required value="<%= enteredEmail != null ? enteredEmail : "" %>">
             </div>
 
             <div class="form-group">

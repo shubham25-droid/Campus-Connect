@@ -29,21 +29,9 @@
                 <ul>
                     <li><a href="<%= request.getContextPath() %>/">Home</a></li>
                     <li><a href="<%= request.getContextPath() %>/dashboard">All Events</a></li>
+                    <li><a href="<%= request.getContextPath() %>/clubs.jsp">Clubs Guide</a></li>
                     <li><a href="<%= request.getContextPath() %>/my-registrations">My Registrations</a></li>
-                    <li><a href="<%= request.getContextPath() %>/saved-events">Saved Events</a></li>
                     <li><a href="<%= request.getContextPath() %>/login">Organizer Login</a></li>
-                </ul>
-            </div>
-
-            <!-- Campus Chapters & Student Bodies -->
-            <div class="footer-col-links">
-                <h4>Campus Clubs</h4>
-                <ul>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=CESA">CESA (Computer Engg)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=AIMSA">AIMSA (AI &amp; ML)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GDG">GDG on Campus</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GFG">GFG Chapter</a></li>
-                    <li><a href="<%= request.getContextPath() %>/clubs.jsp" style="color:var(--ltce-gold); font-weight:700;">All Campus Clubs &rarr;</a></li>
                 </ul>
             </div>
 

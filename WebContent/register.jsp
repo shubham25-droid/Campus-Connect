@@ -12,7 +12,7 @@
 <div class="container" style="max-width: 520px; padding-top: 2.5rem;">
     <div class="card" style="padding: 2.25rem;">
         <div style="text-align: center; margin-bottom: 1.75rem;">
-            <img src="<%= request.getContextPath() %>/images/campusconnect-mark.svg" alt="CampusConnect" style="width:60px; height:60px; margin:0 auto 12px; display:block;">
+            <img src="<%= request.getContextPath() %>/images/campusconnect-final-logo-trans.png?v=3.0" alt="CampusConnect" style="width:68px; height:68px; margin:0 auto 12px; display:block; object-fit:contain;">
             <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-blue-dark);">Student Registration</h2>
             <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">Join CampusConnect LTCE to discover and register for campus opportunities</p>
         </div>
@@ -24,12 +24,12 @@
         <form id="studentRegisterForm" action="<%= request.getContextPath() %>/register" method="POST">
             <div class="form-group">
                 <label class="form-label" for="regName">Full Name</label>
-                <input type="text" id="regName" name="name" class="form-control" placeholder="e.g. Shubham Sharma" required value="<%= enteredName != null ? enteredName : "" %>">
+                <input type="text" id="regName" name="name" class="form-control" placeholder="Enter your full name" required value="<%= enteredName != null ? enteredName : "" %>">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="regEmail">College Email Address</label>
-                <input type="email" id="regEmail" name="email" class="form-control" placeholder="e.g. shubham.sharma@ltce.in" required value="<%= enteredEmail != null ? enteredEmail : "" %>">
+                <input type="email" id="regEmail" name="email" class="form-control" placeholder="student@ltce.in" required value="<%= enteredEmail != null ? enteredEmail : "" %>">
             </div>
 
             <div class="form-row">
