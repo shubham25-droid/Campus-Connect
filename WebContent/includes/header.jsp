@@ -12,9 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title><%= (request.getAttribute("pageTitle") != null) ? request.getAttribute("pageTitle") + " | " : "" %>CampusConnect &bull; Lokmanya Tilak College of Engineering</title>
     
-    <!-- Favicon using CampusConnect Logo Mark -->
-    <link rel="icon" type="image/svg+xml" href="<%= cp %>/images/campusconnect-mark.svg">
-    <link rel="shortcut icon" href="<%= cp %>/images/campusconnect-mark.svg">
+    <!-- Favicon using Official CampusConnect Emblem -->
+    <link rel="icon" type="image/png" href="<%= cp %>/images/favicon.png">
+    <link rel="shortcut icon" href="<%= cp %>/images/favicon.ico">
+    <link rel="apple-touch-icon" href="<%= cp %>/images/campusconnect-final-logo-256.png">
     
     <!-- Modern Typography: Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,17 +52,15 @@
          ============================================== -->
     <header class="app-header">
         <div class="header-inner">
-            <!-- Brand Lockup: College Crest + App Mark + Clean Typography -->
+            <!-- Official CampusConnect Brand Lockup -->
             <div class="brand-cluster">
-                <a href="https://ltce.in/" target="_blank" class="clg-crest-link" title="Lokmanya Tilak College of Engineering">
-                    <img src="<%= cp %>/images/ltce_official_logo.png" alt="LTCE Crest" class="clg-crest-img" onerror="this.style.display='none'">
-                </a>
-                <div class="brand-divider"></div>
-                <a href="<%= cp %>/" class="brand-logo-link" title="CampusConnect Home">
-                    <img src="<%= cp %>/images/campusconnect_hub_mark.png" alt="CampusConnect Logo" class="brand-mark-img">
+                <a href="<%= cp %>/" class="brand-logo-link" title="CampusConnect - Lokmanya Tilak College of Engineering">
+                    <div class="brand-emblem-wrap">
+                        <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect Official Logo" class="brand-mark-img">
+                    </div>
                     <div class="brand-text-group">
                         <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
-                        <span class="brand-tagline">LTCE OPPORTUNITY BOARD</span>
+                        <span class="brand-tagline">LTCE STUDENT OPPORTUNITY HUB</span>
                     </div>
                 </a>
             </div>
@@ -120,7 +119,7 @@
         <div class="mobile-drawer" id="mobileNavDrawer">
             <div class="mobile-drawer-header">
                 <div class="mobile-drawer-brand">
-                    <img src="<%= cp %>/images/campusconnect_hub_mark.png" alt="CampusConnect" style="height:28px; width:28px; border-radius:50%;">
+                    <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect" style="height:34px; width:34px; border-radius:50%; object-fit:cover; filter:drop-shadow(0 2px 6px rgba(8,44,80,0.15));">
                     <span style="font-weight:800; font-size:1.15rem; color:var(--ltce-blue-dark);">Campus<span style="color:var(--ltce-gold);">Connect</span></span>
                 </div>
                 <button type="button" class="btn-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>

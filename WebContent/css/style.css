@@ -233,54 +233,46 @@ button {
     gap: 12px;
 }
 
-.clg-crest-link {
-    display: flex;
-    align-items: center;
-}
-
-.clg-crest-img {
-    height: 44px;
-    width: auto;
-    display: block;
-}
-
-@media (min-width: 768px) {
-    .clg-crest-img {
-        height: 52px;
-    }
-}
-
-.brand-divider {
-    height: 32px;
-    width: 1.5px;
-    background: #cbd5e1;
-}
-
 .brand-logo-link {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
 }
 
-.brand-mark-img {
-    height: 38px;
-    width: 38px;
-    display: block;
-    object-fit: contain;
-    transition: transform 0.2s ease;
+.brand-emblem-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(8, 44, 80, 0.12);
+    padding: 2px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
+}
+
+.brand-mark-img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
 }
 
 @media (min-width: 768px) {
     .brand-mark-img {
-        height: 44px;
-        width: 44px;
+        height: 48px;
+        width: 48px;
     }
 }
 
-.brand-logo-link:hover .brand-mark-img {
-    transform: scale(1.05);
+.brand-logo-link:hover .brand-emblem-wrap {
+    transform: scale(1.06);
+    box-shadow: 0 6px 18px rgba(8, 44, 80, 0.22);
 }
 
 .brand-text-group {
@@ -2104,10 +2096,44 @@ button {
     }
 }
 
-.footer-col-brand .footer-brand-logo {
-    height: 38px;
-    width: auto;
+.footer-brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     margin-bottom: 1.25rem;
+}
+
+.footer-brand-emblem {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ffffff;
+    padding: 2px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
+}
+
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+.footer-brand-sub {
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin-top: 3px;
 }
 
 .footer-desc {

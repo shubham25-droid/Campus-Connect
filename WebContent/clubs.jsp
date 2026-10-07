@@ -27,7 +27,7 @@
             <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-navy); margin-top: 8px;">One College &bull; All Student Chapters Connected</h2>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Every departmental student body and open technical chapter operates under the autonomous governance of Lokmanya Tilak College of Engineering.</p>
         </div>
-        <img src="<%= cp %>/images/campusconnect_hub_web.png" alt="LTCE Campus Connect Clubs Network Hub" style="max-width: 520px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 8px 24px rgba(8, 44, 80, 0.08));">
+        <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect Official Hub Emblem" style="max-width: 440px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 10px 30px rgba(8, 44, 80, 0.12));">
     </div>
 
     <!-- Quick Navigation / Filter Tabs -->

@@ -8,7 +8,13 @@
         <div class="footer-container">
             <!-- Brand Column -->
             <div class="footer-col-brand">
-                <img src="<%= request.getContextPath() %>/images/campusconnect-logo-white.svg" alt="CampusConnect LTCE" class="footer-brand-logo">
+                <div class="footer-brand-lockup">
+                    <img src="<%= request.getContextPath() %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect LTCE" class="footer-brand-emblem">
+                    <div class="footer-brand-text">
+                        <span class="footer-brand-title">Campus<span style="color:var(--ltce-gold);">Connect</span></span>
+                        <span class="footer-brand-sub">LTCE STUDENT OPPORTUNITY HUB</span>
+                    </div>
+                </div>
                 <p class="footer-desc">
                     The centralized college event and student opportunity platform for Lokmanya Tilak College of Engineering. Eliminating WhatsApp announcement fatigue, establishing a single source of truth, and empowering students to discover every campus opportunity.
                 </p>
