@@ -221,9 +221,7 @@
                 <div class="event-card-media">
                     <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                     <span class="event-type-badge"><%= e.getCategory() %></span>
-                    <% if (e.isDemoEvent()) { %>
-                        <span class="card-demo-badge"><span class="badge-dot"></span>Sample</span>
-                    <% } else if (e.isPastEvent()) { %>
+                    <% if (e.isPastEvent()) { %>
                         <span class="card-concluded-badge">Past Event</span>
                     <% } %>
 

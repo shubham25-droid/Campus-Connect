@@ -9,19 +9,19 @@
             <!-- Brand Column -->
             <div class="footer-col-brand">
                 <div class="footer-brand-lockup">
-                    <img src="<%= request.getContextPath() %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect LTCE" class="footer-brand-emblem">
+                    <img src="<%= request.getContextPath() %>/images/campusconnect-final-logo-128.png" alt="CampusConnect LTCE" class="footer-brand-emblem" width="44" height="44" style="width:44px; height:44px; max-width:44px; max-height:44px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                     <div class="footer-brand-text">
                         <span class="footer-brand-title">Campus<span style="color:var(--ltce-gold);">Connect</span></span>
-                        <span class="footer-brand-sub">LTCE STUDENT OPPORTUNITY HUB</span>
+                        <span class="footer-brand-sub">Lokmanya Tilak College of Engineering</span>
                     </div>
                 </div>
                 <p class="footer-desc">
-                    The centralized college event and student opportunity platform for Lokmanya Tilak College of Engineering. Eliminating WhatsApp announcement fatigue, establishing a single source of truth, and empowering students to discover every campus opportunity.
+                    Centralized event and student opportunity platform for Lokmanya Tilak College of Engineering. Eliminating notice board and WhatsApp clutter.
                 </p>
                 <div class="footer-address">
                     <strong>Lokmanya Tilak College of Engineering (Autonomous)</strong><br>
-                    Sector-4, Vikas Nagar, Koparkhairane, Navi Mumbai &ndash; 400 709, Maharashtra, India<br>
-                    Affiliated to University of Mumbai &bull; Approved by AICTE, New Delhi
+                    Sector-4, Vikas Nagar, Koparkhairane, Navi Mumbai &ndash; 400 709<br>
+                    Affiliated to University of Mumbai &bull; Approved by AICTE
                 </div>
             </div>
 
@@ -66,12 +66,9 @@
         </div>
 
         <div class="footer-bottom-bar">
-            <div class="bottom-bar-container">
+            <div class="bottom-bar-container" style="justify-content:center; text-align:center;">
                 <div class="bottom-copy">
                     &copy; <%= java.time.Year.now() %> <strong>CampusConnect</strong> &bull; Lokmanya Tilak College of Engineering. All Rights Reserved.
-                </div>
-                <div class="bottom-tech-pill">
-                    Java Full Stack MVC Architecture &bull; Servlets &bull; JSP &bull; JDBC &bull; MySQL
                 </div>
             </div>
         </div>

@@ -231,38 +231,20 @@ public class Event {
         if (org.contains("E-CELL") || org.contains("ECELL") || org.contains("ENTREPRENEUR")) return "ecell.png";
         if (org.contains("ENGLISH") || org.contains("CRYSTAL") || org.contains("SPEAKING")) return "english_club.png";
         if (org.contains("TECHNICAL VIDYA") || org.contains("TECH VIDYA") || org.contains("VIDYA")) return "technical_vidya.png";
-        if (org.contains("GDG")) return "gdg.svg";
-        if (org.contains("GFG") || org.contains("GEEKS")) return "gfg.svg";
-        if (org.contains("IIC")) return "iic.svg";
+        if (org.contains("GDG")) return "gdg.png";
+        if (org.contains("GFG") || org.contains("GEEKS")) return "gfg.png";
+        if (org.contains("IIC") || org.contains("INNOVATION")) return "iic.svg";
         if (org.contains("DSS") || org.contains("DATA SCIENCE")) return "dssa.png";
         if (org.contains("CSI")) return "csi.svg";
         if (org.contains("IEEE")) return "ieee.svg";
         if (org.contains("ROTARACT")) return "rotaract.svg";
-        if (org.contains("PLACEMENT") || org.contains("T&P")) return "tnp.svg";
-        if (org.contains("INNOVATION") || org.contains("SIH")) return "sih.svg";
+        if (org.contains("PLACEMENT") || org.contains("T&P") || org.contains("TPO")) return "tnp.svg";
+        if (org.contains("DROPCODE")) return "aimsa.png";
         if (org.contains("ACM")) return "acm.svg";
         return "ltce_official_logo.png";
     }
 
     public boolean isDemoEvent() {
-        if (id == 3 || id == 4) {
-            return true;
-        }
-        if (title != null) {
-            String upper = title.toUpperCase();
-            if (upper.contains("DEMO") || upper.contains("SAMPLE") || upper.contains("CODESPRINT")) {
-                return true;
-            }
-        }
-        if (shortDescription != null) {
-            String upper = shortDescription.toUpperCase();
-            if (upper.contains("DEMO") || upper.contains("SAMPLE")) {
-                return true;
-            }
-        }
-        if (status != null && (status.equalsIgnoreCase("Demo") || status.equalsIgnoreCase("Sample"))) {
-            return true;
-        }
         return false;
     }
 }

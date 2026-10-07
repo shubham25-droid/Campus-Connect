@@ -180,11 +180,11 @@
                             <span>DSSA</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=GDG" class="hero-quick-chip">
-                            <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG">
+                            <img src="<%= cp %>/images/clubs/gdg.png" alt="GDG">
                             <span>GDG</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=GFG" class="hero-quick-chip">
-                            <img src="<%= cp %>/images/clubs/gfg.svg" alt="GFG">
+                            <img src="<%= cp %>/images/clubs/gfg.png" alt="GFG">
                             <span>GFG</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=E-CELL" class="hero-quick-chip">
@@ -248,7 +248,7 @@
 
             <!-- 4. GDG -->
             <a href="<%= cp %>/dashboard?search=GDG" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/gdg.svg" alt="GDG" class="club-reel-img">
+                <img src="<%= cp %>/images/clubs/gdg.png" alt="GDG" class="club-reel-img">
                 <div class="club-reel-info">
                     <span class="club-reel-name">GDG on Campus</span>
                     <span class="club-reel-tag open">Open For All</span>
@@ -258,7 +258,7 @@
 
             <!-- 5. GFG -->
             <a href="<%= cp %>/dashboard?search=GFG" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/gfg.svg" alt="GFG" class="club-reel-img">
+                <img src="<%= cp %>/images/clubs/gfg.png" alt="GFG" class="club-reel-img">
                 <div class="club-reel-info">
                     <span class="club-reel-name">GFG Chapter</span>
                     <span class="club-reel-tag open">Open For All</span>
@@ -306,8 +306,8 @@
     <div class="section-container">
         <div class="section-title-bar">
             <div>
-                <span class="sub-header-pill">HAPPENING SOON</span>
-                <h2 class="sub-header-title">Upcoming Campus Opportunities</h2>
+                <span class="sub-header-pill">CAMPUS HIGHLIGHTS &amp; ARCHIVES</span>
+                <h2 class="sub-header-title">Official College Events &amp; Opportunities</h2>
             </div>
             <a href="<%= cp %>/dashboard" class="btn btn-clean-ghost btn-sm">
                 View All Events Directory &rarr;
@@ -318,7 +318,7 @@
             <% if (upcomingEvents != null && !upcomingEvents.isEmpty()) { %>
                 <% int count = 0;
                    for (Event ev : upcomingEvents) { 
-                       if (count++ >= 4) break; // Display top 4 on landing
+                       if (count++ >= 6) break; // Display top events
                 %>
                     <div class="event-modern-card">
                         <!-- Card Banner / Image -->
@@ -328,9 +328,7 @@
                             <span class="card-category-badge <%= ev.getCategory().toLowerCase() %>">
                                 <%= ev.getCategory() %>
                             </span>
-                            <% if (ev.isDemoEvent()) { %>
-                                <span class="card-demo-badge"><span class="badge-dot"></span>Sample</span>
-                            <% } else if (ev.isPastEvent()) { %>
+                            <% if (ev.isPastEvent()) { %>
                                 <span class="card-concluded-badge">Past Event</span>
                             <% } %>
                             <div class="card-date-stamp <%= ev.isPastEvent() ? "is-concluded" : (ev.isToday() ? "is-today" : "") %>">
@@ -461,19 +459,42 @@
 
         <div class="workflow-three-grid">
             <div class="workflow-card">
-                <div class="workflow-num">01</div>
+                <div class="workflow-card-top">
+                    <span class="workflow-step-badge">STEP 01</span>
+                    <div class="workflow-step-icon">&#128221;</div>
+                </div>
                 <h3>Organizer Posts Once</h3>
-                <p>Clubs or faculty fill a clean form with dates, venue, eligibility rules, and registration deadlines. No spamming chat groups.</p>
+                <p class="workflow-brief">Clubs fill one verified form with dates, venue &amp; eligibility.</p>
+                <div class="workflow-chips">
+                    <span class="wf-chip">No Chat Spam</span>
+                    <span class="wf-chip">Campus Broadcast</span>
+                </div>
             </div>
+
             <div class="workflow-card">
-                <div class="workflow-num">02</div>
+                <div class="workflow-card-top">
+                    <span class="workflow-step-badge">STEP 02</span>
+                    <div class="workflow-step-icon">&#127919;</div>
+                </div>
                 <h3>Students Discover Centrally</h3>
-                <p>Browse events filtered by department (AI/ML, Computer, Data Science) or open-for-all clubs (GDG, GFG, E-Cell).</p>
+                <p class="workflow-brief">Filter verified opportunities by department, year, or open chapters.</p>
+                <div class="workflow-chips">
+                    <span class="wf-chip">Branch Filters</span>
+                    <span class="wf-chip">Confirmed Venue</span>
+                </div>
             </div>
+
             <div class="workflow-card">
-                <div class="workflow-num">03</div>
-                <h3>Instant Registration &amp; Pass</h3>
-                <p>One click to register. Students get confirmed access under "My Registrations", and organizers download clean participant rosters.</p>
+                <div class="workflow-card-top">
+                    <span class="workflow-step-badge">STEP 03</span>
+                    <div class="workflow-step-icon">&#127915;</div>
+                </div>
+                <h3>Instant Pass &amp; Entry</h3>
+                <p class="workflow-brief">One-click confirmed registration with digital pass in your profile.</p>
+                <div class="workflow-chips">
+                    <span class="wf-chip">1-Click Pass</span>
+                    <span class="wf-chip">Roster Export</span>
+                </div>
             </div>
         </div>
     </div>

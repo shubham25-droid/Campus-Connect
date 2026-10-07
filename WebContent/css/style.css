@@ -2023,26 +2023,57 @@ button {
     transform: translateY(-3px);
 }
 
-.workflow-num {
-    font-size: 2.25rem;
-    font-weight: 900;
-    color: var(--ltce-gold);
-    line-height: 1;
+.workflow-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
-    font-feature-settings: "tnum";
+}
+
+.workflow-step-badge {
+    font-size: 0.725rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: var(--ltce-navy);
+    background: #eff6ff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #bfdbfe;
+}
+
+.workflow-step-icon {
+    font-size: 1.75rem;
+    line-height: 1;
 }
 
 .workflow-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--ltce-navy);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
-.workflow-card p {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
+.workflow-brief {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.45;
+    margin-bottom: 0.85rem;
+}
+
+.workflow-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.wf-chip {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: #f8fafc;
+    color: var(--ltce-blue);
+    border: 1px solid #cbd5e1;
 }
 
 /* Banner CTA */
@@ -2091,10 +2122,10 @@ button {
     width: 92%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 3.5rem 0 2.5rem;
+    padding: 2.5rem 0 1.5rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
 @media (min-width: 640px) {
@@ -2112,18 +2143,20 @@ button {
 .footer-brand-lockup {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 1.25rem;
+    gap: 12px;
+    margin-bottom: 1rem;
 }
 
 .footer-brand-emblem {
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
+    max-width: 44px;
+    max-height: 44px;
     border-radius: 50%;
     object-fit: cover;
     background: #ffffff;
     padding: 2px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     flex-shrink: 0;
 }
 
@@ -2874,6 +2907,17 @@ input.search-input,
 .club-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
+}
+
+.club-micro-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    display: inline-block;
 }
 
 /* Auth Cards (Login & Register) */
