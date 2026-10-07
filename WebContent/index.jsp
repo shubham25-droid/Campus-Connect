@@ -329,7 +329,7 @@
                                 <%= ev.getCategory() %>
                             </span>
                             <% if (ev.isDemoEvent()) { %>
-                                <span class="card-demo-badge">Sample Event</span>
+                                <span class="card-demo-badge"><span class="badge-dot"></span>Sample</span>
                             <% } else if (ev.isPastEvent()) { %>
                                 <span class="card-concluded-badge">Past Event</span>
                             <% } %>

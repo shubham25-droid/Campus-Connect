@@ -56,7 +56,7 @@
             <div style="position:relative; margin-bottom:1.5rem;">
                 <img class="details-banner" src="<%= request.getContextPath() %>/images/<%= event.getImage() %>" alt="<%= event.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                 <% if (event.isDemoEvent()) { %>
-                    <span class="card-demo-badge" style="font-size:0.75rem; padding:4px 10px; top:14px; left:14px;">Sample Event</span>
+                    <span class="card-demo-badge" style="top:14px; left:14px;"><span class="badge-dot"></span>Sample</span>
                 <% } else if (event.isPastEvent()) { %>
                     <span class="card-concluded-badge" style="font-size:0.75rem; padding:4px 10px; top:14px; left:14px;">Past Event</span>
                 <% } %>

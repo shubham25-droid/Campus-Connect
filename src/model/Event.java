@@ -245,9 +245,12 @@ public class Event {
     }
 
     public boolean isDemoEvent() {
+        if (id == 3 || id == 4) {
+            return true;
+        }
         if (title != null) {
             String upper = title.toUpperCase();
-            if (upper.contains("DEMO") || upper.contains("SAMPLE")) {
+            if (upper.contains("DEMO") || upper.contains("SAMPLE") || upper.contains("CODESPRINT")) {
                 return true;
             }
         }
