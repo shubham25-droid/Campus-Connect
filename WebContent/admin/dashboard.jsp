@@ -100,13 +100,13 @@
             <table class="admin-table">
                 <thead>
                     <tr>
-                        <th>Event Title</th>
-                        <th>Date & Time</th>
+                        <th style="min-width: 220px;">Event</th>
+                        <th style="min-width: 130px;">Date &amp; Time</th>
                         <th>Category</th>
                         <th>Department</th>
                         <th>Status</th>
-                        <th>Registrations</th>
-                        <th style="text-align: right;">Actions</th>
+                        <th>Registered</th>
+                        <th style="text-align: right; min-width: 140px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,45 +115,46 @@
                     %>
                         <tr>
                             <td>
-                                <strong style="color:var(--secondary); font-size:0.95rem;">
-                                    <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>"><%= e.getTitle() %></a>
-                                </strong>
-                                <div style="font-size:0.75rem; color:var(--text-muted);"><%= e.getOrganizerName() %> &bull; <%= e.getVenue() %></div>
+                                <div>
+                                    <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" style="font-weight:700; color:var(--ltce-navy); font-size:0.92rem;">
+                                        <%= e.getTitle() %>
+                                    </a>
+                                </div>
+                                <div style="font-size:0.775rem; color:var(--text-muted); margin-top:2px;">
+                                    <%= e.getOrganizerName() %>
+                                </div>
                             </td>
                             <td>
-                                <div><%= e.getFormattedDate() %></div>
-                                <div style="font-size:0.75rem; color:var(--text-muted);"><%= e.getStartTime() %></div>
+                                <div style="font-weight:600; font-size:0.85rem;"><%= e.getFormattedDate() %></div>
+                                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:1px;"><%= e.getStartTime() %></div>
                             </td>
                             <td>
                                 <span class="cat-pill" style="font-size:0.75rem;"><%= e.getCategory() %></span>
                             </td>
                             <td>
-                                <span style="font-size:0.825rem;"><%= e.getDepartment() %></span>
+                                <span style="font-size:0.825rem; color:#475569;"><%= e.getDepartment() %></span>
                             </td>
                             <td>
-                                <span class="role-tag <%= "Published".equalsIgnoreCase(e.getStatus()) ? "student" : "admin" %>" style="font-size:0.75rem;">
+                                <span class="role-tag <%= "Published".equalsIgnoreCase(e.getStatus()) ? "student" : "admin" %>" style="font-size:0.725rem;">
                                     <%= e.getStatus() %>
                                 </span>
                             </td>
                             <td>
-                                <a href="<%= request.getContextPath() %>/admin/registrations?eventId=<%= e.getId() %>" style="font-weight:700; color:var(--primary);">
+                                <a href="<%= request.getContextPath() %>/admin/registrations?eventId=<%= e.getId() %>" style="font-weight:700; color:var(--primary); font-size:0.9rem;">
                                     <%= e.getRegisteredCount() %> / <%= e.getMaxParticipants() %>
                                 </a>
                             </td>
                             <td style="text-align: right;">
                                 <div class="action-btn-group" style="justify-content: flex-end;">
-                                    <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" class="btn btn-secondary btn-sm" title="View Public Page">
-                                        View
-                                    </a>
-                                    <a href="<%= request.getContextPath() %>/admin/registrations?eventId=<%= e.getId() %>" class="btn btn-outline btn-sm" title="Attendee List">
+                                    <a href="<%= request.getContextPath() %>/admin/registrations?eventId=<%= e.getId() %>" class="btn btn-outline btn-xs" title="Attendee List">
                                         Attendees
                                     </a>
-                                    <a href="<%= request.getContextPath() %>/admin/edit-event?id=<%= e.getId() %>" class="btn btn-secondary btn-sm" title="Edit">
+                                    <a href="<%= request.getContextPath() %>/admin/edit-event?id=<%= e.getId() %>" class="btn btn-secondary btn-xs" title="Edit Event">
                                         Edit
                                     </a>
-                                    <form action="<%= request.getContextPath() %>/admin/delete-event" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');" style="display:inline;">
+                                    <form action="<%= request.getContextPath() %>/admin/delete-event" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');" style="display:inline; margin:0;">
                                         <input type="hidden" name="id" value="<%= e.getId() %>">
-                                        <button type="submit" class="btn btn-danger btn-sm" style="background:#fee2e2; color:#b91c1c; border-color:#fecaca;" title="Delete">
+                                        <button type="submit" class="btn btn-danger btn-xs" style="background:#fee2e2; color:#b91c1c; border-color:#fecaca;" title="Delete">
                                             &times;
                                         </button>
                                     </form>
@@ -163,8 +164,8 @@
                     <%  } 
                        } else { %>
                         <tr>
-                            <td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-muted);">
-                                No events found in database. Create your first event!
+                            <td colspan="7" style="text-align: center; padding: 2.5rem; color: var(--text-muted);">
+                                No events found. Create your first event!
                             </td>
                         </tr>
                     <% } %>
@@ -177,18 +178,18 @@
     <div class="card" style="overflow:hidden;">
         <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
             <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--secondary);">Recent Registrations</h3>
-            <a href="<%= request.getContextPath() %>/admin/registrations" style="font-size:0.85rem; font-weight:600;">View Full Attendee Directory &rarr;</a>
+            <a href="<%= request.getContextPath() %>/admin/registrations" style="font-size:0.85rem; font-weight:600;">View Attendee Directory &rarr;</a>
         </div>
 
         <div class="table-responsive">
             <table class="admin-table">
                 <thead>
                     <tr>
-                        <th>Student Name</th>
-                        <th>College Email</th>
-                        <th>Department & Year</th>
-                        <th>Event</th>
-                        <th>Registration Time</th>
+                        <th style="min-width: 150px;">Student Name</th>
+                        <th style="min-width: 180px;">College Email</th>
+                        <th style="min-width: 180px;">Department &amp; Year</th>
+                        <th style="min-width: 200px;">Event</th>
+                        <th style="min-width: 140px;">Registered At</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -197,23 +198,23 @@
                         for (Registration reg : recentRegs) { 
                     %>
                         <tr>
-                            <td><strong><%= reg.getUserName() %></strong></td>
-                            <td style="color:var(--text-muted);"><%= reg.getUserEmail() %></td>
-                            <td><%= reg.getUserDepartment() %> (<%= reg.getUserYear() %>)</td>
+                            <td><strong style="color:var(--ltce-navy);"><%= reg.getUserName() %></strong></td>
+                            <td style="color:#64748b; font-size:0.825rem;"><%= reg.getUserEmail() %></td>
+                            <td style="color:#475569; font-size:0.825rem;"><%= reg.getUserDepartment() %> (<%= reg.getUserYear() %>)</td>
                             <td>
-                                <a href="<%= request.getContextPath() %>/event-details?id=<%= reg.getEventId() %>" style="font-weight:600;">
+                                <a href="<%= request.getContextPath() %>/event-details?id=<%= reg.getEventId() %>" style="font-weight:600; color:var(--primary); font-size:0.875rem;">
                                     <%= reg.getEventTitle() %>
                                 </a>
                             </td>
-                            <td style="font-size:0.8rem; color:var(--text-muted);"><%= reg.getFormattedRegisteredAt() %></td>
+                            <td style="font-size:0.8rem; color:#64748b;"><%= reg.getFormattedRegisteredAt() %></td>
                             <td>
-                                <span class="seat-status-pill open" style="font-size:0.75rem;">&#10003; <%= reg.getStatus() %></span>
+                                <span class="seat-status-pill open" style="font-size:0.725rem;">&#10003; <%= reg.getStatus() %></span>
                             </td>
                         </tr>
                     <%  } 
                        } else { %>
                         <tr>
-                            <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                            <td colspan="6" style="text-align: center; padding: 2.5rem; color: var(--text-muted);">
                                 No student registrations recorded yet.
                             </td>
                         </tr>

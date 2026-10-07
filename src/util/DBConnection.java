@@ -154,7 +154,7 @@ public class DBConnection {
             // Seed Users if empty
             stmt.executeUpdate("MERGE INTO users (id, name, email, password, role, department, academic_year) KEY(id) VALUES "
                     + "(1, 'Admin / Organizer Coordinator', 'admin@campusconnect.com', 'admin123', 'ADMIN', 'Computer Engineering', 'Faculty'), "
-                    + "(2, 'Shubham Sharma', 'student@campusconnect.com', 'student123', 'STUDENT', 'Computer Engineering', 'TE - 3rd Year'), "
+                    + "(2, 'Student Demo Account', 'student@campusconnect.com', 'student123', 'STUDENT', 'Computer Engineering', 'TE - 3rd Year'), "
                     + "(3, 'Aarav Patel', 'aarav@campusconnect.com', 'student123', 'STUDENT', 'CSE (AI & ML)', 'SE - 2nd Year');");
 
             // Seed 5 Authentic, Official College Events (Sequentially Arranged by Date)

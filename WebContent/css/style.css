@@ -3032,3 +3032,113 @@ input.search-input,
         padding: 1.75rem 1.25rem;
     }
 }
+
+/* ==========================================================================
+   Admin Portal Dashboard & Tables Optimization
+   ========================================================================== */
+.admin-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.metric-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.metric-icon-box.blue { background: #e0f2fe; color: #0284c7; }
+.metric-icon-box.green { background: #dcfce7; color: #16a34a; }
+.metric-icon-box.amber { background: #fef3c7; color: #d97706; }
+.metric-icon-box.purple { background: #f3e8ff; color: #9333ea; }
+
+.metric-card .metric-label {
+    font-size: 0.775rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.metric-card .metric-number {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--ltce-navy);
+    line-height: 1.15;
+    margin-top: 4px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    text-align: left;
+    background: #ffffff;
+}
+
+.admin-table thead th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.admin-table tbody td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+    color: #334155;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.action-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+.btn-xs {
+    padding: 5px 11px;
+    font-size: 0.775rem;
+    border-radius: 6px;
+    font-weight: 600;
+    line-height: 1.2;
+}

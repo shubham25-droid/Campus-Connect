@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS saved_events (
 -- Demo Accounts (passwords: 'admin123', 'student123' or plain/hashed)
 INSERT INTO users (id, name, email, password, role, department, academic_year) VALUES
 (1, 'Admin / Organizer Coordinator', 'admin@campusconnect.com', 'admin123', 'ADMIN', 'Computer Engineering', 'Faculty'),
-(2, 'Shubham Sharma', 'student@campusconnect.com', 'student123', 'STUDENT', 'Computer Engineering', 'TE - 3rd Year'),
+(2, 'Student Demo Account', 'student@campusconnect.com', 'student123', 'STUDENT', 'Computer Engineering', 'TE - 3rd Year'),
 (3, 'Aarav Patel', 'aarav@campusconnect.com', 'student123', 'STUDENT', 'CSE (AI & ML)', 'SE - 2nd Year')
 ON DUPLICATE KEY UPDATE name=name;
 
