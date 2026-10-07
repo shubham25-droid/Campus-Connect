@@ -116,7 +116,7 @@
 
                         <div class="ticket-body">
                             <div class="ticket-club-row">
-                                <img src="<%= cp %>/images/clubs/<%= featuredLead.getClubLogo() %>" alt="<%= featuredLead.getOrganizerName() %>" 
+                                <img src="<%= cp %>/images/clubs/<%= featuredLead.getClubLogo() %>?v=3.0" alt="<%= featuredLead.getOrganizerName() %>" 
                                      class="ticket-club-mini-logo" onerror="this.src='<%= cp %>/images/campusconnect-mark.svg'">
                                 <span class="ticket-club-name"><%= featuredLead.getOrganizerName() %></span>
                             </div>
@@ -180,11 +180,11 @@
                             <span>DSSA</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=GDG" class="hero-quick-chip">
-                            <img src="<%= cp %>/images/clubs/gdg.png" alt="GDG">
+                            <img src="<%= cp %>/images/clubs/gdg.png?v=3.0" alt="GDG">
                             <span>GDG</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=GFG" class="hero-quick-chip">
-                            <img src="<%= cp %>/images/clubs/gfg.png" alt="GFG">
+                            <img src="<%= cp %>/images/clubs/gfg.png?v=3.0" alt="GFG">
                             <span>GFG</span>
                         </a>
                         <a href="<%= cp %>/dashboard?search=E-CELL" class="hero-quick-chip">
@@ -248,7 +248,7 @@
 
             <!-- 4. GDG -->
             <a href="<%= cp %>/dashboard?search=GDG" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/gdg.png" alt="GDG" class="club-reel-img">
+                <img src="<%= cp %>/images/clubs/gdg.png?v=3.0" alt="GDG" class="club-reel-img">
                 <div class="club-reel-info">
                     <span class="club-reel-name">GDG on Campus</span>
                     <span class="club-reel-tag open">Open For All</span>
@@ -258,7 +258,7 @@
 
             <!-- 5. GFG -->
             <a href="<%= cp %>/dashboard?search=GFG" class="club-reel-card">
-                <img src="<%= cp %>/images/clubs/gfg.png" alt="GFG" class="club-reel-img">
+                <img src="<%= cp %>/images/clubs/gfg.png?v=3.0" alt="GFG" class="club-reel-img">
                 <div class="club-reel-info">
                     <span class="club-reel-name">GFG Chapter</span>
                     <span class="club-reel-tag open">Open For All</span>
@@ -346,7 +346,7 @@
                         <div class="card-details-wrap">
                             <!-- Organizer Pill with Club Logo -->
                             <div class="card-club-author">
-                                <img src="<%= cp %>/images/clubs/<%= ev.getClubLogo() %>" alt="<%= ev.getOrganizerName() %>" 
+                                <img src="<%= cp %>/images/clubs/<%= ev.getClubLogo() %>?v=3.0" alt="<%= ev.getOrganizerName() %>" 
                                      class="card-club-mini-logo" onerror="this.src='<%= cp %>/images/campusconnect-mark.svg'">
                                 <span class="card-club-name"><%= ev.getOrganizerName() %></span>
                             </div>

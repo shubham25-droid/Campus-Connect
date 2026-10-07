@@ -228,7 +228,7 @@
             <!-- Organizer Contact Box -->
             <div class="sidebar-organizer-box">
                 <div class="organizer-avatar-title" style="display:flex; align-items:center; gap:12px;">
-                    <img src="<%= request.getContextPath() %>/images/clubs/<%= event.getClubLogo() %>" alt="<%= event.getOrganizerName() %> logo" style="width:42px; height:42px; border-radius:8px; object-fit:contain; background:#ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.1); padding:2px;" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
+                    <img src="<%= request.getContextPath() %>/images/clubs/<%= event.getClubLogo() %>?v=3.0" alt="<%= event.getOrganizerName() %> logo" style="width:42px; height:42px; border-radius:8px; object-fit:contain; background:#ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.1); padding:2px;" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
                     <div>
                         <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">Organized By</div>
                         <div style="font-size:0.95rem; font-weight:700; color:var(--secondary);"><%= event.getOrganizerName() %></div>

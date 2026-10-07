@@ -176,11 +176,11 @@
                 <span>DSSA (Data Science)</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('GDG')">
-                <img src="<%= request.getContextPath() %>/images/clubs/gdg.svg" alt="GDG">
+                <img src="<%= request.getContextPath() %>/images/clubs/gdg.png?v=3.0" alt="GDG">
                 <span>GDG on Campus</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('GFG')">
-                <img src="<%= request.getContextPath() %>/images/clubs/gfg.svg" alt="GFG">
+                <img src="<%= request.getContextPath() %>/images/clubs/gfg.png?v=3.0" alt="GFG">
                 <span>GFG Student Chapter</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('E-CELL')">
@@ -196,11 +196,11 @@
                 <span>The English Club</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('IIC')">
-                <img src="<%= request.getContextPath() %>/images/clubs/iic.svg" alt="IIC">
+                <img src="<%= request.getContextPath() %>/images/clubs/iic.png?v=3.0" alt="IIC">
                 <span>IIC LTCE</span>
             </button>
             <button type="button" class="club-badge-pill" onclick="filterByClub('Placement')">
-                <img src="<%= request.getContextPath() %>/images/clubs/tnp.svg" alt="T&P">
+                <img src="<%= request.getContextPath() %>/images/clubs/tnp.png?v=3.0" alt="T&P">
                 <span>T&amp;P Cell</span>
             </button>
         </div>
@@ -258,7 +258,7 @@
                             <span><%= e.getVenue() %></span>
                         </div>
                         <div class="event-meta-item event-organizer-row">
-                            <img src="<%= request.getContextPath() %>/images/clubs/<%= e.getClubLogo() %>" alt="<%= e.getOrganizerName() %>" class="club-logo-mini" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
+                            <img src="<%= request.getContextPath() %>/images/clubs/<%= e.getClubLogo() %>?v=3.0" alt="<%= e.getOrganizerName() %>" class="club-logo-mini" onerror="this.src='<%= request.getContextPath() %>/images/clubs/ltce.svg'">
                             <span><%= e.getOrganizerName() %></span>
                         </div>
                     </div>

@@ -233,12 +233,12 @@ public class Event {
         if (org.contains("TECHNICAL VIDYA") || org.contains("TECH VIDYA") || org.contains("VIDYA")) return "technical_vidya.png";
         if (org.contains("GDG")) return "gdg.png";
         if (org.contains("GFG") || org.contains("GEEKS")) return "gfg.png";
-        if (org.contains("IIC") || org.contains("INNOVATION")) return "iic.svg";
+        if (org.contains("IIC") || org.contains("INNOVATION")) return "iic.png";
         if (org.contains("DSS") || org.contains("DATA SCIENCE")) return "dssa.png";
         if (org.contains("CSI")) return "csi.svg";
         if (org.contains("IEEE")) return "ieee.svg";
         if (org.contains("ROTARACT")) return "rotaract.svg";
-        if (org.contains("PLACEMENT") || org.contains("T&P") || org.contains("TPO")) return "tnp.svg";
+        if (org.contains("PLACEMENT") || org.contains("T&P") || org.contains("TPO")) return "tnp.png";
         if (org.contains("DROPCODE")) return "aimsa.png";
         if (org.contains("ACM")) return "acm.svg";
         return "ltce_official_logo.png";

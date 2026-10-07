@@ -111,7 +111,7 @@
         <!-- 4. GDG on Campus LTCE -->
         <div class="card club-card" data-category="tech" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #4285F4; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.75rem;">
-                <img src="<%= cp %>/images/clubs/gdg.png" alt="GDG" style="width: 54px; height: 54px; border-radius: 50%; object-fit: contain; padding: 5px; border: 2px solid #4285F4; background: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
+                <img src="<%= cp %>/images/clubs/gdg.png?v=3.0" alt="GDG" style="width: 54px; height: 54px; border-radius: 50%; object-fit: contain; padding: 5px; border: 2px solid #4285F4; background: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
                 <div>
                     <span class="role-tag" style="background:#e0f2fe; color:#0369a1; font-size:0.65rem;">Open For All Branches</span>
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--ltce-blue-dark); margin: 2px 0 0;">GDG on Campus</h3>
@@ -133,7 +133,7 @@
         <!-- 5. GFG Student Chapter -->
         <div class="card club-card" data-category="tech" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #2f8d46; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.75rem;">
-                <img src="<%= cp %>/images/clubs/gfg.png" alt="GFG" style="width: 54px; height: 54px; border-radius: 50%; object-fit: contain; padding: 4px; border: 2px solid #2f8d46; background: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
+                <img src="<%= cp %>/images/clubs/gfg.png?v=3.0" alt="GFG" style="width: 54px; height: 54px; border-radius: 50%; object-fit: contain; padding: 4px; border: 2px solid #2f8d46; background: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
                 <div>
                     <span class="role-tag" style="background:#f0fdf4; color:#166534; font-size:0.65rem;">Open For All Branches</span>
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--ltce-blue-dark); margin: 2px 0 0;">GFG Chapter</h3>
@@ -221,7 +221,7 @@
         <!-- 9. IIC LTCE -->
         <div class="card club-card" data-category="startup" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #f97316; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.75rem;">
-                <img src="<%= cp %>/images/clubs/iic.svg" alt="IIC" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid #f97316; background: #fff; padding: 2px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                <img src="<%= cp %>/images/clubs/iic.png?v=3.0" alt="IIC" style="width: 54px; height: 54px; border-radius: 50%; object-fit: contain; border: 2px solid #f97316; background: #fff; padding: 2px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                 <div>
                     <span class="role-tag" style="background:#fff7ed; color:#c2410c; font-size:0.65rem;">MoE Initiative</span>
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--ltce-blue-dark); margin: 2px 0 0;">IIC LTCE</h3>
@@ -243,7 +243,7 @@
         <!-- 10. Training & Placement Cell -->
         <div class="card club-card" data-category="softskills" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #1e3a8a; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.75rem;">
-                <img src="<%= cp %>/images/clubs/tnp.svg" alt="T&P" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid #1e3a8a; background: #fff; padding: 2px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                <img src="<%= cp %>/images/clubs/tnp.png?v=3.0" alt="T&P" style="width: 54px; height: 54px; border-radius: 50%; object-fit: contain; border: 2px solid #1e3a8a; background: #fff; padding: 2px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                 <div>
                     <span class="role-tag" style="background:#eff6ff; color:#1e40af; font-size:0.65rem;">Central Placement Wing</span>
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--ltce-blue-dark); margin: 2px 0 0;">T&amp;P Cell</h3>
