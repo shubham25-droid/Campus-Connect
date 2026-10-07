@@ -42,60 +42,36 @@
                     <span class="live-pill-text">Official Campus Board &bull; <strong>LTCE Navi Mumbai</strong></span>
                 </div>
 
-                <!-- High-Impact Bold Typography -->
+                <!-- High-Impact Typography -->
                 <h1 class="hero-heading">
-                    Connecting Students with <br>
-                    <span class="hero-gradient-text">Every Campus Opportunity.</span>
+                    Campus Events &amp; Opportunities<br>
+                    <span class="hero-gradient-text">LTCE Student Hub</span>
                 </h1>
 
-                <!-- Clear, Realistic Value Proposition -->
+                <!-- Clear Value Proposition -->
                 <p class="hero-lead">
-                    The official central opportunity board for <strong>Lokmanya Tilak College of Engineering</strong>. 
-                    Discover hackathons, technical bootcamps, and cultural fests from AIMSA, CESA, GDG, E-Cell &amp; more&mdash;without digging through endless noisy WhatsApp groups.
+                    Discover hackathons, workshops, and student club events at Lokmanya Tilak College of Engineering.
                 </p>
 
-                <!-- Instant In-Hero Search Form (Maximum Utility for Students) -->
+                <!-- Search Form -->
                 <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box">
                     <div class="hero-search-inner">
                         <span class="hero-search-icon">&#128269;</span>
                         <input type="text" name="search" class="hero-search-input" 
-                               placeholder="Search hackathons, bootcamps, CESA, GDG, DSA..." 
+                               placeholder="Search hackathons, bootcamps, CESA, GDG..." 
                                autocomplete="off">
-                        <button type="submit" class="hero-search-submit">Search Events</button>
+                        <button type="submit" class="hero-search-submit">Search</button>
                     </div>
                 </form>
 
                 <!-- Action CTAs -->
                 <div class="hero-action-buttons">
                     <a href="<%= cp %>/dashboard" class="btn-hero-primary">
-                        Explore All Events <span>&rarr;</span>
+                        Browse Events <span>&rarr;</span>
                     </a>
                     <a href="<%= cp %>/clubs.jsp" class="btn-hero-secondary">
-                        <span>&#127891;</span> Campus Clubs Guide
+                        <span>&#127891;</span> Clubs Guide
                     </a>
-                </div>
-
-                <!-- Trust & Social Proof Metrics Strip -->
-                <div class="hero-metrics-strip">
-                    <div class="metric-block">
-                        <div class="metric-number">Clubs</div>
-                        <div class="metric-label">CESA, AIMSA &amp; GDG</div>
-                    </div>
-                    <div class="metric-divider"></div>
-                    <div class="metric-block">
-                        <div class="metric-number">100%</div>
-                        <div class="metric-label">Free For Students</div>
-                    </div>
-                    <div class="metric-divider"></div>
-                    <div class="metric-block">
-                        <div class="metric-number">1-Click</div>
-                        <div class="metric-label">Instant Pass Roster</div>
-                    </div>
-                    <div class="metric-divider"></div>
-                    <div class="metric-block">
-                        <div class="metric-number">Official</div>
-                        <div class="metric-label">Autonomous Board</div>
-                    </div>
                 </div>
             </div>
 
@@ -206,11 +182,11 @@
     <div class="section-container">
         <div class="section-title-bar">
             <div>
-                <span class="sub-header-pill">CAMPUS BODIES</span>
-                <h2 class="sub-header-title">Official LTCE Student Chapters &amp; Clubs</h2>
+                <span class="sub-header-pill">STUDENT CLUBS</span>
+                <h2 class="sub-header-title">Student Chapters &amp; Bodies</h2>
             </div>
             <a href="<%= cp %>/clubs.jsp" class="view-all-link">
-                Compare All Clubs &amp; "Kisme Jaana Chahiye" Guide &rarr;
+                Explore All Clubs &rarr;
             </a>
         </div>
 
@@ -306,11 +282,11 @@
     <div class="section-container">
         <div class="section-title-bar">
             <div>
-                <span class="sub-header-pill">CAMPUS HIGHLIGHTS &amp; ARCHIVES</span>
-                <h2 class="sub-header-title">Official College Events &amp; Opportunities</h2>
+                <span class="sub-header-pill">CAMPUS EVENTS</span>
+                <h2 class="sub-header-title">Featured &amp; Upcoming Events</h2>
             </div>
             <a href="<%= cp %>/dashboard" class="btn btn-clean-ghost btn-sm">
-                View All Events Directory &rarr;
+                View All Events &rarr;
             </a>
         </div>
 
@@ -389,127 +365,6 @@
                     <p>No upcoming events currently scheduled. Check back soon!</p>
                 </div>
             <% } %>
-        </div>
-    </div>
-</section>
-
-<!-- ==============================================
-     4. The WhatsApp Problem vs CampusConnect Solution
-     ============================================== -->
-<section class="reality-comparison-section">
-    <div class="section-container">
-        <div class="text-center" style="max-width: 680px; margin: 0 auto 2.5rem;">
-            <span class="sub-header-pill">WHY WE BUILT THIS</span>
-            <h2 class="sub-header-title">The College Event Problem We Solved</h2>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-top: 0.5rem;">
-                WhatsApp is built for personal messaging&mdash;not managing 4,000 engineering students across 6 departments.
-            </p>
-        </div>
-
-        <div class="comparison-dual-cards">
-            <!-- Left: The Chaotic Reality -->
-            <div class="comparison-card reality-card">
-                <div class="comparison-head">
-                    <span class="status-indicator bad">&#10006;</span>
-                    <div>
-                        <h3 class="comparison-title">The WhatsApp Chaos</h3>
-                        <span class="comparison-sub">How college announcements were managed</span>
-                    </div>
-                </div>
-                <ul class="comparison-points">
-                    <li><span>&#10060;</span> 15+ WhatsApp groups (class, dept, club, batch, electives)</li>
-                    <li><span>&#10060;</span> Crucial event posters get buried inside 200 daily chatter messages</li>
-                    <li><span>&#10060;</span> Organizers waste hours repeatedly forwarding identical texts</li>
-                    <li><span>&#10060;</span> Duplicate Google Form registrations, expired links, and zero attendance tracking</li>
-                    <li><span>&#10060;</span> Cross-department students miss out entirely because they aren't in the group</li>
-                </ul>
-            </div>
-
-            <!-- Right: CampusConnect Solution -->
-            <div class="comparison-card solution-card">
-                <div class="comparison-head">
-                    <span class="status-indicator good">&#10004;</span>
-                    <div>
-                        <h3 class="comparison-title">The CampusConnect Way</h3>
-                        <span class="comparison-sub">A verified, centralized institution portal</span>
-                    </div>
-                </div>
-                <ul class="comparison-points">
-                    <li><span>&#9989;</span> <strong>Post Once, Reach Everyone:</strong> Clubs publish once and reach the whole college</li>
-                    <li><span>&#9989;</span> <strong>1-Click Student Registration:</strong> Zero duplicate entries, instant digital passes</li>
-                    <li><span>&#9989;</span> <strong>Filter by Branch &amp; Year:</strong> Find relevant hackathons without chat clutter</li>
-                    <li><span>&#9989;</span> <strong>Single Source of Truth:</strong> Always see confirmed venue, time, rules &amp; deadlines</li>
-                    <li><span>&#9989;</span> <strong>Seamless Sharing:</strong> Generate clean WhatsApp links that lead right to the event pass</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==============================================
-     5. How It Works Workflow (Simple 3 Steps)
-     ============================================== -->
-<section class="how-it-works-section" id="how-it-works">
-    <div class="section-container">
-        <div class="text-center" style="max-width: 600px; margin: 0 auto 2.5rem;">
-            <span class="sub-header-pill">SIMPLE WORKFLOW</span>
-            <h2 class="sub-header-title">How CampusConnect Works</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem;">Designed for minimal friction for both organizers and students.</p>
-        </div>
-
-        <div class="workflow-three-grid">
-            <div class="workflow-card">
-                <div class="workflow-card-top">
-                    <span class="workflow-step-badge">STEP 01</span>
-                    <div class="workflow-step-icon">&#128221;</div>
-                </div>
-                <h3>Organizer Posts Once</h3>
-                <p class="workflow-brief">Clubs fill one verified form with dates, venue &amp; eligibility.</p>
-                <div class="workflow-chips">
-                    <span class="wf-chip">No Chat Spam</span>
-                    <span class="wf-chip">Campus Broadcast</span>
-                </div>
-            </div>
-
-            <div class="workflow-card">
-                <div class="workflow-card-top">
-                    <span class="workflow-step-badge">STEP 02</span>
-                    <div class="workflow-step-icon">&#127919;</div>
-                </div>
-                <h3>Students Discover Centrally</h3>
-                <p class="workflow-brief">Filter verified opportunities by department, year, or open chapters.</p>
-                <div class="workflow-chips">
-                    <span class="wf-chip">Branch Filters</span>
-                    <span class="wf-chip">Confirmed Venue</span>
-                </div>
-            </div>
-
-            <div class="workflow-card">
-                <div class="workflow-card-top">
-                    <span class="workflow-step-badge">STEP 03</span>
-                    <div class="workflow-step-icon">&#127915;</div>
-                </div>
-                <h3>Instant Pass &amp; Entry</h3>
-                <p class="workflow-brief">One-click confirmed registration with digital pass in your profile.</p>
-                <div class="workflow-chips">
-                    <span class="wf-chip">1-Click Pass</span>
-                    <span class="wf-chip">Roster Export</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==============================================
-     6. Institutional Call to Action
-     ============================================== -->
-<section class="banner-cta-section">
-    <div class="banner-cta-inner">
-        <h2>Ready to Experience Seamless Campus Life?</h2>
-        <p>Join fellow students and organizers at Lokmanya Tilak College of Engineering.</p>
-        <div class="banner-cta-actions">
-            <a href="<%= cp %>/dashboard" class="btn-hero-primary">Explore All Events</a>
-            <a href="<%= cp %>/register" class="btn-hero-secondary">Create Student Account</a>
         </div>
     </div>
 </section>

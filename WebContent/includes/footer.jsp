@@ -16,40 +16,34 @@
                     </div>
                 </div>
                 <p class="footer-desc">
-                    Centralized event and student opportunity platform for Lokmanya Tilak College of Engineering. Eliminating notice board and WhatsApp clutter.
+                    Centralized event and student opportunity platform for Lokmanya Tilak College of Engineering.
                 </p>
                 <div class="footer-address">
-                    <strong>Lokmanya Tilak College of Engineering (Autonomous)</strong><br>
-                    Sector-4, Vikas Nagar, Koparkhairane, Navi Mumbai &ndash; 400 709<br>
-                    Affiliated to University of Mumbai &bull; Approved by AICTE
+                    Sector-4, Koparkhairane, Navi Mumbai &ndash; 400 709
                 </div>
             </div>
 
             <!-- Quick Links -->
             <div class="footer-col-links">
-                <h4>Platform Navigation</h4>
+                <h4>Navigation</h4>
                 <ul>
-                    <li><a href="<%= request.getContextPath() %>/">Home Portal</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard">Explore Events</a></li>
-                    <li><a href="<%= request.getContextPath() %>/my-registrations">My Registrations &amp; Passes</a></li>
-                    <li><a href="<%= request.getContextPath() %>/saved-events">Bookmarked Opportunities</a></li>
-                    <li><a href="<%= request.getContextPath() %>/login">Organizer &amp; Admin Sign In</a></li>
+                    <li><a href="<%= request.getContextPath() %>/">Home</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard">All Events</a></li>
+                    <li><a href="<%= request.getContextPath() %>/my-registrations">My Registrations</a></li>
+                    <li><a href="<%= request.getContextPath() %>/saved-events">Saved Events</a></li>
+                    <li><a href="<%= request.getContextPath() %>/login">Organizer Login</a></li>
                 </ul>
             </div>
 
             <!-- Campus Chapters & Student Bodies -->
             <div class="footer-col-links">
-                <h4>Clubs &amp; Student Bodies</h4>
+                <h4>Campus Clubs</h4>
                 <ul>
                     <li><a href="<%= request.getContextPath() %>/dashboard?search=CESA">CESA (Computer Engg)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=AIMSA">AIMSA (CSE AI &amp; ML)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=Data+Science">DSSA (Data Science)</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GDG">GDG on Campus LTCE</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GFG">GFG Student Chapter</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=E-CELL">E-CELL LTCE</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=Technical+Vidya">Technical Vidya</a></li>
-                    <li><a href="<%= request.getContextPath() %>/dashboard?search=English">The English Club</a></li>
-                    <li><a href="<%= request.getContextPath() %>/clubs.jsp" style="color:var(--ltce-gold); font-weight:700;">Explore All Campus Clubs &rarr;</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=AIMSA">AIMSA (AI &amp; ML)</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GDG">GDG on Campus</a></li>
+                    <li><a href="<%= request.getContextPath() %>/dashboard?search=GFG">GFG Chapter</a></li>
+                    <li><a href="<%= request.getContextPath() %>/clubs.jsp" style="color:var(--ltce-gold); font-weight:700;">All Campus Clubs &rarr;</a></li>
                 </ul>
             </div>
 
@@ -59,8 +53,7 @@
                 <ul>
                     <li><a href="https://ltce.in/" target="_blank" rel="noopener noreferrer">Official LTCE Website &rarr;</a></li>
                     <li><a href="https://ltce.in/iic-cell" target="_blank" rel="noopener noreferrer">IIC Innovation Portal</a></li>
-                    <li><a href="https://ltce.in/contact.php" target="_blank" rel="noopener noreferrer">Campus Directory &amp; Map</a></li>
-                    <li><a href="https://enquiry.ltjss.net/new_admission_enquiry/" target="_blank" rel="noopener noreferrer">Admissions Enquiry</a></li>
+                    <li><a href="https://ltce.in/contact.php" target="_blank" rel="noopener noreferrer">Campus Map &amp; Contact</a></li>
                 </ul>
             </div>
         </div>

@@ -9,34 +9,29 @@
 <div class="container">
 
     <!-- Header Section -->
-    <div style="margin-bottom: 2.25rem;">
+    <div style="margin-bottom: 1.75rem;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom: 0.5rem;">
-            <span class="role-tag admin" style="background:#e0f2fe; color:#0369a1; font-weight:700;">STUDENT ORIENTATION GUIDE</span>
+            <span class="role-tag admin" style="background:#e0f2fe; color:#0369a1; font-weight:700;">STUDENT DIRECTORY</span>
             <span style="font-size:0.85rem; color:var(--text-muted);">&bull; Lokmanya Tilak College of Engineering</span>
         </div>
-        <h1 class="page-title" style="font-size: 2.25rem;">Campus Clubs &amp; Student Chapters Directory</h1>
-        <p class="page-subtitle" style="font-size: 1.05rem; max-width: 780px;">
-            Confused about which club to join? Explore all official departmental student bodies and college-wide technical chapters. Learn what each club does, their core activities, and which one fits your career goals.
+        <h1 class="page-title" style="font-size: 2rem;">Campus Clubs &amp; Student Bodies</h1>
+        <p class="page-subtitle" style="font-size: 0.95rem; max-width: 650px;">
+            Explore departmental student bodies and technical chapters at LTCE.
         </p>
     </div>
 
     <!-- Visual Clubs Constellation Showcase -->
-    <div style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2rem 1.5rem; margin-bottom: 2.5rem; text-align: center; box-shadow: 0 4px 16px rgba(8, 44, 80, 0.04);">
-        <div style="max-width: 620px; margin: 0 auto 1.5rem;">
-            <span class="role-tag" style="background:#dbeafe; color:#1e40af; font-size:0.75rem; font-weight:800;">LTCE CENTRALIZED ECOSYSTEM</span>
-            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-navy); margin-top: 8px;">One College &bull; All Student Chapters Connected</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Every departmental student body and open technical chapter operates under the autonomous governance of Lokmanya Tilak College of Engineering.</p>
-        </div>
-        <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect Official Hub Emblem" style="max-width: 440px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 10px 30px rgba(8, 44, 80, 0.12));">
+    <div style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem 1rem; margin-bottom: 2rem; text-align: center; box-shadow: 0 4px 16px rgba(8, 44, 80, 0.04);">
+        <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect Hub Emblem" style="max-width: 380px; width: 100%; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 8px 24px rgba(8, 44, 80, 0.1));">
     </div>
 
     <!-- Quick Navigation / Filter Tabs -->
-    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
-        <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs &amp; Chapters</button>
-        <button type="button" class="cat-pill" onclick="filterClubSection('dept', this)">Department-Specific (AIMSA, CESA, DSSA)</button>
-        <button type="button" class="cat-pill" onclick="filterClubSection('tech', this)">Coding &amp; Open Source (GDG, GFG)</button>
-        <button type="button" class="cat-pill" onclick="filterClubSection('startup', this)">Startups &amp; E-Cell (Technical Vidya, E-Cell IITB)</button>
-        <button type="button" class="cat-pill" onclick="filterClubSection('softskills', this)">Literature &amp; Soft Skills (English Club)</button>
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom: 1.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+        <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs</button>
+        <button type="button" class="cat-pill" onclick="filterClubSection('dept', this)">Department Bodies</button>
+        <button type="button" class="cat-pill" onclick="filterClubSection('tech', this)">Coding &amp; Tech</button>
+        <button type="button" class="cat-pill" onclick="filterClubSection('startup', this)">Startups &amp; E-Cell</button>
+        <button type="button" class="cat-pill" onclick="filterClubSection('softskills', this)">Literature &amp; Careers</button>
     </div>
 
     <!-- Clubs Grid -->

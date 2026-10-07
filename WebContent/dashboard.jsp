@@ -28,7 +28,7 @@
                 <%= (authUser != null) ? "Welcome back, " + authUser.getName().split(" ")[0] : "Discover Campus Events" %>
             </h1>
             <p class="page-subtitle">
-                Centralized directory of official academic sessions, hackathons, seminars, and club activities.
+                Browse workshops, hackathons, and student activities across LTCE.
             </p>
         </div>
 
@@ -49,7 +49,7 @@
         <div class="featured-card">
             <div class="featured-content">
                 <div class="featured-badge <%= featured.isPastEvent() ? "concluded" : "" %>">
-                    <%= featured.isPastEvent() ? "&#9679; Concluded Campus Event" : "&#9733; Featured Campus Opportunity" %>
+                    <%= featured.isPastEvent() ? "&#9679; Concluded Event" : "&#9733; Featured Event" %>
                 </div>
                 <h2 class="featured-title"><%= featured.getTitle() %></h2>
                 
@@ -65,7 +65,7 @@
 
                 <div class="featured-actions">
                     <a href="<%= request.getContextPath() %>/event-details?id=<%= featured.getId() %>" class="btn <%= featured.isPastEvent() ? "btn-secondary" : "btn-primary" %>">
-                        <%= featured.isPastEvent() ? "View Event Details (Ended) &rarr;" : "View Event & Register &rarr;" %>
+                        <%= featured.isPastEvent() ? "View Details (Ended) &rarr;" : "View &amp; Register &rarr;" %>
                     </a>
                     <% if (authUser != null) { %>
                         <button type="button" class="btn btn-secondary btn-save-toggle <%= featured.isUserSaved() ? "saved" : "" %>" data-event-id="<%= featured.getId() %>">
