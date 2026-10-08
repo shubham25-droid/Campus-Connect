@@ -53,16 +53,29 @@
                     Discover hackathons, workshops, and student club events at Lokmanya Tilak College of Engineering.
                 </p>
 
-                <!-- Search Form -->
-                <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box">
-                    <div class="hero-search-inner">
-                        <span class="hero-search-icon">&#128269;</span>
-                        <input type="text" name="search" class="hero-search-input" 
-                               placeholder="Search hackathons, bootcamps, CESA, GDG..." 
-                               autocomplete="off">
-                        <button type="submit" class="hero-search-submit">Search</button>
-                    </div>
-                </form>
+                <!-- Search Form with Suggestions -->
+                <div class="hero-search-wrapper">
+                    <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box" id="heroSearchForm">
+                        <div class="hero-search-inner">
+                            <span class="hero-search-icon">&#128269;</span>
+                            <input type="text" id="heroSearchInput" name="search" class="hero-search-input" 
+                                   placeholder="Search hackathons, workshops, GDG, CESA..." 
+                                   autocomplete="off">
+                            <button type="submit" class="hero-search-submit">Search</button>
+                        </div>
+                    </form>
+                    <!-- Instant Search Suggestions Dropdown -->
+                    <div class="hero-search-suggestions" id="heroSuggestionsBox"></div>
+                </div>
+
+                <!-- Interactive Quick Trending Topics -->
+                <div class="hero-quick-topics">
+                    <span class="quick-topics-label">Trending:</span>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Hackathon')">&#9889; Hackathons</button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Workshop')">&#128218; Workshops</button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Technical')">&#128187; Tech Talks</button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Competition')">&#127942; Competitions</button>
+                </div>
 
                 <!-- Action CTAs -->
                 <div class="hero-action-buttons">
@@ -75,54 +88,88 @@
                 </div>
             </div>
 
-            <!-- Right Column: Interactive Featured Pass / Opportunity Showcase -->
+            <!-- Right Column: Interactive Featured Pass / Opportunity Showcase Carousel -->
             <div class="hero-right-visual">
-                <% if (featuredLead != null) { %>
-                    <div class="hero-ticket-card">
+                <% if (upcomingEvents != null && !upcomingEvents.isEmpty()) { %>
+                    <div class="hero-ticket-card" id="heroTicketCard">
+                        <!-- Interactive Top Control Bar -->
                         <div class="ticket-top-tag">
-                            <span class="ticket-live-dot <%= featuredLead.isPastEvent() ? "concluded" : "" %>"></span>
-                            <span><%= featuredLead.isPastEvent() ? "PAST EVENT" : "FEATURED CAMPUS EVENT &bull; REGISTRATION OPEN" %></span>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span class="ticket-live-dot" id="ticketLiveDot"></span>
+                                <span id="ticketStatusText">FEATURED CAMPUS PASS</span>
+                            </div>
+                            <div class="ticket-nav-controls">
+                                <button type="button" class="ticket-nav-btn prev" onclick="changeHeroSlide(-1)" aria-label="Previous Event">&#8249;</button>
+                                <span class="ticket-counter" id="ticketCounter">1 / <%= upcomingEvents.size() %></span>
+                                <button type="button" class="ticket-nav-btn next" onclick="changeHeroSlide(1)" aria-label="Next Event">&#8250;</button>
+                            </div>
                         </div>
 
-                        <div class="ticket-banner-wrap">
-                            <img src="<%= cp %>/images/<%= featuredLead.getImage() %>" alt="<%= featuredLead.getTitle() %>" 
-                                 class="ticket-banner-img" onerror="this.src='<%= cp %>/images/default_event.jpg'">
-                            <span class="ticket-badge-cat"><%= featuredLead.getCategory() %></span>
+                        <!-- Ticket Slides Viewport -->
+                        <div class="ticket-slides-viewport">
+                            <% 
+                               int slideIdx = 0;
+                               for (Event ev : upcomingEvents) { 
+                                   int seatPct = Math.min(100, (ev.getRemainingSeats() * 100) / Math.max(1, ev.getMaxParticipants()));
+                            %>
+                                <div class="ticket-slide <%= slideIdx == 0 ? "active" : "" %>" 
+                                     data-slide-index="<%= slideIdx %>" 
+                                     data-past="<%= ev.isPastEvent() %>">
+                                    <div class="ticket-banner-wrap">
+                                        <img src="<%= cp %>/images/<%= ev.getImage() %>" alt="<%= ev.getTitle() %>" 
+                                             class="ticket-banner-img" onerror="this.src='<%= cp %>/images/default_event.jpg'">
+                                        <span class="ticket-badge-cat"><%= ev.getCategory() %></span>
+                                        <% if (ev.isPastEvent()) { %>
+                                            <span class="ticket-badge-concluded">&#9679; Past Event</span>
+                                        <% } %>
+                                    </div>
+
+                                    <div class="ticket-body">
+                                        <div class="ticket-club-row">
+                                            <img src="<%= cp %>/images/clubs/<%= ev.getClubLogo() %>?v=3.0" alt="<%= ev.getOrganizerName() %>" 
+                                                 class="ticket-club-mini-logo" onerror="this.src='<%= cp %>/images/campusconnect-mark.svg'">
+                                            <span class="ticket-club-name"><%= ev.getOrganizerName() %></span>
+                                        </div>
+
+                                        <h3 class="ticket-title"><%= ev.getTitle() %></h3>
+
+                                        <div class="ticket-meta-grid">
+                                            <div class="ticket-meta-cell">
+                                                <span class="ticket-meta-label">Date &amp; Time</span>
+                                                <span class="ticket-meta-val">&#128197; <%= ev.getFormattedDate() %></span>
+                                            </div>
+                                            <div class="ticket-meta-cell">
+                                                <span class="ticket-meta-label">Campus Venue</span>
+                                                <span class="ticket-meta-val">&#128205; <%= ev.getVenue() %></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ticket-seats-bar">
+                                            <div class="seats-label-row">
+                                                <span>Seat Availability</span>
+                                                <strong><%= ev.getRemainingSeats() %> / <%= ev.getMaxParticipants() %> Left</strong>
+                                            </div>
+                                            <div class="seats-progress-track">
+                                                <div class="seats-progress-fill" style="width: <%= seatPct %>%;"></div>
+                                            </div>
+                                        </div>
+
+                                        <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="btn-ticket-action <%= ev.isPastEvent() ? "concluded" : "" %>">
+                                            <%= ev.isPastEvent() ? "View Past Event Details &rarr;" : "View Event &amp; Register &rarr;" %>
+                                        </a>
+                                    </div>
+                                </div>
+                            <%  slideIdx++; 
+                               } %>
                         </div>
 
-                        <div class="ticket-body">
-                            <div class="ticket-club-row">
-                                <img src="<%= cp %>/images/clubs/<%= featuredLead.getClubLogo() %>?v=3.0" alt="<%= featuredLead.getOrganizerName() %>" 
-                                     class="ticket-club-mini-logo" onerror="this.src='<%= cp %>/images/campusconnect-mark.svg'">
-                                <span class="ticket-club-name"><%= featuredLead.getOrganizerName() %></span>
-                            </div>
-
-                            <h3 class="ticket-title"><%= featuredLead.getTitle() %></h3>
-
-                            <div class="ticket-meta-grid">
-                                <div class="ticket-meta-cell">
-                                    <span class="ticket-meta-label">Date &amp; Time</span>
-                                    <span class="ticket-meta-val">&#128197; <%= featuredLead.getFormattedDate() %></span>
-                                </div>
-                                <div class="ticket-meta-cell">
-                                    <span class="ticket-meta-label">Campus Venue</span>
-                                    <span class="ticket-meta-val">&#128205; <%= featuredLead.getVenue() %></span>
-                                </div>
-                            </div>
-
-                            <div class="ticket-seats-bar">
-                                <div class="seats-label-row">
-                                    <span>Seat Availability</span>
-                                    <strong><%= featuredLead.getRemainingSeats() %> / <%= featuredLead.getMaxParticipants() %> Left</strong>
-                                </div>
-                                <div class="seats-progress-track">
-                                    <div class="seats-progress-fill" style="width: <%= Math.min(100, (featuredLead.getRemainingSeats() * 100) / Math.max(1, featuredLead.getMaxParticipants())) %>%;"></div>
-                                </div>
-                            </div>
-
-                            <a href="<%= cp %>/event-details?id=<%= featuredLead.getId() %>" class="btn-ticket-action">
-                                View Event Details &amp; Register &rarr;
-                            </a>
+                        <!-- Indicator Dots -->
+                        <div class="ticket-dots-strip">
+                            <% for (int d = 0; d < upcomingEvents.size(); d++) { %>
+                                <button type="button" class="ticket-dot <%= d == 0 ? "active" : "" %>" 
+                                        onclick="goToHeroSlide(<%= d %>)" 
+                                        aria-label="Go to slide <%= d + 1 %>"></button>
+                            <% } %>
                         </div>
                     </div>
                 <% } else { %>
@@ -132,7 +179,7 @@
                         </div>
                         <div class="ticket-body" style="padding:2.5rem 2rem; text-align:center;">
                             <div style="font-size:3rem; margin-bottom:1rem;">&#127891;</div>
-                            <h3 class="ticket-title">Explore 10+ Student Chapters</h3>
+                            <h3 class="ticket-title">Explore Campus Events</h3>
                             <p style="color:#cbd5e1; font-size:0.9rem; margin-bottom:1.5rem;">Discover CESA, AIMSA, GDG, E-Cell &amp; GFG opportunities directly.</p>
                             <a href="<%= cp %>/dashboard" class="btn-ticket-action">Browse Events Directory &rarr;</a>
                         </div>
@@ -368,5 +415,228 @@
         </div>
     </div>
 </section>
+
+<%
+    StringBuilder jsEventsJson = new StringBuilder("[");
+    if (upcomingEvents != null) {
+        for (int i = 0; i < upcomingEvents.size(); i++) {
+            Event ev = upcomingEvents.get(i);
+            String titleSafe = ev.getTitle() != null ? ev.getTitle().replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", " ").replace("\r", " ") : "";
+            String orgSafe = ev.getOrganizerName() != null ? ev.getOrganizerName().replace("\\", "\\\\").replace("\"", "\\\"") : "";
+            String catSafe = ev.getCategory() != null ? ev.getCategory().replace("\\", "\\\\").replace("\"", "\\\"") : "";
+            String venueSafe = ev.getVenue() != null ? ev.getVenue().replace("\\", "\\\\").replace("\"", "\\\"") : "";
+            jsEventsJson.append("{");
+            jsEventsJson.append("\"id\":").append(ev.getId()).append(",");
+            jsEventsJson.append("\"title\":\"").append(titleSafe).append("\",");
+            jsEventsJson.append("\"organizer\":\"").append(orgSafe).append("\",");
+            jsEventsJson.append("\"category\":\"").append(catSafe).append("\",");
+            jsEventsJson.append("\"venue\":\"").append(venueSafe).append("\",");
+            jsEventsJson.append("\"isPast\":").append(ev.isPastEvent());
+            jsEventsJson.append("}");
+            if (i < upcomingEvents.size() - 1) {
+                jsEventsJson.append(",");
+            }
+        }
+    }
+    jsEventsJson.append("]");
+%>
+
+<script>
+(function() {
+    // 1. Hero Ticket Carousel Logic
+    let currentHeroSlide = 0;
+    const slides = document.querySelectorAll('#heroTicketCard .ticket-slide');
+    const dots = document.querySelectorAll('#heroTicketCard .ticket-dot');
+    const counter = document.getElementById('ticketCounter');
+    const statusText = document.getElementById('ticketStatusText');
+    const liveDot = document.getElementById('ticketLiveDot');
+    const totalSlides = slides.length;
+    let autoSlideInterval = null;
+
+    function updateHeroSlideUI() {
+        if (!slides.length) return;
+        slides.forEach((slide, idx) => {
+            if (idx === currentHeroSlide) {
+                slide.classList.add('active');
+                const isPast = slide.getAttribute('data-past') === 'true';
+                if (statusText) {
+                    statusText.textContent = isPast ? 'PAST EVENT ARCHIVE' : 'FEATURED CAMPUS PASS';
+                }
+                if (liveDot) {
+                    liveDot.style.backgroundColor = isPast ? '#94a3b8' : 'var(--ltce-gold)';
+                }
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        dots.forEach((dot, idx) => {
+            if (idx === currentHeroSlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+
+        if (counter) {
+            counter.textContent = (currentHeroSlide + 1) + ' / ' + totalSlides;
+        }
+    }
+
+    window.changeHeroSlide = function(dir) {
+        if (totalSlides <= 1) return;
+        currentHeroSlide = (currentHeroSlide + dir + totalSlides) % totalSlides;
+        updateHeroSlideUI();
+        restartSlideTimer();
+    };
+
+    window.goToHeroSlide = function(idx) {
+        if (idx >= 0 && idx < totalSlides) {
+            currentHeroSlide = idx;
+            updateHeroSlideUI();
+            restartSlideTimer();
+        }
+    };
+
+    function startSlideTimer() {
+        if (totalSlides > 1) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(function() {
+                currentHeroSlide = (currentHeroSlide + 1) % totalSlides;
+                updateHeroSlideUI();
+            }, 5500);
+        }
+    }
+
+    function restartSlideTimer() {
+        clearInterval(autoSlideInterval);
+        startSlideTimer();
+    }
+
+    const ticketCard = document.getElementById('heroTicketCard');
+    if (ticketCard) {
+        ticketCard.addEventListener('mouseenter', function() {
+            clearInterval(autoSlideInterval);
+        });
+        ticketCard.addEventListener('mouseleave', function() {
+            startSlideTimer();
+        });
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        ticketCard.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        ticketCard.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 45) {
+                window.changeHeroSlide(1);
+            } else if (touchEndX > touchStartX + 45) {
+                window.changeHeroSlide(-1);
+            }
+        }, { passive: true });
+    }
+
+    startSlideTimer();
+
+    // 2. Quick Trending Topics Filter
+    window.quickHeroFilter = function(query) {
+        const input = document.getElementById('heroSearchInput');
+        const form = document.getElementById('heroSearchForm');
+        if (input && form) {
+            input.value = query;
+            form.submit();
+        }
+    };
+
+    // 3. Instant Search Autocomplete
+    const heroEvents = <%= jsEventsJson.toString() %>;
+    const heroClubs = [
+        { name: "CESA - Computer Engg Association", query: "CESA" },
+        { name: "AIMSA - AI & Machine Learning", query: "AIMSA" },
+        { name: "DSSA - Data Science Association", query: "Data Science" },
+        { name: "GDG On Campus LTCE", query: "GDG" },
+        { name: "GFG Student Chapter", query: "GFG" },
+        { name: "E-CELL Entrepreneurship Club", query: "E-CELL" },
+        { name: "Technical Vidya Club", query: "Technical Vidya" },
+        { name: "English Literary Club", query: "English Club" }
+    ];
+
+    const searchInput = document.getElementById('heroSearchInput');
+    const suggestionsBox = document.getElementById('heroSuggestionsBox');
+
+    if (searchInput && suggestionsBox) {
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            if (query.length < 2) {
+                suggestionsBox.innerHTML = '';
+                suggestionsBox.classList.remove('show');
+                return;
+            }
+
+            const matchedEvents = heroEvents.filter(function(e) {
+                return (e.title && e.title.toLowerCase().includes(query)) ||
+                       (e.organizer && e.organizer.toLowerCase().includes(query)) ||
+                       (e.category && e.category.toLowerCase().includes(query)) ||
+                       (e.venue && e.venue.toLowerCase().includes(query));
+            }).slice(0, 4);
+
+            const matchedClubs = heroClubs.filter(function(c) {
+                return c.name.toLowerCase().includes(query) ||
+                       c.query.toLowerCase().includes(query);
+            }).slice(0, 2);
+
+            if (matchedEvents.length === 0 && matchedClubs.length === 0) {
+                suggestionsBox.innerHTML = '<div style="padding:12px; color:#64748b; font-size:0.85rem; text-align:center;">No direct match. Press Enter to search all events.</div>';
+                suggestionsBox.classList.add('show');
+                return;
+            }
+
+            let html = '';
+            matchedEvents.forEach(function(ev) {
+                html += '<a href="<%= cp %>/event-details?id=' + ev.id + '" class="hero-suggest-item">' +
+                            '<div>' +
+                                '<div class="hero-suggest-title">' + ev.title + '</div>' +
+                                '<div class="hero-suggest-meta">' + ev.organizer + ' &bull; ' + ev.category + (ev.isPast ? ' &bull; <span style=\"color:#ef4444;\">Past Event</span>' : '') + '</div>' +
+                            '</div>' +
+                            '<span class="hero-suggest-badge">Event</span>' +
+                        '</a>';
+            });
+
+            matchedClubs.forEach(function(cl) {
+                html += '<a href="<%= cp %>/dashboard?search=' + encodeURIComponent(cl.query) + '" class="hero-suggest-item">' +
+                            '<div>' +
+                                '<div class="hero-suggest-title">' + cl.name + '</div>' +
+                                '<div class="hero-suggest-meta">Student Chapter &bull; View club events</div>' +
+                            '</div>' +
+                            '<span class="hero-suggest-badge" style="background:#e0f2fe; color:#0369a1;">Club</span>' +
+                        '</a>';
+            });
+
+            suggestionsBox.innerHTML = html;
+            suggestionsBox.classList.add('show');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                suggestionsBox.classList.remove('show');
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                suggestionsBox.classList.remove('show');
+            }
+        });
+
+        searchInput.addEventListener('focus', function() {
+            if (this.value.trim().length >= 2 && suggestionsBox.innerHTML.trim() !== '') {
+                suggestionsBox.classList.add('show');
+            }
+        });
+    }
+})();
+</script>
 
 <jsp:include page="includes/footer.jsp" />
