@@ -122,7 +122,74 @@ CampusConnect strictly implements the classic **Model-View-Controller (MVC)** ar
 
 ---
 
-## 6. Database Schema Design
+## 6. Directory Structure & Clean Separation of Concerns
+
+The project adheres strictly to the Java Enterprise Dynamic Web Project standard, with total physical separation of presentation (HTML/JSP), styling (CSS), client interaction (JavaScript), server business logic (Servlets), data access (DAO/JDBC), and database schemas:
+
+```
+Campus-Connect/
+│
+├── WebContent/                     ──▶ [VIEW LAYER] Client-Facing Web Resources
+│   ├── css/
+│   │   └── style.css               ──▶ [CSS] Centralized styling, variables, 3D animations & themes
+│   ├── js/
+│   │   └── main.js                 ──▶ [JAVASCRIPT] Client-side filters, modal controls & interactions
+│   ├── images/
+│   │   ├── clubs/                  ──▶ [SVG/PNG] High-fidelity student chapter and college logos
+│   │   └── *.jpg, *.png            ──▶ [ASSETS] Official event posters & banners
+│   ├── includes/
+│   │   ├── header.jsp              ──▶ [JSP COMPONENT] Institutional navigation bar & responsive drawer
+│   │   └── footer.jsp              ──▶ [JSP COMPONENT] Institutional footer, quick links & scripts
+│   ├── admin/
+│   │   ├── dashboard.jsp           ──▶ [ADMIN] Metric analytics & event control panel
+│   │   ├── create-event.jsp        ──▶ [ADMIN] Event publishing form
+│   │   ├── edit-event.jsp          ──▶ [ADMIN] Event update form
+│   │   └── registrations.jsp       ──▶ [ADMIN] Attendee roster & CSV export
+│   ├── WEB-INF/
+│   │   ├── web.xml                 ──▶ [CONFIG] Servlet mappings, error pages & session timeout
+│   │   └── lib/*.jar               ──▶ [LIBRARIES] JSTL, JDBC drivers (MySQL & H2)
+│   ├── index.jsp                   ──▶ [VIEW] Modern collegiate landing page with 3D pass & live search
+│   ├── dashboard.jsp               ──▶ [VIEW] Filterable event discovery portal
+│   ├── event-details.jsp           ──▶ [VIEW] Event page with uncropped high-res poster lightbox
+│   ├── clubs.jsp                   ──▶ [VIEW] Student chapter directory
+│   ├── login.jsp                   ──▶ [VIEW] Authentication login portal
+│   ├── register.jsp                ──▶ [VIEW] Student registration portal
+│   ├── my-registrations.jsp        ──▶ [VIEW] Student pass & ticket printing
+│   └── saved-events.jsp            ──▶ [VIEW] Student bookmarks
+│
+├── src/                            ──▶ [CONTROLLER & MODEL LAYER] Java Backend MVC
+│   ├── controller/                 ──▶ [SERVLETS] HTTP Request handlers & routing
+│   │   ├── EventServlet.java       ──▶ Event discovery, search & filtering dispatcher
+│   │   ├── EventDetailsServlet.java──▶ Single event details controller
+│   │   ├── RegistrationServlet.java──▶ Event registration & cancellation handler
+│   │   ├── LoginServlet.java       ──▶ Authentication & role-based session manager
+│   │   ├── RegisterServlet.java    ──▶ User signup controller
+│   │   ├── ClubServlet.java        ──▶ Student bodies directory controller
+│   │   └── AdminEventServlet.java  ──▶ Organizer CRUD & roster controller
+│   ├── dao/                        ──▶ [DATA ACCESS OBJECTS] JDBC PreparedStatement queries
+│   │   ├── EventDAO.java           ──▶ Event queries, filters, counters & persistence
+│   │   ├── RegistrationDAO.java    ──▶ Registration transactions & attendee rosters
+│   │   └── UserDAO.java            ──▶ User credentials & profile lookup
+│   ├── model/                      ──▶ [POJO BEANS] Encapsulated business domain models
+│   │   ├── Event.java              ──▶ Event entity bean with convenience formatters
+│   │   ├── User.java               ──▶ User account bean
+│   │   └── Registration.java       ──▶ Student-Event registration relation bean
+│   └── util/
+│       └── DBConnection.java       ──▶ Thread-safe JDBC Connection pool & auto-fallback
+│
+├── database/
+│   └── schema.sql                  ──▶ [DATABASE] Standard ANSI SQL normalized DDL & seed data
+│
+├── lib/*.jar                       ──▶ Compile-time dependencies (Servlet API, JSTL, JDBC)
+├── build.bat / build.ps1           ──▶ Automated compilation & deployment scripts
+├── run.bat / run.ps1               ──▶ One-click server launcher
+├── .gitignore                      ──▶ Clean version control filter
+└── README.md                       ──▶ Academic project documentation
+```
+
+---
+
+## 7. Database Schema Design
 
 The database schema is normalized to 3NF and includes constraints to guarantee relational integrity.
 
@@ -179,7 +246,7 @@ The complete SQL setup script is located at:
 
 ---
 
-## 7. Adding Club Logos & Branding
+## 8. Adding Club Logos & Branding
 
 CampusConnect includes built-in visual branding for campus student bodies and technical chapters.
 
@@ -206,7 +273,7 @@ The folder `WebContent/images/clubs/` includes high-fidelity SVG logos for:
 
 ---
 
-## 7. Demo Accounts & Credentials
+## 9. Demo Accounts & Credentials
 
 For academic viva demonstrations and evaluation, predefined accounts are ready:
 
@@ -219,7 +286,7 @@ For academic viva demonstrations and evaluation, predefined accounts are ready:
 
 ---
 
-## 8. Installation & Running Instructions
+## 10. Installation & Running Instructions
 
 ### Prerequisites
 * JDK 17 (or JDK 8/11/21)
@@ -251,7 +318,7 @@ For academic viva demonstrations and evaluation, predefined accounts are ready:
 
 ---
 
-## 9. Real Campus Opportunities Included
+## 11. Real Campus Opportunities Included
 
 The initial database is seeded with authentic college events matching official LTCE club posters:
 
@@ -280,7 +347,7 @@ The initial database is seeded with authentic college events matching official L
 
 ---
 
-## 10. Future Scope & Roadmap
+## 12. Future Scope & Roadmap
 
 While this MVP addresses the core event discovery and registration challenges, the clean MVC architecture allows seamless extension for:
 * **QR Code Check-in:** Instant ticket scanner on student phones at the auditorium gate.
