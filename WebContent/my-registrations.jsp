@@ -108,7 +108,7 @@ function printPass(title, date, time, venue, student, email) {
             <div class="ticket">
                 <div class="header">
                     <div>
-                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing:0.5px;">Lokmanya Tilak College of Engineering &bull; Autonomous</div>
+                        <div style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing:0.5px;">Lokmanya Tilak College of Engineering</div>
                         <div style="font-size: 20px; font-weight: 900; color: #0d4379;">CAMPUS<span style="color:#ff9600;">CONNECT</span> ENTRY PASS</div>
                     </div>
                     <span class="badge">&#10003; VERIFIED PASS</span>

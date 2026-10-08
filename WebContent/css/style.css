@@ -136,173 +136,22 @@ button {
 }
 
 /* ==========================================================================
-   1. Official Institutional College Bar (LTCE Autonomous Identity)
-   ========================================================================== */
-/* ==========================================================================
-   1. Official Institutional College Bar (LTCE Clean Collegiate Identity)
+   1. Unified Ultra-Premium Obsidian Glass Header (Co-Branded & Seamless)
    ========================================================================== */
 .inst-micro-bar {
-    background: #ffffff;
-    color: var(--text-secondary);
-    font-size: 0.8125rem;
-    padding: 8px 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    position: relative;
-    z-index: 1010;
+    display: none !important;
 }
 
-.inst-bar-inner {
-    width: 92%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.inst-identity-cluster {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.inst-emblem-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    flex-shrink: 0;
-}
-
-.inst-crest-img {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.2s ease;
-}
-
-.inst-emblem-link:hover .inst-crest-img {
-    transform: scale(1.06);
-}
-
-.inst-text-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.25;
-}
-
-.inst-trust-title {
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 2px;
-}
-
-.inst-clg-name {
-    color: var(--ltce-blue);
-    font-weight: 800;
-    font-size: 0.925rem;
-    letter-spacing: 0.2px;
-    white-space: nowrap;
-}
-
-.inst-info-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-.inst-affiliation {
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 0.8rem;
-    white-space: nowrap;
-}
-
-.inst-sep {
-    color: var(--border-color);
-    font-size: 0.75rem;
-}
-
-.inst-link {
-    color: var(--ltce-blue);
-    font-weight: 700;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: var(--radius-sm);
-    transition: all 0.18s ease;
-}
-
-.inst-link .inst-arrow {
-    color: var(--ltce-blue);
-    font-weight: 800;
-    transition: transform 0.15s ease;
-}
-
-.inst-link:hover {
-    background: var(--ltce-blue);
-    color: #ffffff;
-    border-color: var(--ltce-blue);
-}
-
-.inst-link:hover .inst-arrow {
-    color: #ffffff;
-    transform: translate(2px, -2px);
-}
-
-@media (max-width: 992px) {
-    .inst-affiliation {
-        display: none;
-    }
-    .inst-sep {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .inst-micro-bar {
-        padding: 6px 1rem;
-    }
-    .inst-bar-inner {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
-    }
-    .inst-identity-cluster {
-        justify-content: center;
-    }
-    .inst-clg-name {
-        font-size: 0.8rem;
-        white-space: normal;
-    }
-    .inst-info-right {
-        display: none;
-    }
-}
-
-/* ==========================================================================
-   2. Modern Unified Header & Navigation
-   ========================================================================== */
 .app-header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 6px rgba(8, 44, 80, 0.04);
+    background: rgba(7, 19, 38, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s ease;
 }
 
 .header-inner {
@@ -319,11 +168,11 @@ button {
 
 @media (min-width: 768px) {
     .header-inner {
-        height: 78px;
+        height: 76px;
     }
 }
 
-/* Brand Cluster */
+/* Brand Cluster (Co-Branded LTCE & CampusConnect) */
 .brand-cluster {
     display: flex;
     align-items: center;
@@ -333,91 +182,132 @@ button {
 .brand-logo-link {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
+}
+
+.brand-crest-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.brand-crest-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    display: block;
+}
+
+.brand-logo-link:hover .brand-crest-wrap {
+    transform: scale(1.06);
+}
+
+.brand-divider-bar {
+    display: inline-block;
+    width: 1px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.18);
+    flex-shrink: 0;
 }
 
 .brand-emblem-wrap {
     position: relative;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(8, 44, 80, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 2px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
 }
 
 .brand-mark-img {
-    height: 42px;
-    width: 42px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     display: block;
     object-fit: cover;
     flex-shrink: 0;
-    transition: transform 0.25s ease;
-}
-
-@media (min-width: 768px) {
-    .brand-mark-img {
-        height: 48px;
-        width: 48px;
-    }
 }
 
 .brand-logo-link:hover .brand-emblem-wrap {
     transform: scale(1.06);
-    box-shadow: 0 6px 18px rgba(8, 44, 80, 0.22);
+    background: rgba(255, 255, 255, 0.16);
 }
 
 .brand-text-group {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.brand-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .brand-main-title {
-    font-size: 1.4rem;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    color: var(--ltce-navy);
-    line-height: 1.1;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 1.15;
 }
 
 .brand-highlight {
-    color: var(--ltce-gold);
+    color: #ff9600; /* Signature Golden Amber */
+}
+
+.brand-clg-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    line-height: 1.2;
 }
 
 .brand-tagline {
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    color: var(--ltce-blue-mid);
-    text-transform: uppercase;
-    margin-top: 1px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #94a3b8;
+    margin-top: 2px;
+    line-height: 1.2;
 }
 
-@media (max-width: 420px) {
-    .brand-cluster {
-        gap: 8px;
-    }
-    .brand-divider {
+@media (max-width: 640px) {
+    .brand-divider-bar {
         display: none;
     }
-    .clg-crest-img {
-        height: 36px;
-    }
-    .brand-mark-img {
-        height: 32px;
-        width: 32px;
-    }
-    .brand-main-title {
-        font-size: 1.15rem;
+    .brand-crest-wrap {
+        display: none;
     }
     .brand-tagline {
-        font-size: 0.55rem;
-        letter-spacing: 0.8px;
+        display: none;
     }
 }
 
@@ -435,55 +325,65 @@ button {
         display: flex;
         align-items: center;
         list-style: none;
-        gap: 0.5rem;
+        gap: 0.35rem;
     }
 
     .nav-item {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 10px 16px;
-        font-size: 0.975rem;
-        font-weight: 600;
-        color: var(--text-secondary);
+        padding: 8px 14px;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: #94a3b8;
         border-radius: var(--radius-sm);
-        transition: all 0.15s ease;
+        border: 1px solid transparent;
+        transition: all 0.18s ease;
+        text-decoration: none;
     }
 
     .nav-item:hover {
-        color: var(--ltce-blue);
-        background: var(--bg-alt);
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
     }
 
     .nav-item.active {
-        color: var(--ltce-blue);
-        background: var(--ltce-blue-tint);
-        font-weight: 700;
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.12);
+        border-color: rgba(56, 189, 248, 0.28);
+        font-weight: 600;
     }
 
     .nav-clubs-item {
-        color: var(--ltce-blue);
-        font-weight: 700;
+        color: #e2e8f0;
+    }
+
+    .nav-clubs-item:hover {
+        color: #38bdf8;
     }
 
     .nav-counter {
-        background: #fef08a;
-        color: #854d0e;
-        font-size: 0.8rem;
-        font-weight: 800;
-        padding: 2px 8px;
+        background: rgba(254, 240, 138, 0.2);
+        color: #fef08a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 2px 7px;
         border-radius: var(--radius-full);
+        border: 1px solid rgba(254, 240, 138, 0.3);
     }
 
     .nav-admin-badge {
-        background: #f1f5f9;
-        color: var(--ltce-navy);
+        background: rgba(245, 158, 11, 0.15);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        font-weight: 600;
     }
 
     .nav-create-badge {
-        background: #eff6ff;
-        color: var(--ltce-blue);
-        font-weight: 700;
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        font-weight: 600;
     }
 }
 
@@ -491,52 +391,85 @@ button {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+}
+
+.btn-portal-ghost {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+@media (min-width: 840px) {
+    .btn-portal-ghost {
+        display: inline-flex;
+    }
+}
+
+.btn-portal-ghost:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 .btn-clean-ghost {
     display: none;
-    padding: 10px 18px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-secondary);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #cbd5e1;
     border-radius: var(--radius-sm);
-    transition: all 0.15s ease;
+    text-decoration: none;
+    transition: all 0.18s ease;
 }
 
 @media (min-width: 640px) {
     .btn-clean-ghost {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
     }
 }
 
 .btn-clean-ghost:hover {
-    color: var(--ltce-blue);
-    background: var(--bg-alt);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .btn-clean-primary {
     display: none;
-    padding: 10px 22px;
-    font-size: 0.95rem;
-    font-weight: 800;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: #ffffff;
-    background: var(--ltce-blue);
+    background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: var(--radius-sm);
-    box-shadow: 0 2px 4px rgba(13, 67, 121, 0.25);
-    transition: all 0.15s ease;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
 
 @media (min-width: 640px) {
     .btn-clean-primary {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
     }
 }
 
 .btn-clean-primary:hover {
-    background: var(--ltce-navy);
-    color: #ffffff;
     transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    filter: brightness(1.1);
+    color: #ffffff;
 }
 
 /* User Pill (Logged in) */
@@ -544,8 +477,8 @@ button {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: var(--bg-alt);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     padding: 4px 10px;
     border-radius: var(--radius-full);
 }
@@ -554,18 +487,13 @@ button {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--ltce-blue);
+    background: linear-gradient(135deg, #0284c7, #2563eb);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 0.85rem;
-}
-
-.user-pill-meta {
-    display: none;
-    flex-direction: column;
 }
 
 @media (min-width: 768px) {
@@ -576,34 +504,35 @@ button {
 
 .user-pill-name {
     font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-primary);
+    font-weight: 600;
+    color: #f1f5f9;
     line-height: 1.1;
 }
 
 .user-pill-role {
-    font-size: 0.675rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .user-pill-role.admin {
-    color: #b45309;
+    color: #fbbf24;
 }
 
 .user-pill-role.student {
-    color: var(--ltce-blue);
+    color: #38bdf8;
 }
 
 .user-pill-logout {
-    color: var(--text-muted);
+    color: #94a3b8;
     font-size: 1rem;
     padding: 2px 4px;
     border-radius: 4px;
+    text-decoration: none;
 }
 
 .user-pill-logout:hover {
-    color: var(--danger);
+    color: #f87171;
 }
 
 /* Mobile Hamburger Button */
@@ -612,14 +541,15 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     padding: 8px;
     border-radius: var(--radius-sm);
-    background: var(--bg-alt);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     gap: 5px;
     z-index: 1001;
+    cursor: pointer;
 }
 
 @media (min-width: 992px) {
@@ -631,7 +561,7 @@ button {
 .hamburger-bar {
     width: 20px;
     height: 2px;
-    background-color: var(--ltce-navy);
+    background-color: #cbd5e1;
     border-radius: 2px;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }

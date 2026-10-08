@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=3.8">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=5.0">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -32,44 +32,26 @@
 <body>
 
     <!-- ==============================================
-         1. Official Institutional College Bar (LTCE Clean Identity)
-         ============================================== -->
-    <div class="inst-micro-bar">
-        <div class="inst-bar-inner">
-            <div class="inst-identity-cluster">
-                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="inst-emblem-link" title="Lokmanya Tilak College of Engineering (Official)">
-                    <img src="<%= cp %>/images/ltce_official_logo.png" alt="LTCE Official Crest" class="inst-crest-img" onerror="this.src='<%= cp %>/images/clubs/ltce.svg'">
-                </a>
-                <div class="inst-text-block">
-                    <span class="inst-trust-title">Lokmanya Tilak Jankalyan Shikshan Sanstha's</span>
-                    <span class="inst-clg-name">LOKMANYA TILAK COLLEGE OF ENGINEERING</span>
-                </div>
-            </div>
-
-            <div class="inst-info-right">
-                <span class="inst-affiliation">Affiliated to University of Mumbai</span>
-                <span class="inst-sep" aria-hidden="true">&bull;</span>
-                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="inst-link" title="Visit Official LTCE Portal">
-                    Official College Portal <span class="inst-arrow">&nearr;</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==============================================
-         2. Sticky Unified Main Navbar (Modern & Clean)
+         Unified Ultra-Premium Obsidian Glass Navbar (Single Sleek Header)
          ============================================== -->
     <header class="app-header">
         <div class="header-inner">
-            <!-- Official CampusConnect Brand Lockup -->
+            <!-- Co-Branded Institutional & CampusConnect Lockup -->
             <div class="brand-cluster">
-                <a href="<%= cp %>/" class="brand-logo-link" title="CampusConnect - Lokmanya Tilak College of Engineering">
+                <a href="<%= cp %>/" class="brand-logo-link" title="CampusConnect • Lokmanya Tilak College of Engineering">
+                    <div class="brand-crest-wrap">
+                        <img src="<%= cp %>/images/ltce_official_logo.png" alt="LTCE Crest" class="brand-crest-img" onerror="this.src='<%= cp %>/images/clubs/ltce.svg'">
+                    </div>
+                    <span class="brand-divider-bar" aria-hidden="true"></span>
                     <div class="brand-emblem-wrap">
                         <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect Official Logo" class="brand-mark-img">
                     </div>
                     <div class="brand-text-group">
-                        <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
-                        <span class="brand-tagline">LTCE STUDENT OPPORTUNITY HUB</span>
+                        <div class="brand-title-row">
+                            <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
+                            <span class="brand-clg-badge">LTCE</span>
+                        </div>
+                        <span class="brand-tagline">Lokmanya Tilak College of Engineering</span>
                     </div>
                 </a>
             </div>
@@ -98,6 +80,10 @@
 
             <!-- Right Action Area (Auth Buttons / User Chip / Mobile Toggle) -->
             <div class="header-actions">
+                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="btn-portal-ghost" title="Official LTCE College Website">
+                    <span class="portal-icon">&#127963;</span> ltce.in &nearr;
+                </a>
+
                 <% if (authUser == null) { %>
                     <a href="<%= cp %>/login" class="btn-clean-ghost">Sign In</a>
                     <a href="<%= cp %>/register" class="btn-clean-primary">Get Started</a>
@@ -175,7 +161,7 @@
                     </div>
                 <% } %>
                 <div class="mobile-drawer-clg-note">
-                    Lokmanya Tilak College of Engineering (Autonomous)<br>Koparkhairane, Navi Mumbai
+                    Lokmanya Tilak College of Engineering<br>Koparkhairane, Navi Mumbai
                 </div>
             </div>
         </div>
