@@ -52,12 +52,27 @@
 
         <!-- Left Column: Content, Banner, Agenda -->
         <div class="details-main">
-            <!-- Event Banner -->
-            <div style="position:relative; margin-bottom:1.5rem;">
+            <!-- Event Banner with Clickable Full Poster Trigger -->
+            <div class="details-banner-wrapper" onclick="openPosterModal()" title="Click to view full uncropped event poster">
                 <img class="details-banner" src="<%= request.getContextPath() %>/images/<%= event.getImage() %>" alt="<%= event.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                 <% if (event.isPastEvent()) { %>
                     <span class="card-concluded-badge" style="font-size:0.75rem; padding:4px 10px; top:14px; left:14px;">Past Event</span>
                 <% } %>
+                <div class="banner-expand-overlay">
+                    <span class="banner-expand-badge">
+                        <span>&#128269;</span> Click to View Full Poster
+                    </span>
+                </div>
+            </div>
+
+            <!-- Action Strip for Quick Poster Access -->
+            <div class="details-poster-action-bar">
+                <button type="button" class="btn-view-full-poster" onclick="openPosterModal()">
+                    <span>&#128269;</span> View Complete Official Poster (Full Size)
+                </button>
+                <a href="<%= request.getContextPath() %>/images/<%= event.getImage() %>" target="_blank" class="link-open-original" download title="Download full poster image">
+                    &#128190; Download Poster
+                </a>
             </div>
 
             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem;">
@@ -250,5 +265,62 @@
     </div>
 
 </div>
+
+<!-- ==============================================
+     Official Event Poster Lightbox Modal (Uncropped, Full-Screen)
+     ============================================== -->
+<div id="posterLightboxModal" class="poster-lightbox-modal" role="dialog" aria-modal="true" aria-label="Official Event Poster">
+    <div class="poster-lightbox-backdrop" onclick="closePosterModal()"></div>
+    <div class="poster-lightbox-content">
+        <div class="poster-lightbox-header">
+            <div class="poster-lightbox-title-box">
+                <span class="poster-lightbox-kicker"><%= event.getOrganizerName() %> &bull; Official Event Poster</span>
+                <h3 class="poster-lightbox-title"><%= event.getTitle() %></h3>
+            </div>
+            <div class="poster-lightbox-actions">
+                <a href="<%= request.getContextPath() %>/images/<%= event.getImage() %>" target="_blank" download class="btn-lightbox-action" title="Open original image or download">
+                    <span>&#128190;</span> Download Original
+                </a>
+                <button type="button" class="btn-lightbox-close" onclick="closePosterModal()" aria-label="Close poster viewer" title="Close (Esc)">
+                    &times;
+                </button>
+            </div>
+        </div>
+        <div class="poster-lightbox-body" onclick="closePosterModal()">
+            <img id="lightboxPosterImg" 
+                 src="<%= request.getContextPath() %>/images/<%= event.getImage() %>" 
+                 alt="<%= event.getTitle() %> Full Poster" 
+                 class="poster-lightbox-img"
+                 onclick="event.stopPropagation()">
+        </div>
+        <div class="poster-lightbox-footer">
+            <span>&#128269; Uncropped full-resolution preview &bull; Click outside or press <strong>Esc</strong> to close</span>
+        </div>
+    </div>
+</div>
+
+<script>
+function openPosterModal() {
+    var modal = document.getElementById('posterLightboxModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closePosterModal() {
+    var modal = document.getElementById('posterLightboxModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePosterModal();
+    }
+});
+</script>
 
 <jsp:include page="includes/footer.jsp" />

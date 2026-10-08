@@ -115,14 +115,14 @@
                                 <div class="ticket-slide <%= slideIdx == 0 ? "active" : "" %>" 
                                      data-slide-index="<%= slideIdx %>" 
                                      data-past="<%= ev.isPastEvent() %>">
-                                    <div class="ticket-banner-wrap">
+                                    <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="ticket-banner-wrap" style="display:block;">
                                         <img src="<%= cp %>/images/<%= ev.getImage() %>" alt="<%= ev.getTitle() %>" 
                                              class="ticket-banner-img" onerror="this.src='<%= cp %>/images/default_event.jpg'">
                                         <span class="ticket-badge-cat"><%= ev.getCategory() %></span>
                                         <% if (ev.isPastEvent()) { %>
                                             <span class="ticket-badge-concluded">&#9679; Past Event</span>
                                         <% } %>
-                                    </div>
+                                    </a>
 
                                     <div class="ticket-body">
                                         <div class="ticket-club-row">
@@ -345,7 +345,7 @@
                 %>
                     <div class="event-modern-card">
                         <!-- Card Banner / Image -->
-                        <div class="card-media-wrap">
+                        <a href="<%= cp %>/event-details?id=<%= ev.getId() %>" class="card-media-wrap" style="display:block;">
                             <img src="<%= cp %>/images/<%= ev.getImage() %>" alt="<%= ev.getTitle() %>" 
                                  class="card-event-img" onerror="this.src='<%= cp %>/images/default_event.jpg'">
                             <span class="card-category-badge <%= ev.getCategory().toLowerCase() %>">
@@ -363,7 +363,7 @@
                                     <span class="date-tag-status today">TODAY</span>
                                 <% } %>
                             </div>
-                        </div>
+                        </a>
 
                         <!-- Card Body -->
                         <div class="card-details-wrap">

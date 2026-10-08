@@ -161,7 +161,7 @@
                  data-dept="<%= e.getDepartment().toLowerCase() %>"
                  data-year="<%= e.getEligibleYear().toLowerCase() %>">
 
-                <div class="event-card-media">
+                <a href="<%= request.getContextPath() %>/event-details?id=<%= e.getId() %>" class="event-card-media" style="display:block;">
                     <img src="<%= request.getContextPath() %>/images/<%= e.getImage() %>" alt="<%= e.getTitle() %>" onerror="this.src='<%= request.getContextPath() %>/images/default_event.jpg'">
                     <span class="event-type-badge"><%= e.getCategory() %></span>
                     <% if (e.isPastEvent()) { %>
@@ -180,11 +180,12 @@
 
                     <% if (authUser != null) { %>
                         <button type="button" class="save-btn-floating btn-save-toggle <%= e.isUserSaved() ? "saved" : "" %>" 
-                                data-event-id="<%= e.getId() %>" title="<%= e.isUserSaved() ? "Remove Bookmark" : "Save Event" %>">
+                                data-event-id="<%= e.getId() %>" title="<%= e.isUserSaved() ? "Remove Bookmark" : "Save Event" %>"
+                                onclick="event.preventDefault(); event.stopPropagation();">
                             <span class="save-icon"><%= e.isUserSaved() ? "&#9829;" : "&#9825;" %></span>
                         </button>
                     <% } %>
-                </div>
+                </a>
 
                 <div class="event-card-body">
                     <div class="event-dept-tag"><%= e.getDepartment() %> &bull; <%= e.getEligibleYear() %></div>
