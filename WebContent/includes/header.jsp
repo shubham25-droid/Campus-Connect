@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=3.7">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=3.8">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -32,7 +32,7 @@
 <body>
 
     <!-- ==============================================
-         1. Official Institutional College Bar (LTCE Autonomous Identity)
+         1. Official Institutional College Bar (LTCE Clean Identity)
          ============================================== -->
     <div class="inst-micro-bar">
         <div class="inst-bar-inner">
@@ -42,13 +42,7 @@
                 </a>
                 <div class="inst-text-block">
                     <span class="inst-trust-title">Lokmanya Tilak Jankalyan Shikshan Sanstha's</span>
-                    <div class="inst-name-row">
-                        <span class="inst-clg-name">LOKMANYA TILAK COLLEGE OF ENGINEERING</span>
-                        <div class="inst-badges-group">
-                            <span class="inst-pill-badge autonomous" title="An Autonomous Institute Affiliated to University of Mumbai">AUTONOMOUS</span>
-                            <span class="inst-pill-badge naac" title="Accredited with NAAC 'A' Grade">NAAC 'A' GRADE</span>
-                        </div>
-                    </div>
+                    <span class="inst-clg-name">LOKMANYA TILAK COLLEGE OF ENGINEERING</span>
                 </div>
             </div>
 
@@ -75,7 +69,7 @@
                     </div>
                     <div class="brand-text-group">
                         <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
-                        <span class="brand-tagline">LTCE STUDENT OPPORTUNITY HUB &bull; AUTONOMOUS</span>
+                        <span class="brand-tagline">LTCE STUDENT OPPORTUNITY HUB</span>
                     </div>
                 </a>
             </div>

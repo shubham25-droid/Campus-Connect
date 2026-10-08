@@ -138,13 +138,15 @@ button {
 /* ==========================================================================
    1. Official Institutional College Bar (LTCE Autonomous Identity)
    ========================================================================== */
+/* ==========================================================================
+   1. Official Institutional College Bar (LTCE Clean Collegiate Identity)
+   ========================================================================== */
 .inst-micro-bar {
-    background: linear-gradient(90deg, #041930 0%, #082c50 45%, #0b3d75 100%);
-    color: #e2e8f0;
+    background: #ffffff;
+    color: var(--text-secondary);
     font-size: 0.8125rem;
-    padding: 7px 1.5rem;
-    border-bottom: 2px solid #ff9600; /* Signature LTCE Saffron/Gold Accent */
-    box-shadow: 0 2px 10px rgba(4, 25, 48, 0.28);
+    padding: 8px 1.5rem;
+    border-bottom: 1px solid var(--border-color);
     position: relative;
     z-index: 1010;
 }
@@ -176,10 +178,6 @@ button {
     height: 38px;
     width: auto;
     object-fit: contain;
-    background: #ffffff;
-    border-radius: 4px;
-    padding: 1.5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s ease;
 }
 
@@ -195,59 +193,20 @@ button {
 }
 
 .inst-trust-title {
-    font-size: 0.625rem;
+    font-size: 0.65rem;
     font-weight: 600;
-    color: #94a3b8;
+    color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 1px;
-}
-
-.inst-name-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    letter-spacing: 0.6px;
+    margin-bottom: 2px;
 }
 
 .inst-clg-name {
-    color: #ffffff;
+    color: var(--ltce-blue);
     font-weight: 800;
-    font-size: 0.875rem;
-    letter-spacing: 0.35px;
+    font-size: 0.925rem;
+    letter-spacing: 0.2px;
     white-space: nowrap;
-}
-
-.inst-badges-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.inst-pill-badge {
-    display: inline-block;
-    padding: 2px 7px;
-    font-size: 0.625rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    line-height: 1.2;
-    white-space: nowrap;
-}
-
-.inst-pill-badge.autonomous {
-    background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 1px 3px rgba(225, 29, 72, 0.4);
-}
-
-.inst-pill-badge.naac {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 1px 3px rgba(5, 150, 105, 0.35);
 }
 
 .inst-info-right {
@@ -258,46 +217,47 @@ button {
 }
 
 .inst-affiliation {
-    color: #cbd5e1;
+    color: var(--text-muted);
     font-weight: 500;
-    font-size: 0.775rem;
+    font-size: 0.8rem;
     white-space: nowrap;
 }
 
 .inst-sep {
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--border-color);
     font-size: 0.75rem;
 }
 
 .inst-link {
-    color: #ffffff;
+    color: var(--ltce-blue);
     font-weight: 700;
-    font-size: 0.775rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 3px 9px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 4px;
+    padding: 4px 10px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-sm);
     transition: all 0.18s ease;
 }
 
 .inst-link .inst-arrow {
-    color: #ff9600;
+    color: var(--ltce-blue);
     font-weight: 800;
     transition: transform 0.15s ease;
 }
 
 .inst-link:hover {
-    background: rgba(255, 150, 0, 0.2);
-    border-color: rgba(255, 150, 0, 0.5);
-    color: #ff9600;
+    background: var(--ltce-blue);
+    color: #ffffff;
+    border-color: var(--ltce-blue);
 }
 
 .inst-link:hover .inst-arrow {
+    color: #ffffff;
     transform: translate(2px, -2px);
 }
 
@@ -323,7 +283,8 @@ button {
         justify-content: center;
     }
     .inst-clg-name {
-        font-size: 0.775rem;
+        font-size: 0.8rem;
+        white-space: normal;
     }
     .inst-info-right {
         display: none;
