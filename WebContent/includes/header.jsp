@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=3.6">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=3.7">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -32,16 +32,31 @@
 <body>
 
     <!-- ==============================================
-         1. Clean Institutional Top Bar (Minimal & Uncluttered)
+         1. Official Institutional College Bar (LTCE Autonomous Identity)
          ============================================== -->
     <div class="inst-micro-bar">
         <div class="inst-bar-inner">
-            <div class="inst-info-left">
-                <span class="inst-clg-name">Lokmanya Tilak College of Engineering</span>
+            <div class="inst-identity-cluster">
+                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="inst-emblem-link" title="Lokmanya Tilak College of Engineering (Official)">
+                    <img src="<%= cp %>/images/ltce_official_logo.png" alt="LTCE Official Crest" class="inst-crest-img" onerror="this.src='<%= cp %>/images/clubs/ltce.svg'">
+                </a>
+                <div class="inst-text-block">
+                    <span class="inst-trust-title">Lokmanya Tilak Jankalyan Shikshan Sanstha's</span>
+                    <div class="inst-name-row">
+                        <span class="inst-clg-name">LOKMANYA TILAK COLLEGE OF ENGINEERING</span>
+                        <div class="inst-badges-group">
+                            <span class="inst-pill-badge autonomous" title="An Autonomous Institute Affiliated to University of Mumbai">AUTONOMOUS</span>
+                            <span class="inst-pill-badge naac" title="Accredited with NAAC 'A' Grade">NAAC 'A' GRADE</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="inst-info-right">
-                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="inst-link">
-                    Official College Website <span>&rarr;</span>
+                <span class="inst-affiliation">Affiliated to University of Mumbai</span>
+                <span class="inst-sep" aria-hidden="true">&bull;</span>
+                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="inst-link" title="Visit Official LTCE Portal">
+                    Official College Portal <span class="inst-arrow">&nearr;</span>
                 </a>
             </div>
         </div>
@@ -60,7 +75,7 @@
                     </div>
                     <div class="brand-text-group">
                         <span class="brand-main-title">Campus<span class="brand-highlight">Connect</span></span>
-                        <span class="brand-tagline">LTCE STUDENT OPPORTUNITY HUB</span>
+                        <span class="brand-tagline">LTCE STUDENT OPPORTUNITY HUB &bull; AUTONOMOUS</span>
                     </div>
                 </a>
             </div>
