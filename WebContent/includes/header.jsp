@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=5.0">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=5.1">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -62,7 +62,13 @@
                     <li><a href="<%= cp %>/" class="nav-item <%= curUri.endsWith("/") || curUri.endsWith("index.jsp") ? "active" : "" %>">Home</a></li>
                     <li><a href="<%= cp %>/dashboard" class="nav-item <%= curUri.contains("dashboard") || curUri.contains("events") ? "active" : "" %>">Explore Events</a></li>
                     <li><a href="<%= cp %>/clubs.jsp" class="nav-item nav-clubs-item <%= curUri.contains("clubs") ? "active" : "" %>">
-                        <span class="nav-icon">&#127891;</span> Clubs &amp; Chapters
+                        <svg class="nav-svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span>Clubs &amp; Chapters</span>
                     </a></li>
                     <li><a href="<%= cp %>/#how-it-works" class="nav-item">How It Works</a></li>
                     
@@ -81,7 +87,20 @@
             <!-- Right Action Area (Auth Buttons / User Chip / Mobile Toggle) -->
             <div class="header-actions">
                 <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="btn-portal-ghost" title="Official LTCE College Website">
-                    <span class="portal-icon">&#127963;</span> ltce.in &nearr;
+                    <svg class="portal-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="2" y1="21" x2="22" y2="21"></line>
+                        <line x1="4" y1="10" x2="4" y2="21"></line>
+                        <line x1="9" y1="10" x2="9" y2="21"></line>
+                        <line x1="15" y1="10" x2="15" y2="21"></line>
+                        <line x1="20" y1="10" x2="20" y2="21"></line>
+                        <polygon points="12 2 2 7 22 7 12 2"></polygon>
+                    </svg>
+                    <span>ltce.in</span>
+                    <svg class="portal-ext-svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
                 </a>
 
                 <% if (authUser == null) { %>
@@ -129,7 +148,7 @@
             <ul class="mobile-nav-list">
                 <li><a href="<%= cp %>/" class="mobile-nav-link">&#127968; Home</a></li>
                 <li><a href="<%= cp %>/dashboard" class="mobile-nav-link">&#128197; Explore Events</a></li>
-                <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight">&#127891; Campus Clubs Directory</a></li>
+                <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight">&#128101; Campus Clubs Directory</a></li>
                 <li><a href="<%= cp %>/#how-it-works" class="mobile-nav-link">&#9889; How It Works</a></li>
                 
                 <% if (authUser != null) { %>

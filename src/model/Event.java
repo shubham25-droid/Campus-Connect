@@ -226,6 +226,7 @@ public class Event {
     public String getClubLogo() {
         if (organizerName == null) return "ltce_official_logo.png";
         String org = organizerName.toUpperCase();
+        if (org.contains("CULTURAL") || org.contains("GARBA") || org.contains("NAVRATRI")) return "cultural_club.png";
         if (org.contains("AIMSA")) return "aimsa.png";
         if (org.contains("CESA")) return "cesa.png";
         if (org.contains("E-CELL") || org.contains("ECELL") || org.contains("ENTREPRENEUR")) return "ecell.png";

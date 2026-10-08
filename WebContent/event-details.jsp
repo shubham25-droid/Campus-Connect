@@ -116,7 +116,9 @@
             <!-- About Event Section -->
             <div class="details-section">
                 <h3>About This Opportunity</h3>
-                <p><%= event.getDescription() %></p>
+                <div style="white-space: pre-line; line-height: 1.7; color: var(--text-secondary); font-size: 0.95rem;">
+                    <%= event.getDescription().replaceAll("(?i)(https?://[^\\s<]+)", "<a href=\"$1\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:var(--ltce-blue-light); font-weight:700; text-decoration:underline;\">$1 &nearr;</a>") %>
+                </div>
             </div>
 
             <!-- Eligibility & Rules -->
@@ -225,6 +227,23 @@
                 <button type="button" class="btn btn-secondary btn-full btn-lg" disabled style="opacity:0.6; cursor:not-allowed;">
                     Registration Closed
                 </button>
+            <% } %>
+
+            <% 
+               String extFormUrl = null;
+               if (event.getDescription() != null && event.getDescription().contains("http")) {
+                   java.util.regex.Matcher m = java.util.regex.Pattern.compile("(https?://[^\\s<]+)").matcher(event.getDescription());
+                   if (m.find()) {
+                       extFormUrl = m.group(1);
+                   }
+               }
+            %>
+            <% if (extFormUrl != null) { %>
+                <div style="margin-top: 0.75rem;">
+                    <a href="<%= extFormUrl %>" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-full btn-sm" style="display:inline-flex; align-items:center; justify-content:center; gap:6px; font-weight:700; border-color:var(--ltce-blue-border); color:var(--ltce-blue);">
+                        <span>&#128221;</span> Open Official Registration Form &nearr;
+                    </a>
+                </div>
             <% } %>
 
             <!-- Save / Bookmark Button -->

@@ -182,11 +182,17 @@ public class DBConnection {
                     + "(5, 'Orientation on Project Deep Blue Season 12', "
                     + "'Institution Innovation Council (IIC) invites students to the orientation of Project Deep Blue, a prestigious Mastek industry initiative.', "
                     + "'The Institution Innovation Council (IIC) of Lokmanya Tilak College of Engineering cordially invites students to attend the official orientation of Project Deep Blue - Season 12 (A Mastek initiative).\\n\\nSpeaker: Mr. Swapnil Pawar (Senior Executive PMO, Mastek Ltd.)\\n\\nProject Deep Blue empowers engineering students to solve real-world social and technological challenges through cutting-edge software solutions with direct mentorship from Mastek industry leaders.\\n\\nLeadership & Organization:\\n• Student Coordinators: Mitali Joshi, Vishal Gupta\\n• Faculty Coordinators: Prof. Ujjwala Pandharkar, Dr. Snehal Junnarkar\\n• Convener: Dr. Nimisha Shirbhate\\n• Vice President: Dr. Sheeba P.S\\n• President & Principal: Dr. Subhash Shinde', "
-                    + "'Technical', 'All Departments', 'SE, TE, BE', '2026-09-07', '3:30 PM', '5:00 PM', 'Online Session (Virtual Link)', 'Institution Innovation Council (IIC)', 'iic@ltce.in | Innovation Helpdesk', '2026-09-07', 200, 'Open to all students of LTCE', 'project_deep_blue.jpg', 'Completed', 1);");
+                    + "'Technical', 'All Departments', 'SE, TE, BE', '2026-09-07', '3:30 PM', '5:00 PM', 'Online Session (Virtual Link)', 'Institution Innovation Council (IIC)', 'iic@ltce.in | Innovation Helpdesk', '2026-09-07', 200, 'Open to all students of LTCE', 'project_deep_blue.jpg', 'Completed', 1), "
 
-            // Clean up any old demo events and ensure status is Completed
-            stmt.executeUpdate("DELETE FROM events WHERE id NOT IN (1, 2, 3, 4, 5);");
-            stmt.executeUpdate("UPDATE events SET status = 'Completed';");
+                    + "(6, 'Navratri Carnival 2026 — Garba, Fun & Festive Vibes', "
+                    + "'Get ready to dance & celebrate! The Cultural Club of AIML Department invites you to an evening full of Garba, Dandiya, and festive beats.', "
+                    + "'✨ NAVRATRI CARNIVAL 2026 ✨\\n\\nGet ready to dance & celebrate! 💃🪩\\nThe Cultural Club of AIML Department invites you all to an evening full of Garba, fun, and festive vibes! 🪔❤️\\n\\n📅 Date: 13th October 2026 (Tuesday)\\n⏰ Time: 3:00 PM onwards\\n📍 Venue: QUADRANGLE, 4th floor, C Wing, LTCE Campus\\n\\n💃 Activities & Highlights:\\n• Navratri Garba & Dandiya Beats\\n• 🎨 Face & Hand Painting Competition\\n• 👗 Traditional Dress Code (Come dressed in your festive best!)\\n• 🎵 Live Festive Beats & Music by Student DJs\\n\\nFaculty Incharges & Leadership:\\n• Prof. Firdos Patel (Faculty Incharge)\\n• Dr. Smita Ganjare (Faculty Incharge)\\n• Dr. Chaitrali Chaudhari (HOD - CSE AIML)\\n• Dr. Subhash Shinde (Principal)\\n\\n🌟 Want to be a participant?\\nOfficial Registration Form: https://forms.gle/iiM9pCySvKBxKePV7\\n\\nCome dressed in your festive best and let us make this Navratri unforgettable! ❤️✨\\nSee you all on the Garba floor! 💃🔥\\n\\nRegards,\\nCULTURAL CLUB | AIML Dept', "
+                    + "'Cultural', 'CSE (AI & ML)', 'All Years (FE, SE, TE, BE)', '2026-10-13', '3:00 PM', '7:00 PM', 'QUADRANGLE, 4th floor, C Wing', 'Cultural Club of AIML Dept', 'cultural.aiml@ltce.in | Cultural Council Desk', '2026-10-13', 300, 'Open to all LTCE students. Traditional dress code mandatory.', 'navratri_carnival.jpg', 'Published', 1);");
+
+            // Clean up any old demo events and maintain published/completed status
+            stmt.executeUpdate("DELETE FROM events WHERE id NOT IN (1, 2, 3, 4, 5, 6);");
+            stmt.executeUpdate("UPDATE events SET status = 'Completed' WHERE id IN (1, 2, 3, 4, 5);");
+            stmt.executeUpdate("UPDATE events SET status = 'Published' WHERE id = 6;");
 
             // Seed sample registrations
             stmt.executeUpdate("MERGE INTO registrations (id, user_id, event_id, status) KEY(id) VALUES (1, 2, 1, 'CONFIRMED'), (2, 2, 3, 'CONFIRMED'), (3, 2, 4, 'CONFIRMED');");
