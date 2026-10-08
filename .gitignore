@@ -1,6 +1,8 @@
 # Tomcat runtime and work folders
 tomcat/
 target/
+dist/
+*.war
 bin/
 *.class
 
