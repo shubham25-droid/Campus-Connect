@@ -31,12 +31,6 @@
      1. Modern Collegiate Split Hero Section
      ============================================== -->
 <section class="collegiate-hero">
-    <!-- 3D Geometric Orbital Ambient Background -->
-    <div class="hero-3d-backdrop" aria-hidden="true">
-        <div class="hero-3d-ring ring-1"></div>
-        <div class="hero-3d-ring ring-2"></div>
-    </div>
-
     <div class="hero-container">
         <div class="hero-split-grid">
             
@@ -98,9 +92,6 @@
             <div class="hero-right-visual">
                 <% if (upcomingEvents != null && !upcomingEvents.isEmpty()) { %>
                     <div class="hero-ticket-card" id="heroTicketCard">
-                        <!-- 3D Dynamic Holographic Glare Layer -->
-                        <div class="ticket-3d-glare" id="ticket3dGlare"></div>
-
                         <!-- Interactive Top Control Bar -->
                         <div class="ticket-top-tag">
                             <div style="display:flex; align-items:center; gap:8px;">
@@ -545,37 +536,6 @@
                 window.changeHeroSlide(-1);
             }
         }, { passive: true });
-
-        // 3D Card Perspective Tilt & Dynamic Holographic Reflection
-        const glare = document.getElementById('ticket3dGlare');
-        if (window.matchMedia('(pointer: fine)').matches) {
-            ticketCard.addEventListener('mousemove', function(e) {
-                const rect = ticketCard.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = ((y - centerY) / centerY) * -6; // max 6 deg
-                const rotateY = ((x - centerX) / centerX) * 6;
-
-                ticketCard.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-4px) scale3d(1.015, 1.015, 1.015)';
-
-                if (glare) {
-                    glare.style.opacity = '1';
-                    const glareX = (x / rect.width) * 100;
-                    const glareY = (y / rect.height) * 100;
-                    glare.style.background = 'radial-gradient(circle 300px at ' + glareX.toFixed(1) + '% ' + glareY.toFixed(1) + '%, rgba(255, 255, 255, 0.22) 0%, transparent 65%)';
-                }
-            });
-
-            ticketCard.addEventListener('mouseleave', function() {
-                ticketCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
-                if (glare) {
-                    glare.style.opacity = '0';
-                }
-            });
-        }
     }
 
     startSlideTimer();
