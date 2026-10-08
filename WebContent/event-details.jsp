@@ -33,7 +33,7 @@
     <% } else if ("already_registered".equals(status)) { %>
         <div class="alert alert-info">
             <span>&#8505;</span>
-            <div>You are already registered for this event. Your seat is confirmed!</div>
+            <div>You are already registered for this event. Your registration is confirmed!</div>
         </div>
     <% } else if ("event_full".equals(status)) { %>
         <div class="alert alert-warning">
@@ -108,10 +108,8 @@
                     <div class="strip-val"><%= event.getVenue() %></div>
                 </div>
                 <div class="strip-item">
-                    <div class="strip-label">&#128101; Seats Remaining</div>
-                    <div class="strip-val" style="color: <%= event.isRegistrationOpen() ? "var(--success)" : "var(--danger)" %>">
-                        <%= event.getRemainingSeats() %> / <%= event.getMaxParticipants() %>
-                    </div>
+                    <div class="strip-label">&#127979; Organized By</div>
+                    <div class="strip-val" style="color:var(--primary); font-weight:700;"><%= event.getOrganizerName() %></div>
                 </div>
             </div>
 
@@ -181,7 +179,6 @@
 
             <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.4;">
                 <div><strong>Deadline:</strong> <%= event.getFormattedDeadline() %></div>
-                <div><strong>Available Slots:</strong> <%= event.getRemainingSeats() %> remaining</div>
                 <div><strong>Registration Fee:</strong> <span style="color:var(--success); font-weight:700;">FREE (Sponsored)</span></div>
             </div>
 
@@ -196,12 +193,12 @@
                         Login to Register
                     </a>
                     <div style="font-size:0.775rem; color:var(--text-muted); text-align:center; margin-top:8px;">
-                        Student account required to secure a seat.
+                        Student account required to register.
                     </div>
                 <% } %>
             <% } else if (event.isUserRegistered()) { %>
                 <div style="background:var(--success-bg); border:1px solid var(--success-border); border-radius:var(--radius-sm); padding:1rem; text-align:center; margin-bottom:1rem;">
-                    <div style="color:var(--success); font-weight:700; font-size:0.95rem;">Seat Confirmed!</div>
+                    <div style="color:var(--success); font-weight:700; font-size:0.95rem;">Registration Confirmed!</div>
                     <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Your pass is ready in My Registrations.</div>
                 </div>
 

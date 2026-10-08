@@ -213,7 +213,7 @@
                         <% } else if (e.isPastEvent()) { %>
                             <span class="seat-status-pill concluded">Event Ended</span>
                         <% } else if (e.isRegistrationOpen()) { %>
-                            <span class="seat-status-pill open"><%= e.getRemainingSeats() %> seats left</span>
+                            <span class="seat-status-pill open">&#9679; Open</span>
                         <% } else { %>
                             <span class="seat-status-pill full">Closed</span>
                         <% } %>

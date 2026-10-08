@@ -22,7 +22,7 @@
 
     <% if ("cancelled".equals(status)) { %>
         <div class="alert alert-info">
-            Registration has been successfully cancelled. Your seat has been released for other students.
+            Registration has been successfully cancelled.
         </div>
     <% } %>
 

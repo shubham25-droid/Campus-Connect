@@ -110,7 +110,6 @@
                             <% 
                                int slideIdx = 0;
                                for (Event ev : upcomingEvents) { 
-                                   int seatPct = Math.min(100, (ev.getRemainingSeats() * 100) / Math.max(1, ev.getMaxParticipants()));
                             %>
                                 <div class="ticket-slide <%= slideIdx == 0 ? "active" : "" %>" 
                                      data-slide-index="<%= slideIdx %>" 
@@ -133,7 +132,7 @@
 
                                         <h3 class="ticket-title"><%= ev.getTitle() %></h3>
 
-                                        <div class="ticket-meta-grid">
+                                        <div class="ticket-meta-grid" style="margin-bottom: 1.25rem;">
                                             <div class="ticket-meta-cell">
                                                 <span class="ticket-meta-label">Date &amp; Time</span>
                                                 <span class="ticket-meta-val">&#128197; <%= ev.getFormattedDate() %></span>
@@ -141,16 +140,6 @@
                                             <div class="ticket-meta-cell">
                                                 <span class="ticket-meta-label">Campus Venue</span>
                                                 <span class="ticket-meta-val">&#128205; <%= ev.getVenue() %></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="ticket-seats-bar">
-                                            <div class="seats-label-row">
-                                                <span>Seat Availability</span>
-                                                <strong><%= ev.getRemainingSeats() %> / <%= ev.getMaxParticipants() %> Left</strong>
-                                            </div>
-                                            <div class="seats-progress-track">
-                                                <div class="seats-progress-fill" style="width: <%= seatPct %>%;"></div>
                                             </div>
                                         </div>
 
