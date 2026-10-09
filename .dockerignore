@@ -1,0 +1,27 @@
+# Local Tomcat runtime
+tomcat/
+dist/
+target/
+bin/
+
+# Version control & local scripts
+.git/
+.gitignore
+*.bat
+*.ps1
+
+# Local databases & logs
+*.mv.db
+*.trace.db
+*.db
+*.log
+scratch/
+
+# OS and IDE files
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+.DS_Store
+Thumbs.db

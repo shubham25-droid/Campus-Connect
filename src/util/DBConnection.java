@@ -14,13 +14,37 @@ import java.sql.Statement;
  */
 public class DBConnection {
 
-    // Primary MySQL configuration
+    // Primary MySQL configuration (Overridable via environment variables on Render / Cloud)
     private static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/campusconnect_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true";
-    private static final String MYSQL_USER = "root";
-    private static final String MYSQL_PASSWORD = "";
+    private static final String DEFAULT_MYSQL_URL = "jdbc:mysql://localhost:3306/campusconnect_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true";
+    private static final String DEFAULT_MYSQL_USER = "root";
+    private static final String DEFAULT_MYSQL_PASSWORD = "";
 
-    // Embedded Fallback configuration (Zero-config embedded DB for offline demo)
+    public static String getMysqlUrl() {
+        String env = System.getenv("MYSQL_URL");
+        if (env == null || env.trim().isEmpty()) env = System.getenv("DATABASE_URL");
+        if (env != null && !env.trim().isEmpty()) {
+            if (env.startsWith("mysql://")) {
+                env = "jdbc:" + env;
+            }
+            return env;
+        }
+        return DEFAULT_MYSQL_URL;
+    }
+
+    public static String getMysqlUser() {
+        String env = System.getenv("MYSQL_USER");
+        if (env != null && !env.trim().isEmpty()) return env;
+        return DEFAULT_MYSQL_USER;
+    }
+
+    public static String getMysqlPassword() {
+        String env = System.getenv("MYSQL_PASSWORD");
+        if (env != null) return env;
+        return DEFAULT_MYSQL_PASSWORD;
+    }
+
+    // Embedded Fallback configuration (Zero-config embedded DB for offline demo / instant cloud viva)
     private static final String H2_DRIVER = "org.h2.Driver";
     private static final String H2_URL = "jdbc:h2:./campusconnect_db;MODE=MySQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE;AUTO_SERVER=TRUE";
     private static final String H2_USER = "sa";
@@ -36,16 +60,20 @@ public class DBConnection {
     public static synchronized void initializeDatabase() {
         if (initialized) return;
 
-        // Try primary MySQL first
+        // Try primary MySQL first (local or cloud via environment variables)
         try {
             Class.forName(MYSQL_DRIVER);
-            try (Connection conn = DriverManager.getConnection(MYSQL_URL, MYSQL_USER, MYSQL_PASSWORD)) {
-                System.out.println("[CampusConnect] Connected successfully to MySQL Database: campusconnect_db");
+            String url = getMysqlUrl();
+            String user = getMysqlUser();
+            String pass = getMysqlPassword();
+            try (Connection conn = DriverManager.getConnection(url, user, pass)) {
+                System.out.println("[CampusConnect] Connected successfully to MySQL Database.");
+                createTables(conn);
                 useFallback = false;
                 initialized = true;
                 return;
             } catch (SQLException e) {
-                System.out.println("[CampusConnect] MySQL not reachable on localhost:3306. Switching to embedded fallback engine.");
+                System.out.println("[CampusConnect] Primary database not reachable (" + e.getMessage() + "). Switching to embedded fallback engine.");
             }
         } catch (ClassNotFoundException e) {
             System.out.println("[CampusConnect] MySQL Driver not found. Switching to embedded fallback engine.");
@@ -73,7 +101,7 @@ public class DBConnection {
 
         if (!useFallback) {
             try {
-                return DriverManager.getConnection(MYSQL_URL, MYSQL_USER, MYSQL_PASSWORD);
+                return DriverManager.getConnection(getMysqlUrl(), getMysqlUser(), getMysqlPassword());
             } catch (SQLException ex) {
                 useFallback = true;
             }

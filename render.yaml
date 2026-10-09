@@ -1,0 +1,22 @@
+# ==============================================================================
+# CampusConnect - Render Blueprint Specification
+# One-click deployment configuration on Render.com
+# ==============================================================================
+services:
+  - type: web
+    name: campusconnect-ltce
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 8080
+      # Optional: To use external MySQL instead of zero-config embedded H2:
+      # - key: MYSQL_URL
+      #   value: jdbc:mysql://<host>:<port>/<dbname>?useSSL=true
+      # - key: MYSQL_USER
+      #   value: <username>
+      # - key: MYSQL_PASSWORD
+      #   value: <password>
