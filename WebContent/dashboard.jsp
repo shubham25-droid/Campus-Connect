@@ -22,7 +22,7 @@
 <div class="container">
 
     <!-- Welcome & Quick Stat Section -->
-    <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem; margin-bottom: 2rem;">
+    <div class="dashboard-header-row">
         <div>
             <h1 class="page-title">
                 <%= (authUser != null) ? "Welcome back, " + authUser.getName().split(" ")[0] : "Discover Campus Events" %>
@@ -33,9 +33,9 @@
         </div>
 
         <% if (authUser != null) { %>
-            <div style="display:flex; gap:12px; align-items:center;">
+            <div class="dashboard-quick-stats">
                 <a href="<%= request.getContextPath() %>/my-registrations" class="btn btn-secondary btn-sm" style="background:#fff;">
-                    <span>&#128197;</span> My Registrations: <strong style="color:var(--primary); margin-left:4px;"><%= regCount != null ? regCount : 0 %></strong>
+                    <span>&#128197;</span> My Passes: <strong style="color:var(--primary); margin-left:4px;"><%= regCount != null ? regCount : 0 %></strong>
                 </a>
                 <a href="<%= request.getContextPath() %>/saved-events" class="btn btn-secondary btn-sm" style="background:#fff;">
                     <span>&#9829;</span> Saved: <strong style="color:var(--danger); margin-left:4px;"><%= saveCount != null ? saveCount : 0 %></strong>

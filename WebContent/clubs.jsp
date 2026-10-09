@@ -26,7 +26,7 @@
     </div>
 
     <!-- Quick Navigation / Filter Tabs -->
-    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom: 1.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+    <div class="clubs-filter-strip">
         <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('dept', this)">Department Bodies</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('tech', this)">Coding &amp; Tech</button>

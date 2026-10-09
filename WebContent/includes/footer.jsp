@@ -55,6 +55,6 @@
         </div>
     </footer>
 
-    <script src="<%= request.getContextPath() %>/js/main.js?v=2.2"></script>
+    <script src="<%= request.getContextPath() %>/js/main.js?v=6.0"></script>
 </body>
 </html>

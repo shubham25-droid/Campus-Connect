@@ -280,6 +280,44 @@
 
     </div>
 
+    <!-- ==============================================
+         Mobile Sticky Registration CTA Bar (App-like thumb action for Android & iOS)
+         ============================================== -->
+    <div class="mobile-sticky-action-bar" id="mobileStickyActionBar">
+        <div class="mobile-sticky-inner">
+            <div class="mobile-sticky-info">
+                <span class="mobile-sticky-price"><%= event.isPastEvent() ? "Event Ended" : "FREE ENTRY" %></span>
+                <span class="mobile-sticky-deadline">&#128197; <%= event.getFormattedDate() %></span>
+            </div>
+            <div class="mobile-sticky-cta">
+                <% if (authUser == null) { %>
+                    <% if (event.isPastEvent()) { %>
+                        <button type="button" class="btn btn-secondary btn-sm" disabled style="opacity:0.65;">Concluded</button>
+                    <% } else { %>
+                        <a href="<%= request.getContextPath() %>/login?redirect=<%= request.getContextPath() %>/event-details?id=<%= event.getId() %>" class="btn btn-primary btn-sm" style="font-weight:700;">
+                            Login to Register &rarr;
+                        </a>
+                    <% } %>
+                <% } else if (event.isUserRegistered()) { %>
+                    <a href="<%= request.getContextPath() %>/my-registrations" class="btn btn-secondary btn-sm" style="background:#dcfce7; color:#166534; border-color:#bbf7d0; font-weight:700;">
+                        &#10003; View Pass &rarr;
+                    </a>
+                <% } else if (event.isPastEvent()) { %>
+                    <button type="button" class="btn btn-secondary btn-sm" disabled style="opacity:0.65;">Concluded</button>
+                <% } else if (event.isRegistrationOpen()) { %>
+                    <form action="<%= request.getContextPath() %>/register-event" method="POST" style="margin:0;">
+                        <input type="hidden" name="eventId" value="<%= event.getId() %>">
+                        <button type="submit" class="btn btn-primary btn-sm" style="font-weight:800; padding:9px 18px;">
+                            Register Now &rarr;
+                        </button>
+                    </form>
+                <% } else { %>
+                    <button type="button" class="btn btn-secondary btn-sm" disabled style="opacity:0.65;">Full / Closed</button>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- ==============================================

@@ -9,8 +9,8 @@
 %>
 <jsp:include page="includes/header.jsp" />
 
-<div class="container" style="max-width: 520px; padding-top: 2.5rem;">
-    <div class="card" style="padding: 2.25rem;">
+<div class="container auth-page-container register">
+    <div class="card auth-page-card">
         <div style="text-align: center; margin-bottom: 1.75rem;">
             <img src="<%= request.getContextPath() %>/images/campusconnect-final-logo-trans.png?v=3.0" alt="CampusConnect" style="width:68px; height:68px; margin:0 auto 12px; display:block; object-fit:contain;">
             <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ltce-blue-dark);">Student Registration</h2>

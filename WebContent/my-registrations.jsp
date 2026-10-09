@@ -27,40 +27,42 @@
     <% } %>
 
     <% if (registrations != null && !registrations.isEmpty()) { %>
-        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="pass-tickets-list">
             <% for (Registration r : registrations) { %>
-                <div class="card" style="padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-                    
-                    <div style="display: flex; gap: 1.25rem; align-items: center; min-width: 300px; flex: 1;">
-                        <img src="<%= request.getContextPath() %>/images/<%= r.getEventImage() %>" alt="<%= r.getEventTitle() %>" 
-                             style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--border-color);"
-                             onerror="this.src='<%= request.getContextPath() %>/images/gdg_hacktoberfest.jpg'">
-                        <div>
-                            <span class="cat-pill active" style="font-size: 0.72rem; padding: 2px 8px;"><%= r.getEventCategory() %></span>
-                            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--secondary); margin: 4px 0 6px;">
+                <div class="pass-ticket-card">
+                    <div class="pass-ticket-main">
+                        <div class="pass-ticket-img-wrap">
+                            <img src="<%= request.getContextPath() %>/images/<%= r.getEventImage() %>" alt="<%= r.getEventTitle() %>" 
+                                 class="pass-ticket-img"
+                                 onerror="this.src='<%= request.getContextPath() %>/images/gdg_hacktoberfest.jpg'">
+                        </div>
+                        <div class="pass-ticket-details">
+                            <div class="pass-ticket-tag-row">
+                                <span class="cat-pill active" style="font-size: 0.72rem; padding: 2px 8px;"><%= r.getEventCategory() %></span>
+                                <span class="seat-status-pill open" style="padding: 3px 8px; font-size: 0.75rem;">
+                                    &#10003; <%= r.getStatus() %>
+                                </span>
+                            </div>
+                            <h3 class="pass-ticket-title">
                                 <a href="<%= request.getContextPath() %>/event-details?id=<%= r.getEventId() %>"><%= r.getEventTitle() %></a>
                             </h3>
-                            <div style="font-size: 0.825rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 2px;">
-                                <span>&#128197; <%= r.getFormattedEventDate() %> &bull; <%= r.getEventStartTime() %></span>
-                                <span>&#128205; <%= r.getEventVenue() %> &bull; <%= r.getEventOrganizer() %></span>
-                                <span style="color: var(--text-subtle); margin-top: 2px;">Registered on: <%= r.getFormattedRegisteredAt() %></span>
+                            <div class="pass-ticket-meta">
+                                <div>&#128197; <strong><%= r.getFormattedEventDate() %></strong> &bull; <%= r.getEventStartTime() %></div>
+                                <div>&#128205; <%= r.getEventVenue() %> &bull; <%= r.getEventOrganizer() %></div>
+                                <div style="color: var(--text-muted); font-size: 0.75rem; margin-top: 2px;">Registered on <%= r.getFormattedRegisteredAt() %></div>
                             </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem;">
-                        <span class="seat-status-pill open" style="padding: 4px 10px; font-size: 0.8125rem;">
-                            &#10003; <%= r.getStatus() %>
-                        </span>
-
-                        <div class="action-btn-group">
+                    <div class="pass-ticket-actions">
+                        <div class="action-btn-group pass-btn-group">
                             <a href="<%= request.getContextPath() %>/event-details?id=<%= r.getEventId() %>" class="btn btn-secondary btn-sm">
                                 View Details
                             </a>
-                            <button type="button" class="btn btn-outline btn-sm" onclick="printPass('<%= r.getEventTitle() %>', '<%= r.getFormattedEventDate() %>', '<%= r.getEventStartTime() %>', '<%= r.getEventVenue() %>', '<%= authUser.getName() %>', '<%= authUser.getEmail() %>')">
-                                Print Pass
+                            <button type="button" class="btn btn-outline btn-sm btn-print-pass" onclick="printPass('<%= r.getEventTitle() %>', '<%= r.getFormattedEventDate() %>', '<%= r.getEventStartTime() %>', '<%= r.getEventVenue() %>', '<%= authUser.getName() %>', '<%= authUser.getEmail() %>')">
+                                &#127915; Print Pass
                             </button>
-                            <form action="<%= request.getContextPath() %>/cancel-registration" method="POST" onsubmit="return confirm('Cancel this registration?');" style="display:inline;">
+                            <form action="<%= request.getContextPath() %>/cancel-registration" method="POST" onsubmit="return confirm('Cancel this registration?');" style="display:inline; margin:0;">
                                 <input type="hidden" name="eventId" value="<%= r.getEventId() %>">
                                 <button type="submit" class="btn btn-danger btn-sm" style="background:#fee2e2; color:#b91c1c; border-color:#fecaca;">
                                     Cancel
@@ -68,7 +70,6 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             <% } %>
         </div>

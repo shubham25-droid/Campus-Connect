@@ -61,6 +61,13 @@
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --container-max: 1440px;
+
+    /* Mobile Safe Area Insets (iOS iPhone Notch & Home Indicator, Android Display Cutouts) */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --mobile-nav-height: 60px;
 }
 
 /* ==========================================================================
@@ -76,6 +83,7 @@ html {
     font-size: 16px;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -90,6 +98,13 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     width: 100%;
+}
+
+/* Add bottom padding on mobile screens to ensure content is never covered by the Mobile Bottom Navigation Bar */
+@media (max-width: 991px) {
+    body {
+        padding-bottom: calc(var(--mobile-nav-height) + var(--safe-bottom) + 12px);
+    }
 }
 
 main {
@@ -1012,17 +1027,27 @@ button {
 
 @media (max-width: 480px) {
     .hero-search-inner {
-        border-radius: var(--radius-md);
-        padding: 10px 14px;
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
-        height: auto;
+        border-radius: var(--radius-full);
+        padding: 5px 6px 5px 14px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .hero-search-icon {
+        font-size: 1.1rem;
+        margin-right: 6px;
+    }
+    .hero-search-input {
+        font-size: 0.95rem;
+        min-width: 0;
     }
     .hero-search-submit {
-        border-radius: var(--radius-sm);
-        padding: 12px;
-        text-align: center;
+        border-radius: var(--radius-full);
+        padding: 9px 18px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        flex-shrink: 0;
     }
 }
 
@@ -2572,6 +2597,41 @@ button {
     margin-top: 4px;
 }
 
+.dashboard-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-quick-stats {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .dashboard-header-row {
+        flex-direction: column;
+        gap: 0.85rem;
+        margin-bottom: 1.25rem;
+    }
+    .dashboard-quick-stats {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .dashboard-quick-stats .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+}
+
 .filter-panel {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -2586,6 +2646,22 @@ button {
     gap: 8px;
     margin-bottom: 1rem;
     flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .search-box-row {
+        flex-wrap: nowrap;
+        gap: 6px;
+    }
+    .search-input-wrapper {
+        min-width: 0 !important;
+        flex: 1;
+    }
+    .search-box-row .btn {
+        padding: 9px 14px;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
 }
 
 .search-input-wrapper {
@@ -3771,4 +3847,473 @@ input.search-input,
     border-radius: 6px;
     font-weight: 600;
     line-height: 1.2;
+}
+
+/* ==========================================================================
+   Mobile Bottom Navigation Bar (Phones: Android & Apple iOS)
+   ========================================================================== */
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(8, 44, 80, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 -4px 24px rgba(3, 10, 24, 0.45);
+    padding: 6px 12px calc(6px + var(--safe-bottom));
+}
+
+@media (min-width: 992px) {
+    .mobile-bottom-nav {
+        display: none !important;
+    }
+}
+
+.mobile-bottom-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.mobile-bottom-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    min-width: 54px;
+    min-height: 48px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    position: relative;
+}
+
+.mobile-bottom-link:active {
+    transform: scale(0.92);
+}
+
+.mobile-bottom-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mobile-bottom-icon svg {
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.mobile-bottom-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1.1;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.mobile-bottom-link:hover {
+    color: #cbd5e1;
+}
+
+.mobile-bottom-link.active {
+    color: #ffffff;
+}
+
+.mobile-bottom-link.active .mobile-bottom-icon {
+    color: var(--ltce-gold);
+    transform: translateY(-2px);
+}
+
+.mobile-bottom-link.active .mobile-bottom-icon svg {
+    stroke: var(--ltce-gold);
+    filter: drop-shadow(0 2px 8px rgba(255, 150, 0, 0.4));
+}
+
+.mobile-bottom-link.active .mobile-bottom-label {
+    color: var(--ltce-gold);
+    font-weight: 800;
+}
+
+.mobile-bottom-link.active::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    width: 16px;
+    height: 3px;
+    background: var(--ltce-gold);
+    border-radius: 999px;
+    box-shadow: 0 0 8px rgba(255, 150, 0, 0.7);
+}
+
+.mobile-bottom-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Mobile Sticky Registration Action Bar (on event-details.jsp)
+   ========================================================================== */
+.mobile-sticky-action-bar {
+    position: fixed;
+    bottom: calc(var(--mobile-nav-height) + var(--safe-bottom) + 2px);
+    left: 12px;
+    right: 12px;
+    z-index: 990;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(13, 67, 121, 0.15);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(8, 44, 80, 0.22);
+    padding: 10px 16px;
+    animation: stickySlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stickySlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 900px) {
+    .mobile-sticky-action-bar {
+        display: none !important;
+    }
+}
+
+.mobile-sticky-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mobile-sticky-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-sticky-price {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--success);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.mobile-sticky-deadline {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.mobile-sticky-cta {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-sticky-cta .btn {
+    white-space: nowrap;
+    border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   Pass Tickets & Digital Gate Pass Card (for my-registrations.jsp)
+   ========================================================================== */
+.pass-tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.pass-ticket-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    border-left: 5px solid var(--ltce-blue);
+    position: relative;
+}
+
+.pass-ticket-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+    border-left-color: var(--ltce-gold);
+}
+
+.pass-ticket-main {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    align-items: flex-start;
+}
+
+.pass-ticket-img-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+}
+
+.pass-ticket-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.pass-ticket-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.pass-ticket-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.pass-ticket-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--ltce-navy);
+    line-height: 1.3;
+    margin: 0 0 6px 0;
+}
+
+.pass-ticket-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.pass-ticket-title a:hover {
+    color: var(--ltce-blue-light);
+}
+
+.pass-ticket-meta {
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    line-height: 1.4;
+}
+
+.pass-ticket-actions {
+    background: var(--bg-alt);
+    border-top: 1px dashed var(--border-color);
+    padding: 12px 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pass-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+    .pass-ticket-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .pass-ticket-main {
+        align-items: center;
+        padding: 1.25rem 1.5rem;
+    }
+    .pass-ticket-actions {
+        background: transparent;
+        border-top: none;
+        border-left: 1px dashed var(--border-color);
+        padding: 1.25rem 1.5rem;
+        height: 100%;
+    }
+    .pass-btn-group {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .pass-ticket-main {
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: 1rem;
+    }
+    .pass-ticket-img-wrap {
+        width: 100%;
+        height: 140px;
+    }
+    .pass-ticket-actions {
+        padding: 10px 1rem;
+    }
+    .pass-btn-group {
+        justify-content: stretch;
+    }
+    .pass-btn-group > * {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   Clubs Filter Strip (Horizontally Scrollable on Mobile)
+   ========================================================================== */
+.clubs-filter-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: nowrap;
+}
+
+.clubs-filter-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.clubs-filter-strip .cat-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .clubs-filter-strip {
+        flex-wrap: wrap;
+        overflow-x: visible;
+    }
+}
+
+/* ==========================================================================
+   Auth Page Responsive Container (Login & Register)
+   ========================================================================== */
+.auth-page-container {
+    max-width: 460px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.auth-page-container.register {
+    max-width: 520px;
+}
+
+.auth-page-card {
+    padding: 2.25rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+    .auth-page-container {
+        margin: 1.25rem auto;
+        padding: 0 0.85rem;
+    }
+    .auth-page-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: var(--radius-lg);
+    }
+}
+
+/* ==========================================================================
+   Mobile Touch & Form Optimizations (Prevent iOS Safari Auto-Zoom)
+   ========================================================================== */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+.btn:active,
+.btn-primary:active,
+.btn-secondary:active,
+.cat-pill:active,
+.topic-chip:active,
+.hero-quick-chip:active {
+    transform: scale(0.97);
+}
+
+/* Narrow mobile screens (iPhone SE, 360px Android devices) */
+@media (max-width: 380px) {
+    .brand-main-title {
+        font-size: 1.15rem;
+    }
+    .brand-clg-badge {
+        display: none;
+    }
+    .header-inner {
+        padding: 0 10px;
+    }
+    .hero-heading {
+        font-size: 1.85rem;
+    }
+}
+
+/* Laptop & Large Screen Polish */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1280px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1360px;
+    }
 }
