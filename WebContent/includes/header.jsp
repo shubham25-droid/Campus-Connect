@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.5">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.6">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -58,7 +58,9 @@
             }
             document.body.style.overflow = 'hidden';
         }
-        function toggleMobileMenu() {
+        function toggleMobileMenu(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            if (e && e.stopPropagation) e.stopPropagation();
             var d = document.getElementById('mobileNavDrawer');
             if (d && d.classList.contains('active')) {
                 closeMobileMenu();
@@ -156,7 +158,7 @@
                 <% } %>
 
                 <!-- Mobile Hamburger Menu Button -->
-                <button type="button" class="btn-mobile-menu" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+                <button type="button" class="btn-mobile-menu" id="mobileMenuToggle" onclick="toggleMobileMenu(event)" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="hamburger-bar"></span>
                     <span class="hamburger-bar"></span>
                     <span class="hamburger-bar"></span>

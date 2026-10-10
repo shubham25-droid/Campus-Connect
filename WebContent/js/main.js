@@ -44,7 +44,9 @@ function initMobileMenu() {
 
     window.openMobileMenu = openMenu;
     window.closeMobileMenu = closeMenu;
-    window.toggleMobileMenu = function() {
+    window.toggleMobileMenu = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (e && e.stopPropagation) e.stopPropagation();
         if (drawer.classList.contains('active')) {
             closeMenu();
         } else {
@@ -52,19 +54,8 @@ function initMobileMenu() {
         }
     };
 
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.toggleMobileMenu();
-        });
-    }
-
     if (closeBtn) {
         closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeMenu();
-        });
-        closeBtn.addEventListener('touchend', function(e) {
             e.preventDefault();
             closeMenu();
         });
@@ -72,10 +63,6 @@ function initMobileMenu() {
 
     if (overlay) {
         overlay.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeMenu();
-        });
-        overlay.addEventListener('touchend', function(e) {
             e.preventDefault();
             closeMenu();
         });
