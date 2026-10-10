@@ -1,0 +1,24 @@
+name: Keep CampusConnect Alive (24/7 Uptime)
+
+on:
+  schedule:
+    # Run every 10 minutes (UTC) 24/7
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+
+jobs:
+  ping-service:
+    name: Ping Render & Vercel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Backend
+        run: |
+          echo "Pinging Render Backend (https://campusconnect-ltce.onrender.com)..."
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://campusconnect-ltce.onrender.com/" || echo "TIMEOUT")
+          echo "Render HTTP Status: $HTTP_STATUS"
+
+      - name: Ping Vercel Edge Portal
+        run: |
+          echo "Pinging Vercel Portal (https://campus-connectltce.vercel.app)..."
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "https://campus-connectltce.vercel.app/" || echo "TIMEOUT")
+          echo "Vercel HTTP Status: $HTTP_STATUS"
