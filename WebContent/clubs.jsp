@@ -30,7 +30,6 @@
         <button type="button" class="cat-pill active" onclick="filterClubSection('all', this)">All Clubs</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('dept', this)">Department Bodies</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('tech', this)">Coding &amp; Tech</button>
-        <button type="button" class="cat-pill" onclick="filterClubSection('cultural', this)">Cultural &amp; Arts</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('startup', this)">Startups &amp; E-Cell</button>
         <button type="button" class="cat-pill" onclick="filterClubSection('softskills', this)">Literature &amp; Careers</button>
     </div>
@@ -82,29 +81,7 @@
             </div>
         </div>
 
-        <!-- 3. Cultural Club (AIML Dept) -->
-        <div class="card club-card" data-category="dept cultural" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #ec4899; display:flex; flex-direction:column;">
-            <div style="display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.75rem;">
-                <img src="<%= cp %>/images/clubs/cultural_club.png" alt="Cultural Club" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid #ec4899; background: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
-                <div>
-                    <span class="role-tag" style="background:#fdf2f8; color:#be185d; font-size:0.65rem;">Cultural Body &bull; AIML</span>
-                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--ltce-blue-dark); margin: 2px 0 0;">Cultural Club</h3>
-                </div>
-            </div>
-            <p style="font-size: 0.825rem; color: #475569; line-height: 1.45; margin-bottom: 0.75rem;">
-                Student cultural wing celebrating dance, music, arts, Navratri Garba, and college festive carnivals.
-            </p>
-            <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 1rem;">
-                <span class="club-micro-tag">Navratri Garba</span>
-                <span class="club-micro-tag">Festivals</span>
-                <span class="club-micro-tag">Music &amp; Arts</span>
-            </div>
-            <div style="margin-top: auto;">
-                <a href="<%= cp %>/dashboard?search=Cultural" class="btn btn-outline btn-sm" style="width:100%; text-align:center;">View Cultural Events &rarr;</a>
-            </div>
-        </div>
-
-        <!-- 4. DSSA (CSE Data Science) -->
+        <!-- 3. DSSA (CSE Data Science) -->
         <div class="card club-card" data-category="dept" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #f59e0b; display:flex; flex-direction:column;">
             <div style="display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.75rem;">
                 <img src="<%= cp %>/images/clubs/dssa.png" alt="DSSA" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b; background: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">

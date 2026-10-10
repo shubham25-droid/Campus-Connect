@@ -39,7 +39,7 @@
 
         <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary);">4. Organizer Responsibilities</h2>
         <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-            Event organizers and student chapter heads (CESA, AIMSA, GDG, Cultural Club, E-Cell) must ensure event descriptions, schedules, fees (if applicable), and venues are accurate and approved by department faculty coordinators.
+            Event organizers and student chapter heads (CESA, AIMSA, DSSA, GDG, GFG, E-Cell) must ensure event descriptions, schedules, fees (if applicable), and venues are accurate and approved by department faculty coordinators.
         </p>
 
         <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary);">5. Acceptable Use and College Discipline</h2>
