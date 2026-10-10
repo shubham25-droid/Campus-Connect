@@ -424,28 +424,29 @@ button {
 .btn-portal-ghost {
     display: none;
     align-items: center;
-    gap: 6px;
-    padding: 7px 12px;
-    font-size: 0.82rem;
+    gap: 7px;
+    padding: 7px 13px;
+    font-size: 0.84rem;
     font-weight: 600;
-    color: #cbd5e1;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: var(--radius-sm);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portal-svg {
     flex-shrink: 0;
-    opacity: 0.85;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    color: #38bdf8;
+    opacity: 0.95;
+    transition: transform 0.2s ease;
 }
 
 .portal-ext-svg {
     flex-shrink: 0;
-    opacity: 0.65;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    color: #94a3b8;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 @media (min-width: 840px) {
@@ -456,17 +457,17 @@ button {
 
 .btn-portal-ghost:hover {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.15);
 }
 
 .btn-portal-ghost:hover .portal-svg {
-    opacity: 1;
-    transform: translateY(-1px);
+    transform: translateY(-1px) rotate(-6deg);
 }
 
 .btn-portal-ghost:hover .portal-ext-svg {
-    opacity: 1;
+    color: #38bdf8;
     transform: translate(1px, -1px);
 }
 

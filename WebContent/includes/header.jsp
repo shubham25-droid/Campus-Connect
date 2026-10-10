@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.3">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.4">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -128,17 +128,13 @@
 
             <!-- Right Action Area (Auth Buttons / User Chip / Mobile Toggle) -->
             <div class="header-actions">
-                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="btn-portal-ghost" title="Official LTCE College Website">
-                    <svg class="portal-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="2" y1="21" x2="22" y2="21"></line>
-                        <line x1="4" y1="10" x2="4" y2="21"></line>
-                        <line x1="9" y1="10" x2="9" y2="21"></line>
-                        <line x1="15" y1="10" x2="15" y2="21"></line>
-                        <line x1="20" y1="10" x2="20" y2="21"></line>
-                        <polygon points="12 2 2 7 22 7 12 2"></polygon>
+                <a href="https://ltce.in/" target="_blank" rel="noopener noreferrer" class="btn-portal-ghost" title="Official LTCE College Portal">
+                    <svg class="portal-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                     </svg>
                     <span>ltce.in</span>
-                    <svg class="portal-ext-svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="portal-ext-svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                         <polyline points="15 3 21 3 21 9"></polyline>
                         <line x1="10" y1="14" x2="21" y2="3"></line>
