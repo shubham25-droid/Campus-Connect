@@ -73,12 +73,12 @@ public class RegisterServlet extends HttpServlet {
         }
 
         User newUser = new User();
-        newUser.setName(name.trim());
+        newUser.setName(sanitize(name.trim()));
         newUser.setEmail(email.trim().toLowerCase());
-        newUser.setPassword(password.trim());
+        newUser.setPassword(UserDAO.hashPassword(password.trim()));
         newUser.setRole("STUDENT");
-        newUser.setDepartment(department.trim());
-        newUser.setYear(year.trim());
+        newUser.setDepartment(sanitize(department.trim()));
+        newUser.setYear(sanitize(year.trim()));
 
         boolean success = userDAO.register(newUser);
 
@@ -92,6 +92,11 @@ public class RegisterServlet extends HttpServlet {
             setFormAttributes(req, name, email, department, year);
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
         }
+    }
+
+    private String sanitize(String input) {
+        if (input == null) return "";
+        return input.replaceAll("<[^>]*>", "").trim();
     }
 
     private void setFormAttributes(HttpServletRequest req, String name, String email, String department, String year) {

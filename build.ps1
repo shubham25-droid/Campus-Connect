@@ -13,7 +13,7 @@ if (-not (Test-Path "WebContent\WEB-INF\classes")) {
     New-Item -ItemType Directory -Force -Path "WebContent\WEB-INF\classes" | Out-Null
 }
 
-& $javacPath -encoding UTF-8 -cp "lib/*;WebContent/WEB-INF/lib/*" -d "WebContent/WEB-INF/classes" src/util/*.java src/model/*.java src/dao/*.java src/controller/*.java
+& $javacPath -encoding UTF-8 -cp "lib/*;WebContent/WEB-INF/lib/*" -d "WebContent/WEB-INF/classes" src/util/*.java src/model/*.java src/dao/*.java src/filter/*.java src/controller/*.java
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[ERROR] Compilation failed!" -ForegroundColor Red

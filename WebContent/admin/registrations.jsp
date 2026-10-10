@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.Event" %>
 <%@ page import="model.Registration" %>
+<%@ page import="model.User" %>
 <%@ page import="dao.EventDAO" %>
 <%@ page import="java.util.List" %>
 <%
+    User adminUser = (session != null) ? (User) session.getAttribute("currentUser") : null;
+    if (adminUser == null || !adminUser.isAdmin()) {
+        response.sendRedirect(request.getContextPath() + "/login");
+        return;
+    }
     request.setAttribute("pageTitle", "Attendee Roster");
     Event event = (Event) request.getAttribute("event");
     List<Registration> attendees = (List<Registration>) request.getAttribute("attendees");

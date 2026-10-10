@@ -156,12 +156,12 @@ public class AdminEventServlet extends HttpServlet {
         }
 
         Event event = new Event();
-        event.setTitle(title.trim());
-        event.setShortDescription(shortDesc != null ? shortDesc.trim() : "");
-        event.setDescription(description != null ? description.trim() : "");
-        event.setCategory(category != null ? category.trim() : "General");
-        event.setDepartment(department != null ? department.trim() : "All Departments");
-        event.setEligibleYear(eligibleYear != null ? eligibleYear.trim() : "All Years");
+        event.setTitle(sanitize(title));
+        event.setShortDescription(shortDesc != null ? sanitize(shortDesc) : "");
+        event.setDescription(description != null ? sanitize(description) : "");
+        event.setCategory(category != null ? sanitize(category) : "General");
+        event.setDepartment(department != null ? sanitize(department) : "All Departments");
+        event.setEligibleYear(eligibleYear != null ? sanitize(eligibleYear) : "All Years");
 
         try {
             event.setEventDate(Date.valueOf(eventDateStr.trim()));
@@ -169,11 +169,11 @@ public class AdminEventServlet extends HttpServlet {
             event.setEventDate(new Date(System.currentTimeMillis()));
         }
 
-        event.setStartTime(startTime != null ? startTime.trim() : "10:00 AM");
-        event.setEndTime(endTime != null ? endTime.trim() : "12:00 PM");
-        event.setVenue(venue.trim());
-        event.setOrganizerName(organizerName != null ? organizerName.trim() : "College Committee");
-        event.setOrganizerContact(organizerContact != null ? organizerContact.trim() : "");
+        event.setStartTime(startTime != null ? sanitize(startTime) : "10:00 AM");
+        event.setEndTime(endTime != null ? sanitize(endTime) : "12:00 PM");
+        event.setVenue(sanitize(venue));
+        event.setOrganizerName(organizerName != null ? sanitize(organizerName) : "College Committee");
+        event.setOrganizerContact(organizerContact != null ? sanitize(organizerContact) : "");
 
         try {
             if (deadlineStr != null && !deadlineStr.trim().isEmpty()) {
@@ -220,5 +220,10 @@ public class AdminEventServlet extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/admin/dashboard");
             }
         }
+    }
+
+    private String sanitize(String input) {
+        if (input == null) return "";
+        return input.replaceAll("<[^>]*>", "").trim();
     }
 }

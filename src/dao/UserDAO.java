@@ -33,7 +33,12 @@ public class UserDAO {
                     String inputHash = hashPassword(password);
 
                     // Allow direct match or SHA-256 hash match
-                    if (storedHash.equals(password) || storedHash.equalsIgnoreCase(inputHash)) {
+                    if (storedHash.equalsIgnoreCase(inputHash) || storedHash.equals(password)) {
+                        // If password was stored in plain text, upgrade it to SHA-256 hash immediately
+                        if (storedHash.equals(password) && !storedHash.equalsIgnoreCase(inputHash)) {
+                            upgradePassword(rs.getInt("id"), inputHash);
+                        }
+
                         User user = new User();
                         user.setId(rs.getInt("id"));
                         user.setName(rs.getString("name"));
@@ -53,6 +58,18 @@ public class UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void upgradePassword(int userId, String sha256Hash) {
+        String sql = "UPDATE users SET password = ? WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, sha256Hash);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("[UserDAO.upgradePassword] " + e.getMessage());
+        }
     }
 
     /**

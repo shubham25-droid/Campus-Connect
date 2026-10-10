@@ -1,8 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="model.Event" %>
+<%@ page import="model.User" %>
 <%
-    request.setAttribute("pageTitle", "Edit Campus Event");
+    User adminUser = (session != null) ? (User) session.getAttribute("currentUser") : null;
+    if (adminUser == null || !adminUser.isAdmin()) {
+        response.sendRedirect(request.getContextPath() + "/login");
+        return;
+    }
     Event event = (Event) request.getAttribute("event");
+    if (event == null) {
+        response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+        return;
+    }
+    request.setAttribute("pageTitle", "Edit Campus Event");
     String error = (String) request.getAttribute("errorMessage");
 %>
 <jsp:include page="../includes/header.jsp" />

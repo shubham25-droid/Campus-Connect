@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.User" %>
 <%
+    User adminUser = (session != null) ? (User) session.getAttribute("currentUser") : null;
+    if (adminUser == null || !adminUser.isAdmin()) {
+        response.sendRedirect(request.getContextPath() + "/login");
+        return;
+    }
     request.setAttribute("pageTitle", "Create New Campus Event");
     String error = (String) request.getAttribute("errorMessage");
 %>

@@ -6,12 +6,15 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
 <%
+    User adminUser = (session != null) ? (User) session.getAttribute("currentUser") : null;
+    if (adminUser == null || !adminUser.isAdmin()) {
+        response.sendRedirect(request.getContextPath() + "/login");
+        return;
+    }
     request.setAttribute("pageTitle", "Admin Dashboard");
     Map<String, Integer> stats = (Map<String, Integer>) request.getAttribute("stats");
     List<Event> events = (List<Event>) request.getAttribute("events");
     List<Registration> recentRegs = (List<Registration>) request.getAttribute("recentRegistrations");
-    User adminUser = (User) session.getAttribute("currentUser");
-
     String msg = request.getParameter("msg");
 %>
 <jsp:include page="../includes/header.jsp" />
