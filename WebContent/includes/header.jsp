@@ -30,10 +30,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.2">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.3">
     
     <script>
         var contextPath = "<%= cp %>";
+        function closeMobileMenu() {
+            var d = document.getElementById('mobileNavDrawer');
+            var o = document.getElementById('mobileDrawerOverlay');
+            var t = document.getElementById('mobileMenuToggle');
+            if (d) d.classList.remove('active');
+            if (o) o.classList.remove('active');
+            if (t) {
+                t.classList.remove('active');
+                t.setAttribute('aria-expanded', 'false');
+            }
+            document.body.style.overflow = '';
+        }
+        function openMobileMenu() {
+            var d = document.getElementById('mobileNavDrawer');
+            var o = document.getElementById('mobileDrawerOverlay');
+            var t = document.getElementById('mobileMenuToggle');
+            if (d) d.classList.add('active');
+            if (o) o.classList.add('active');
+            if (t) {
+                t.classList.add('active');
+                t.setAttribute('aria-expanded', 'true');
+            }
+            document.body.style.overflow = 'hidden';
+        }
+        function toggleMobileMenu() {
+            var d = document.getElementById('mobileNavDrawer');
+            if (d && d.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+        window.closeMobileMenu = closeMobileMenu;
+        window.openMobileMenu = openMobileMenu;
+        window.toggleMobileMenu = toggleMobileMenu;
     </script>
 </head>
 <body>
@@ -125,73 +160,78 @@
                 <% } %>
 
                 <!-- Mobile Hamburger Menu Button -->
-                <button type="button" class="btn-mobile-menu" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <button type="button" class="btn-mobile-menu" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="hamburger-bar"></span>
                     <span class="hamburger-bar"></span>
                     <span class="hamburger-bar"></span>
                 </button>
             </div>
         </div>
+    </header>
 
-        <!-- ==============================================
-             3. Mobile Navigation Drawer (Optimized for Phones)
-             ============================================== -->
-        <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
-        <div class="mobile-drawer" id="mobileNavDrawer">
-            <div class="mobile-drawer-header">
-                <div class="mobile-drawer-brand">
-                    <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect" style="height:34px; width:34px; border-radius:50%; object-fit:cover; filter:drop-shadow(0 2px 6px rgba(8,44,80,0.15));">
-                    <span style="font-weight:800; font-size:1.15rem; color:var(--ltce-blue-dark);">Campus<span style="color:var(--ltce-gold);">Connect</span></span>
-                </div>
-                <button type="button" class="btn-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+    <!-- ==============================================
+         3. Mobile Navigation Drawer (Obsidian Glass, Outside Header)
+         ============================================== -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileMenu()" aria-hidden="true"></div>
+    <div class="mobile-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+        <div class="mobile-drawer-header">
+            <div class="mobile-drawer-brand">
+                <img src="<%= cp %>/images/campusconnect-final-logo-trans.png" alt="CampusConnect" style="height:34px; width:34px; border-radius:50%; object-fit:cover; filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));">
+                <span class="mobile-drawer-title">Campus<span style="color:var(--ltce-gold);">Connect</span></span>
             </div>
+            <button type="button" class="btn-drawer-close" id="mobileDrawerClose" onclick="closeMobileMenu()" aria-label="Close navigation menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
 
-            <!-- Quick Mobile Search Form -->
-            <form action="<%= cp %>/dashboard" method="GET" class="mobile-drawer-search">
-                <input type="text" name="search" placeholder="Search hackathons, clubs, CESA..." class="mobile-search-input">
-                <button type="submit" class="mobile-search-btn">&#128269;</button>
-            </form>
+        <!-- Quick Mobile Search Form -->
+        <form action="<%= cp %>/dashboard" method="GET" class="mobile-drawer-search">
+            <input type="text" name="search" placeholder="Search hackathons, clubs, CESA..." class="mobile-search-input" autocomplete="off">
+            <button type="submit" class="mobile-search-btn" aria-label="Search">&#128269;</button>
+        </form>
 
-            <ul class="mobile-nav-list">
-                <li><a href="<%= cp %>/" class="mobile-nav-link">&#127968; Home</a></li>
-                <li><a href="<%= cp %>/dashboard" class="mobile-nav-link">&#128197; Explore Events</a></li>
-                <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight">&#128101; Campus Clubs Directory</a></li>
-                <li><a href="<%= cp %>/#how-it-works" class="mobile-nav-link">&#9889; How It Works</a></li>
-                
-                <% if (authUser != null) { %>
-                    <li class="mobile-nav-divider"></li>
-                    <% if (authUser.isAdmin()) { %>
-                        <li><a href="<%= cp %>/admin/dashboard" class="mobile-nav-link">&#9881; Organizer / Admin Dashboard</a></li>
-                        <li><a href="<%= cp %>/admin/create-event" class="mobile-nav-link" style="color:var(--ltce-gold-hover); font-weight:700;">+ Create New Event</a></li>
-                    <% } else { %>
-                        <li><a href="<%= cp %>/my-registrations" class="mobile-nav-link">&#127915; My Registrations &amp; Passes</a></li>
-                        <li><a href="<%= cp %>/saved-events" class="mobile-nav-link">&#9829; Saved Events</a></li>
-                    <% } %>
-                <% } %>
-            </ul>
-
-            <div class="mobile-drawer-footer">
-                <% if (authUser == null) { %>
-                    <div class="mobile-auth-stack">
-                        <a href="<%= cp %>/register" class="btn btn-clean-primary" style="width:100%; text-align:center;">Student Sign Up</a>
-                        <a href="<%= cp %>/login" class="btn btn-clean-ghost" style="width:100%; text-align:center;">Organizer / Student Sign In</a>
-                    </div>
+        <ul class="mobile-nav-list">
+            <li><a href="<%= cp %>/" class="mobile-nav-link" onclick="closeMobileMenu()">&#127968; Home</a></li>
+            <li><a href="<%= cp %>/dashboard" class="mobile-nav-link" onclick="closeMobileMenu()">&#128197; Explore Events</a></li>
+            <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight" onclick="closeMobileMenu()">&#128101; Campus Clubs Directory</a></li>
+            <li><a href="<%= cp %>/#how-it-works" class="mobile-nav-link" onclick="closeMobileMenu()">&#9889; How It Works</a></li>
+            
+            <% if (authUser != null) { %>
+                <li class="mobile-nav-divider"></li>
+                <% if (authUser.isAdmin()) { %>
+                    <li><a href="<%= cp %>/admin/dashboard" class="mobile-nav-link" onclick="closeMobileMenu()">&#9881; Organizer / Admin Dashboard</a></li>
+                    <li><a href="<%= cp %>/admin/create-event" class="mobile-nav-link" style="color:var(--ltce-gold-hover); font-weight:700;" onclick="closeMobileMenu()">+ Create New Event</a></li>
                 <% } else { %>
-                    <div class="mobile-user-card">
-                        <div class="user-avatar-initial" style="width:40px; height:40px; font-size:1.1rem;"><%= authUser.getName().substring(0, 1).toUpperCase() %></div>
-                        <div style="flex:1;">
-                            <div style="font-weight:700; color:var(--ltce-blue-dark);"><%= authUser.getName() %></div>
-                            <div style="font-size:0.8rem; color:var(--text-muted);"><%= authUser.getEmail() %> &bull; <%= authUser.getRole() %></div>
-                        </div>
-                        <a href="<%= cp %>/logout" class="btn-logout" title="Sign Out">&#x21AA;</a>
-                    </div>
+                    <li><a href="<%= cp %>/my-registrations" class="mobile-nav-link" onclick="closeMobileMenu()">&#127915; My Registrations &amp; Passes</a></li>
+                    <li><a href="<%= cp %>/saved-events" class="mobile-nav-link" onclick="closeMobileMenu()">&#9829; Saved Events</a></li>
                 <% } %>
-                <div class="mobile-drawer-clg-note">
-                    Lokmanya Tilak College of Engineering<br>Koparkhairane, Navi Mumbai
+            <% } %>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+            <% if (authUser == null) { %>
+                <div class="mobile-auth-stack">
+                    <a href="<%= cp %>/register" class="btn btn-clean-primary" style="width:100%; text-align:center;" onclick="closeMobileMenu()">Student Sign Up</a>
+                    <a href="<%= cp %>/login" class="btn btn-clean-ghost" style="width:100%; text-align:center;" onclick="closeMobileMenu()">Organizer / Student Sign In</a>
                 </div>
+            <% } else { %>
+                <div class="mobile-user-card">
+                    <div class="user-avatar-initial" style="width:40px; height:40px; font-size:1.1rem;"><%= authUser.getName().substring(0, 1).toUpperCase() %></div>
+                    <div style="flex:1;">
+                        <div style="font-weight:700; color:#ffffff;"><%= authUser.getName() %></div>
+                        <div style="font-size:0.8rem; color:#94a3b8;"><%= authUser.getEmail() %> &bull; <%= authUser.getRole() %></div>
+                    </div>
+                    <a href="<%= cp %>/logout" class="btn-logout" title="Sign Out" style="color:#f87171;">&#x21AA;</a>
+                </div>
+            <% } %>
+            <div class="mobile-drawer-clg-note">
+                Lokmanya Tilak College of Engineering<br>Koparkhairane, Navi Mumbai
             </div>
         </div>
-    </header>
+    </div>
 
     <!-- ==============================================
          Native-Feel Mobile Bottom Navigation Bar (Phones: Android & iOS)

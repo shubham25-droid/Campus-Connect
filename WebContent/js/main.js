@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
- * Mobile Navigation Drawer Toggle
+ * Mobile Navigation Drawer Toggle & Swipe-To-Dismiss
  */
 function initMobileMenu() {
     const toggleBtn = document.getElementById('mobileMenuToggle');
@@ -20,34 +20,66 @@ function initMobileMenu() {
     const overlay = document.getElementById('mobileDrawerOverlay');
     const closeBtn = document.getElementById('mobileDrawerClose');
 
-    if (!toggleBtn || !drawer || !overlay) return;
+    if (!drawer) return;
 
     function openMenu() {
-        toggleBtn.classList.add('active');
-        toggleBtn.setAttribute('aria-expanded', 'true');
+        if (toggleBtn) {
+            toggleBtn.classList.add('active');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
         drawer.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
-        toggleBtn.classList.remove('active');
-        toggleBtn.setAttribute('aria-expanded', 'false');
+        if (toggleBtn) {
+            toggleBtn.classList.remove('active');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
         drawer.classList.remove('active');
-        overlay.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    toggleBtn.addEventListener('click', function () {
+    window.openMobileMenu = openMenu;
+    window.closeMobileMenu = closeMenu;
+    window.toggleMobileMenu = function() {
         if (drawer.classList.contains('active')) {
             closeMenu();
         } else {
             openMenu();
         }
-    });
+    };
 
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.toggleMobileMenu();
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMenu();
+        });
+        closeBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeMenu();
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMenu();
+        });
+        overlay.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeMenu();
+        });
+    }
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && drawer.classList.contains('active')) {
@@ -59,6 +91,26 @@ function initMobileMenu() {
     drawer.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
+
+    // Swipe-to-dismiss gesture on mobile (swipe right)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    drawer.addEventListener('touchstart', function(e) {
+        if (e.touches && e.touches.length > 0) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    drawer.addEventListener('touchend', function(e) {
+        if (e.changedTouches && e.changedTouches.length > 0) {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            if (touchEndX - touchStartX > 45 && Math.abs(touchEndY - touchStartY) < 80) {
+                closeMenu();
+            }
+        }
+    }, { passive: true });
 }
 
 /**

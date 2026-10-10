@@ -44,7 +44,7 @@
 
                 <!-- High-Impact Typography -->
                 <h1 class="hero-heading">
-                    Campus Events &amp; Opportunities<br>
+                    Campus Events &amp; Opportunities<span class="desktop-only-br"><br></span>
                     <span class="hero-gradient-text">LTCE Student Hub</span>
                 </h1>
 
