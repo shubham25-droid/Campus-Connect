@@ -36,7 +36,7 @@
     </div>
 
     <!-- Clubs Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;" id="clubsGrid">
+    <div class="clubs-grid" id="clubsGrid">
 
         <!-- 1. CESA (Computer Engineering) -->
         <div class="card club-card" data-category="dept" style="padding: 1.35rem 1.25rem 1.15rem; border-top: 4px solid #16a34a; display:flex; flex-direction:column;">
