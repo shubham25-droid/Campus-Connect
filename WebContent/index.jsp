@@ -44,7 +44,8 @@
 
                 <!-- High-Impact Typography -->
                 <h1 class="hero-heading">
-                    Campus Events &amp; Opportunities<span class="desktop-only-br"><br></span>
+                    <span class="hero-title-main">Campus Events &amp; </span>
+                    <span class="hero-title-sub">Opportunities</span>
                     <span class="hero-gradient-text">LTCE Student Hub</span>
                 </h1>
 
@@ -59,7 +60,7 @@
                         <div class="hero-search-inner">
                             <span class="hero-search-icon">&#128269;</span>
                             <input type="text" id="heroSearchInput" name="search" class="hero-search-input" 
-                                   placeholder="Search hackathons, workshops, GDG, CESA..." 
+                                   placeholder="Search hackathons, clubs, GDG..." 
                                    autocomplete="off">
                             <button type="submit" class="hero-search-submit">Search</button>
                         </div>
