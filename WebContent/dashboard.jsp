@@ -34,11 +34,13 @@
 
         <% if (authUser != null) { %>
             <div class="dashboard-quick-stats">
-                <a href="<%= request.getContextPath() %>/my-registrations" class="btn btn-secondary btn-sm" style="background:#fff;">
-                    <span>&#128197;</span> My Passes: <strong style="color:var(--primary); margin-left:4px;"><%= regCount != null ? regCount : 0 %></strong>
+                <a href="<%= request.getContextPath() %>/my-registrations" class="btn btn-secondary btn-sm" style="background:#fff; display:inline-flex; align-items:center; gap:6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    My Passes: <strong style="color:var(--primary); margin-left:2px;"><%= regCount != null ? regCount : 0 %></strong>
                 </a>
-                <a href="<%= request.getContextPath() %>/saved-events" class="btn btn-secondary btn-sm" style="background:#fff;">
-                    <span>&#9829;</span> Saved: <strong style="color:var(--danger); margin-left:4px;"><%= saveCount != null ? saveCount : 0 %></strong>
+                <a href="<%= request.getContextPath() %>/saved-events" class="btn btn-secondary btn-sm" style="background:#fff; display:inline-flex; align-items:center; gap:6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    Saved: <strong style="color:var(--danger); margin-left:2px;"><%= saveCount != null ? saveCount : 0 %></strong>
                 </a>
             </div>
         <% } %>
@@ -49,14 +51,23 @@
         <div class="featured-card">
             <div class="featured-content">
                 <div class="featured-badge <%= featured.isPastEvent() ? "concluded" : "" %>">
-                    <%= featured.isPastEvent() ? "&#9679; Concluded Event" : "&#9733; Featured Event" %>
+                    <%= featured.isPastEvent() ? "Concluded Event" : "Featured Event" %>
                 </div>
                 <h2 class="featured-title"><%= featured.getTitle() %></h2>
                 
                 <div class="featured-meta">
-                    <span>&#128197; <%= featured.getFormattedDate() %> &bull; <%= featured.getStartTime() %></span>
-                    <span>&#128205; <%= featured.getVenue() %></span>
-                    <span>&#127891; <%= featured.getOrganizerName() %></span>
+                    <span style="display:inline-flex; align-items:center; gap:5px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <%= featured.getFormattedDate() %> &bull; <%= featured.getStartTime() %>
+                    </span>
+                    <span style="display:inline-flex; align-items:center; gap:5px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <%= featured.getVenue() %>
+                    </span>
+                    <span style="display:inline-flex; align-items:center; gap:5px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                        <%= featured.getOrganizerName() %>
+                    </span>
                 </div>
 
                 <p class="featured-desc">
@@ -86,7 +97,9 @@
         <form action="<%= request.getContextPath() %>/dashboard" method="GET" id="searchFilterForm">
             <div class="search-box-row">
                 <div class="search-input-wrapper">
-                    <span class="search-icon">&#128269;</span>
+                    <span class="search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </span>
                     <input type="text" id="clientSearchInput" name="search" class="form-control search-input" 
                            placeholder="Search events, guest speakers, GDG, AIMSA, hackathons..." 
                            value="<%= curSearch != null ? curSearch : "" %>">
@@ -194,11 +207,11 @@
 
                     <div class="event-meta-list">
                         <div class="event-meta-item">
-                            <span>&#128197;</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                             <span><%= e.getFormattedDate() %> &bull; <%= e.getStartTime() %></span>
                         </div>
                         <div class="event-meta-item">
-                            <span>&#128205;</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             <span><%= e.getVenue() %></span>
                         </div>
                         <div class="event-meta-item event-organizer-row">

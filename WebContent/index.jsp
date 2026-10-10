@@ -58,7 +58,12 @@
                 <div class="hero-search-wrapper">
                     <form action="<%= cp %>/dashboard" method="GET" class="hero-search-box" id="heroSearchForm">
                         <div class="hero-search-inner">
-                            <span class="hero-search-icon">&#128269;</span>
+                            <span class="hero-search-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </span>
                             <input type="text" id="heroSearchInput" name="search" class="hero-search-input" 
                                    placeholder="Search hackathons, clubs, GDG..." 
                                    autocomplete="off">
@@ -72,10 +77,22 @@
                 <!-- Interactive Quick Trending Topics -->
                 <div class="hero-quick-topics">
                     <span class="quick-topics-label">Trending:</span>
-                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Hackathon')">&#9889; Hackathons</button>
-                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Workshop')">&#128218; Workshops</button>
-                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Technical')">&#128187; Tech Talks</button>
-                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Competition')">&#127942; Competitions</button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Hackathon')">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Hackathons
+                    </button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Workshop')">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        Workshops
+                    </button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Technical')">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        Tech Talks
+                    </button>
+                    <button type="button" class="topic-chip" onclick="quickHeroFilter('Competition')">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>
+                        Competitions
+                    </button>
                 </div>
 
                 <!-- Action CTAs -->

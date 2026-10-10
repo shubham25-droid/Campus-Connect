@@ -44,17 +44,32 @@
                     <li><a href="https://ltce.in/contact.php" target="_blank" rel="noopener noreferrer">Campus Map &amp; Contact</a></li>
                 </ul>
             </div>
+
+            <!-- Policies & Terms -->
+            <div class="footer-col-links">
+                <h4>Legal &amp; Policies</h4>
+                <ul>
+                    <li><a href="<%= request.getContextPath() %>/privacy.jsp">Privacy Policy</a></li>
+                    <li><a href="<%= request.getContextPath() %>/terms.jsp">Terms of Use</a></li>
+                    <li><a href="https://ltce.in/" target="_blank" rel="noopener noreferrer">College Code of Conduct</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="footer-bottom-bar">
-            <div class="bottom-bar-container" style="justify-content:center; text-align:center;">
+            <div class="bottom-bar-container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
                 <div class="bottom-copy">
                     &copy; <%= java.time.Year.now() %> <strong>CampusConnect</strong> &bull; Lokmanya Tilak College of Engineering. All Rights Reserved.
+                </div>
+                <div style="display:flex; gap:14px; font-size:0.8rem;">
+                    <a href="<%= request.getContextPath() %>/privacy.jsp" style="color:#94a3b8;">Privacy Policy</a>
+                    <span style="color:#475569;">&bull;</span>
+                    <a href="<%= request.getContextPath() %>/terms.jsp" style="color:#94a3b8;">Terms of Use</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="<%= request.getContextPath() %>/js/main.js?v=6.6"></script>
+    <script src="<%= request.getContextPath() %>/js/main.js?v=6.7"></script>
 </body>
 </html>

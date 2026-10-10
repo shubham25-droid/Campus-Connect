@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Primary Stylesheet with dynamic version to ensure instant browser refresh -->
-    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.6">
+    <link rel="stylesheet" href="<%= cp %>/css/style.css?v=6.7">
     
     <script>
         var contextPath = "<%= cp %>";
@@ -118,11 +118,11 @@
                     
                     <% if (authUser != null) { %>
                         <% if (authUser.isAdmin()) { %>
-                            <li><a href="<%= cp %>/admin/dashboard" class="nav-item nav-admin-badge">&#9881; Admin</a></li>
+                            <li><a href="<%= cp %>/admin/dashboard" class="nav-item nav-admin-badge">Admin</a></li>
                             <li><a href="<%= cp %>/admin/create-event" class="nav-item nav-create-badge">+ Post</a></li>
                         <% } else { %>
-                            <li><a href="<%= cp %>/my-registrations" class="nav-item <%= curUri.contains("registrations") ? "active" : "" %>">&#128197; My Passes</a></li>
-                            <li><a href="<%= cp %>/saved-events" class="nav-item <%= curUri.contains("saved") ? "active" : "" %>">&#9829; Saved</a></li>
+                            <li><a href="<%= cp %>/my-registrations" class="nav-item <%= curUri.contains("registrations") ? "active" : "" %>">My Passes</a></li>
+                            <li><a href="<%= cp %>/saved-events" class="nav-item <%= curUri.contains("saved") ? "active" : "" %>">Saved</a></li>
                         <% } %>
                     <% } %>
                 </ul>
@@ -188,23 +188,39 @@
         <!-- Quick Mobile Search Form -->
         <form action="<%= cp %>/dashboard" method="GET" class="mobile-drawer-search">
             <input type="text" name="search" placeholder="Search hackathons, clubs, CESA..." class="mobile-search-input" autocomplete="off">
-            <button type="submit" class="mobile-search-btn" aria-label="Search">&#128269;</button>
+            <button type="submit" class="mobile-search-btn" aria-label="Search">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
         </form>
 
         <ul class="mobile-nav-list">
-            <li><a href="<%= cp %>/" class="mobile-nav-link" onclick="closeMobileMenu()">&#127968; Home</a></li>
-            <li><a href="<%= cp %>/dashboard" class="mobile-nav-link" onclick="closeMobileMenu()">&#128197; Explore Events</a></li>
-            <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight" onclick="closeMobileMenu()">&#128101; Campus Clubs Directory</a></li>
-            <li><a href="<%= cp %>/#how-it-works" class="mobile-nav-link" onclick="closeMobileMenu()">&#9889; How It Works</a></li>
+            <li><a href="<%= cp %>/" class="mobile-nav-link" onclick="closeMobileMenu()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home
+            </a></li>
+            <li><a href="<%= cp %>/dashboard" class="mobile-nav-link" onclick="closeMobileMenu()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>Explore Events
+            </a></li>
+            <li><a href="<%= cp %>/clubs.jsp" class="mobile-nav-link highlight" onclick="closeMobileMenu()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Campus Clubs Directory
+            </a></li>
+            <li><a href="<%= cp %>/#how-it-works" class="mobile-nav-link" onclick="closeMobileMenu()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>How It Works
+            </a></li>
             
             <% if (authUser != null) { %>
                 <li class="mobile-nav-divider"></li>
                 <% if (authUser.isAdmin()) { %>
-                    <li><a href="<%= cp %>/admin/dashboard" class="mobile-nav-link" onclick="closeMobileMenu()">&#9881; Organizer / Admin Dashboard</a></li>
+                    <li><a href="<%= cp %>/admin/dashboard" class="mobile-nav-link" onclick="closeMobileMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Organizer / Admin Dashboard
+                    </a></li>
                     <li><a href="<%= cp %>/admin/create-event" class="mobile-nav-link" style="color:var(--ltce-gold-hover); font-weight:700;" onclick="closeMobileMenu()">+ Create New Event</a></li>
                 <% } else { %>
-                    <li><a href="<%= cp %>/my-registrations" class="mobile-nav-link" onclick="closeMobileMenu()">&#127915; My Registrations &amp; Passes</a></li>
-                    <li><a href="<%= cp %>/saved-events" class="mobile-nav-link" onclick="closeMobileMenu()">&#9829; Saved Events</a></li>
+                    <li><a href="<%= cp %>/my-registrations" class="mobile-nav-link" onclick="closeMobileMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path></svg>My Registrations &amp; Passes
+                    </a></li>
+                    <li><a href="<%= cp %>/saved-events" class="mobile-nav-link" onclick="closeMobileMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:8px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>Saved Events
+                    </a></li>
                 <% } %>
             <% } %>
         </ul>
