@@ -17,7 +17,7 @@
         </div>
 
         <% if (error != null) { %>
-            <div class="alert alert-danger"><%= error %></div>
+            <div class="alert alert-danger"><%= util.SecurityUtil.escapeHtml(error) %></div>
         <% } %>
         <% if ("logged_out".equals(msg)) { %>
             <div class="alert alert-info">You have been logged out successfully.</div>
@@ -25,12 +25,12 @@
 
         <form action="<%= request.getContextPath() %>/login" method="POST">
             <% if (redirect != null) { %>
-                <input type="hidden" name="redirect" value="<%= redirect %>">
+                <input type="hidden" name="redirect" value="<%= util.SecurityUtil.escapeHtml(redirect) %>">
             <% } %>
 
             <div class="form-group">
                 <label class="form-label" for="loginEmail">College Email</label>
-                <input type="email" id="loginEmail" name="email" class="form-control" placeholder="Enter your college email" required value="<%= enteredEmail != null ? enteredEmail : "" %>">
+                <input type="email" id="loginEmail" name="email" class="form-control" placeholder="Enter your college email" required value="<%= enteredEmail != null ? util.SecurityUtil.escapeHtml(enteredEmail) : "" %>">
             </div>
 
             <div class="form-group">

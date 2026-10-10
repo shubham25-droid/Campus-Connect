@@ -65,7 +65,13 @@ public class RegistrationServlet extends HttpServlet {
             return;
         }
 
-        int eventId = Integer.parseInt(eventIdParam.trim());
+        int eventId;
+        try {
+            eventId = Integer.parseInt(eventIdParam.trim());
+        } catch (NumberFormatException e) {
+            resp.sendRedirect(req.getContextPath() + "/dashboard");
+            return;
+        }
 
         if ("/register-event".equals(servletPath)) {
             int result = registrationDAO.registerUser(currentUser.getId(), eventId);
@@ -95,7 +101,7 @@ public class RegistrationServlet extends HttpServlet {
                 return;
             }
             String returnUrl = req.getParameter("returnUrl");
-            if (returnUrl != null && !returnUrl.isEmpty()) {
+            if (util.SecurityUtil.isSafeRedirect(returnUrl, req.getContextPath())) {
                 resp.sendRedirect(returnUrl);
             } else {
                 resp.sendRedirect(req.getContextPath() + "/event-details?id=" + eventId);

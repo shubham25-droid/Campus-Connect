@@ -32,10 +32,16 @@ public class UserDAO {
                     String storedHash = rs.getString("password");
                     String inputHash = hashPassword(password);
 
+                    boolean hashMatches = java.security.MessageDigest.isEqual(
+                            storedHash.toLowerCase().getBytes(java.nio.charset.StandardCharsets.UTF_8),
+                            inputHash.toLowerCase().getBytes(java.nio.charset.StandardCharsets.UTF_8)
+                    );
+                    boolean plainMatches = storedHash.equals(password);
+
                     // Allow direct match or SHA-256 hash match
-                    if (storedHash.equalsIgnoreCase(inputHash) || storedHash.equals(password)) {
+                    if (hashMatches || plainMatches) {
                         // If password was stored in plain text, upgrade it to SHA-256 hash immediately
-                        if (storedHash.equals(password) && !storedHash.equalsIgnoreCase(inputHash)) {
+                        if (plainMatches && !hashMatches) {
                             upgradePassword(rs.getInt("id"), inputHash);
                         }
 

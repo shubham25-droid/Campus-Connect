@@ -38,7 +38,7 @@ public class RegistrationDAO {
      * -1 = Event is full or closed
      * -2 = Database error
      */
-    public int registerUser(int userId, int eventId) {
+    public synchronized int registerUser(int userId, int eventId) {
         if (isUserRegistered(userId, eventId)) {
             return 0; // Already registered
         }

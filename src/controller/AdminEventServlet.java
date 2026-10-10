@@ -223,7 +223,6 @@ public class AdminEventServlet extends HttpServlet {
     }
 
     private String sanitize(String input) {
-        if (input == null) return "";
-        return input.replaceAll("<[^>]*>", "").trim();
+        return util.SecurityUtil.sanitize(input);
     }
 }

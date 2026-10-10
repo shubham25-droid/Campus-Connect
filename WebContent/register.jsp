@@ -18,18 +18,18 @@
         </div>
 
         <% if (error != null) { %>
-            <div class="alert alert-danger"><%= error %></div>
+            <div class="alert alert-danger"><%= util.SecurityUtil.escapeHtml(error) %></div>
         <% } %>
 
         <form id="studentRegisterForm" action="<%= request.getContextPath() %>/register" method="POST">
             <div class="form-group">
                 <label class="form-label" for="regName">Full Name</label>
-                <input type="text" id="regName" name="name" class="form-control" placeholder="Enter your full name" required value="<%= enteredName != null ? enteredName : "" %>">
+                <input type="text" id="regName" name="name" class="form-control" placeholder="Enter your full name" required value="<%= enteredName != null ? util.SecurityUtil.escapeHtml(enteredName) : "" %>">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="regEmail">College Email Address</label>
-                <input type="email" id="regEmail" name="email" class="form-control" placeholder="student@ltce.in" required value="<%= enteredEmail != null ? enteredEmail : "" %>">
+                <input type="email" id="regEmail" name="email" class="form-control" placeholder="student@ltce.in" required value="<%= enteredEmail != null ? util.SecurityUtil.escapeHtml(enteredEmail) : "" %>">
             </div>
 
             <div class="form-row">

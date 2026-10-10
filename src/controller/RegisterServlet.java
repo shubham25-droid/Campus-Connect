@@ -51,6 +51,21 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+        String trimmedEmail = email.trim().toLowerCase();
+        if (!util.SecurityUtil.isValidEmail(trimmedEmail)) {
+            req.setAttribute("errorMessage", "Please provide a valid college email address format.");
+            setFormAttributes(req, name, email, department, year);
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            return;
+        }
+
+        if (name.trim().length() > 100 || trimmedEmail.length() > 100 || password.length() > 128) {
+            req.setAttribute("errorMessage", "Input length exceeds allowed limits.");
+            setFormAttributes(req, name, email, department, year);
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            return;
+        }
+
         if (password.length() < 6) {
             req.setAttribute("errorMessage", "Password must be at least 6 characters long.");
             setFormAttributes(req, name, email, department, year);
@@ -65,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        if (userDAO.emailExists(email)) {
+        if (userDAO.emailExists(trimmedEmail)) {
             req.setAttribute("errorMessage", "An account with this email already exists. Please login instead.");
             setFormAttributes(req, name, email, department, year);
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
@@ -73,17 +88,21 @@ public class RegisterServlet extends HttpServlet {
         }
 
         User newUser = new User();
-        newUser.setName(sanitize(name.trim()));
-        newUser.setEmail(email.trim().toLowerCase());
+        newUser.setName(util.SecurityUtil.sanitize(name.trim()));
+        newUser.setEmail(trimmedEmail);
         newUser.setPassword(UserDAO.hashPassword(password.trim()));
         newUser.setRole("STUDENT");
-        newUser.setDepartment(sanitize(department.trim()));
-        newUser.setYear(sanitize(year.trim()));
+        newUser.setDepartment(util.SecurityUtil.sanitize(department.trim()));
+        newUser.setYear(util.SecurityUtil.sanitize(year.trim()));
 
         boolean success = userDAO.register(newUser);
 
         if (success) {
-            // Auto login on successful registration
+            // Session Fixation Defense: Invalidate previous session and generate fresh ID
+            HttpSession oldSession = req.getSession(false);
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
             HttpSession session = req.getSession(true);
             session.setAttribute("currentUser", newUser);
             resp.sendRedirect(req.getContextPath() + "/dashboard?registered=true");

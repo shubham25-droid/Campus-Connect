@@ -47,57 +47,80 @@ public class LoginServlet extends HttpServlet {
         req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 
-    // Simple in-memory rate limiting against brute-force attacks: IP -> [failedCount, timestampMs]
-    private static final java.util.concurrent.ConcurrentHashMap<String, long[]> loginAttempts = new java.util.concurrent.ConcurrentHashMap<>();
-    private static final int MAX_ATTEMPTS = 5;
+    // Dual-bucket rate limiting against brute-force attacks: key (IP or email) -> [failedCount, timestampMs]
+    private static final java.util.concurrent.ConcurrentHashMap<String, long[]> ipAttempts = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final java.util.concurrent.ConcurrentHashMap<String, long[]> emailAttempts = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final int MAX_IP_ATTEMPTS = 5;
+    private static final int MAX_EMAIL_ATTEMPTS = 8;
     private static final long LOCK_WINDOW_MS = 3 * 60 * 1000; // 3 minutes
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String clientIp = req.getRemoteAddr();
+        String clientIp = util.SecurityUtil.getClientIp(req);
         long now = System.currentTimeMillis();
 
-        // Check rate limiting
-        long[] attemptData = loginAttempts.get(clientIp);
-        if (attemptData != null) {
-            if (now - attemptData[1] < LOCK_WINDOW_MS && attemptData[0] >= MAX_ATTEMPTS) {
-                long remainingSec = (LOCK_WINDOW_MS - (now - attemptData[1])) / 1000;
-                req.setAttribute("errorMessage", "Too many failed login attempts. Please wait " + remainingSec + " seconds before trying again.");
+        // 1. Check IP rate limit
+        long[] ipData = ipAttempts.get(clientIp);
+        if (ipData != null) {
+            if (now - ipData[1] < LOCK_WINDOW_MS && ipData[0] >= MAX_IP_ATTEMPTS) {
+                long remainingSec = Math.max(1, (LOCK_WINDOW_MS - (now - ipData[1])) / 1000);
+                req.setAttribute("errorMessage", "Too many failed login attempts from this network. Please wait " + remainingSec + " seconds before trying again.");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
                 return;
-            } else if (now - attemptData[1] >= LOCK_WINDOW_MS) {
-                loginAttempts.remove(clientIp);
+            } else if (now - ipData[1] >= LOCK_WINDOW_MS) {
+                ipAttempts.remove(clientIp);
             }
         }
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String redirectUrl = req.getParameter("redirect");
+        String normalizedEmail = email != null ? email.trim().toLowerCase() : "";
 
-        // Validate
-        if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
+        // 2. Check Targeted Email rate limit (Distributed brute-force defense)
+        if (!normalizedEmail.isEmpty()) {
+            long[] emailData = emailAttempts.get(normalizedEmail);
+            if (emailData != null) {
+                if (now - emailData[1] < LOCK_WINDOW_MS && emailData[0] >= MAX_EMAIL_ATTEMPTS) {
+                    long remainingSec = Math.max(1, (LOCK_WINDOW_MS - (now - emailData[1])) / 1000);
+                    req.setAttribute("errorMessage", "This account is temporarily locked due to multiple failed login attempts. Please wait " + remainingSec + " seconds.");
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                    return;
+                } else if (now - emailData[1] >= LOCK_WINDOW_MS) {
+                    emailAttempts.remove(normalizedEmail);
+                }
+            }
+        }
+
+        // Validate essentials
+        if (normalizedEmail.isEmpty() || password == null || password.trim().isEmpty()) {
             req.setAttribute("errorMessage", "Please provide both email address and password.");
-            req.setAttribute("enteredEmail", email != null ? email.trim() : "");
+            req.setAttribute("enteredEmail", util.SecurityUtil.escapeHtml(normalizedEmail));
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
             return;
         }
 
-        User user = userDAO.authenticate(email, password);
+        User user = userDAO.authenticate(normalizedEmail, password);
 
         if (user != null) {
-            // Reset failed attempts on success
-            loginAttempts.remove(clientIp);
+            // Reset failed counters on successful login
+            ipAttempts.remove(clientIp);
+            if (!normalizedEmail.isEmpty()) {
+                emailAttempts.remove(normalizedEmail);
+            }
 
+            // Session Fixation Defense: Invalidate previous session and generate fresh ID
+            HttpSession oldSession = req.getSession(false);
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
             HttpSession session = req.getSession(true);
             session.setAttribute("currentUser", user);
 
-            // Safe Open-Redirect check: ensure redirect stays within the application
-            if (redirectUrl != null && !redirectUrl.trim().isEmpty() && !redirectUrl.contains("login") && !redirectUrl.contains("logout")) {
-                redirectUrl = redirectUrl.trim();
-                if ((redirectUrl.startsWith("/") && !redirectUrl.startsWith("//")) || redirectUrl.startsWith(req.getContextPath())) {
-                    resp.sendRedirect(redirectUrl);
-                    return;
-                }
+            // Safe Open-Redirect Defense
+            if (util.SecurityUtil.isSafeRedirect(redirectUrl, req.getContextPath())) {
+                resp.sendRedirect(redirectUrl);
+                return;
             }
 
             if (user.isAdmin()) {
@@ -106,8 +129,8 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/dashboard");
             }
         } else {
-            // Track failed attempt
-            loginAttempts.compute(clientIp, (k, v) -> {
+            // Track failed attempt on IP
+            ipAttempts.compute(clientIp, (k, v) -> {
                 if (v == null || (now - v[1] >= LOCK_WINDOW_MS)) {
                     return new long[]{1, now};
                 } else {
@@ -115,8 +138,19 @@ public class LoginServlet extends HttpServlet {
                 }
             });
 
+            // Track failed attempt on Targeted Email
+            if (!normalizedEmail.isEmpty()) {
+                emailAttempts.compute(normalizedEmail, (k, v) -> {
+                    if (v == null || (now - v[1] >= LOCK_WINDOW_MS)) {
+                        return new long[]{1, now};
+                    } else {
+                        return new long[]{v[0] + 1, now};
+                    }
+                });
+            }
+
             req.setAttribute("errorMessage", "Invalid email or password. Please verify your credentials.");
-            req.setAttribute("enteredEmail", email != null ? email.trim() : "");
+            req.setAttribute("enteredEmail", util.SecurityUtil.escapeHtml(normalizedEmail));
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
     }
